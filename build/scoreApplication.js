@@ -1,6 +1,39 @@
 import { differenceInYears } from "date-fns";
+import { Gender, Position, EmploymentStatus, MaritalStatus } from "./dtos.js";
+import Joi from "joi";
+const scoringDataDTOSchema = Joi.object({
+    amount: Joi.number().required(),
+    term: Joi.number().required(),
+    firstName: Joi.string().required(),
+    lastName: Joi.string().required(),
+    middleName: Joi.string().required(),
+    email: Joi.string().email().required(),
+    birthdate: Joi.string().isoDate().required(),
+    passportSeries: Joi.string().required(),
+    passportNumber: Joi.string().required(),
+    gender: Joi.string().valid(...Object.values(Gender)).required(),
+    passportIssueDate: Joi.string().isoDate().required(),
+    passportIssueBranch: Joi.string().required(),
+    maritalStatus: Joi.string().valid(...Object.values(MaritalStatus)).required(),
+    dependentNumber: Joi.number().required(),
+    employment: Joi.object({
+        employmentStatus: Joi.string().valid(...Object.values(EmploymentStatus)).required(),
+        employerINN: Joi.string().required(),
+        salary: Joi.number().required(),
+        position: Joi.string().valid(...Object.values(Position)).required(),
+        workExperienceTotal: Joi.number().required(),
+        workExperienceCurrent: Joi.number().required(),
+    }).required(),
+    account: Joi.string().required(),
+    isInsuranceEnabled: Joi.boolean().required(),
+    isSalaryClient: Joi.boolean().required()
+});
 function performScoring(data) {
     let interestRate = 0.1; // процентная ставка
+    const validation = scoringDataDTOSchema.validate(data);
+    if (validation.error) {
+        throw new Error(validation.error.details[0].message);
+    }
     const { employment, maritalStatus, dependentNumber, gender, birthdate, amount } = data;
     const age = differenceInYears(new Date(), new Date(birthdate));
     const totalExperience = employment.workExperienceTotal;
@@ -14,32 +47,32 @@ function performScoring(data) {
     if (amount > employment.salary * 20) {
         return { passed: false, rate: 0 };
     }
-    if (employment.employmentStatus === "Unemployed") {
+    if (employment.employmentStatus === EmploymentStatus.Unemployed) {
         return { passed: false, rate: 0 };
     }
-    if (employment.employmentStatus === "SelfEmployed") {
+    if (employment.employmentStatus === EmploymentStatus.SelfEmployed) {
         interestRate += 0.01;
     }
-    if (employment.employmentStatus === "BusinessOwner") {
+    if (employment.employmentStatus === EmploymentStatus.BusinessOwner) {
         interestRate += 0.03;
     }
-    if (employment.position === "MiddleManager") {
+    if (employment.position === Position.MiddleManager) {
         interestRate -= 0.02;
     }
-    if (employment.position === "TopManager") {
+    if (employment.position === Position.TopManager) {
         interestRate -= 0.04;
     }
-    if (maritalStatus === "Married") {
+    if (maritalStatus === MaritalStatus.Married) {
         interestRate -= 0.03;
     }
-    if (maritalStatus === "Divorced") {
+    if (maritalStatus === MaritalStatus.Divorced) {
         interestRate += 0.01;
     }
     if (dependentNumber > 1) {
         interestRate += 0.01;
     }
-    if ((gender === "Female" && age >= 35 && age <= 60) ||
-        (gender === "Male" && age >= 30 && age <= 55)) {
+    if ((gender === Gender.Female && age >= 35 && age <= 60) ||
+        (gender === Gender.Male && age >= 30 && age <= 55)) {
         interestRate -= 0.03;
     }
     return { passed: true, rate: interestRate };

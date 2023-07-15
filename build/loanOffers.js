@@ -3,7 +3,7 @@ import Joi from "joi";
 import { differenceInYears } from "date-fns";
 function calculateLoanOffers(request) {
     if (!prescoring(request)) {
-        return [];
+        throw new Error("Invalid request data.");
     }
     const combinations = [
         { isInsuranceEnabled: false, isSalaryClient: false },
@@ -40,9 +40,9 @@ function prescoring(request) {
     const { error } = schema.validate(request);
     if (error) {
         console.log(error.details);
-        return false;
+        throw new Error(error.details[0].message);
     }
-    return !error;
+    return true;
 }
 export { calculateLoanOffers, prescoring };
 //# sourceMappingURL=loanOffers.js.map

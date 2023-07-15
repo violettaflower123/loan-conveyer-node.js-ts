@@ -5,7 +5,7 @@ import { differenceInYears } from "date-fns";
 
 function calculateLoanOffers(request: LoanApplicationRequestDTO): LoanOfferDTO[]{
     if (!prescoring(request)){
-        return [];
+        throw new Error("Invalid request data.");
     }
 
     const combinations = [
@@ -46,9 +46,9 @@ function prescoring(request: LoanApplicationRequestDTO): boolean {
     const { error } = schema.validate(request);
     if (error) {
         console.log(error.details); 
-        return false;
+        throw new Error(error.details[0].message);
     }
-    return !error;
+    return true;
 }
 
 export { calculateLoanOffers, prescoring };

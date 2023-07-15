@@ -1,28 +1,37 @@
 import express from 'express';
-import bodyParser from "body-parser";
+// import bodyParser from "body-parser";
 import { calculateLoanOffers } from "./loanOffers.js";
 import { performScoring, calculateCreditParameters } from "./scoreApplication.js";
 const app = express();
-app.use(bodyParser.json());
+app.use(express.json());
 app.post("/conveyor/offers", (req, res) => {
-    const loanApplicationRequest = req.body;
-    const loanOffers = calculateLoanOffers(loanApplicationRequest);
-    if (loanOffers.length === 0) {
-        return res.status(400).json({ message: 'The application did not pass the data.' });
+    try {
+        const loanApplicationRequest = req.body;
+        const loanOffers = calculateLoanOffers(loanApplicationRequest);
+        res.json(loanOffers);
     }
-    res.json(loanOffers);
+    catch (err) {
+        const error = err;
+        return res.status(400).json({ error: error.message });
+    }
 });
 app.post("/conveyor/calculation", (req, res) => {
-    const scoringData = req.body;
-    const scoringResult = performScoring(scoringData);
-    if (!scoringResult.passed) {
-        return res.status(400).json({ message: 'The application did not pass the scoring.' });
+    try {
+        const scoringData = req.body;
+        const scoringResult = performScoring(scoringData);
+        if (!scoringResult.passed) {
+            return res.status(400).json({ message: 'The application did not pass the scoring.' });
+        }
+        const credit = calculateCreditParameters(scoringData, scoringResult.rate);
+        if (!credit) {
+            return res.status(400).json({ message: 'The credit cannot be granted.' });
+        }
+        res.json(credit);
     }
-    const credit = calculateCreditParameters(scoringData, scoringResult.rate);
-    if (!credit) {
-        return res.status(400).json({ message: 'The credit cannot be granted.' });
+    catch (err) {
+        const error = err;
+        return res.status(400).json({ error: error.message });
     }
-    res.json(credit);
 });
 const port = 3000;
 app.listen((port), () => {

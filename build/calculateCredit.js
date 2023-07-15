@@ -16,12 +16,6 @@ function calculateCredit(request, isInsuranceEnabled, isSalaryClient) {
         isInsuranceEnabled: isInsuranceEnabled,
         isSalaryClient: isSalaryClient
     };
-    // if (isInsuranceEnabled){
-    //     baseRate -= 3;
-    // }
-    // if (isSalaryClient){
-    //     baseRate -= 1;
-    // }
     return offer;
 }
 export { calculateCredit };

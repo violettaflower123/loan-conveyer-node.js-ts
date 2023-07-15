@@ -1,7 +1,7 @@
-type Gender = "Male" | "Female";
-type MaritalStatus = "Married" | "Divorced" | "Single";
-type EmploymentStatus = "Unemployed" | "SelfEmployed" | "BusinessOwner";
-type Position = "MiddleManager" | "TopManager" | "RegularEmployee";
+export enum Gender { Male = "Male",  Female = "Female" };
+export enum MaritalStatus {Married = "Married" , Divorced = "Divorced" , Single = "Single"} ;
+export enum EmploymentStatus {Unemployed = "Unemployed" , SelfEmployed = "SelfEmployed" , BusinessOwner = "BusinessOwner"} ;
+export enum Position {MiddleManager = "MiddleManager" , TopManager = "TopManager" , RegularEmployee = "RegularEmployee"};
 
 export interface LoanApplicationRequestDTO {
     amount: number,
