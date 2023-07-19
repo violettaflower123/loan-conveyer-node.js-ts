@@ -11,7 +11,7 @@
   },
   "scripts": {
     "start": "node ./build/server.js",
-    "dev": "nodemon -L -e ts --exec \"npm run build && npm start\"",
+    "dev": "nodemon -L -e ts --exec \"npm run build && node ./build/server.js\"",
     "build": "tsc"
   },
   "keywords": [],

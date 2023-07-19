@@ -1,15 +1,28 @@
 version: '3.8'
 services:
-  api:
-    container_name: api
+  api-conveyer:
+    container_name: api-conveyer
     restart: always
-    build: .
+    build: ./conveyer
     ports:
-      - ${PORT}:${PORT}
+      - 3001:3001
+    volumes:
+      - ./conveyer:/usr/src/app
+      - /usr/src/app/node_modules
     depends_on:
       - db
+
+  api-deals:
+    container_name: api-deals
+    restart: always
+    build: ./deals
+    ports:
+      - 3002:3002
     volumes:
-    - .:/usr/src/app
+      - ./deals:/usr/src/app
+      - /usr/src/app/node_modules
+    depends_on:
+      - db
 
   db:
     container_name: postgres
@@ -17,7 +30,7 @@ services:
     ports:
       - '5433:${DB_PORT}'
     volumes:
-      - data:/data/db
+      - data:/var/lib/postgresql/data
     environment:
       - POSTGRES_PASSWORD=${DB_PASSWORD}
       - POSTGRES_DB=${DB_NAME}
@@ -32,4 +45,4 @@ services:
       - PGADMIN_DEFAULT_PASSWORD=success
 
 volumes: 
- data: {}
+  data: {}
