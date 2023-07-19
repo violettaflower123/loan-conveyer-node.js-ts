@@ -18,7 +18,7 @@ router.post("/calculation", (req, res) => {
         const scoringData = req.body;
         const scoringResult = performScoring(scoringData);
         if (!scoringResult.passed) {
-            return res.status(400).json({ message: 'The application did not pass the scoring.' });
+            return res.status(400).json({ message: scoringResult.message });
         }
         const credit = calculateCreditParameters(scoringData, scoringResult.rate);
         if (!credit) {

@@ -4,15 +4,20 @@ import { Gender, Position, EmploymentStatus, MaritalStatus } from "./dtos.js";
 import Joi from "joi";
 
 const scoringDataDTOSchema = Joi.object({
-    amount: Joi.number().required(),
-    term: Joi.number().required(),
-    firstName: Joi.string().required(),
-    lastName: Joi.string().required(),
-    middleName: Joi.string().required(),
-    email: Joi.string().email().required(),
-    birthdate: Joi.string().isoDate().required(),
-    passportSeries: Joi.string().required(),
-    passportNumber: Joi.string().required(),
+    amount: Joi.number().min(10000).required(),
+    term: Joi.number().integer().min(6).required(),
+    firstName: Joi.string().min(2).max(30).required(),
+    lastName: Joi.string().min(2).max(30).required(),
+    middleName: Joi.string().min(2).max(30).optional(),
+    email: Joi.string().pattern(/[\w\.]{2,50}@[\w\.]{2,20}/).required(),
+    birthdate: Joi.date().custom((value, helpers) => {
+        const today = new Date();
+        const age = differenceInYears(today, value);
+        if (age < 18) return helpers.error('any.invalid');
+        return value;
+    }, 'Age validation').required(),
+    passportSeries: Joi.string().length(4).pattern(/[0-9]{4}/).required(),
+    passportNumber: Joi.string().length(6).pattern(/[0-9]{6}/).required(),
     gender: Joi.string().valid(...Object.values(Gender)).required(),
     passportIssueDate: Joi.string().isoDate().required(),
     passportIssueBranch: Joi.string().required(),
@@ -33,13 +38,14 @@ const scoringDataDTOSchema = Joi.object({
 
 
 
-function performScoring(data: ScoringDataDTO): { passed: boolean, rate: number } {
+function performScoring(data: ScoringDataDTO): { passed: boolean, rate: number, message: string } {
     let interestRate = 0.1; // процентная ставка
+    let message = "Scoring passed successfully";
 
-    const validation = scoringDataDTOSchema.validate(data);
-
-    if (validation.error) {
-        throw new Error(validation.error.details[0].message);
+    const { error } = scoringDataDTOSchema.validate(data);
+    if (error) {
+        console.log(error.details); 
+        throw new Error(error.details[0].message);
     }
 
     const {
@@ -54,21 +60,26 @@ function performScoring(data: ScoringDataDTO): { passed: boolean, rate: number }
     const age = differenceInYears(new Date(), new Date(birthdate));
     const totalExperience = employment.workExperienceTotal;
     const currentExperience = employment.workExperienceCurrent;
-
+    console.log('Calculated age:', age);
     if (age < 20 || age > 60) {
-        return { passed: false, rate: 0 }; // reject
+        message = "Rejected: The applicant's age is outside the acceptable range of 20 to 60 years.";
+        return { passed: false, rate: 0, message }; // reject
+        // return { passed: false, rate: 0, message }; // reject
     }
 
     if (totalExperience < 12 || currentExperience < 3) {
-        return { passed: false, rate: 0 }; 
+        message = "Rejected: Insufficient work experience.";
+        return { passed: false, rate: 0, message }; 
     }
 
     if (amount > employment.salary * 20) {
-        return { passed: false, rate: 0 }; 
+        message = "Rejected: Loan amount exceeds the allowed limit based on salary.";
+        return { passed: false, rate: 0, message }; 
     }
 
     if (employment.employmentStatus === EmploymentStatus.Unemployed) {
-        return { passed: false, rate: 0 }; 
+        message = "Rejected: Applicant is unemployed.";
+        return { passed: false, rate: 0, message }; 
     }
 
     if (employment.employmentStatus === EmploymentStatus.SelfEmployed) {
@@ -104,11 +115,10 @@ function performScoring(data: ScoringDataDTO): { passed: boolean, rate: number }
         interestRate -= 0.03;
     }
    
-    return { passed: true, rate: interestRate };
+    return { passed: true, rate: interestRate, message };
 }
 
 function calculateCreditParameters(data: ScoringDataDTO, rate: number): CreditDTO | null {
-    console.log('calculateCreditParams', data);
     const monthlyRate = rate / 12; 
     const termMonths = data.term; 
 
