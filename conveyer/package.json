@@ -10,7 +10,7 @@
     }
   },
   "scripts": {
-    "start": "node ./build/server.js",
+    "start": "nodemon ./build/server.js",
     "dev": "nodemon -L -e ts --exec \"npm run build && node ./build/server.js\"",
     "build": "tsc"
   },

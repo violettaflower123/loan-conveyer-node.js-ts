@@ -11,17 +11,8 @@ RUN npm install
 # Копирование файлов приложения
 COPY . .
 
-# Копирование скрипта wait-for-it
-COPY wait-for-it.sh /usr/wait-for-it.sh
-
-# Делаем скрипт исполняемым
-RUN chmod +x /usr/wait-for-it.sh
-
 # Сборка TypeScript кода
 RUN npm run build
 
-# Установка netcat для проверки доступности порта
-RUN apk add --no-cache netcat-openbsd
-
 # Запуск приложения после того, как порт станет доступным
-CMD /usr/wait-for-it.sh api-deals:3002 -- npm run dev
+CMD npm run start
