@@ -158,3 +158,6 @@ SELECT setval('credit_id_seq', (SELECT MAX(credit_id) FROM credit));
 
 ALTER TABLE client
 ADD CONSTRAINT passport_id_unique UNIQUE (passport_id);
+
+ALTER TABLE credit 
+ALTER COLUMN payment_schedule TYPE TEXT;

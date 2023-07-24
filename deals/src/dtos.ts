@@ -4,6 +4,7 @@ export enum EmploymentStatus {Unemployed = "UNEMPLOYED" , SelfEmployed = "SELF_E
 export enum Position {MiddleManager = "MID_MANAGER" , TopManager = "TOP_MANAGER" , Worker = "WORKER", Owner = "OWNER"};
 export enum Status { Preapproval = "PREAPPROVAL", Approved = "APPROVED", CcDenied = "CC_DENIED", CcApproved = "CC_PAPROVED", PrepareDocuments = "PREPARE_DOCUMENTS", DocumentCreated = "DOCUMENT_CREATED", ClientDenied = "CLIENT_DENIED", DocumentSigned = "DOCUMENT_SIGNED", CreditIssued = "CREDIT_ISSUED" };
 export enum ChangeType { Automatic = "AUTOMATIC", Manual = "MANUAL" }; 
+export enum CreditStatus { Calculated = "CALCULATED", Issued = "ISSUED"};
 
 export interface LoanApplicationRequestDTO {
     amount: number,
@@ -33,7 +34,7 @@ export interface  FinishRegistrationRequestDTO
   maritalStatus: MaritalStatus,
   dependentNumber: number,
   passportIssueDate: string, // LocalDate
-  passportIssueBrach: string,
+  passportIssueBranch: string,
   employment: EmploymentDTO,
   account: string
 }
@@ -85,11 +86,12 @@ export interface CreditDTO {
     isInsuranceEnabled: boolean,
     isSalaryClient: boolean,
     paymentSchedule: PaymentScheduleElement[]
+    status: CreditStatus
 }
 
 export interface ApplicationStatusHistoryDTO {
   status: Status,
-  time: "string", // LocalDateTime
+  time: string, // LocalDateTime
   changeType: ChangeType
 }
 
@@ -121,20 +123,14 @@ export interface ClientDTO {
   account: string
 }
 
-// CREATE TABLE client (
-//   client_id BIGINT PRIMARY KEY,
-//   last_name VARCHAR(255),
-//   first_name VARCHAR(255),
-//   middle_name VARCHAR(255),
-//   birth_date DATE,
-//   email VARCHAR(255),
-//   gender_id INT,
-//   marital_status_id INT,
-//   dependent_amount INT,
-//   passport_id VARCHAR(255),
-//   employment_id VARCHAR(255),
-//   account VARCHAR(255),
-//   FOREIGN KEY (gender_id) REFERENCES gender(id),
-//   FOREIGN KEY (marital_status_id) REFERENCES marital_status(id)
-// );
-
+export interface ApplicationDTO {
+  id: string;
+  clientId: number;
+  creditId: number;
+  status: Status;
+  creationDate: Date;
+  appliedOffer: string;
+  signDate: Date;
+  sesCode: string;
+  statusHistory: ApplicationStatusHistoryDTO[];  // Замените на соответствующий тип, если структура JSON известна
+}
