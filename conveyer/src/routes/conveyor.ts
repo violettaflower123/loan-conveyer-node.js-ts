@@ -11,7 +11,7 @@ router.post("/offers", (req: Request, res: Response) => {
 
         const loanOffers: LoanOfferDTO[] = calculateLoanOffers(loanApplicationRequest);
 
-        res.json(loanOffers);  
+        return res.json(loanOffers);  
     } catch (err) {
         const error = err as Error;
         return res.status(400).json({ error: error.message });
@@ -34,7 +34,7 @@ router.post("/calculation", (req: Request, res: Response) => {
         return res.status(400).json({message: 'The credit cannot be granted.'});
     }
 
-    res.json(credit);
+    return res.json(credit);
 
     } catch (err) {
         const error = err as Error;

@@ -48,20 +48,10 @@ export var ChangeType;
     ChangeType["Manual"] = "MANUAL";
 })(ChangeType || (ChangeType = {}));
 ;
-// CREATE TABLE client (
-//   client_id BIGINT PRIMARY KEY,
-//   last_name VARCHAR(255),
-//   first_name VARCHAR(255),
-//   middle_name VARCHAR(255),
-//   birth_date DATE,
-//   email VARCHAR(255),
-//   gender_id INT,
-//   marital_status_id INT,
-//   dependent_amount INT,
-//   passport_id VARCHAR(255),
-//   employment_id VARCHAR(255),
-//   account VARCHAR(255),
-//   FOREIGN KEY (gender_id) REFERENCES gender(id),
-//   FOREIGN KEY (marital_status_id) REFERENCES marital_status(id)
-// );
+export var CreditStatus;
+(function (CreditStatus) {
+    CreditStatus["Calculated"] = "CALCULATED";
+    CreditStatus["Issued"] = "ISSUED";
+})(CreditStatus || (CreditStatus = {}));
+;
 //# sourceMappingURL=dtos.js.map
