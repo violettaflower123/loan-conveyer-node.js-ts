@@ -1,6 +1,4 @@
 import { db } from '../db.js';
-// const pgp = pgPromise();
-// const db = pgp('postgres://postgres:password@postgres:5432/deals');
 export function validateLoanApplication(loanApplication) {
     const { lastName, firstName, middleName, email } = loanApplication;
     if (!lastName || !firstName || !middleName || !email) {

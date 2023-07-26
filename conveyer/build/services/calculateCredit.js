@@ -1,16 +1,12 @@
-import { LoanApplicationRequestDTO, LoanOfferDTO } from "./dtos.js";
-
 const INSURANCE_COST = 100000; // стоимость страховки
 const INTEREST_RATE = 0.1; // процентная ставка
-
-function calculateCredit(request: LoanApplicationRequestDTO, isInsuranceEnabled: boolean, isSalaryClient: boolean): LoanOfferDTO{
+function calculateCredit(request, isInsuranceEnabled, isSalaryClient) {
     const creditAmount = request.amount;
     const insuranceAmount = isInsuranceEnabled ? INSURANCE_COST : 0;
     const interestAmount = creditAmount * INTEREST_RATE;
     // СК + % + СВК = ПСК
     const totalAmount = creditAmount + insuranceAmount + interestAmount;
-
-    const offer: LoanOfferDTO = {
+    const offer = {
         applicationId: Math.floor(Math.random() * 1000000),
         requestedAmount: request.amount,
         totalAmount: totalAmount,
@@ -20,8 +16,7 @@ function calculateCredit(request: LoanApplicationRequestDTO, isInsuranceEnabled:
         isInsuranceEnabled: isInsuranceEnabled,
         isSalaryClient: isSalaryClient
     };
-
     return offer;
 }
-
 export { calculateCredit };
+//# sourceMappingURL=calculateCredit.js.map

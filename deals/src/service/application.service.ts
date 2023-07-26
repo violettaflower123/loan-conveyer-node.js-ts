@@ -1,9 +1,5 @@
 import { LoanApplicationRequestDTO } from '../dtos.js';
-import pgPromise from 'pg-promise';
-import axios from 'axios';
 import { db } from '../db.js';
-// const pgp = pgPromise();
-// const db = pgp('postgres://postgres:password@postgres:5432/deals');
 
 export function validateLoanApplication(loanApplication: LoanApplicationRequestDTO) {
     const { lastName, firstName, middleName, email } = loanApplication;

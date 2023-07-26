@@ -124,7 +124,6 @@ export async function updateApplicationStatusAndHistory(application: Application
     };
     const statusHistoryId = await saveStatusHistoryToDb(historyRecord);
     console.log('status history id', statusHistoryId)
-
-    // обновляем текущий статус заявки
+    
     application.status = newStatus;
 }

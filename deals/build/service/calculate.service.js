@@ -111,7 +111,6 @@ export async function updateApplicationStatusAndHistory(application, newStatus, 
     };
     const statusHistoryId = await saveStatusHistoryToDb(historyRecord);
     console.log('status history id', statusHistoryId);
-    // обновляем текущий статус заявки
     application.status = newStatus;
 }
 //# sourceMappingURL=calculate.service.js.map

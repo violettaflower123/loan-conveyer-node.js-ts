@@ -2,9 +2,6 @@ import { validateLoanApplication, addClientAndPassport } from '../service/applic
 import axios from 'axios';
 import { db } from '../db.js';
 import pgPromise from 'pg-promise';
-// import pgPromise from 'pg-promise';
-// const pgp = pgPromise();
-// const db = pgp('postgres://postgres:password@postgres:5432/deals');
 export const postApplication = async (req, res, next) => {
     try {
         const loanApplication = req.body;

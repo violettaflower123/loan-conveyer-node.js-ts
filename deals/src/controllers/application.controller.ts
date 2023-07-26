@@ -6,10 +6,6 @@ import { db, pgp } from '../db.js';
 import pgPromise from 'pg-promise';
 
 
-// import pgPromise from 'pg-promise';
-// const pgp = pgPromise();
-// const db = pgp('postgres://postgres:password@postgres:5432/deals');
-
 export const postApplication = async (req: Request, res: Response, next: NextFunction) => {
     try {
         const loanApplication: LoanApplicationRequestDTO = req.body;

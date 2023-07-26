@@ -1,6 +1,6 @@
-import { PaymentScheduleElement, ScoringDataDTO, CreditDTO } from "./dtos.js";
+import { PaymentScheduleElement, ScoringDataDTO, CreditDTO } from "../dtos.js";
 import { differenceInYears } from "date-fns";
-import { Gender, Position, EmploymentStatus, MaritalStatus } from "./dtos.js";
+import { Gender, Position, EmploymentStatus, MaritalStatus } from "../dtos.js";
 import Joi from "joi";
 
 const scoringDataDTOSchema = Joi.object({
