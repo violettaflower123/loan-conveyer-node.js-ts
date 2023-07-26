@@ -1,14 +1,9 @@
 import { Request, Response, NextFunction } from 'express';
 import { LoanApplicationRequestDTO, LoanOfferDTO } from '../dtos.js';
-import { validateLoanApplication, addClientAndPassport } from '../service/application.service.js';
+import { validateLoanApplication, addClientAndPassport } from '../services/application.service.js';
 import axios from 'axios';
 import { db, pgp } from '../db.js';
 import pgPromise from 'pg-promise';
-
-
-// import pgPromise from 'pg-promise';
-// const pgp = pgPromise();
-// const db = pgp('postgres://postgres:password@postgres:5432/deals');
 
 export const postApplication = async (req: Request, res: Response, next: NextFunction) => {
     try {

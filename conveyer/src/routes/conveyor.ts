@@ -1,46 +1,11 @@
-import { LoanApplicationRequestDTO, LoanOfferDTO, ScoringDataDTO } from "../dtos.js";
-import express, { Request, Response } from 'express';
-import { calculateLoanOffers } from "../loanOffers.js";
-import { performScoring, calculateCreditParameters } from "../scoreApplication.js";
+import express from 'express';
+import { createOffers } from "../controllers/offers.controller.js";
+import { calculateOffer } from "../controllers/calculation.controller.js";
 const router = express.Router();
 
 
-router.post("/offers", (req: Request, res: Response) => {
-    try {
-        const loanApplicationRequest: LoanApplicationRequestDTO = req.body;
+router.post('/offers', createOffers);
 
-        const loanOffers: LoanOfferDTO[] = calculateLoanOffers(loanApplicationRequest);
-
-        return res.json(loanOffers);  
-    } catch (err) {
-        const error = err as Error;
-        return res.status(400).json({ error: error.message });
-    }
-
-});
-
-router.post("/calculation", (req: Request, res: Response) => {
-    try {
-    const scoringData: ScoringDataDTO = req.body;
-    const scoringResult = performScoring(scoringData);
-
-    if (!scoringResult.passed) {
-        return res.status(400).json({message: scoringResult.message});
-    }
-
-    const credit = calculateCreditParameters(scoringData, scoringResult.rate);
-
-    if (!credit) {
-        return res.status(400).json({message: 'The credit cannot be granted.'});
-    }
-
-    return res.json(credit);
-
-    } catch (err) {
-        const error = err as Error;
-        return res.status(400).json({ error: error.message });
-    }
-
-});
+router.post('/calculation', calculateOffer);
 
 export { router as conveyerRouter };

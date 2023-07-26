@@ -1,5 +1,5 @@
 import { calculateCredit } from "./calculateCredit.js";
-import { LoanApplicationRequestDTO, LoanOfferDTO } from "./dtos.js";
+import { LoanApplicationRequestDTO, LoanOfferDTO } from "../dtos.js";
 import Joi from "joi";
 import { differenceInYears } from "date-fns";
 
