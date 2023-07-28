@@ -1,5 +1,6 @@
 import { calculateLoanOffer } from '../controllers/calculate.controller.js';
-import { ScoringDataDTO, EmploymentDTO, Gender, EmploymentStatus, Position, MaritalStatus } from '../dtos.js';
+import { ScoringDataDTO, EmploymentDTO } from '../dtos.js';
+import { Gender, EmploymentStatus, Position, MaritalStatus } from '../types/types.js';
 import { performScoring, calculateCreditParameters } from '../services/scoreApplication.js';
 import { Request, Response } from 'express';
 

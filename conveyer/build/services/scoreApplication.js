@@ -1,5 +1,5 @@
 import { differenceInYears } from "date-fns";
-import { Gender, Position, EmploymentStatus, MaritalStatus } from "../dtos.js";
+import { Gender, Position, EmploymentStatus, MaritalStatus } from "../types/types.js";
 import Joi from "joi";
 const scoringDataDTOSchema = Joi.object({
     amount: Joi.number().min(10000).required(),
@@ -46,7 +46,6 @@ function performScoring(data) {
     const age = differenceInYears(new Date(), new Date(birthdate));
     const totalExperience = employment.workExperienceTotal;
     const currentExperience = employment.workExperienceCurrent;
-    console.log('Calculated age:', age);
     if (age < 20 || age > 60) {
         message = "Rejected: The applicant's age is outside the acceptable range of 20 to 60 years.";
         return { passed: false, rate: 0, message }; // reject
@@ -112,7 +111,6 @@ function calculateCreditParameters(data, rate) {
     return credit;
 }
 function calculatePaymentSchedule(amount, monthlyRate, termMonths, monthlyPayment) {
-    console.log('calculatePaymentSchedule', amount, monthlyRate, termMonths, monthlyPayment);
     const paymentSchedule = [];
     let remainingDebt = amount;
     for (let i = 0; i < termMonths; i++) {
