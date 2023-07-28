@@ -1,52 +1,10 @@
 import { PaymentScheduleElement, ScoringDataDTO, CreditDTO } from "../dtos.js";
 import { differenceInYears } from "date-fns";
 import { Gender, Position, EmploymentStatus, MaritalStatus } from "../types/types.js";
-import Joi from "joi";
-
-const scoringDataDTOSchema = Joi.object({
-    amount: Joi.number().min(10000).required(),
-    term: Joi.number().integer().min(6).required(),
-    firstName: Joi.string().min(2).max(30).required(),
-    lastName: Joi.string().min(2).max(30).required(),
-    middleName: Joi.string().min(2).max(30).optional(),
-    email: Joi.string().pattern(/[\w\.]{2,50}@[\w\.]{2,20}/).required(),
-    birthdate: Joi.date().custom((value, helpers) => {
-        const today = new Date();
-        const age = differenceInYears(today, value);
-        if (age < 18) return helpers.error('any.invalid');
-        return value;
-    }, 'Age validation').required(),
-    passportSeries: Joi.string().length(4).pattern(/[0-9]{4}/).required(),
-    passportNumber: Joi.string().length(6).pattern(/[0-9]{6}/).required(),
-    gender: Joi.string().valid(...Object.values(Gender)).required(),
-    passportIssueDate: Joi.string().isoDate().required(),
-    passportIssueBranch: Joi.string().required(),
-    maritalStatus: Joi.string().valid(...Object.values(MaritalStatus)).required(),
-    dependentNumber: Joi.number().required(),
-    employment: Joi.object({
-        employmentStatus: Joi.string().valid(...Object.values(EmploymentStatus)).required(),
-        employerINN: Joi.string().required(),
-        salary: Joi.number().required(),
-        position: Joi.string().valid(...Object.values(Position)).required(),
-        workExperienceTotal: Joi.number().required(),
-        workExperienceCurrent: Joi.number().required(),
-    }).required(),
-    account: Joi.string().required(),
-    isInsuranceEnabled: Joi.boolean().required(),
-    isSalaryClient: Joi.boolean().required()
-});
-
-
 
 function performScoring(data: ScoringDataDTO): { passed: boolean, rate: number, message: string } {
     let interestRate = 0.1; // процентная ставка
     let message = "Scoring passed successfully";
-
-    const { error } = scoringDataDTOSchema.validate(data);
-    if (error) {
-        console.log(error.details); 
-        throw new Error(error.details[0].message);
-    }
 
     const {
         employment,
@@ -118,10 +76,13 @@ function performScoring(data: ScoringDataDTO): { passed: boolean, rate: number, 
 }
 
 function calculateCreditParameters(data: ScoringDataDTO, rate: number): CreditDTO | null {
+    // рассчет по формуле  аннуитетного платежа P = (S * i * (1 + i)^n) / ((1 + i)^n - 1), где P - ежемесячный платеж, 
+    // S - сумма кредита, i - ежемесячная процентная ставка (годовая ставка / 12), n - срок кредита в месяцах
+
     const monthlyRate = rate / 12; 
     const termMonths = data.term; 
 
-    const monthlyPayment = data.amount * (monthlyRate + monthlyRate / (Math.pow(1 + monthlyRate, termMonths) - 1));
+    const monthlyPayment = (data.amount * monthlyRate * Math.pow((1 + monthlyRate), termMonths)) / (Math.pow((1 + monthlyRate), termMonths) - 1);
 
     const totalAmount = monthlyPayment * termMonths;
 
@@ -143,6 +104,7 @@ function calculateCreditParameters(data: ScoringDataDTO, rate: number): CreditDT
 
     return credit;
 }
+
 
 function calculatePaymentSchedule(amount: number, monthlyRate: number, termMonths: number, monthlyPayment: number): PaymentScheduleElement[] {
     const paymentSchedule: PaymentScheduleElement[] = [];

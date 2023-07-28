@@ -4,6 +4,7 @@ import { validateLoanApplication, addClientAndPassport } from '../service/applic
 import axios from 'axios';
 import { db, pgp } from '../db.js';
 import pgPromise from 'pg-promise';
+import { BadRequestError, ServerError, ConflictError, AuthorizationError, ValidationError, ResourceNotFoundError } from '../errors/errorClasses.js';
 
 
 export const postApplication = async (req: Request, res: Response, next: NextFunction) => {
@@ -17,6 +18,7 @@ export const postApplication = async (req: Request, res: Response, next: NextFun
         };
         
         const clientId = await addClientAndPassport(loanApplication); 
+        console.log('client', clientId)
 
         const applicationResult = await db.one('INSERT INTO application(client_id, creation_date, status) VALUES($1, $2, $3) RETURNING application_id',
             [clientId, new Date(), 'PREAPPROVAL']);
@@ -33,7 +35,26 @@ export const postApplication = async (req: Request, res: Response, next: NextFun
         });
 
         res.status(200).json(loanOffers);
-    } catch (error: any) {
+    } 
+    // catch (err) {
+    //     const error = err as Error;
+    //     if (error instanceof BadRequestError) {
+    //         return res.status(400).json({ error: error.message });
+    //     } else if (error instanceof AuthorizationError) {
+    //         return res.status(401).json({ error: error.message });
+    //     } else if (error instanceof ValidationError) {
+    //         return res.status(403).json({ error: error.message });
+    //     } else if (error instanceof ResourceNotFoundError) {
+    //         return res.status(404).json({ error: error.message });
+    //     } else if (error instanceof ConflictError) {
+    //         return res.status(409).json({ error: error.message });
+    //     } else if (error instanceof ServerError) {
+    //         return res.status(500).json({ error: error.message });
+    //     } else {
+    //         return res.status(500).json({ error: "Unexpected error occurred" });
+    //     }
+    // }
+    catch (error: any) {
         next(error);
         console.log(error)
         if (error instanceof pgPromise.errors.QueryResultError) {

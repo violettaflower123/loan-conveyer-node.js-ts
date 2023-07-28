@@ -19,7 +19,7 @@ export interface LoanApplicationRequestDTO {
 }
 
 export interface LoanOfferDTO {
-    applicationId: number,
+    applicationId: string,
     requestedAmount: number,
     totalAmount: number,
     term: number,
@@ -55,7 +55,6 @@ export interface ScoringDataDTO {
     firstName: string,
     lastName: string,
     middleName: string,
-    email: string,
     birthdate: string, // LocalDate
     passportSeries: string,
     passportNumber: string

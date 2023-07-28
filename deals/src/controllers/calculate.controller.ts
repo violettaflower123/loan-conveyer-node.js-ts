@@ -4,6 +4,8 @@ import { FinishRegistrationRequestDTO, ScoringDataDTO, CreditDTO, ChangeType, St
 
 import { getFromDb, createScoringDataDTO, 
     saveCreditToDb, saveApplication, updateApplicationStatusAndHistory } from "../service/calculate.service.js";
+import { BadRequestError, ServerError, ConflictError, AuthorizationError, ValidationError, ResourceNotFoundError } from '../errors/errorClasses.js';
+
 
 export const calculateCredit = async (req: Request, res: Response, next: NextFunction) => {
         try {
@@ -52,15 +54,33 @@ export const calculateCredit = async (req: Request, res: Response, next: NextFun
         console.log('application', application);
 
         return res.json({ message: 'Application status updated successfully.' });
-    } catch (err: any) {
-        console.log('Error!!');
-        next(err);
+    } catch (err) {
         const error = err as Error;
-        if ('response' in err) {
-            console.log(err.response.data);
-            return res.status(400).json({ error: err.response.data });
+        if (error instanceof BadRequestError) {
+            return res.status(400).json({ error: error.message });
+        } else if (error instanceof AuthorizationError) {
+            return res.status(401).json({ error: error.message });
+        } else if (error instanceof ValidationError) {
+            return res.status(403).json({ error: error.message });
+        } else if (error instanceof ResourceNotFoundError) {
+            return res.status(404).json({ error: error.message });
+        } else if (error instanceof ConflictError) {
+            return res.status(409).json({ error: error.message });
+        } else if (error instanceof ServerError) {
+            return res.status(500).json({ error: error.message });
+        } else {
+            return res.status(500).json({ error: "Unexpected error occurred" });
         }
-        return res.status(400).json({ error: error.message });
-
     }
+    // catch (err: any) {
+    //     console.log('Error!!');
+    //     next(err);
+    //     const error = err as Error;
+    //     if ('response' in err) {
+    //         console.log(err.response.data);
+    //         return res.status(400).json({ error: err.response.data });
+    //     }
+    //     return res.status(400).json({ error: error.message });
+
+    // }
 };

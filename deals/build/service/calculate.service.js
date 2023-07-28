@@ -12,7 +12,6 @@ export function createScoringDataDTO(finishRegistrationData, application, client
         firstName: client.first_name,
         lastName: client.last_name,
         middleName: client.middle_name,
-        email: client.email,
         birthdate: client.birth_date,
         passportSeries: passport.series,
         passportNumber: passport.number,

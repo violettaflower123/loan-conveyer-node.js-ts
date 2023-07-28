@@ -1,3 +1,4 @@
+import { v4 as uuidv4 } from 'uuid';
 const INSURANCE_COST = 100000; // стоимость страховки
 const INTEREST_RATE = 0.1; // процентная ставка
 function calculateCredit(request, isInsuranceEnabled, isSalaryClient) {
@@ -7,7 +8,7 @@ function calculateCredit(request, isInsuranceEnabled, isSalaryClient) {
     // СК + % + СВК = ПСК
     const totalAmount = creditAmount + insuranceAmount + interestAmount;
     const offer = {
-        applicationId: Math.floor(Math.random() * 1000000),
+        applicationId: uuidv4(),
         requestedAmount: request.amount,
         totalAmount: totalAmount,
         term: request.term,
