@@ -1,6 +1,7 @@
 import { db } from "../db.js";
-import { FinishRegistrationRequestDTO, PassportDTO, ScoringDataDTO, CreditDTO, ApplicationDTO,
-ApplicationStatusHistoryDTO, ChangeType, Status } from "../dtos.js";
+import { FinishRegistrationRequestDTO, PassportDTO, ScoringDataDTO, Credit, Application,
+ApplicationStatusHistoryDTO } from "../dtos.js";
+import { ChangeType,  Status } from "../types/types.js";
 
 export async function getFromDb(table: string, id: string){
     const query = `SELECT * FROM ${table} WHERE ${table}_id = $1`;
@@ -41,7 +42,7 @@ export async function getStatusId(status: string){
     return result.id;
 }
 
-export const saveCreditToDb = async (credit: CreditDTO) => {
+export const saveCreditToDb = async (credit: Credit) => {
     const query = `
       INSERT INTO credit (
           amount,
@@ -78,7 +79,7 @@ export const saveCreditToDb = async (credit: CreditDTO) => {
     }
   };
 
-export async function saveApplication(application: ApplicationDTO) {
+export async function saveApplication(application: Application) {
     const updateQuery = `UPDATE application SET status = $1, status_history = $2, credit_id = $3 WHERE application_id = $4`;
     await db.none(updateQuery, [application.status, JSON.stringify(application.statusHistory), application.creditId, application.id]);
 
@@ -114,7 +115,7 @@ export async function saveStatusHistoryToDb(historyRecord: ApplicationStatusHist
     }
 }
 
-export async function updateApplicationStatusAndHistory(application: ApplicationDTO, newStatus: Status, changeType: ChangeType) {
+export async function updateApplicationStatusAndHistory(application: Application, newStatus: Status, changeType: ChangeType) {
     const now = new Date();
     const historyRecord: ApplicationStatusHistoryDTO = {
         status: newStatus,

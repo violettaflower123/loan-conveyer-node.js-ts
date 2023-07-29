@@ -1,10 +1,4 @@
-export enum Gender { Male = "MALE",  Female = "FEMALE", NonBinary = "NON_BINARY" };
-export enum MaritalStatus {Married = "MARRIED" , Divorced = "DIVORCED" , Single = "SINGLE", WidowWidower = "WIDOW_WIDOWER"} ;
-export enum EmploymentStatus {Unemployed = "UNEMPLOYED" , SelfEmployed = "SELF_EMPLOYED" , BusinessOwner = "BUSINESS_OWNER", Employed = "EMPLOYED"} ;
-export enum Position {MiddleManager = "MID_MANAGER" , TopManager = "TOP_MANAGER" , Worker = "WORKER", Owner = "OWNER"};
-export enum Status { Preapproval = "PREAPPROVAL", Approved = "APPROVED", CcDenied = "CC_DENIED", CcApproved = "CC_PAPROVED", PrepareDocuments = "PREPARE_DOCUMENTS", DocumentCreated = "DOCUMENT_CREATED", ClientDenied = "CLIENT_DENIED", DocumentSigned = "DOCUMENT_SIGNED", CreditIssued = "CREDIT_ISSUED" };
-export enum ChangeType { Automatic = "AUTOMATIC", Manual = "MANUAL" }; 
-export enum CreditStatus { Calculated = "CALCULATED", Issued = "ISSUED"};
+import { Gender, MaritalStatus, EmploymentStatus, Position, CreditStatus, ChangeType, Status } from "./types/types.js"
 
 export interface LoanApplicationRequestDTO {
     amount: number,
@@ -76,7 +70,7 @@ export interface PaymentScheduleElement {
     debtPayment: number,
     remainingDebt: number
 }
-export interface CreditDTO {
+export interface Credit {
     amount: number,
     term: number,
     monthlyPayment: number,
@@ -107,7 +101,7 @@ export interface PassportDTO {
   issueBranch: string,
   issueDate: string
 }
-export interface ClientDTO {
+export interface Client {
   clientID: string,
   lastName: string,
   firstName: string,
@@ -122,7 +116,7 @@ export interface ClientDTO {
   account: string
 }
 
-export interface ApplicationDTO {
+export interface Application {
   id: string;
   clientId: number;
   creditId: number;

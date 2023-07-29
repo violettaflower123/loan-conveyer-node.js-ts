@@ -1,33 +1,3 @@
-// export class ValidationError extends Error {
-//     constructor(message: string) {
-//         super(message);
-//         this.name = "ValidationError";
-//     }
-// }
-// export class ServerError extends Error {
-//     constructor(message: string) {
-//         super(message);
-//         this.name = "ServerError";
-//     }
-// }
-// export class AuthorizationError extends Error {
-//     constructor(message: string) {
-//         super(message);
-//         this.name = "AuthorizationError";
-//     }
-// }
-// export class ResourceNotFoundError extends Error {
-//     constructor(message: string) {
-//         super(message);
-//         this.name = "ResourceNotFoundError";
-//     }
-// }
-// export class BadRequestError extends Error {
-//     constructor(message: string) {
-//         super(message);
-//         this.name = "BadRequestError";
-//     }
-// }
 export class BadRequestError extends Error {
     constructor(message) {
         super(message);

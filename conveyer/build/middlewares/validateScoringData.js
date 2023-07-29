@@ -8,17 +8,9 @@ const validateNumber = (value, helpers) => {
     }
     return value;
 };
-const amountSchema = Joi.number().min(10000).custom(validateNumber).required();
-const termSchema = Joi.number().integer().min(6).custom(validateNumber).required();
-const dependentNumberSchema = Joi.number().custom(validateNumber).required();
-const salarySchema = Joi.number().custom(validateNumber).required();
-const workExperienceTotalSchema = Joi.number().custom(validateNumber).required();
-const workExperienceCurrentSchema = Joi.number().custom(validateNumber).required();
-const isSalaryClientSchema = Joi.boolean().required();
-const isInsuranceEnabledSchema = Joi.boolean().required();
 export const scoringDataDTOSchema = Joi.object({
-    amount: amountSchema,
-    term: termSchema,
+    amount: Joi.number().min(10000).custom(validateNumber).required(),
+    term: Joi.number().integer().min(6).custom(validateNumber).required(),
     firstName: Joi.string().min(2).max(30).required(),
     lastName: Joi.string().min(2).max(30).required(),
     middleName: Joi.string().min(2).max(30).required(),
@@ -52,18 +44,18 @@ export const scoringDataDTOSchema = Joi.object({
     }),
     passportIssueBranch: Joi.string().required(),
     maritalStatus: Joi.string().valid(...Object.values(MaritalStatus)).required(),
-    dependentNumber: dependentNumberSchema,
+    dependentNumber: Joi.number().custom(validateNumber).required(),
     employment: Joi.object({
         employmentStatus: Joi.string().valid(...Object.values(EmploymentStatus)).required(),
         employerINN: Joi.string().required(),
-        salary: salarySchema,
+        salary: Joi.number().custom(validateNumber).required(),
         position: Joi.string().valid(...Object.values(Position)).required(),
-        workExperienceTotal: workExperienceTotalSchema,
-        workExperienceCurrent: workExperienceCurrentSchema,
+        workExperienceTotal: Joi.number().custom(validateNumber).required(),
+        workExperienceCurrent: Joi.number().custom(validateNumber).required(),
     }).required(),
     account: Joi.string().required(),
-    isSalaryClient: isSalaryClientSchema,
-    isInsuranceEnabled: isInsuranceEnabledSchema,
+    isSalaryClient: Joi.boolean().required(),
+    isInsuranceEnabled: Joi.boolean().required(),
 });
 export const validateScoringData = (req, res, next) => {
     const { error } = scoringDataDTOSchema.validate(req.body, {

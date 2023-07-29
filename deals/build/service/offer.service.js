@@ -1,8 +1,9 @@
 import { db } from '../db.js';
+import { BadRequestError } from '../errors/errorClasses.js';
 export async function updateOffer(loanOffer) {
     const application = await db.one('SELECT * FROM application WHERE application_id = $1', [loanOffer.applicationId]);
     if (!application) {
-        throw new Error(`Application with id ${loanOffer.applicationId} not found.`);
+        throw new BadRequestError(`Application with id ${loanOffer.applicationId} not found.`);
     }
     const updatedStatusHistory = [...(application.status_history || []), {
             status: "APPROVED",

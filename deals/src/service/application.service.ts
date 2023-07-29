@@ -1,56 +1,41 @@
 import { LoanApplicationRequestDTO } from '../dtos.js';
 import { db } from '../db.js';
-
-export function validateLoanApplication(loanApplication: LoanApplicationRequestDTO) {
-    const { lastName, firstName, middleName, email } = loanApplication;
-
-    if (!lastName || !firstName || !middleName || !email) {
-        return {
-            isValid: false,
-            errorMessage: 'Все поля должны быть заполнены.'
-        };
-    }
-
-    const emailRegex = /\S+@\S+\.\S+/;
-    if (!emailRegex.test(email)) {
-        return {
-            isValid: false,
-            errorMessage: 'Предоставлен недействительный адрес электронной почты.'
-        };
-    }
-
-    return {
-        isValid: true,
-    };
-}
+import { ConflictError } from '../errors/errorClasses.js';
 
 export async function addClientAndPassport(loanApplication: LoanApplicationRequestDTO) {
-    console.log('111', loanApplication);
-    const passportId = loanApplication.passportSeries + loanApplication.passportNumber;
-    console.log('passport id', passportId)
+  const passportId = loanApplication.passportSeries + loanApplication.passportNumber;
 
-    let passport = await db.oneOrNone('SELECT * FROM passport WHERE passport_id = $1', [passportId]);
-    console.log('passport', passport)
-    if (!passport) {
-        passport = await db.one(
-            'INSERT INTO passport(passport_id, series, number) VALUES($1, $2, $3) RETURNING passport_id',
-            [passportId, loanApplication.passportSeries, loanApplication.passportNumber]
+  try {
+    const result = await db.tx(async (t) => {
+      const existingClient = await t.oneOrNone('SELECT * FROM client WHERE passport_id = $1', [passportId]);
+      if (existingClient) {
+        throw new ConflictError('Клиент с данным паспортом уже существует');
+      }
+
+      const passport = await t.oneOrNone('SELECT * FROM passport WHERE passport_id = $1', [passportId]);
+      if (!passport) {
+        await t.none(
+          'INSERT INTO passport(passport_id, series, number) VALUES($1, $2, $3)',
+          [passportId, loanApplication.passportSeries, loanApplication.passportNumber]
         );
-    }
-
-    const existingClient = await db.oneOrNone('SELECT * FROM client WHERE passport_id = $1', [passportId]);
-    console.log('existing client', existingClient);
-
-    if (existingClient) {
-        throw new Error('Клиент с данным паспортом уже существует');
-    }
-
-    const result = await db.one(
+      }
+      const result = await t.one(
         'INSERT INTO client(last_name, first_name, middle_name, birth_date, email, passport_id) VALUES($1, $2, $3, $4, $5, $6) RETURNING client_id',
-        [loanApplication.lastName, loanApplication.firstName, loanApplication.middleName, loanApplication.birthdate, loanApplication.email, passport.passport_id]
-    );
-    console.log('res', result)
-    console.log('result', result.client_id)
+        [
+          loanApplication.lastName,
+          loanApplication.firstName,
+          loanApplication.middleName,
+          loanApplication.birthdate,
+          loanApplication.email,
+          passportId
+        ]
+      );
+      console.log('result 1111', result.client_id);
+      return result.client_id;
+    });
 
-    return result.client_id;
+    return result; 
+  } catch (error) {
+    throw error;
+  }
 }
