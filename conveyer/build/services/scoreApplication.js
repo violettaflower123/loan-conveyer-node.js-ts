@@ -56,7 +56,7 @@ function calculateCreditParameters(data, rate) {
     // S - сумма кредита, i - ежемесячная процентная ставка (годовая ставка / 12), n - срок кредита в месяцах
     const monthlyRate = rate / 12;
     const termMonths = data.term;
-    const monthlyPayment = (data.amount * monthlyRate * Math.pow((1 + monthlyRate), termMonths)) / (Math.pow((1 + monthlyRate), termMonths) - 1);
+    const monthlyPayment = Math.ceil(data.amount * monthlyRate * Math.pow((1 + monthlyRate), termMonths)) / (Math.pow((1 + monthlyRate), termMonths) - 1);
     const totalAmount = monthlyPayment * termMonths;
     // ПСК (полная стоимость кредита) - это отношение полной суммы кредита к сумме, которую берем в кредит
     const psk = totalAmount / data.amount;
@@ -77,8 +77,8 @@ function calculatePaymentSchedule(amount, monthlyRate, termMonths, monthlyPaymen
     const paymentSchedule = [];
     let remainingDebt = amount;
     for (let i = 0; i < termMonths; i++) {
-        const interestPayment = remainingDebt * monthlyRate;
-        const debtPayment = monthlyPayment - interestPayment;
+        const interestPayment = Math.ceil(remainingDebt * monthlyRate);
+        const debtPayment = Math.ceil(monthlyPayment - interestPayment);
         remainingDebt -= debtPayment;
         const nextPaymentDate = new Date();
         nextPaymentDate.setMonth(nextPaymentDate.getMonth() + i + 1);

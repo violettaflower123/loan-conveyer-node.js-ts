@@ -89,11 +89,13 @@ export interface ApplicationStatusHistoryDTO {
 }
 
 export interface EmailMessage {
-  address: string,
-  theme: MessageThemes,
-  applicationId: string,
-  name: string, 
-  lastName: string
+  address: string;
+  theme: string;
+  applicationId: string;
+  name: string,
+  lastName: string,
+  paymentData?: PaymentScheduleElement[],
+  clientData?: {[key: string]: any}
 }
 
 export interface PassportDTO {

@@ -1,9 +1,53 @@
 import { Kafka, KafkaMessage } from 'kafkajs';
 import fs from 'fs';
 import nodemailer from 'nodemailer';
-
 import path from 'path';
+import { PaymentScheduleElement } from './dto';
 const logoPath = path.join(__dirname, 'logo.png');
+
+
+function generatePaymentSchedule(paymentData: PaymentScheduleElement[]) {
+  let txtContent = "Номер платежа | Дата | Общая сумма платежа | Проценты | Сумма погашения долга | Остаток долга\n";
+
+  paymentData.forEach(payment => {
+    txtContent += `${payment.number} | ${payment.date} | ${payment.totalPayment} | ${payment.interestPayment} | ${payment.debtPayment} | ${payment.remainingDebt}\n`;
+  });
+
+  fs.writeFile('./payment-schedule.txt', txtContent, function(err) {
+    if (err) throw err;
+    console.log("TXT file has been written.");
+  });
+}
+
+// import PDFDocument from 'pdfkit';
+// import fs from 'fs';
+// import fastcsv from 'fast-csv';
+
+// function generateCreditAgreement(agreementData) {
+//   let doc = new PDFDocument;
+  
+//   doc.text(`Agreement ID: ${agreementData.id}`);
+//   doc.text(`Client: ${agreementData.clientName}`);
+//   doc.text(`Amount: ${agreementData.amount}`);
+//   // добавьте все необходимые данные в PDF
+
+//   doc.pipe(fs.createWriteStream('./credit-agreement.pdf'));
+//   doc.end();
+// }
+
+
+// function generateClientForm(clientData) {
+//   let doc = new PDFDocument;
+  
+//   doc.text(`Client ID: ${clientData.id}`);
+//   doc.text(`Name: ${clientData.name}`);
+//   doc.text(`Email: ${clientData.email}`);
+//   // добавьте все необходимые данные в PDF
+
+//   doc.pipe(fs.createWriteStream('./client-form.pdf'));
+//   doc.end();
+// }
+
 
 async function sendEmail(emailMessage: any) {
   console.log('Sending email...'); 
@@ -55,14 +99,47 @@ async function sendEmail(emailMessage: any) {
                     Customer Service Team,<br><br>
                     TU Bank`;
         break;
+      // case 'send-documents':
+      //   emailText = `Hello ${emailMessage.name} ${emailMessage.lastName},<br><br>
+      //               We are sending you the documents attached to this email: the credit agreement, payment schedule and client information.
+      //               Please sign the documents to proceed with your application.
+      //               <br><br>
+      //               Best regards,<br><br>
+      //               Customer Service Team,<br><br>
+      //               TU Bank`;
+      //   break;
       case 'send-documents':
-        emailText = `Hello ${emailMessage.name} ${emailMessage.lastName},<br><br>
-                    Please send us the required documents to proceed with your application.
-                    <br><br>
-                    Best regards,<br><br>
-                    Customer Service Team,<br><br>
-                    TU Bank`;
-        break;
+            emailText = `Hello ${emailMessage.name} ${emailMessage.lastName},<br><br>
+                        We are sending you the documents attached to this email: the credit agreement, payment schedule, and client information.
+                        Please sign the documents to proceed with your application.
+                        <br><br>
+                        Payment Schedule:
+                        <table border="1">
+                          <tr>
+                            <th>Month number</th>
+                            <th>Date</th>
+                            <th>Total Payment</th>
+                            <th>Interest Payment</th>
+                            <th>Debt Payment</th>
+                            <th>Remaining Debt</th>
+                          </tr>
+                          ${emailMessage.paymentData.map((data: PaymentScheduleElement) => `
+                          <tr>
+                            <td>${data.number}</td>
+                            <td>${data.date}</td>
+                            <td>${data.totalPayment}</td>
+                            <td>${data.interestPayment}</td>
+                            <td>${data.debtPayment}</td>
+                            <td>${data.remainingDebt}</td>
+                          </tr>
+                          `).join('')}
+                        </table>
+                        <br><br>
+                        Best regards,<br><br>
+                        Customer Service Team,<br><br>
+                        TU Bank`;
+            break;
+
       case 'send-ses':
         emailText = `Hello ${emailMessage.name} ${emailMessage.lastName},<br><br>
                     Please check your SES (Secure Email Service) for important updates on your application.
@@ -165,6 +242,7 @@ const runConsumer = async () => {
   await consumer.run({
     
     eachMessage: async ({ topic, partition, message, heartbeat, pause }) => {
+      console.log(topic);
       if (message.value) {
         console.log('Received a message:', {
             key: message.key ? message.key.toString() : null,
@@ -172,6 +250,11 @@ const runConsumer = async () => {
             headers: message.headers,
         });
         const emailMessage = JSON.parse(message.value.toString());
+        if (topic === 'send-documents') {
+          // generateCreditAgreement(emailMessage.agreementData);
+          generatePaymentSchedule(emailMessage.paymentData);
+          // generateClientForm(emailMessage.clientData);
+        }
         await sendEmail(emailMessage); 
       }
     },    

@@ -7,7 +7,7 @@ function calculateCredit(request, isInsuranceEnabled, isSalaryClient) {
     const creditAmount = request.amount;
     const insuranceAmount = isInsuranceEnabled ? INSURANCE_COST : 0;
     const totalAmount = creditAmount + insuranceAmount;
-    const monthlyInterestRate = INTEREST_RATE / 12;
+    const monthlyInterestRate = Math.ceil(INTEREST_RATE / 12);
     const termInMonths = request.term;
     const monthlyPayment = Math.ceil((totalAmount * monthlyInterestRate * Math.pow((1 + monthlyInterestRate), termInMonths)) / (Math.pow((1 + monthlyInterestRate), termInMonths) - 1));
     const offer = {
