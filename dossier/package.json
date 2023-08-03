@@ -1,0 +1,25 @@
+{
+  "name": "dossier",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon -L --watch 'src/**/*.ts' --exec 'npm run build && node ./build/server.js'",
+    "dev": "nodemon -L -e ts --exec \"npm run build && node ./build/server.js\"",
+    "build": "tsc"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@types/node": "^20.4.5",
+    "kafkajs": "^2.2.4",
+    "nodemailer": "^6.9.4",
+    "nodemon": "^3.0.1",
+    "ts-node": "^10.9.1",
+    "typescript": "^5.1.6"
+  },
+  "devDependencies": {
+    "@types/nodemailer": "^6.4.9"
+  }
+}

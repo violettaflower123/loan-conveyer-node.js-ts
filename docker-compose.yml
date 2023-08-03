@@ -11,6 +11,8 @@ services:
       - /usr/src/app/node_modules
     depends_on:
       - db
+    networks:    
+      - my_network  
 
   api-deals:
     container_name: api-deals
@@ -23,6 +25,9 @@ services:
       - /usr/src/app/node_modules
     depends_on:
       - db
+      - kafka-broker-1
+    networks:    
+      - my_network 
   
   api-application:
     container_name: api-application
@@ -35,6 +40,23 @@ services:
       - /usr/src/app/node_modules
     depends_on:
       - db
+    networks:    
+      - my_network 
+  
+  api-dossier:
+    container_name: api-dossier
+    restart: always
+    build: ./dossier
+    ports:
+      - 3004:3004
+    volumes:
+      - ./dossier:/usr/src/app
+      - /usr/src/app/node_modules
+    depends_on:
+      - db
+      - kafka-broker-1
+    networks:    
+      - my_network 
 
   db:
     container_name: postgres
@@ -46,6 +68,8 @@ services:
     environment:
       - POSTGRES_PASSWORD=${DB_PASSWORD}
       - POSTGRES_DB=${DB_NAME}
+    networks:    
+      - my_network 
   
   pgadmin:
     container_name: pgadmin
@@ -56,5 +80,38 @@ services:
       - PGADMIN_DEFAULT_EMAIL=violetta.vitaandreevna@gmail.com  
       - PGADMIN_DEFAULT_PASSWORD=success
 
+  kafka-broker-1:
+    image: confluentinc/cp-kafka:latest
+    hostname: kafka-broker-1
+    ports:
+      - "19092:19092"
+    depends_on:
+      - zookeeper
+    environment:
+      KAFKA_BROKER_ID: 1
+      KAFKA_ZOOKEEPER_CONNECT: 'zookeeper:2181'
+      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: PLAINTEXT:PLAINTEXT,PLAINTEXT_INTERNAL:PLAINTEXT
+      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://kafka-broker-1:9092,PLAINTEXT_INTERNAL://kafka-broker-1:19092
+      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
+
+    networks:    
+      - my_network 
+
+  zookeeper:
+    image: confluentinc/cp-zookeeper:latest
+    container_name: zookeeper
+    environment:
+      ZOOKEEPER_CLIENT_PORT: 2181
+      ZOOKEEPER_TICK_TIME: 2000
+    ports:
+      - "2181:2181"
+
+
+    networks:    
+      - my_network 
+      
+networks:
+  my_network:
+    driver: bridge
 volumes: 
   data: {}

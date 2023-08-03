@@ -7,7 +7,7 @@ Express.js: A minimal web application framework for Node.js.
 Date-fns: A modern JavaScript date utility library.
 Joi: A modern JavaScript validation library.
 Docker: An open platform for developing, shipping, and running applications.
+Postgres: An advanced, enterprise class open source relational database.
 
 # Installation
-You will need to build the Docker image: docker build -t loan-conveyer .
-docker run -p 3000:3000 loan-conveyer
+You will need to build the Docker image: docker-compose up

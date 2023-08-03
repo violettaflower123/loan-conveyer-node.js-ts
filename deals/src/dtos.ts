@@ -1,4 +1,4 @@
-import { Gender, MaritalStatus, EmploymentStatus, Position, CreditStatus, ChangeType, Status } from "./types/types.js"
+import { Gender, MaritalStatus, EmploymentStatus, Position, CreditStatus, ChangeType, Status, MessageThemes } from "./types/types.js"
 
 export interface LoanApplicationRequestDTO {
     amount: number,
@@ -84,16 +84,18 @@ export interface Credit {
 
 export interface ApplicationStatusHistoryDTO {
   status: Status,
-  time: string, // LocalDateTime
+  time: string,
   changeType: ChangeType
 }
 
-export interface EmailMessage
-{
-  address: "string",
-  theme: "Enum",
-  applicationId: "number"
+export interface EmailMessage {
+  address: string,
+  theme: MessageThemes,
+  applicationId: string,
+  name: string, 
+  lastName: string
 }
+
 export interface PassportDTO {
   passportId: string,
   series: string,
@@ -117,13 +119,13 @@ export interface Client {
 }
 
 export interface Application {
-  id: string;
-  clientId: number;
-  creditId: number;
+  application_id: string;
+  client_id: number;
+  credit_id: number;
   status: Status;
   creationDate: Date;
   appliedOffer: string;
   signDate: Date;
   sesCode: string;
-  statusHistory: ApplicationStatusHistoryDTO[];  // Замените на соответствующий тип, если структура JSON известна
+  status_history: ApplicationStatusHistoryDTO[];  
 }

@@ -1,6 +1,5 @@
 import Joi from "joi";
 import { differenceInYears, isValid } from "date-fns";
-import { BadRequestError } from "../errors/errorClasses.js";
 const schema = Joi.object({
     firstName: Joi.string().min(2).max(30).required(),
     lastName: Joi.string().min(2).max(30).required(),
@@ -25,7 +24,10 @@ export const validateLoanApplicationBody = (req, res, next) => {
     const { error } = schema.validate(req.body);
     if (error) {
         console.log(error.details);
-        throw new BadRequestError(error.details[0].message);
+        res.status(400).json({
+            error: error.details[0].message
+        });
+        return;
     }
     next();
 };

@@ -8,12 +8,13 @@ export const calculateLoanOffer = async (req: Request, res: Response) => {
     try {
         // const scoringData: ScoringDataDTO = req.body;
         const scoringResult = performScoring(req.body);
+        console.log('scoring', scoringResult)
     
         if (!scoringResult.passed) {
             // return res.status(400).json({message: scoringResult.message});
-            throw new ServerError('An unexpected error occured')
+            throw new BadRequestError(scoringResult.message)
         }
-    
+        
         const credit = calculateCreditParameters(req.body, scoringResult.rate);
     
         if (!credit) {

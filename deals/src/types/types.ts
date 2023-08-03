@@ -5,4 +5,6 @@ export enum Position {MiddleManager = "MID_MANAGER" , TopManager = "TOP_MANAGER"
 export enum Status { Preapproval = "PREAPPROVAL", Approved = "APPROVED", CcDenied = "CC_DENIED", CcApproved = "CC_PAPROVED", PrepareDocuments = "PREPARE_DOCUMENTS", DocumentCreated = "DOCUMENT_CREATED", ClientDenied = "CLIENT_DENIED", DocumentSigned = "DOCUMENT_SIGNED", CreditIssued = "CREDIT_ISSUED" };
 export enum ChangeType { Automatic = "AUTOMATIC", Manual = "MANUAL" }; 
 export enum CreditStatus { Calculated = "CALCULATED", Issued = "ISSUED"};
+export enum MessageThemes { FinishRegistration = "finish-registration", CreateDocuments = "create-documents", 
+SendDocuments = "send-documents", SendSes = "send-ses", CreditIssued = "credit-issued", ApplicationDenied = "application-denied" };
 

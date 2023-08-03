@@ -15,7 +15,7 @@ function calculateCredit(request: LoanApplicationRequestDTO, isInsuranceEnabled:
     const monthlyInterestRate = INTEREST_RATE / 12; 
     const termInMonths = request.term; 
 
-    const monthlyPayment = (totalAmount * monthlyInterestRate * Math.pow((1 + monthlyInterestRate), termInMonths)) / (Math.pow((1 + monthlyInterestRate), termInMonths) - 1);
+    const monthlyPayment = Math.ceil((totalAmount * monthlyInterestRate * Math.pow((1 + monthlyInterestRate), termInMonths)) / (Math.pow((1 + monthlyInterestRate), termInMonths) - 1));
 
     const offer: LoanOfferDTO = {
         applicationId: uuidv4(),

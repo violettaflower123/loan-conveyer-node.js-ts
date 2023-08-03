@@ -3,7 +3,6 @@ import { differenceInYears, isValid } from "date-fns";
 import { Gender, MaritalStatus, EmploymentStatus, Position } from "../types/types.js";
 import { Request, Response, NextFunction } from "express";
 import { LoanApplicationRequestDTO } from "../dtos.js";
-import { BadRequestError } from "../errors/errorClasses.js";
 
 const validateNumber = (value: unknown, helpers: CustomHelpers) => {
   if (typeof value !== "number" || isNaN(value)) {
@@ -67,10 +66,14 @@ export const validateScoringData = (req: Request, res: Response, next: NextFunct
     abortEarly: false,
   });
 
+
   if (error) {
     console.log(error.details);
-    throw new BadRequestError(error.details[0].message);
+    res.status(400).json({
+        error: error.details[0].message
+    });
+    return;
   }
-
+  console.log('validation passed');
   next();
 };

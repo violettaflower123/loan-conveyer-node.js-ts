@@ -1,4 +1,6 @@
 import { db } from "../db.js";
+import { pgp } from "../db.js";
+import { ServerError, ResourceNotFoundError } from "../errors/errorClasses.js";
 export async function getFromDb(table, id) {
     const query = `SELECT * FROM ${table} WHERE ${table}_id = $1`;
     const result = await db.one(query, [id]);
@@ -25,7 +27,6 @@ export function createScoringDataDTO(finishRegistrationData, application, client
         isInsuranceEnabled: appliedOffer.isInsuranceEnabled,
         isSalaryClient: appliedOffer.isSalaryClient
     };
-    console.log('scoring Data', scoringData);
     return scoringData;
 }
 export async function getStatusId(status) {
@@ -69,31 +70,18 @@ export const saveCreditToDb = async (credit) => {
         throw err;
     }
 };
-export async function saveApplication(application) {
-    const updateQuery = `UPDATE application SET status = $1, status_history = $2, credit_id = $3 WHERE application_id = $4`;
-    await db.none(updateQuery, [application.status, JSON.stringify(application.statusHistory), application.creditId, application.id]);
-    const selectQuery = `SELECT * FROM application WHERE application_id = $1`;
-    const savedApplication = await db.oneOrNone(selectQuery, [application.id]);
-    if (savedApplication) {
-        console.log('savedApplication', savedApplication);
-    }
-    else {
-        console.log('No data returned for application_id:', application.id);
-    }
-    return savedApplication;
-}
 export async function getChangeTypeIdFromDb(changeType) {
     const query = `SELECT id FROM change_type WHERE change_type = $1;`;
     const result = await db.one(query, changeType);
     return result.id;
 }
-export async function saveStatusHistoryToDb(historyRecord) {
+export async function saveStatusHistoryToDb(historyRecord, application) {
     try {
+        const applicationId = application.application_id;
         const changeTypeId = await getChangeTypeIdFromDb(historyRecord.changeType);
-        const query = `INSERT INTO status_history(status, time, change_type_id) VALUES($1, $2, $3) RETURNING *;`;
-        const values = [historyRecord.status, historyRecord.time, changeTypeId];
+        const query = `INSERT INTO status_history(status, time, change_type_id, application_id) VALUES($1, $2, $3, $4) RETURNING *;`;
+        const values = [historyRecord.status, historyRecord.time, changeTypeId, applicationId];
         const result = await db.one(query, values);
-        console.log('result', result);
         return result;
     }
     catch (err) {
@@ -108,8 +96,49 @@ export async function updateApplicationStatusAndHistory(application, newStatus, 
         time: now.toISOString(),
         changeType: changeType,
     };
-    const statusHistoryId = await saveStatusHistoryToDb(historyRecord);
-    console.log('status history id', statusHistoryId);
+    const statusHistoryId = await saveStatusHistoryToDb(historyRecord, application);
+    // console.log('status history id', statusHistoryId);
+    if (!Array.isArray(application.status_history)) {
+        application.status_history = [];
+    }
+    application.status_history.push(historyRecord);
     application.status = newStatus;
+}
+export async function saveApplication(application) {
+    const updateQuery = `UPDATE application SET status = $1, status_history = $2, credit_id = $3 WHERE application_id = $4`;
+    // console.log('AAAAAPPP', application.status_history);
+    await db.none(updateQuery, [application.status, JSON.stringify(application.status_history), application.credit_id, application.application_id]);
+    const selectQuery = `SELECT * FROM application WHERE application_id = $1`;
+    const savedApplication = await db.oneOrNone(selectQuery, [application.application_id]);
+    // console.log('saved app', savedApplication);
+    if (savedApplication) {
+        console.log('savedApplication', savedApplication);
+    }
+    else {
+        console.log('No data returned for application_id:', application.application_id);
+    }
+    return savedApplication;
+}
+export async function updateClient(clientId, gender, maritalStatus, dependentNumber) {
+    try {
+        const genderRow = await db.one("SELECT id FROM gender WHERE gender = $1", [gender]);
+        const genderId = genderRow.id;
+        const statusRow = await db.one("SELECT id FROM marital_status WHERE marital_status = $1", [maritalStatus]);
+        const statusId = statusRow.id;
+        const client = await db.one("UPDATE client SET gender_id = $1, marital_status_id = $2, dependent_amount = $3 WHERE client_id = $4 RETURNING *", [genderId, statusId, dependentNumber, clientId]);
+        console.log('client gender', client);
+    }
+    catch (error) {
+        const message = `An error occurred: ${error.message}`;
+        let customError;
+        if (error instanceof pgp.errors.QueryResultError) {
+            customError = new ResourceNotFoundError(message);
+        }
+        else {
+            customError = new ServerError(message);
+        }
+        console.error(message);
+        throw customError;
+    }
 }
 //# sourceMappingURL=calculate.service.js.map

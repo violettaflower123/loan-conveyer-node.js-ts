@@ -1,6 +1,5 @@
 import Joi, {ValidationResult} from "joi";
 import { differenceInYears, isValid } from "date-fns";
-import { BadRequestError } from "../errors/errorClasses.js";
 import { LoanApplicationRequestDTO } from "../dtos.js";
 import { Request, Response, NextFunction } from "express";
 
@@ -28,9 +27,13 @@ export const validateLoanApplicationBody = (req: Request, res: Response, next: N
     const { error }: ValidationResult<LoanApplicationRequestDTO> = schema.validate(req.body);
 
     if (error) {
-        console.log(error.details); 
-        throw new BadRequestError(error.details[0].message);
+        console.log(error.details);
+        res.status(400).json({
+            error: error.details[0].message
+        });
+        return;
     }
+    
 
     next();
 };

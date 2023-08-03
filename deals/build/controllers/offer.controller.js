@@ -9,11 +9,5 @@ export const handleOfferUpdate = async (req, res, next) => {
         console.log(err);
         next(err);
     }
-    // catch (err) {
-    //     next(err);
-    //     console.log('Error!!');
-    //     const error = err as Error;
-    //     return res.status(400).json({ error: error.message });
-    // }
 };
 //# sourceMappingURL=offer.controller.js.map

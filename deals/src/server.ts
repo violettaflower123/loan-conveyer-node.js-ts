@@ -1,6 +1,5 @@
-import express, { Request, Response, NextFunction, ErrorRequestHandler } from 'express';
+import express, { ErrorRequestHandler } from 'express';
 import bodyParser from 'body-parser';
-import pgPromise from 'pg-promise';
 import { dealRouter  } from './routes/deal.js';
 import { ValidationError, ServerError, BadRequestError } from './errors/errorClasses.js';
 

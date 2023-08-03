@@ -9,13 +9,6 @@ export const postApplication = async (req, res, next) => {
         const clientId = await addClientAndPassport(loanApplication);
         console.log('client', clientId);
         const applicationResult = await db.one('INSERT INTO application(client_id, creation_date, status) VALUES($1, $2, $3) RETURNING application_id', [clientId, new Date(), 'PREAPPROVAL']);
-        async function getFromDb(table) {
-            const query = `SELECT * FROM ${table}`;
-            const result = await db.any(query);
-            return result;
-        }
-        const app = await getFromDb('application');
-        console.log('app', app);
         const applicationId = applicationResult.application_id;
         console.log('application', applicationResult);
         console.log('application id', applicationId);

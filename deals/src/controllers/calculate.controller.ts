@@ -4,9 +4,37 @@ import { FinishRegistrationRequestDTO, ScoringDataDTO, Credit } from "../dtos.js
 import { ChangeType, Status, CreditStatus } from "../types/types.js";
 
 import { getFromDb, createScoringDataDTO, 
-    saveCreditToDb, saveApplication, updateApplicationStatusAndHistory } from "../service/calculate.service.js";
-import { BadRequestError, ServerError, ConflictError, AuthorizationError, ValidationError, ResourceNotFoundError } from '../errors/errorClasses.js';
+    saveCreditToDb, saveApplication, updateApplicationStatusAndHistory, updateClient } from "../service/calculate.service.js";
+import { ServerError, ResourceNotFoundError } from '../errors/errorClasses.js';
+import { Kafka } from 'kafkajs';
+import { MessageThemes } from '../types/types.js';
+import { EmailMessage } from '../dtos.js';
+import { db } from "../db.js";
 
+
+const kafka = new Kafka({
+    clientId: 'deal-service',
+    brokers: ['kafka-broker-1:19092'],
+  });
+  
+  const producer = kafka.producer();
+  
+  const sendMessage = async (topic: string, message: EmailMessage) => {
+    try {
+      await producer.send({
+        topic: topic,
+        messages: [
+          {
+            value: JSON.stringify(message),
+          },
+        ],
+      });
+      console.log('Сообщение успешно отправлено в топик: ', topic);
+      await producer.disconnect();
+    } catch (error) {
+      console.error('Ошибка при отправке сообщения: ', error);
+    }
+  };
 
 export const calculateCredit = async (req: Request, res: Response, next: NextFunction) => {
         try {
@@ -34,6 +62,7 @@ export const calculateCredit = async (req: Request, res: Response, next: NextFun
         }
 
         const scoringData: ScoringDataDTO = createScoringDataDTO(finishRegistrationData, application, client, passport); 
+        console.log('scoring data', scoringData);
 
         const scoringResponse = await axios.post('http://api-conveyer:3001/conveyor/calculation', scoringData);
         const creditDTO: Credit = scoringResponse.data;
@@ -44,14 +73,35 @@ export const calculateCredit = async (req: Request, res: Response, next: NextFun
             throw new ServerError('Scoring failed.');
         }
 
+        // const genderAdd = await db.one(`INSERT INTO client (gender_id) VALUES (${scoringData.gender}) RETURNING *`);
+        // console.log('gender added', genderAdd);      
+        // const clientAdded = addClient(scoringData.gender);  
+        // console.log('client added 1', clientAdded);
+        await updateClient(clientId, scoringData.gender, scoringData.maritalStatus, scoringData.dependentNumber);
+        // await updateClientStatus(clientId, scoringData.maritalStatus);
+        // console.log('cl', clientAdded)
+
         const savedCredit = await saveCreditToDb(creditDTO);
         application.credit_id = savedCredit;
+        // console.log('saved', typeof savedCredit);
         application.application_id = applicationId;
+
 
         await updateApplicationStatusAndHistory(application, Status.Approved, ChangeType.Automatic);
         await saveApplication(application);  
+
+        await producer.connect();
+
+        const message: EmailMessage = {
+          address: client.email,
+          theme: MessageThemes.CreateDocuments, 
+          applicationId: applicationId,
+          name: client.first_name,
+          lastName: client.last_name
+        };
+        sendMessage('create-documents', message);
         
-        console.log('application', application);
+        // console.log('application', application);
 
         return res.json({ message: 'Application status updated successfully.' });
     } catch (err) {
