@@ -1,6 +1,6 @@
 import axios from "axios";
 import { ChangeType, Status, CreditStatus } from "../types/types.js";
-import { getFromDb, createScoringDataDTO, saveCreditToDb, saveApplication, updateApplicationStatusAndHistory, updateClient } from "../service/calculate.service.js";
+import { getFromDb, createScoringDataDTO, saveCreditToDb, saveApplication, updateApplicationStatusAndHistory, updateClient, saveEmploymentToDb } from "../service/calculate.service.js";
 import { ServerError, ResourceNotFoundError } from '../errors/errorClasses.js';
 import { Kafka } from 'kafkajs';
 import { MessageThemes } from '../types/types.js';
@@ -51,16 +51,11 @@ export const calculateCredit = async (req, res, next) => {
         if (scoringResponse.status != 200) {
             throw new ServerError('Scoring failed.');
         }
-        // const genderAdd = await db.one(`INSERT INTO client (gender_id) VALUES (${scoringData.gender}) RETURNING *`);
-        // console.log('gender added', genderAdd);      
-        // const clientAdded = addClient(scoringData.gender);  
-        // console.log('client added 1', clientAdded);
-        await updateClient(clientId, scoringData.gender, scoringData.maritalStatus, scoringData.dependentNumber);
-        // await updateClientStatus(clientId, scoringData.maritalStatus);
-        // console.log('cl', clientAdded)
+        const employmentId = await saveEmploymentToDb(scoringData.employment);
+        console.log('employment id', employmentId);
+        await updateClient(clientId, scoringData.gender, scoringData.maritalStatus, scoringData.dependentNumber, employmentId);
         const savedCredit = await saveCreditToDb(creditDTO);
         application.credit_id = savedCredit;
-        // console.log('saved', typeof savedCredit);
         application.application_id = applicationId;
         await updateApplicationStatusAndHistory(application, Status.Approved, ChangeType.Automatic);
         await saveApplication(application);
@@ -73,7 +68,6 @@ export const calculateCredit = async (req, res, next) => {
             lastName: client.last_name
         };
         sendMessage('create-documents', message);
-        // console.log('application', application);
         return res.json({ message: 'Application status updated successfully.' });
     }
     catch (err) {

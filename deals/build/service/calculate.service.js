@@ -119,13 +119,13 @@ export async function saveApplication(application) {
     }
     return savedApplication;
 }
-export async function updateClient(clientId, gender, maritalStatus, dependentNumber) {
+export async function updateClient(clientId, gender, maritalStatus, dependentNumber, employmentId) {
     try {
         const genderRow = await db.one("SELECT id FROM gender WHERE gender = $1", [gender]);
         const genderId = genderRow.id;
         const statusRow = await db.one("SELECT id FROM marital_status WHERE marital_status = $1", [maritalStatus]);
         const statusId = statusRow.id;
-        const client = await db.one("UPDATE client SET gender_id = $1, marital_status_id = $2, dependent_amount = $3 WHERE client_id = $4 RETURNING *", [genderId, statusId, dependentNumber, clientId]);
+        const client = await db.one("UPDATE client SET gender_id = $1, marital_status_id = $2, dependent_amount = $3, employment_id = $4 WHERE client_id = $5 RETURNING *", [genderId, statusId, dependentNumber, employmentId, clientId]);
         console.log('client gender', client);
     }
     catch (error) {
@@ -140,5 +140,37 @@ export async function updateClient(clientId, gender, maritalStatus, dependentNum
         console.error(message);
         throw customError;
     }
+}
+async function getEmploymentStatusId(status) {
+    const result = await db.one('SELECT id FROM employment_status WHERE employment_status = $1', [status]);
+    return result.id;
+}
+async function getPositionId(position) {
+    const result = await db.one('SELECT id FROM employment_position WHERE employment_position = $1', [position]);
+    return result.id;
+}
+export async function saveEmploymentToDb(employmentData) {
+    const employmentStatusId = await getEmploymentStatusId(employmentData.employmentStatus);
+    const positionId = await getPositionId(employmentData.position);
+    const query = `
+    INSERT INTO employment (
+        status_id, 
+        employer_inn,
+        salary,
+        position_id,
+        work_experience_total,
+        work_experience_current
+    ) VALUES ($1, $2, $3, $4, $5, $6) RETURNING employment_id;
+  `;
+    const values = [
+        employmentStatusId,
+        employmentData.employerINN,
+        employmentData.salary,
+        positionId,
+        employmentData.workExperienceTotal,
+        employmentData.workExperienceCurrent,
+    ];
+    const result = await db.one(query, values);
+    return result.employment_id;
 }
 //# sourceMappingURL=calculate.service.js.map
