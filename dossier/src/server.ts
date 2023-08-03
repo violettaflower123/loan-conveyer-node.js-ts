@@ -20,12 +20,6 @@ async function sendEmail(emailMessage: any) {
 
     console.log('Transporter created.'); 
 
-    // let emailText = `
-    //   Hello ${emailMessage.name} ${emailMessage.lastName},
-    //   Thank you for choosing our bank. To complete your application, please finish the registration process.
-    //   Best regards,
-    //   Your Bank Name
-    // `;
     let emailText = '';
 
     switch (emailMessage.theme) {
@@ -33,11 +27,12 @@ async function sendEmail(emailMessage: any) {
         emailText = `Hello ${emailMessage.name} ${emailMessage.lastName},<br><br>
                     Thank you for choosing our bank. To complete your application, please finish the registration process.
                     <br><br>
-                    Best regards,
-                    Your wonderful bank`;
+                    Best regards,<br><br>
+                    Customer Service Team,<br><br>
+                    TU Bank`;
         break;
       case 'create-documents':
-        emailText = `Dear ${emailMessage.name} ${emailMessage.lastName},
+        emailText = `Dear Mr./Ms. ${emailMessage.name} ${emailMessage.lastName},
                     <br><br>
                     We hope this message finds you well.<br><br>
 
@@ -56,37 +51,42 @@ async function sendEmail(emailMessage: any) {
                     Thank you for choosing Your Wonderful Bank as your trusted financial partner.
                     We look forward to serving you.<br><br>
 
-                    Best regards,
-                    Your Wonderful Bank`;
+                    Best regards,<br><br>
+                    Customer Service Team,<br><br>
+                    TU Bank`;
         break;
       case 'send-documents':
         emailText = `Hello ${emailMessage.name} ${emailMessage.lastName},<br><br>
                     Please send us the required documents to proceed with your application.
                     <br><br>
-                    Best regards,
-                    Your wonderful bank`;
+                    Best regards,<br><br>
+                    Customer Service Team,<br><br>
+                    TU Bank`;
         break;
       case 'send-ses':
         emailText = `Hello ${emailMessage.name} ${emailMessage.lastName},<br><br>
                     Please check your SES (Secure Email Service) for important updates on your application.
                     <br><br>
-                    Best regards,
-                    Your wonderful bank`;
+                    Best regards,<br><br>
+                    Customer Service Team,<br><br>
+                    TU Bank`;
         break;
       case 'credit-issued':
         emailText = `Hello ${emailMessage.name} ${emailMessage.lastName},<br><br>
                     We are pleased to inform you that your credit has been issued.
                     <br><br>
-                    Best regards,
-                    Your wonderful bank`;
+                    Best regards,<br><br>
+                    Customer Service Team,<br><br>
+                    TU Bank`;
         break;
       case 'application-denied':
         emailText = `Hello ${emailMessage.name} ${emailMessage.lastName},<br><br>
                     We regret to inform you that your application has been denied. 
                     Please contact our customer service for further information.
                     <br><br>
-                    Best regards,
-                    Your wonderful bank`;
+                    Best regards,<br><br>
+                    Customer Service Team,<br><br>
+                    TU Bank`;
         break;
     }
 
@@ -99,7 +99,7 @@ async function sendEmail(emailMessage: any) {
 
 
     let mailOptions = {
-      from: 'Your wonderful bank "violetta.frontend@yandex.ru"', 
+      from: 'TU Bank "violetta.frontend@yandex.ru"', 
       to: emailMessage.address,
       subject: emailMessage.theme, 
       attachments: [
