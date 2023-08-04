@@ -71,6 +71,7 @@ function performScoring(data: ScoringDataDTO): { passed: boolean, rate: number, 
         (gender === Gender.Male && age >= 30 && age <= 55)) {
         interestRate -= 0.03;
     }
+
    
     return { passed: true, rate: interestRate, message };
 }

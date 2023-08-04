@@ -1,39 +1,39 @@
 import { Request, Response } from "express";
 import { ResourceNotFoundError, BadRequestError, ConflictError, ServerError, AuthorizationError, ValidationError } from "../errors/errorClasses.js";
-import { db } from "../db.js";
-import { Kafka } from 'kafkajs';
 import { EmailMessage } from "../dtos.js";
 import { MessageThemes } from "../types/types.js";
+import { sendMessage, producer } from "../service/kafka.service.js";
+import { getFromDb } from "../service/kafka.service.js";
 
-export async function getFromDb(table: string, id: string){
-    const query = `SELECT * FROM ${table} WHERE ${table}_id = $1`;
-    const result = await db.one(query, [id]);
-    return result;
-}
+// export async function getFromDb(table: string, id: string){
+//     const query = `SELECT * FROM ${table} WHERE ${table}_id = $1`;
+//     const result = await db.one(query, [id]);
+//     return result;
+// }
 
-const kafka = new Kafka({
-    clientId: 'deal-service',
-    brokers: ['kafka-broker-1:19092'],
-  });
-  
-  const producer = kafka.producer();
-  
-  const sendMessage = async (topic: string, message: EmailMessage) => {
-    try {
-      await producer.send({
-        topic: topic,
-        messages: [
-          {
-            value: JSON.stringify(message),
-          },
-        ],
-      });
-      console.log('Сообщение успешно отправлено в топик: ', topic);
-      await producer.disconnect();
-    } catch (error) {
-      console.error('Ошибка при отправке сообщения: ', error);
-    }
-  };
+// const kafka = new Kafka({
+//     clientId: 'deal-service',
+//     brokers: ['kafka-broker-1:19092'],
+//   });
+
+// const producer = kafka.producer();
+
+// const sendMessage = async (topic: string, message: EmailMessage) => {
+//   try {
+//     await producer.send({
+//       topic: topic,
+//       messages: [
+//         {
+//           value: JSON.stringify(message),
+//         },
+//       ],
+//     });
+//     console.log('Сообщение успешно отправлено в топик: ', topic);
+//     await producer.disconnect();
+//   } catch (error) {
+//     console.error('Ошибка при отправке сообщения: ', error);
+//   }
+// };
 
 export const sendDocuments = async (req: Request, res: Response) => {
     try {
@@ -42,13 +42,10 @@ export const sendDocuments = async (req: Request, res: Response) => {
         const creditId  = application.credit_id;
          const clientId = JSON.parse(application.client_id);
         const client = await getFromDb('client', clientId);
-        // console.log(client);
         const credit = await getFromDb('credit', creditId);
-        // console.log(credit);
         const payJson = JSON.parse(credit.payment_schedule);
         const clientJson = JSON.stringify(client);
        
-        console.log('id', typeof clientJson);
     
         if (!application) {
             throw new ResourceNotFoundError('Application not found.');

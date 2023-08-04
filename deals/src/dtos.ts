@@ -99,6 +99,7 @@ export interface EmailMessage {
   creditId?: string,
   amount?: string,
   rate?: string,
+  sesCode?: string, 
 }
 
 export interface PassportDTO {

@@ -71,4 +71,17 @@ export interface CreditDTO {
     paymentSchedule: PaymentScheduleElement[]
 }
 
+export interface EmailMessage {
+    address: string;
+    theme: string;
+    applicationId: string;
+    name: string,
+    lastName: string,
+    paymentData?: PaymentScheduleElement[],
+    clientData?: string,
+    creditId?: string,
+    amount?: string,
+    rate?: string,
+    sesCode?: string, 
+  }
 

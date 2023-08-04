@@ -107,6 +107,10 @@ async function createFiles(emailMessage: any) {
   }
 }
 
+// function generateRandomNumber() {
+//   return Math.floor(100000 + Math.random() * 900000);
+// }
+
 async function sendEmail(emailMessage: any) {
   console.log('Sending email...'); 
   try {
@@ -126,12 +130,16 @@ async function sendEmail(emailMessage: any) {
 
     switch (emailMessage.theme) {
       case 'finish-registration':
-        emailText = `Hello ${emailMessage.name} ${emailMessage.lastName},<br><br>
-                  Thank you for choosing our bank. To complete your application, please finish the registration process.
+        const link = `/calculation/${emailMessage.applicationId}`;
+        emailText = `Dear Mr./Ms. ${emailMessage.name} ${emailMessage.lastName},<br><br>
+                  We hope this message finds you well.<br><br>
+                  Thank you for choosing our bank. To complete your application, 
+                  please follow the <a href="${link}">link</a> and finish the registration process.
                   <br><br>
                   Best regards,<br><br>
                   Customer Service Team,<br><br>
-                  TU Bank`;
+                  TU Bank<br>
+                  <img src="${logoPath} alt="logo" style="width: 100px; height: 100px; magrin: 10px auto">`;
       break;
       case 'create-documents':
         emailText = `Dear Mr./Ms. ${emailMessage.name} ${emailMessage.lastName},
@@ -155,10 +163,12 @@ async function sendEmail(emailMessage: any) {
 
                   Best regards,<br><br>
                   Customer Service Team,<br><br>
-                  TU Bank`;
+                  TU Bank<br>
+                  <img src="${logoPath} alt="logo" style="width: 100px; height: 100px; magrin: 10px auto">`;
       break;
       case 'send-documents':
-        emailText = `Hello ${emailMessage.name} ${emailMessage.lastName},<br><br>
+        emailText = `Dear Mr./Ms. ${emailMessage.name} ${emailMessage.lastName},<br><br>
+                    We hope this message finds you well.<br><br>
                     We are sending you the documents attached to this email: the credit agreement, payment schedule, and client information.
                     Please sign the documents to proceed with your application.
                     <br><br>
@@ -182,32 +192,42 @@ async function sendEmail(emailMessage: any) {
                     <br><br>
                     Best regards,<br><br>
                     Customer Service Team,<br><br>
-                    TU Bank`;
+                    TU Bank<br>
+                    <img src="${logoPath} alt="logo" style="width: 100px; height: 100px; magrin: 10px auto">`;
       break;
       case 'send-ses':
-        emailText = `Hello ${emailMessage.name} ${emailMessage.lastName},<br><br>
-                  Please check your SES (Secure Email Service) for important updates on your application.
-                  <br><br>
-                  Best regards,<br><br>
-                  Customer Service Team,<br><br>
-                  TU Bank`;
+        // const sesCode = generateRandomNumber();
+        emailText = `Dear Mr./Ms. ${emailMessage.name} ${emailMessage.lastName},<br><br>
+                      We hope this message finds you well.<br><br>
+                      We are sending you the security code to sign your loan agreement:<br>
+                      <div style="width: 70%; padding: 30px; font-size: 3rem; 
+                      font-weight: bold; background-color: #e5f6d6; margin: 30px auto; text-align: center;">${emailMessage.sesCode}</div>
+                      <br>
+                      Please visit the following <a href="#">link</a> to submit the code and your application ID.
+                      <br><br>
+                      Best regards,<br><br>
+                      Customer Service Team,<br><br>
+                      TU Bank<br><br>
+                      <img src="${logoPath} alt="logo" style="width: 100px; height: 100px; magrin: 10px auto">`;
       break;
       case 'credit-issued':
-        emailText = `Hello ${emailMessage.name} ${emailMessage.lastName},<br><br>
-                  We are pleased to inform you that your credit has been issued.
+        emailText = `Dear ${emailMessage.name} ${emailMessage.lastName},<br><br>
+                  We would like to inform you that your loan application has been processed successfully.
                   <br><br>
                   Best regards,<br><br>
                   Customer Service Team,<br><br>
-                  TU Bank`;
+                  TU Bank<br>
+                  <img src="${logoPath} alt="logo" style="width: 100px; height: 100px; magrin: 10px auto">`;
       break;
       case 'application-denied':
-        emailText = `Hello ${emailMessage.name} ${emailMessage.lastName},<br><br>
+        emailText = `Dear Mr./Ms. ${emailMessage.name} ${emailMessage.lastName},<br><br>
                   We regret to inform you that your application has been denied. 
                   Please contact our customer service for further information.
                   <br><br>
                   Best regards,<br><br>
                   Customer Service Team,<br><br>
-                  TU Bank`;
+                  TU Bank<br>
+                  <img src="${logoPath} alt="logo" style="width: 100px; height: 100px; magrin: 10px auto">`;
       break;
     }
 
@@ -319,8 +339,10 @@ const runConsumer = async () => {
           console.log('I see it');
           await createFiles(emailMessage);
           // await sendEmail(emailMessage); 
+        } else {
+          await sendEmail(emailMessage); 
         }
-        await sendEmail(emailMessage); 
+
       }
     },    
   });

@@ -3,16 +3,28 @@ import { calculateCreditParameters } from "../services/scoreApplication.js";
 import { performScoring } from "../services/scoreApplication.js";
 // import { ScoringDataDTO } from "../dtos.js";
 import { ValidationError, BadRequestError, AuthorizationError, ResourceNotFoundError, ConflictError, ServerError } from "../errors/errorClasses.js";
+import { producer } from "../services/kafka.service.js";
+// import { EmailMessage } from "../dtos.js";
+// import { MessageThemes } from "../types/types.js";
 
 export const calculateLoanOffer = async (req: Request, res: Response) => {
     try {
-        // const scoringData: ScoringDataDTO = req.body;
         const scoringResult = performScoring(req.body);
-        console.log('scoring', scoringResult)
+        console.log(req.body)
+        console.log('scoring', scoringResult);
     
         if (!scoringResult.passed) {
-            // return res.status(400).json({message: scoringResult.message});
-            throw new BadRequestError(scoringResult.message)
+            await producer.connect();
+            // const message: EmailMessage = {
+            //   address: client.email,
+            //   theme: MessageThemes.ApplicationDenied, 
+            //   applicationId: applicationId,
+            //   name: client.first_name,
+            //   lastName: client.last_name
+            // };
+            // sendMessage('application-denied', message);
+            throw new BadRequestError(scoringResult.message);
+            
         }
         
         const credit = calculateCreditParameters(req.body, scoringResult.rate);

@@ -37,12 +37,14 @@
     "typescript": "^5.1.6"
   },
   "dependencies": {
+    "@types/pg-promise": "^5.4.3",
     "@types/uuid": "^9.0.2",
     "body-parser": "^1.20.2",
     "date-fns": "^2.30.0",
     "dotenv": "^16.3.1",
     "express": "^4.18.2",
     "joi": "^17.9.2",
+    "kafkajs": "^2.2.4",
     "pg": "^8.11.1",
     "uuid": "^9.0.0"
   }

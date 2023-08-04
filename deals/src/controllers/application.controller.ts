@@ -17,8 +17,6 @@ export const postApplication = async (req: Request, res: Response, next: NextFun
             [clientId, new Date(), 'PREAPPROVAL']);
 
         const applicationId = applicationResult.application_id; 
-        console.log('application', applicationResult);
-        console.log('application id', applicationId);
 
         const response = await axios.post('http://api-conveyer:3001/conveyor/offers', loanApplication);
 

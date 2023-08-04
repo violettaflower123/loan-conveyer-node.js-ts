@@ -29,4 +29,14 @@ export var Position;
     Position["Owner"] = "OWNER";
 })(Position || (Position = {}));
 ;
+export var MessageThemes;
+(function (MessageThemes) {
+    MessageThemes["FinishRegistration"] = "finish-registration";
+    MessageThemes["CreateDocuments"] = "create-documents";
+    MessageThemes["SendDocuments"] = "send-documents";
+    MessageThemes["SendSes"] = "send-ses";
+    MessageThemes["CreditIssued"] = "credit-issued";
+    MessageThemes["ApplicationDenied"] = "application-denied";
+})(MessageThemes || (MessageThemes = {}));
+;
 //# sourceMappingURL=types.js.map

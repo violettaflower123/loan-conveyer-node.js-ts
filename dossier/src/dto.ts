@@ -16,6 +16,7 @@ export interface EmailMessage {
   clientData?: string,
   amount?: string,
   rate?: string,
+  sesCode?: string 
 }
 export interface Client {
   client_id: string,

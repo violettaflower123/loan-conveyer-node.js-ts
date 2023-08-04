@@ -10,8 +10,6 @@ export const postApplication = async (req, res, next) => {
         console.log('client', clientId);
         const applicationResult = await db.one('INSERT INTO application(client_id, creation_date, status) VALUES($1, $2, $3) RETURNING application_id', [clientId, new Date(), 'PREAPPROVAL']);
         const applicationId = applicationResult.application_id;
-        console.log('application', applicationResult);
-        console.log('application id', applicationId);
         const response = await axios.post('http://api-conveyer:3001/conveyor/offers', loanApplication);
         if (!response.data) {
             throw new ServerError('Не удалось получить предложения о кредите с API Conveyor.');
