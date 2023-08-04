@@ -1,35 +1,35 @@
 "use strict";
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
+// import nodemailer from 'nodemailer';
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.sendEmail = void 0;
-const nodemailer_1 = __importDefault(require("nodemailer"));
-// Создайте переносимый объект SMTP с параметрами по умолчанию
-const transporter = nodemailer_1.default.createTransport({
-    host: 'smtp.yandex.ru',
-    port: 465,
-    secure: true,
-    auth: {
-        user: 'violetta.frontend@yandex.ru',
-        pass: 'Istanbul209!',
-    },
-});
-const sendEmail = async (to, subject, text) => {
-    const mailOptions = {
-        from: '"BANK" violetta.frontend@yandex.ru',
-        to: to,
-        subject: subject,
-        text: text, // текстовое тело
-    };
-    try {
-        // Отправка электронной почты
-        const info = await transporter.sendMail(mailOptions);
-        console.log(`Email sent: ${info.messageId}`);
-    }
-    catch (error) {
-        console.error(`Error: ${error}`);
-    }
-};
-exports.sendEmail = sendEmail;
+// interface MailOptions {
+//   from: string;
+//   to: string;
+//   subject: string;
+//   text: string;
+// }
+// // Создайте переносимый объект SMTP с параметрами по умолчанию
+// const transporter = nodemailer.createTransport({
+//   host: 'smtp.yandex.ru',
+//   port: 465,
+//   secure: true, // true для 465, false для других портов
+//   auth: {
+//     user: 'violetta.frontend@yandex.ru', 
+//     pass: 'Istanbul209!', 
+//   },
+// });
+// export const sendEmail = async (to: string, subject: string, text: string): Promise<void> => {
+//   const mailOptions: MailOptions = {
+//     from: '"BANK" violetta.frontend@yandex.ru', // отправитель
+//     to: to, // список получателей
+//     subject: subject, // тема
+//     text: text, // текстовое тело
+//   };
+//   try {
+//     // Отправка электронной почты
+//     const info = await transporter.sendMail(mailOptions);
+//     console.log(`Email sent: ${info.messageId}`);
+//   } catch (error) {
+//     console.error(`Error: ${error}`);
+//   }
+// };
 //# sourceMappingURL=emailService.js.map

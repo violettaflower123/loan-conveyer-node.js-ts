@@ -95,7 +95,10 @@ export interface EmailMessage {
   name: string,
   lastName: string,
   paymentData?: PaymentScheduleElement[],
-  clientData?: {[key: string]: any}
+  clientData?: string,
+  creditId?: string,
+  amount?: string,
+  rate?: string,
 }
 
 export interface PassportDTO {

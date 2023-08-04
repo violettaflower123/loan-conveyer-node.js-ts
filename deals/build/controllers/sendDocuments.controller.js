@@ -40,8 +40,8 @@ export const sendDocuments = async (req, res) => {
         const credit = await getFromDb('credit', creditId);
         // console.log(credit);
         const payJson = JSON.parse(credit.payment_schedule);
-        // const clientJson = JSON.parse(client);
-        console.log('id', application.applied_offer, payJson, client);
+        const clientJson = JSON.stringify(client);
+        console.log('id', typeof clientJson);
         if (!application) {
             throw new ResourceNotFoundError('Application not found.');
         }
@@ -53,7 +53,10 @@ export const sendDocuments = async (req, res) => {
             name: client.first_name,
             lastName: client.last_name,
             paymentData: payJson,
-            //   clientData: clientJson
+            clientData: clientJson,
+            creditId: credit.credit_id,
+            amount: credit.amount,
+            rate: credit.rate,
         };
         sendMessage('send-documents', message);
         res.send('Hey');
