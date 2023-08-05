@@ -1,6 +1,30 @@
 import Joi from "joi";
 import { differenceInYears, isValid } from "date-fns";
 import { BadRequestError } from "../errors/errorClasses.js";
+import { Kafka } from "kafkajs";
+import { MessageThemes } from "../types/types.js";
+export const kafka = new Kafka({
+    clientId: 'deal-service',
+    brokers: ['kafka-broker-1:19092'],
+});
+export const producer = kafka.producer();
+export const sendMessage = async (topic, message) => {
+    try {
+        await producer.send({
+            topic: topic,
+            messages: [
+                {
+                    value: JSON.stringify(message),
+                },
+            ],
+        });
+        console.log('Сообщение успешно отправлено в топик: ', topic);
+        await producer.disconnect();
+    }
+    catch (error) {
+        console.error('Ошибка при отправке сообщения: ', error);
+    }
+};
 const schema = Joi.object({
     firstName: Joi.string().min(2).max(30).required(),
     lastName: Joi.string().min(2).max(30).required(),
@@ -21,11 +45,20 @@ const schema = Joi.object({
     passportSeries: Joi.string().length(4).pattern(/[0-9]{4}/).required(),
     passportNumber: Joi.string().length(6).pattern(/[0-9]{6}/).required()
 });
-export const validateLoanApplicationBody = (req, res, next) => {
+export const validateLoanApplicationBody = async (req, res, next) => {
     const { error } = schema.validate(req.body);
+    console.log(req.body);
     if (error) {
-        console.log(error.details);
-        throw new BadRequestError(error.details[0].message);
+        await producer.connect();
+        const message = {
+            address: req.body.email,
+            theme: MessageThemes.ApplicationDenied,
+            name: req.body.firstName,
+            lastName: req.body.lastName
+        };
+        sendMessage('application-denied', message);
+        next(new BadRequestError(error.details[0].message)); // передаем ошибку обработчику ошибок Express
+        return;
     }
     next();
 };

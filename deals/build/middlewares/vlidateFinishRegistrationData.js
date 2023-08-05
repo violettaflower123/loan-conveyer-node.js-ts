@@ -29,7 +29,7 @@ const finishRegistrationRequestSchema = Joi.object({
     }).required(),
     account: Joi.string().required(),
 });
-export const validateRegistrationData = (req, res, next) => {
+export const validateRegistrationData = async (req, res, next) => {
     const { error } = finishRegistrationRequestSchema.validate(req.body);
     if (error) {
         const errorMessage = error.details[0].message;

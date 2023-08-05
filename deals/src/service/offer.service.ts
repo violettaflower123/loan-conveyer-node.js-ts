@@ -2,33 +2,8 @@ import { db } from '../db.js';
 import { LoanOfferDTO } from '../dtos.js';
 import { BadRequestError } from '../errors/errorClasses.js';
 import { EmailMessage } from '../dtos.js';
-
-import { Kafka } from 'kafkajs';
+import { producer, sendMessage } from './kafka.service.js';
 import { MessageThemes } from '../types/types.js';
-
-const kafka = new Kafka({
-  clientId: 'deal-service',
-  brokers: ['kafka-broker-1:19092'],
-});
-
-const producer = kafka.producer();
-
-const sendMessage = async (topic: string, message: EmailMessage) => {
-  try {
-    await producer.send({
-      topic: topic,
-      messages: [
-        {
-          value: JSON.stringify(message),
-        },
-      ],
-    });
-    console.log('Сообщение успешно отправлено в топик: ', topic);
-    await producer.disconnect();
-  } catch (error) {
-    console.error('Ошибка при отправке сообщения: ', error);
-  }
-};
 
 
 export async function updateOffer(loanOffer: LoanOfferDTO) {
@@ -55,8 +30,6 @@ export async function updateOffer(loanOffer: LoanOfferDTO) {
     console.log('application update', updatedApplication);
 
     const getData = await db.any('SELECT * FROM application WHERE application_id = $1', application.application_id);
-
-    console.log('appl', getData);
     
     await producer.connect();
     const message: EmailMessage = {
@@ -67,7 +40,6 @@ export async function updateOffer(loanOffer: LoanOfferDTO) {
       lastName: client.last_name
   };
   sendMessage('finish-registration', message);
-    // await producer.disconnect();
 
     return updatedApplication;
 }

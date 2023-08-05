@@ -1,29 +1,7 @@
 import { db } from '../db.js';
 import { BadRequestError } from '../errors/errorClasses.js';
-import { Kafka } from 'kafkajs';
+import { producer, sendMessage } from './kafka.service.js';
 import { MessageThemes } from '../types/types.js';
-const kafka = new Kafka({
-    clientId: 'deal-service',
-    brokers: ['kafka-broker-1:19092'],
-});
-const producer = kafka.producer();
-const sendMessage = async (topic, message) => {
-    try {
-        await producer.send({
-            topic: topic,
-            messages: [
-                {
-                    value: JSON.stringify(message),
-                },
-            ],
-        });
-        console.log('Сообщение успешно отправлено в топик: ', topic);
-        await producer.disconnect();
-    }
-    catch (error) {
-        console.error('Ошибка при отправке сообщения: ', error);
-    }
-};
 export async function updateOffer(loanOffer) {
     const application = await db.one('SELECT * FROM application WHERE application_id = $1', [loanOffer.applicationId]);
     if (!application) {
@@ -40,7 +18,6 @@ export async function updateOffer(loanOffer) {
     const updatedApplication = await db.one('UPDATE application SET status = $1, status_history = $2, applied_offer = $3 WHERE application_id = $4 RETURNING *', ["APPROVED", JSON.stringify(updatedStatusHistory), JSON.stringify(loanOffer), loanOffer.applicationId]);
     console.log('application update', updatedApplication);
     const getData = await db.any('SELECT * FROM application WHERE application_id = $1', application.application_id);
-    console.log('appl', getData);
     await producer.connect();
     const message = {
         address: client.email,
@@ -50,7 +27,6 @@ export async function updateOffer(loanOffer) {
         lastName: client.last_name
     };
     sendMessage('finish-registration', message);
-    // await producer.disconnect();
     return updatedApplication;
 }
 //# sourceMappingURL=offer.service.js.map

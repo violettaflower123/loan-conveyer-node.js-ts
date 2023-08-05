@@ -33,7 +33,7 @@ const finishRegistrationRequestSchema = Joi.object({
   });
   
 
-export const validateRegistrationData = (req: Request, res: Response, next: NextFunction) => {
+export const validateRegistrationData = async (req: Request, res: Response, next: NextFunction) => {
     const { error } = finishRegistrationRequestSchema.validate(req.body);
 
     if (error) {

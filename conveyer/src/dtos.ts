@@ -74,7 +74,7 @@ export interface CreditDTO {
 export interface EmailMessage {
     address: string;
     theme: string;
-    applicationId: string;
+    applicationId?: string;
     name: string,
     lastName: string,
     paymentData?: PaymentScheduleElement[],

@@ -27,6 +27,7 @@ export function createScoringDataDTO(finishRegistrationData, application, client
         isInsuranceEnabled: appliedOffer.isInsuranceEnabled,
         isSalaryClient: appliedOffer.isSalaryClient
     };
+    console.log('scoring data 123', scoringData);
     return scoringData;
 }
 export async function getStatusId(status) {
@@ -119,13 +120,13 @@ export async function saveApplication(application) {
     }
     return savedApplication;
 }
-export async function updateClient(clientId, gender, maritalStatus, dependentNumber, employmentId) {
+export async function updateClient(clientId, gender, maritalStatus, dependentNumber, employmentId, account) {
     try {
         const genderRow = await db.one("SELECT id FROM gender WHERE gender = $1", [gender]);
         const genderId = genderRow.id;
         const statusRow = await db.one("SELECT id FROM marital_status WHERE marital_status = $1", [maritalStatus]);
         const statusId = statusRow.id;
-        const client = await db.one("UPDATE client SET gender_id = $1, marital_status_id = $2, dependent_amount = $3, employment_id = $4 WHERE client_id = $5 RETURNING *", [genderId, statusId, dependentNumber, employmentId, clientId]);
+        const client = await db.one("UPDATE client SET gender_id = $1, marital_status_id = $2, dependent_amount = $3, employment_id = $4, account = $5 WHERE client_id = $6 RETURNING *", [genderId, statusId, dependentNumber, employmentId, account, clientId]);
         console.log('client gender', client);
     }
     catch (error) {

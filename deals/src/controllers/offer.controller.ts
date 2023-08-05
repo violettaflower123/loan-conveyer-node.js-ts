@@ -9,6 +9,7 @@ import { BadRequestError, ServerError, ConflictError, AuthorizationError, Valida
 export const handleOfferUpdate = async (req: Request, res: Response, next: NextFunction) => {
     try {
         const loanOffer: LoanOfferDTO = req.body;
+        
         const updatedApplication = await offerService.updateOffer(loanOffer);
         res.status(200).json(updatedApplication);
     } catch (err) {

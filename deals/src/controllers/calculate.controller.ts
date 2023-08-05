@@ -65,18 +65,30 @@ export const calculateCredit = async (req: Request, res: Response, next: NextFun
         console.log('scoring data', scoringData);
 
         const scoringResponse = await axios.post('http://api-conveyer:3001/conveyor/calculation', scoringData);
+
         const creditDTO: Credit = scoringResponse.data;
         
         creditDTO.status = CreditStatus.Calculated;
 
         if (scoringResponse.status != 200) {
+          console.log('hi');
+            // await producer.connect();
+            // console.log('hi');
+            // const message: EmailMessage = {
+            //   address: client.email,
+            //   theme: MessageThemes.ApplicationDenied, 
+            //   applicationId: applicationId,
+            //   name: client.first_name,
+            //   lastName: client.last_name
+            // };
+            // sendMessage('application-denied', message);
             throw new ServerError('Scoring failed.');
         }
 
         const employmentId = await saveEmploymentToDb(scoringData.employment);
-        console.log('employment id', employmentId);
 
-        await updateClient(clientId, scoringData.gender, scoringData.maritalStatus, scoringData.dependentNumber, employmentId);
+        await updateClient(clientId, scoringData.gender, scoringData.maritalStatus, scoringData.dependentNumber, employmentId, scoringData.account);
+
         
         const savedCredit = await saveCreditToDb(creditDTO);
         application.credit_id = savedCredit;

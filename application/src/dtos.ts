@@ -87,12 +87,20 @@ export interface ApplicationStatusHistoryDTO {
   changeType: ChangeType
 }
 
-export interface EmailMessage
-{
-  address: "string",
-  theme: "Enum",
-  applicationId: "number"
+export interface EmailMessage {
+  address: string;
+  theme: string;
+  applicationId?: string;
+  name: string,
+  lastName: string,
+  paymentData?: PaymentScheduleElement[],
+  clientData?: string,
+  creditId?: string,
+  amount?: string,
+  rate?: string,
+  sesCode?: string, 
 }
+
 export interface PassportDTO {
   passportId: string,
   series: string,
