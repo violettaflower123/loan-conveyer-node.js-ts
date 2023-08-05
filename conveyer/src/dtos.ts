@@ -32,7 +32,6 @@ export interface EmploymentDTO {
     workExperienceCurrent: number
 }
 
-
 export interface ScoringDataDTO {
     amount: number,
     term: number,

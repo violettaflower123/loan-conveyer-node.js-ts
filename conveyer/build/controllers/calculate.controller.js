@@ -8,7 +8,13 @@ import { db } from "../db.js";
 export const calculateLoanOffer = async (req, res) => {
     try {
         const scoringResult = performScoring(req.body);
-        const clientData = await db.one('SELECT client.client_id FROM client INNER JOIN passport ON client.passport_id = passport.passport_id WHERE passport.series = $1 AND passport.number = $2', [req.body.passportSeries, req.body.passportNumber]);
+        const clientData = await db.one('SELECT client.client_id, client.first_name, client.last_name FROM client INNER JOIN passport ON client.passport_id = passport.passport_id WHERE passport.series = $1 AND passport.number = $2', [req.body.passportSeries, req.body.passportNumber]);
+        console.log('1111', req.body, '2222', clientData);
+        // Проверка, что имя и фамилия, переданные в запросе, совпадают с данными в базе данных
+        if (clientData.first_name !== req.body.firstName || clientData.last_name !== req.body.lastName) {
+            throw new BadRequestError('The provided first name and/or last name do not match our records.');
+        }
+        // const clientData = await db.one('SELECT client.client_id FROM client INNER JOIN passport ON client.passport_id = passport.passport_id WHERE passport.series = $1 AND passport.number = $2', [req.body.passportSeries, req.body.passportNumber]);
         const clientId = clientData.client_id;
         const emailData = await db.one('SELECT email FROM client WHERE client_id = $1', [clientId]);
         if (!scoringResult.passed) {
