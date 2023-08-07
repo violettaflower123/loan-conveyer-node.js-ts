@@ -1,6 +1,7 @@
 import { Kafka } from "kafkajs";
 import { EmailMessage } from "../dtos.js";
 import { db } from "../db.js";
+import { logger } from "../helpers/logger.js";
 
 export const kafka = new Kafka({
         clientId: 'deal-service',
@@ -19,10 +20,10 @@ try {
         },
     ],
     });
-    console.log('Сообщение успешно отправлено в топик: ', topic);
+    logger.info('Сообщение успешно отправлено в топик: ' + topic);
     await producer.disconnect();
 } catch (error) {
-    console.error('Ошибка при отправке сообщения: ', error);
+    logger.error('Ошибка при отправке сообщения: ' + error);
 }
 };
 

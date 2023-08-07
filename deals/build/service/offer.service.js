@@ -8,15 +8,12 @@ export async function updateOffer(loanOffer) {
         throw new BadRequestError(`Application with id ${loanOffer.applicationId} not found.`);
     }
     const client = await db.one('SELECT * FROM client WHERE client_id = $1', application.client_id);
-    console.log('client', client);
-    console.log('application one more', application);
     const updatedStatusHistory = [...(application.status_history || []), {
             status: "APPROVED",
             time: new Date(),
             changeType: "MANUAL"
         }];
     const updatedApplication = await db.one('UPDATE application SET status = $1, status_history = $2, applied_offer = $3 WHERE application_id = $4 RETURNING *', ["APPROVED", JSON.stringify(updatedStatusHistory), JSON.stringify(loanOffer), loanOffer.applicationId]);
-    console.log('application update', updatedApplication);
     const getData = await db.any('SELECT * FROM application WHERE application_id = $1', application.application_id);
     await producer.connect();
     const message = {

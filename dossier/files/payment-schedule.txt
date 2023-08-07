@@ -1,0 +1,61 @@
+Payment schedule for Loan № 159:
+
+Month number: 1
+Date: 2023-09-07
+Total payment: 875.5174408364895
+Remaining debt: 9174
+
+Month number: 2
+Date: 2023-10-07
+Total payment: 875.5174408364895
+Remaining debt: 8344
+
+Month number: 3
+Date: 2023-11-07
+Total payment: 875.5174408364895
+Remaining debt: 7510
+
+Month number: 4
+Date: 2023-12-07
+Total payment: 875.5174408364895
+Remaining debt: 6672
+
+Month number: 5
+Date: 2024-01-07
+Total payment: 875.5174408364895
+Remaining debt: 5830
+
+Month number: 6
+Date: 2024-02-07
+Total payment: 875.5174408364895
+Remaining debt: 4984
+
+Month number: 7
+Date: 2024-03-07
+Total payment: 875.5174408364895
+Remaining debt: 4133
+
+Month number: 8
+Date: 2024-04-07
+Total payment: 875.5174408364895
+Remaining debt: 3278
+
+Month number: 9
+Date: 2024-05-07
+Total payment: 875.5174408364895
+Remaining debt: 2419
+
+Month number: 10
+Date: 2024-06-07
+Total payment: 875.5174408364895
+Remaining debt: 1556
+
+Month number: 11
+Date: 2024-07-07
+Total payment: 875.5174408364895
+Remaining debt: 688
+
+Month number: 12
+Date: 2024-08-07
+Total payment: 875.5174408364895
+Remaining debt: -184

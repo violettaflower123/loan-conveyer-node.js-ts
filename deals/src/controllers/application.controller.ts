@@ -5,16 +5,16 @@ import axios from 'axios';
 import { db, pgp } from '../db.js';
 import pgPromise from 'pg-promise';
 import { BadRequestError, ServerError, ConflictError, AuthorizationError, ValidationError, ResourceNotFoundError } from '../errors/errorClasses.js';
+import { logger } from '../helpers/logger.js';
 
 export const postApplication = async (req: Request, res: Response, next: NextFunction) => {
     try {
         const loanApplication: LoanApplicationRequestDTO = req.body;
         
         const clientId = await addClientAndPassport(loanApplication); 
-        console.log('client', clientId)
 
         const applicationResult = await db.one('INSERT INTO application(client_id, creation_date, status) VALUES($1, $2, $3) RETURNING application_id',
-            [clientId, new Date(), 'PREAPPROVAL']);
+            [clientId, new Date(), 'CC_DENIED']);
 
         const applicationId = applicationResult.application_id; 
 
@@ -28,10 +28,12 @@ export const postApplication = async (req: Request, res: Response, next: NextFun
             return { ...offer, applicationId: applicationId };
         });
 
+        logger.info(`Successfully processed application for client ID: ${clientId}.`);
+
         res.status(200).json(loanOffers);
 
     } catch (error: any) {
-        console.log(error);
+        logger.error('Error calculating loan offer', error); 
 
         if (error instanceof pgPromise.errors.QueryResultError) {
             return res.status(500).json({ error: 'Ошибка при выполнении запроса к базе данных.' });
@@ -54,7 +56,6 @@ export const postApplication = async (req: Request, res: Response, next: NextFun
                 console.log(error.response.data);
                 return res.status(400).json({ error: error.response.data.error });
             } else {
-                // Если не удаётся определить тип ошибки, возвращаем 500 Internal Server Error
                 return res.status(500).json({ error: 'Внутренняя ошибка сервера.' });
             }
         }

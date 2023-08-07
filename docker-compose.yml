@@ -62,15 +62,16 @@ services:
     container_name: postgres
     image: postgres
     ports:
-      - '5433:${DB_PORT}'
+      - '5433:5432' 
     volumes:
       - data:/var/lib/postgresql/data
+      - ./db:/docker-entrypoint-initdb.d
     environment:
       - POSTGRES_PASSWORD=${DB_PASSWORD}
       - POSTGRES_DB=${DB_NAME}
     networks:    
       - my_network 
-  
+
   pgadmin:
     container_name: pgadmin
     image: dpage/pgadmin4
@@ -114,4 +115,6 @@ networks:
   my_network:
     driver: bridge
 volumes: 
-  data: {}
+  data:
+    driver: local
+

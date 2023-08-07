@@ -22,10 +22,10 @@ const finishRegistrationRequestSchema = Joi.object({
     employment: Joi.object({
         employmentStatus: Joi.string().valid(...Object.values(EmploymentStatus)).required(),
         employerINN: Joi.string().required(),
-        salary: Joi.number().positive().required(),
+        salary: Joi.number().positive().strict().required(),
         position: Joi.string().valid(...Object.values(Position)).required(),
-        workExperienceTotal: Joi.number().integer().min(12).required(),
-        workExperienceCurrent: Joi.number().integer().min(3).required(),
+        workExperienceTotal: Joi.number().integer().strict().min(12).required(),
+        workExperienceCurrent: Joi.number().integer().strict().min(3).required(),
     }).required(),
     account: Joi.string().required(),
 });

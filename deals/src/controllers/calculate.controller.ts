@@ -4,84 +4,68 @@ import { FinishRegistrationRequestDTO, ScoringDataDTO, Credit } from "../dtos.js
 import { ChangeType, Status, CreditStatus } from "../types/types.js";
 
 import { getFromDb, createScoringDataDTO, 
-    saveCreditToDb, saveApplication, updateApplicationStatusAndHistory, updateClient, saveEmploymentToDb } from "../service/calculate.service.js";
+    saveCreditToDb, saveApplication, updateApplicationStatusAndHistory, updateClient, saveEmploymentToDb, updatePassport } from "../service/calculate.service.js";
 import { ServerError, ResourceNotFoundError } from '../errors/errorClasses.js';
-import { Kafka } from 'kafkajs';
 import { MessageThemes } from '../types/types.js';
 import { EmailMessage } from '../dtos.js';
-import { db } from "../db.js";
-
-
-const kafka = new Kafka({
-    clientId: 'deal-service',
-    brokers: ['kafka-broker-1:19092'],
-  });
-  
-  const producer = kafka.producer();
-  
-  const sendMessage = async (topic: string, message: EmailMessage) => {
-    try {
-      await producer.send({
-        topic: topic,
-        messages: [
-          {
-            value: JSON.stringify(message),
-          },
-        ],
-      });
-      console.log('Сообщение успешно отправлено в топик: ', topic);
-      await producer.disconnect();
-    } catch (error) {
-      console.error('Ошибка при отправке сообщения: ', error);
-    }
-  };
+import { sendMessage, producer } from "../service/kafka.service.js";
+import { logger } from "../helpers/logger.js";
 
 export const calculateCredit = async (req: Request, res: Response, next: NextFunction) => {
         try {
         const applicationId = req.params.applicationId;
+        logger.info(`Processing application with ID: ${applicationId}`);
+
         const finishRegistrationData: FinishRegistrationRequestDTO = req.body;
+        logger.info('Received FinisiRegistrationData' + finishRegistrationData);
+
         
         const application = await getFromDb('application', applicationId);
 
         const clientId = JSON.parse(application.client_id);
+
     
         if (!application) {
-            throw new ResourceNotFoundError('Application not found.');
+          logger.warn(`Application not found for ID: ${applicationId}`);
+          throw new ResourceNotFoundError('Application not found.');
         }
 
         const client = await getFromDb('client', clientId);
 
         if (!client) {
-            throw new ResourceNotFoundError('Client not found.');
+          logger.warn(`Client not found for ID: ${clientId}`);
+          throw new ResourceNotFoundError('Client not found.');
         }
 
         const passport = await getFromDb('passport', client.passport_id);
 
         if (!passport) {
-            throw new ResourceNotFoundError('Passport not found.');
+          logger.warn(`Passport not found for client ID: ${clientId}`);
+          throw new ResourceNotFoundError('Passport not found.');
         }
 
         const scoringData: ScoringDataDTO = createScoringDataDTO(finishRegistrationData, application, client, passport); 
-        console.log('scoring data', scoringData);
 
         const scoringResponse = await axios.post('http://api-conveyer:3001/conveyor/calculation', scoringData);
+
 
         const creditDTO: Credit = scoringResponse.data;
         
         creditDTO.status = CreditStatus.Calculated;
 
         if (scoringResponse.status != 200) {
-          console.log('hi');
-            // await producer.connect();
-            // console.log('hi');
-            // const message: EmailMessage = {
-            //   address: client.email,
-            //   theme: MessageThemes.ApplicationDenied, 
-            //   applicationId: applicationId,
-            //   name: client.first_name,
-            //   lastName: client.last_name
-            // };
-            // sendMessage('application-denied', message);
+            logger.error(`Scoring failed for application ID: ${applicationId}`);
+
+            await producer.connect();
+            const message: EmailMessage = {
+              address: client.email,
+              theme: MessageThemes.ApplicationDenied, 
+              applicationId: applicationId,
+              name: client.first_name,
+              lastName: client.last_name
+            };
+            sendMessage('application-denied', message);
+
             throw new ServerError('Scoring failed.');
         }
 
@@ -89,14 +73,17 @@ export const calculateCredit = async (req: Request, res: Response, next: NextFun
 
         await updateClient(clientId, scoringData.gender, scoringData.maritalStatus, scoringData.dependentNumber, employmentId, scoringData.account);
 
-        
         const savedCredit = await saveCreditToDb(creditDTO);
+
         application.credit_id = savedCredit;
         application.application_id = applicationId;
 
+        await updatePassport(scoringData.passportIssueBranch, scoringData.passportIssueDate, client.passport_id);
 
         await updateApplicationStatusAndHistory(application, Status.Approved, ChangeType.Automatic);
+
         await saveApplication(application);  
+
 
         await producer.connect();
 
@@ -110,9 +97,10 @@ export const calculateCredit = async (req: Request, res: Response, next: NextFun
         sendMessage('create-documents', message);
         
 
+        logger.info(`Application status updated successfully for ID: ${applicationId}`);
         return res.json({ message: 'Application status updated successfully.' });
-    } catch (err) {
-        console.log('aaaa', err)
-        next(err);
+    } catch (err: any) {
+    logger.error('Ошибка: ' + err);
+    next(err);
     }
 };

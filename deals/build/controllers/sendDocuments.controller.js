@@ -2,35 +2,11 @@ import { ResourceNotFoundError, BadRequestError, ConflictError, ServerError, Aut
 import { MessageThemes } from "../types/types.js";
 import { sendMessage, producer } from "../service/kafka.service.js";
 import { getFromDb } from "../service/kafka.service.js";
-// export async function getFromDb(table: string, id: string){
-//     const query = `SELECT * FROM ${table} WHERE ${table}_id = $1`;
-//     const result = await db.one(query, [id]);
-//     return result;
-// }
-// const kafka = new Kafka({
-//     clientId: 'deal-service',
-//     brokers: ['kafka-broker-1:19092'],
-//   });
-// const producer = kafka.producer();
-// const sendMessage = async (topic: string, message: EmailMessage) => {
-//   try {
-//     await producer.send({
-//       topic: topic,
-//       messages: [
-//         {
-//           value: JSON.stringify(message),
-//         },
-//       ],
-//     });
-//     console.log('Сообщение успешно отправлено в топик: ', topic);
-//     await producer.disconnect();
-//   } catch (error) {
-//     console.error('Ошибка при отправке сообщения: ', error);
-//   }
-// };
+import { logger } from "../helpers/logger.js";
 export const sendDocuments = async (req, res) => {
     try {
         const applicationId = req.params.applicationId;
+        logger.info(`Processing documents for application ID: ${applicationId}`);
         const application = await getFromDb('application', applicationId);
         const creditId = application.credit_id;
         const clientId = JSON.parse(application.client_id);
@@ -39,6 +15,7 @@ export const sendDocuments = async (req, res) => {
         const payJson = JSON.parse(credit.payment_schedule);
         const clientJson = JSON.stringify(client);
         if (!application) {
+            logger.warn(`Application not found for ID: ${applicationId}`);
             throw new ResourceNotFoundError('Application not found.');
         }
         await producer.connect();
@@ -55,11 +32,11 @@ export const sendDocuments = async (req, res) => {
             rate: credit.rate,
         };
         sendMessage('send-documents', message);
-        res.send('Hey');
+        res.status(200).send('Success! Documents have been sent.');
     }
     catch (err) {
         const error = err;
-        console.log(error);
+        logger.error(`An error occurred while processing documents: ${error.message}`);
         if (error instanceof BadRequestError ||
             error instanceof ConflictError ||
             error instanceof ResourceNotFoundError ||
@@ -71,7 +48,6 @@ export const sendDocuments = async (req, res) => {
             });
         }
         else {
-            // If the error is not of any expected type, return a general server error
             res.status(500).send({
                 message: 'An unexpected error occurred.',
                 error: error.message

@@ -1,8 +1,11 @@
 import { PaymentScheduleElement, ScoringDataDTO, CreditDTO } from "../dtos.js";
 import { differenceInYears } from "date-fns";
 import { Gender, Position, EmploymentStatus, MaritalStatus } from "../types/types.js";
+import { logger } from "../helpers/logger.js";
 
 function performScoring(data: ScoringDataDTO): { passed: boolean, rate: number, message: string } {
+    logger.info('Performing scoring for data:', data);
+
     let interestRate = 0.1; // процентная ставка
     let message = "Scoring passed successfully";
 
@@ -20,22 +23,26 @@ function performScoring(data: ScoringDataDTO): { passed: boolean, rate: number, 
     const currentExperience = employment.workExperienceCurrent;
     if (age < 20 || age > 60) {
         message = "Rejected: The applicant's age is outside the acceptable range of 20 to 60 years.";
+        logger.warn(message); 
         return { passed: false, rate: 0, message }; // reject
         // return { passed: false, rate: 0, message }; // reject
     }
 
     if (totalExperience < 12 || currentExperience < 3) {
         message = "Rejected: Insufficient work experience.";
+        logger.warn(message); 
         return { passed: false, rate: 0, message }; 
     }
 
     if (amount > employment.salary * 20) {
         message = "Rejected: Loan amount exceeds the allowed limit based on salary.";
+        logger.warn(message); 
         return { passed: false, rate: 0, message }; 
     }
 
     if (employment.employmentStatus === EmploymentStatus.Unemployed) {
         message = "Rejected: Applicant is unemployed.";
+        logger.warn(message); 
         return { passed: false, rate: 0, message }; 
     }
 
@@ -77,6 +84,7 @@ function performScoring(data: ScoringDataDTO): { passed: boolean, rate: number, 
 }
 
 function calculateCreditParameters(data: ScoringDataDTO, rate: number): CreditDTO | null {
+    logger.info('Calculating credit parameters');
     // рассчет по формуле  аннуитетного платежа P = (S * i * (1 + i)^n) / ((1 + i)^n - 1), где P - ежемесячный платеж, 
     // S - сумма кредита, i - ежемесячная процентная ставка (годовая ставка / 12), n - срок кредита в месяцах
 
@@ -108,6 +116,8 @@ function calculateCreditParameters(data: ScoringDataDTO, rate: number): CreditDT
 
 
 function calculatePaymentSchedule(amount: number, monthlyRate: number, termMonths: number, monthlyPayment: number): PaymentScheduleElement[] {
+    logger.info('Calculating payment schedule'); 
+    
     const paymentSchedule: PaymentScheduleElement[] = [];
     let remainingDebt = amount;
 

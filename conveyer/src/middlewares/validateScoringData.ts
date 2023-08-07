@@ -3,6 +3,7 @@ import { differenceInYears, isValid } from "date-fns";
 import { Gender, MaritalStatus, EmploymentStatus, Position } from "../types/types.js";
 import { Request, Response, NextFunction } from "express";
 import { LoanApplicationRequestDTO } from "../dtos.js";
+import { logger } from "../helpers/logger.js";
 
 const validateNumber = (value: unknown, helpers: CustomHelpers) => {
   if (typeof value !== "number" || isNaN(value)) {
@@ -12,8 +13,8 @@ const validateNumber = (value: unknown, helpers: CustomHelpers) => {
 };
 
 export const scoringDataDTOSchema = Joi.object({
-  amount: Joi.number().min(10000).custom(validateNumber).required(),
-  term: Joi.number().integer().min(6).custom(validateNumber).required(),
+  amount: Joi.number().strict().min(10000).custom(validateNumber).required(),
+  term: Joi.number().integer().strict().min(6).custom(validateNumber).required(),
   firstName: Joi.string().min(2).max(30).required(),
   lastName: Joi.string().min(2).max(30).required(),
   middleName: Joi.string().min(2).max(30).required(),
@@ -47,7 +48,7 @@ export const scoringDataDTOSchema = Joi.object({
     }),
   passportIssueBranch: Joi.string().required(),
   maritalStatus: Joi.string().valid(...Object.values(MaritalStatus)).required(),
-  dependentNumber: Joi.number().custom(validateNumber).required(),
+  dependentNumber: Joi.number().strict().custom(validateNumber).required(),
   employment: Joi.object({
     employmentStatus: Joi.string().valid(...Object.values(EmploymentStatus)).required(),
     employerINN: Joi.string().required(),
@@ -62,12 +63,16 @@ export const scoringDataDTOSchema = Joi.object({
 });
 
 export const validateScoringData = (req: Request, res: Response, next: NextFunction) => {
+  logger.info('Получен запрос на валидацию скоринга:', req.body);
+
   const { error }: ValidationResult<LoanApplicationRequestDTO> = scoringDataDTOSchema.validate(req.body, {
     abortEarly: false,
   });
 
 
   if (error) {
+    logger.warn('Ошибка валидации:', error);
+
     console.log(error.details);
     res.status(400).json({
         error: error.details[0].message

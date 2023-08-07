@@ -2,13 +2,18 @@ import { Request, Response } from "express";
 import { LoanOfferDTO } from "../dtos.js";
 import { calculateLoanOffers } from "../services/loanOffers.js";
 import { ValidationError, ConflictError, BadRequestError, AuthorizationError, ResourceNotFoundError, ServerError } from "../errors/errorClasses.js";
+import { logger } from "../helpers/logger.js";
 
 export const createOffers = async (req: Request, res: Response) => {
     try {
+        logger.info('Creating loan offers');
         const loanOffers: LoanOfferDTO[] = calculateLoanOffers(req.body);
+        logger.info('Calculated oan offers:', loanOffers);
 
         return res.json(loanOffers);  
     } catch (err) {
+        logger.error('Error calculating loan offer', err); 
+
         const error = err as Error;
         if (error instanceof BadRequestError) {
             return res.status(400).json({ error: error.message });

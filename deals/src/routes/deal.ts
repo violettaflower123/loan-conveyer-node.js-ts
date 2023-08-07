@@ -17,7 +17,7 @@ router.put('/offer', validateLoanOffer, handleOfferUpdate);
 
 router.put('/calculate/:applicationId', validateRegistrationData, calculateCredit);
 
-router.post('/document/:applicationId/send', sendDocuments);
+router.put('/document/:applicationId/send', sendDocuments);
 
 router.put('/document/:applicationId/sign', sendSes);
 

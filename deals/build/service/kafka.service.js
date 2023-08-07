@@ -1,5 +1,6 @@
 import { Kafka } from "kafkajs";
 import { db } from "../db.js";
+import { logger } from "../helpers/logger.js";
 export const kafka = new Kafka({
     clientId: 'deal-service',
     brokers: ['kafka-broker-1:19092'],
@@ -15,11 +16,11 @@ export const sendMessage = async (topic, message) => {
                 },
             ],
         });
-        console.log('Сообщение успешно отправлено в топик: ', topic);
+        logger.info('Сообщение успешно отправлено в топик: ' + topic);
         await producer.disconnect();
     }
     catch (error) {
-        console.error('Ошибка при отправке сообщения: ', error);
+        logger.error('Ошибка при отправке сообщения: ' + error);
     }
 };
 export async function getFromDb(table, id) {

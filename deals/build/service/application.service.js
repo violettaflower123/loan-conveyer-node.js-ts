@@ -1,5 +1,6 @@
 import { db } from '../db.js';
 import { ConflictError } from '../errors/errorClasses.js';
+import { logger } from '../helpers/logger.js';
 export async function addClientAndPassport(loanApplication) {
     const passportId = loanApplication.passportSeries + loanApplication.passportNumber;
     try {
@@ -20,12 +21,13 @@ export async function addClientAndPassport(loanApplication) {
                 loanApplication.email,
                 passportId
             ]);
-            console.log('result 1111', result.client_id);
+            console.log(result);
             return result.client_id;
         });
         return result;
     }
     catch (error) {
+        logger.error(error);
         throw error;
     }
 }

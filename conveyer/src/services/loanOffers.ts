@@ -1,7 +1,9 @@
 import { calculateCredit } from "./calculateCredit.js";
 import { LoanApplicationRequestDTO, LoanOfferDTO } from "../dtos.js";
+import { logger } from "../helpers/logger.js";
 
 function calculateLoanOffers(request: LoanApplicationRequestDTO): LoanOfferDTO[]{
+    logger.info('Calculating credit offer with request details:', request);
 
     const combinations = [
         { isInsuranceEnabled: false, isSalaryClient: false },
@@ -14,36 +16,13 @@ function calculateLoanOffers(request: LoanApplicationRequestDTO): LoanOfferDTO[]
     for (const combination of combinations) {
         const offer = calculateCredit(request, combination.isInsuranceEnabled, combination.isSalaryClient);
         offers.push(offer);
+        logger.debug(`Offer calculated for combination: ${JSON.stringify(combination)}`); 
       }
     offers.sort((a, b) => a.rate - b.rate);
+    
+    logger.info('Credit offers successfully calculated and sorted'); 
 
     return offers;
 }
-
-// function prescoring(request: LoanApplicationRequestDTO): boolean {
-//     const schema = Joi.object({
-//         firstName: Joi.string().min(2).max(30).required(),
-//         lastName: Joi.string().min(2).max(30).required(),
-//         middleName: Joi.string().min(2).max(30).optional(),
-//         amount: Joi.number().min(10000).required(),
-//         term: Joi.number().integer().min(6).required(),
-//         birthdate: Joi.date().custom((value, helpers) => {
-//             const today = new Date();
-//             const age = differenceInYears(today, value);
-//             if (age < 18) return helpers.error('any.invalid');
-//             return value;
-//         }, 'Age validation').required(),
-//         email: Joi.string().pattern(/[\w\.]{2,50}@[\w\.]{2,20}/).required(),
-//         passportSeries: Joi.string().length(4).pattern(/[0-9]{4}/).required(),
-//         passportNumber: Joi.string().length(6).pattern(/[0-9]{6}/).required()
-//     })
-
-//     const { error } = schema.validate(request);
-//     if (error) {
-//         console.log(error.details); 
-//         throw new BadRequestError(error.details[0].message);
-//     }
-//     return true;
-// }
 
 export { calculateLoanOffers };

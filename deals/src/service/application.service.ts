@@ -1,6 +1,7 @@
 import { LoanApplicationRequestDTO } from '../dtos.js';
 import { db } from '../db.js';
 import { ConflictError } from '../errors/errorClasses.js';
+import { logger } from '../helpers/logger.js';
 
 export async function addClientAndPassport(loanApplication: LoanApplicationRequestDTO) {
   const passportId = loanApplication.passportSeries + loanApplication.passportNumber;
@@ -30,12 +31,13 @@ export async function addClientAndPassport(loanApplication: LoanApplicationReque
           passportId
         ]
       );
-      console.log('result 1111', result.client_id);
+      console.log(result)
       return result.client_id;
     });
 
     return result; 
   } catch (error) {
+    logger.error(error);
     throw error;
   }
 }

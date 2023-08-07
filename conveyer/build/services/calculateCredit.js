@@ -1,9 +1,11 @@
 import { v4 as uuidv4 } from 'uuid';
+import { logger } from "../helpers/logger.js";
 // расчет по формуле аннуитентного платежа P = (S * i * (1 + i)^n) / ((1 + i)^n - 1)
 // P - ежемесячный платеж, S - сумма кредита, i - ежемесячная процентная ставка (годовая ставка / 12), n - срок кредита в месяцах
 const INSURANCE_COST = 100000; // стоимость страховки
 const INTEREST_RATE = 0.1; // процентная ставка
 function calculateCredit(request, isInsuranceEnabled, isSalaryClient) {
+    logger.info('Calculating credit offer with request details:', request);
     const creditAmount = request.amount;
     const insuranceAmount = isInsuranceEnabled ? INSURANCE_COST : 0;
     const totalAmount = creditAmount + insuranceAmount;
@@ -20,6 +22,7 @@ function calculateCredit(request, isInsuranceEnabled, isSalaryClient) {
         isInsuranceEnabled: isInsuranceEnabled,
         isSalaryClient: isSalaryClient
     };
+    logger.info('Calculated offer:', offer);
     return offer;
 }
 export { calculateCredit };

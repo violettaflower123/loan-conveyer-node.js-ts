@@ -1,6 +1,8 @@
 import { differenceInYears } from "date-fns";
 import { Gender, Position, EmploymentStatus, MaritalStatus } from "../types/types.js";
+import { logger } from "../helpers/logger.js";
 function performScoring(data) {
+    logger.info('Performing scoring for data:', data);
     let interestRate = 0.1; // процентная ставка
     let message = "Scoring passed successfully";
     const { employment, maritalStatus, dependentNumber, gender, birthdate, amount } = data;
@@ -9,19 +11,23 @@ function performScoring(data) {
     const currentExperience = employment.workExperienceCurrent;
     if (age < 20 || age > 60) {
         message = "Rejected: The applicant's age is outside the acceptable range of 20 to 60 years.";
+        logger.warn(message);
         return { passed: false, rate: 0, message }; // reject
         // return { passed: false, rate: 0, message }; // reject
     }
     if (totalExperience < 12 || currentExperience < 3) {
         message = "Rejected: Insufficient work experience.";
+        logger.warn(message);
         return { passed: false, rate: 0, message };
     }
     if (amount > employment.salary * 20) {
         message = "Rejected: Loan amount exceeds the allowed limit based on salary.";
+        logger.warn(message);
         return { passed: false, rate: 0, message };
     }
     if (employment.employmentStatus === EmploymentStatus.Unemployed) {
         message = "Rejected: Applicant is unemployed.";
+        logger.warn(message);
         return { passed: false, rate: 0, message };
     }
     if (employment.employmentStatus === EmploymentStatus.SelfEmployed) {
@@ -52,6 +58,7 @@ function performScoring(data) {
     return { passed: true, rate: interestRate, message };
 }
 function calculateCreditParameters(data, rate) {
+    logger.info('Calculating credit parameters');
     // рассчет по формуле  аннуитетного платежа P = (S * i * (1 + i)^n) / ((1 + i)^n - 1), где P - ежемесячный платеж, 
     // S - сумма кредита, i - ежемесячная процентная ставка (годовая ставка / 12), n - срок кредита в месяцах
     const monthlyRate = rate / 12;
@@ -74,6 +81,7 @@ function calculateCreditParameters(data, rate) {
     return credit;
 }
 function calculatePaymentSchedule(amount, monthlyRate, termMonths, monthlyPayment) {
+    logger.info('Calculating payment schedule');
     const paymentSchedule = [];
     let remainingDebt = amount;
     for (let i = 0; i < termMonths; i++) {
