@@ -25,7 +25,6 @@ export const postApplication = async (req: Request, res: Response, next: NextFun
 
             if (error.response) {
                 const responseData = error.response.data as { message: string };
-                console.log('data111111', error.response.status)
                 return res.status(error.response.status).json({ error: responseData || error.message });
             }
             return res.status(400).json({ error: error.message }); 

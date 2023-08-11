@@ -34,6 +34,14 @@ export const validateRegistrationData = async (req, res, next) => {
     if (error) {
         const errorMessage = error.details[0].message;
         const customError = new BadRequestError(errorMessage);
+        // await producer.connect();
+        // const message: EmailMessage = {
+        // address: req.body.email,
+        // theme: MessageThemes.ApplicationDenied, 
+        // name: req.body.firstName,
+        // lastName: req.body.lastName
+        // };
+        // sendMessage('application-denied', message);
         return next(customError);
     }
     next();

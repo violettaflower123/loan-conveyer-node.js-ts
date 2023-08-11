@@ -1,61 +1,61 @@
-Payment schedule for Loan № 159:
+Payment schedule for Loan № 168:
 
 Month number: 1
-Date: 2023-09-07
-Total payment: 875.5174408364895
-Remaining debt: 9174
+Date: 2023-09-11
+Total payment: 4350
+Remaining debt: 45984
 
 Month number: 2
-Date: 2023-10-07
-Total payment: 875.5174408364895
-Remaining debt: 8344
+Date: 2023-10-11
+Total payment: 4350
+Remaining debt: 41941
 
 Month number: 3
-Date: 2023-11-07
-Total payment: 875.5174408364895
-Remaining debt: 7510
+Date: 2023-11-11
+Total payment: 4350
+Remaining debt: 37871
 
 Month number: 4
-Date: 2023-12-07
-Total payment: 875.5174408364895
-Remaining debt: 6672
+Date: 2023-12-11
+Total payment: 4350
+Remaining debt: 33774
 
 Month number: 5
-Date: 2024-01-07
-Total payment: 875.5174408364895
-Remaining debt: 5830
+Date: 2024-01-11
+Total payment: 4350
+Remaining debt: 29650
 
 Month number: 6
-Date: 2024-02-07
-Total payment: 875.5174408364895
-Remaining debt: 4984
+Date: 2024-02-11
+Total payment: 4350
+Remaining debt: 25498
 
 Month number: 7
-Date: 2024-03-07
-Total payment: 875.5174408364895
-Remaining debt: 4133
+Date: 2024-03-11
+Total payment: 4350
+Remaining debt: 21318
 
 Month number: 8
-Date: 2024-04-07
-Total payment: 875.5174408364895
-Remaining debt: 3278
+Date: 2024-04-11
+Total payment: 4350
+Remaining debt: 17111
 
 Month number: 9
-Date: 2024-05-07
-Total payment: 875.5174408364895
-Remaining debt: 2419
+Date: 2024-05-11
+Total payment: 4350
+Remaining debt: 12876
 
 Month number: 10
-Date: 2024-06-07
-Total payment: 875.5174408364895
-Remaining debt: 1556
+Date: 2024-06-11
+Total payment: 4350
+Remaining debt: 8612
 
 Month number: 11
-Date: 2024-07-07
-Total payment: 875.5174408364895
-Remaining debt: 688
+Date: 2024-07-11
+Total payment: 4350
+Remaining debt: 4320
 
 Month number: 12
-Date: 2024-08-07
-Total payment: 875.5174408364895
-Remaining debt: -184
+Date: 2024-08-11
+Total payment: 4350
+Remaining debt: -1

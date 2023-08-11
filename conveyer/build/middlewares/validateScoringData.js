@@ -2,6 +2,7 @@ import Joi from "joi";
 import { differenceInYears, isValid } from "date-fns";
 import { Gender, MaritalStatus, EmploymentStatus, Position } from "../types/types.js";
 import { logger } from "../helpers/logger.js";
+import { BadRequestError } from "../errors/errorClasses.js";
 const validateNumber = (value, helpers) => {
     if (typeof value !== "number" || isNaN(value)) {
         return helpers.error("number.base");
@@ -64,13 +65,9 @@ export const validateScoringData = (req, res, next) => {
     });
     if (error) {
         logger.warn('Ошибка валидации:', error);
-        console.log(error.details);
-        res.status(400).json({
-            error: error.details[0].message
-        });
-        return;
+        const validationError = new BadRequestError(error.details[0].message);
+        return next(validationError);
     }
-    console.log('validation passed');
     next();
 };
 //# sourceMappingURL=validateScoringData.js.map

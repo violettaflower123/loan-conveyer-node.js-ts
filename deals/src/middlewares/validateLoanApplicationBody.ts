@@ -27,8 +27,9 @@ export const validateLoanApplicationBody = (req: Request, res: Response, next: N
     const { error }: ValidationResult<LoanApplicationRequestDTO> = schema.validate(req.body);
 
     if (error) {
-        console.log(error.details); 
-        throw new BadRequestError(error.details[0].message);
+        console.log(error.details);
+        const badRequestError = new BadRequestError(error.details[0].message);
+        return next(badRequestError);
     }
 
     next();

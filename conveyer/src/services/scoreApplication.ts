@@ -91,7 +91,7 @@ function calculateCreditParameters(data: ScoringDataDTO, rate: number): CreditDT
     const monthlyRate = rate / 12; 
     const termMonths = data.term; 
 
-    const monthlyPayment = Math.ceil(data.amount * monthlyRate * Math.pow((1 + monthlyRate), termMonths)) / (Math.pow((1 + monthlyRate), termMonths) - 1);
+    const monthlyPayment = Math.ceil((data.amount * monthlyRate * Math.pow((1 + monthlyRate), termMonths)) / (Math.pow((1 + monthlyRate), termMonths) - 1));
 
     const totalAmount = monthlyPayment * termMonths;
 

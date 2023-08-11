@@ -19,7 +19,6 @@ export const postApplication = async (req, res, next) => {
             logger.error('Error occurred while processing the loan application:', error);
             if (error.response) {
                 const responseData = error.response.data;
-                console.log('data111111', error.response.status);
                 return res.status(error.response.status).json({ error: responseData || error.message });
             }
             return res.status(400).json({ error: error.message });

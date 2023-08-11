@@ -1,11 +1,12 @@
 import { db } from "../db.js";
+import { logger } from "../helpers/logger.js";
 export const getStatusId = async (statusValue) => {
     try {
         const status = await db.one('SELECT id FROM credit_status WHERE credit_status = $1;', [statusValue]);
         return status.id;
     }
     catch (error) {
-        console.error('Error getting status ID:', error);
+        logger.error('Error getting status ID:', error);
         throw error;
     }
 };
@@ -14,7 +15,7 @@ export const updateCreditStatus = async (creditId, creditStatusId) => {
         await db.none('UPDATE credit SET credit_status_id = $1 WHERE credit_id = $2;', [creditStatusId, creditId]);
     }
     catch (error) {
-        console.error('Error updating credit status:', error);
+        logger.error('Error updating credit status:', error);
         throw error;
     }
 };
@@ -28,7 +29,6 @@ export const updateApplication = async (applicationId, newStatus, sesCode) => {
         };
         const result = await db.one('SELECT status_history FROM application WHERE application_id = $1', [applicationId]);
         let statusHistory = result.status_history;
-        // Добавить новый элемент и отсортировать по времени
         statusHistory.push(newStatusHistoryItem);
         statusHistory.sort((a, b) => new Date(a.time).getTime() - new Date(b.time).getTime());
         await db.none(`
@@ -38,7 +38,7 @@ export const updateApplication = async (applicationId, newStatus, sesCode) => {
         `, [newStatus, now, sesCode, JSON.stringify(statusHistory), applicationId]);
     }
     catch (error) {
-        console.error('Error updating application:', error);
+        logger.error('Error updating application:', error);
         throw error;
     }
 };

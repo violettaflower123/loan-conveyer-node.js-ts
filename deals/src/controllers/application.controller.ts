@@ -2,12 +2,12 @@ import { Request, Response, NextFunction } from 'express';
 import { LoanApplicationRequestDTO, LoanOfferDTO } from '../dtos.js';
 import { addClientAndPassport } from '../service/application.service.js';
 import axios from 'axios';
-import { db, pgp } from '../db.js';
+import { db } from '../db.js';
 import pgPromise from 'pg-promise';
 import { BadRequestError, ServerError, ConflictError, AuthorizationError, ValidationError, ResourceNotFoundError } from '../errors/errorClasses.js';
 import { logger } from '../helpers/logger.js';
 
-export const postApplication = async (req: Request, res: Response, next: NextFunction) => {
+export const postApplication = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
     try {
         const loanApplication: LoanApplicationRequestDTO = req.body;
         
@@ -31,34 +31,22 @@ export const postApplication = async (req: Request, res: Response, next: NextFun
         logger.info(`Successfully processed application for client ID: ${clientId}.`);
 
         res.status(200).json(loanOffers);
-
     } catch (error: any) {
         logger.error('Error calculating loan offer', error); 
-
-        if (error instanceof pgPromise.errors.QueryResultError) {
-            return res.status(500).json({ error: 'Ошибка при выполнении запроса к базе данных.' });
-        } else if (error.message === 'Клиент с данным паспортом уже существует') {
-            return res.status(400).json({ error: error.message });
-        } if (error instanceof BadRequestError) {
-            return res.status(400).json({ error: error.message });
-        } else if (error instanceof AuthorizationError) {
-            return res.status(401).json({ error: error.message });
-        } else if (error instanceof ValidationError) {
-            return res.status(403).json({ error: error.message });
-        } else if (error instanceof ResourceNotFoundError) {
-            return res.status(404).json({ error: error.message });
-        } else if (error instanceof ConflictError) {
-            return res.status(409).json({ error: error.message });
-        } else if (error.message === 'Не удалось получить предложения о кредите') {
-            return res.status(500).json({ error: 'Не удалось получить предложения о кредите с API Conveyor.' });
-        } else {
-            if ('response' in error) {
-                console.log(error.response.data);
-                return res.status(400).json({ error: error.response.data.error });
-            } else {
-                return res.status(500).json({ error: 'Внутренняя ошибка сервера.' });
-            }
+    
+        if (error instanceof BadRequestError ||
+            error instanceof AuthorizationError ||
+            error instanceof ValidationError ||
+            error instanceof ResourceNotFoundError ||
+            error instanceof ConflictError ||
+            error instanceof ServerError) {
+          return next(error); 
         }
+        
+        if (error instanceof pgPromise.errors.QueryResultError) {
+          return next(new ServerError('Ошибка при выполнении запроса к базе данных.')); 
+        }
+        return next(new ServerError('Внутренняя ошибка сервера.'));
     }
 }
 

@@ -4,6 +4,7 @@ import { Gender, MaritalStatus, EmploymentStatus, Position } from "../types/type
 import { Request, Response, NextFunction } from "express";
 import { LoanApplicationRequestDTO } from "../dtos.js";
 import { logger } from "../helpers/logger.js";
+import { BadRequestError } from "../errors/errorClasses.js";
 
 const validateNumber = (value: unknown, helpers: CustomHelpers) => {
   if (typeof value !== "number" || isNaN(value)) {
@@ -69,16 +70,10 @@ export const validateScoringData = (req: Request, res: Response, next: NextFunct
     abortEarly: false,
   });
 
-
   if (error) {
     logger.warn('Ошибка валидации:', error);
-
-    console.log(error.details);
-    res.status(400).json({
-        error: error.details[0].message
-    });
-    return;
+    const validationError = new BadRequestError(error.details[0].message);
+    return next(validationError);
   }
-  console.log('validation passed');
   next();
 };

@@ -1,22 +1,9 @@
 import { MessageThemes } from "../types/types.js";
-import { BadRequestError, ServerError, ConflictError, AuthorizationError, ValidationError, ResourceNotFoundError } from "../errors/errorClasses.js";
 import { sendMessage, producer } from "../service/kafka.service.js";
 import { getFromDb } from "../service/kafka.service.js";
-import { db } from "../db.js";
 import { logger } from "../helpers/logger.js";
-export const updateSesCode = async (applicationId, sesCode) => {
-    try {
-        await db.none('UPDATE application SET ses_code = $1 WHERE application_id = $2;', [sesCode, applicationId]);
-    }
-    catch (error) {
-        logger.error('Error updating SES code:', error);
-        throw error;
-    }
-};
-function generateRandomNumber() {
-    return Math.floor(100000 + Math.random() * 900000);
-}
-export const sendSes = async (req, res) => {
+import { updateSesCode, generateRandomNumber } from "../service/sendSes.servise.js";
+export const sendSes = async (req, res, next) => {
     try {
         const applicationId = req.params.applicationId;
         logger.info(`Recieved request from application with ID: ${applicationId}`);
@@ -42,22 +29,7 @@ export const sendSes = async (req, res) => {
     catch (err) {
         const error = err;
         logger.error(`An error occurred while sending SES: ${error.message}`);
-        if (error instanceof BadRequestError ||
-            error instanceof ConflictError ||
-            error instanceof ResourceNotFoundError ||
-            error instanceof AuthorizationError ||
-            error instanceof ValidationError ||
-            error instanceof ServerError) {
-            res.status(error.statusCode).send({
-                message: error.message
-            });
-        }
-        else {
-            res.status(500).send({
-                message: 'An unexpected error occurred.',
-                error: error.message
-            });
-        }
+        next(err);
     }
 };
 //# sourceMappingURL=sendSes.controller.js.map

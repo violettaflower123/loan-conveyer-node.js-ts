@@ -1,22 +1,26 @@
 import { v4 as uuidv4 } from 'uuid';
+import { logger } from "../helpers/logger.js";
 const INSURANCE_COST = 100000; // стоимость страховки
 const INTEREST_RATE = 0.1; // процентная ставка
 function calculateCredit(request, isInsuranceEnabled, isSalaryClient) {
+    logger.info('Calculating credit offer with request details:', request);
     const creditAmount = request.amount;
     const insuranceAmount = isInsuranceEnabled ? INSURANCE_COST : 0;
-    const interestAmount = creditAmount * INTEREST_RATE;
-    // СК + % + СВК = ПСК
-    const totalAmount = creditAmount + insuranceAmount + interestAmount;
+    const totalAmount = creditAmount + insuranceAmount;
+    const monthlyInterestRate = INTEREST_RATE / 12 / 100;
+    const termInMonths = request.term;
+    const monthlyPayment = (totalAmount * monthlyInterestRate * Math.pow((1 + monthlyInterestRate), termInMonths)) / (Math.pow((1 + monthlyInterestRate), termInMonths) - 1);
     const offer = {
         applicationId: uuidv4(),
         requestedAmount: request.amount,
         totalAmount: totalAmount,
         term: request.term,
-        monthlyPayment: totalAmount / request.term,
+        monthlyPayment: Math.ceil(monthlyPayment),
         rate: isInsuranceEnabled ? INTEREST_RATE - 0.03 : INTEREST_RATE,
         isInsuranceEnabled: isInsuranceEnabled,
         isSalaryClient: isSalaryClient
     };
+    logger.info('Calculated offer:', offer);
     return offer;
 }
 export { calculateCredit };

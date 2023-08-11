@@ -36,8 +36,10 @@ const errorHandler: ErrorRequestHandler = (err, req, res, next) => {
 };
 
 
-app.use(errorHandler);
 app.use('/conveyor', conveyerRouter);
+app.use(errorHandler);
+
+
 
 const port = 3001;
 app.listen((port), () => {

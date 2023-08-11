@@ -1,6 +1,6 @@
 Client information
-Client ID: 150
-Name: John Doe
-Birth date: 1990-01-01T00:00:00.000Z
+Client ID: 158
+Name: Michael Fox
+Birth date: 1985-03-03T00:00:00.000Z
 Email: vitaminka_94@mail.ru
-Credit ID: 159
+Credit ID: 168

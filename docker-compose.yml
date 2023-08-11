@@ -69,6 +69,8 @@ services:
     environment:
       - POSTGRES_PASSWORD=${DB_PASSWORD}
       - POSTGRES_DB=${DB_NAME}
+      - DB_USER=${DB_USER}
+      - DB_NAME=${DB_NAME}
     networks:    
       - my_network 
 

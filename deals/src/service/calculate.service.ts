@@ -1,21 +1,22 @@
 import { db } from "../db.js";
 import { FinishRegistrationRequestDTO, PassportDTO, ScoringDataDTO, Credit, Application,
-ApplicationStatusHistoryDTO, EmploymentDTO } from "../dtos.js";
+ApplicationStatusHistoryDTO, EmploymentDTO, ClientDTO, ApplicationDTO } from "../dtos.js";
 import { ChangeType,  Gender,  MaritalStatus,  Status, Position, EmploymentStatus } from "../types/types.js";
 import { pgp } from "../db.js";
 import { ServerError, ResourceNotFoundError } from "../errors/errorClasses.js";
 import { logger } from "../helpers/logger.js";
 
-export async function getFromDb(table: string, id: string) {
+export async function getFromDb<T>(table: string, id: string): Promise<T> {
     try {
         const query = `SELECT * FROM ${table} WHERE ${table}_id = $1`;
         const result = await db.one(query, [id]);
-        return result;
+        return result as T;
     } catch (error) {
         logger.error('Error in getFromDb:', error);
         throw error;
     }
 }
+
 
 export function createScoringDataDTO(finishRegistrationData: FinishRegistrationRequestDTO, 
     application: any, client: any, passport: 
@@ -44,7 +45,7 @@ export function createScoringDataDTO(finishRegistrationData: FinishRegistrationR
         return scoringData;
     }
 
-export async function getStatusId(status: string) {
+export async function getStatusId(status: string): Promise<number> {
     try {
         const query = `SELECT id FROM credit_status WHERE credit_status = $1`;
         const result = await db.one(query, [status]);
@@ -93,10 +94,10 @@ export const saveCreditToDb = async (credit: Credit) => {
   };
 
 
-export async function getChangeTypeIdFromDb(changeType: ChangeType) {
+export async function getChangeTypeIdFromDb(changeType: ChangeType): Promise<number> {
     try {
         const query = `SELECT id FROM change_type WHERE change_type = $1;`;
-        const result = await db.oneOrNone(query, changeType);
+        const result = await db.one(query, changeType);
             
         return result.id;
 
@@ -107,10 +108,9 @@ export async function getChangeTypeIdFromDb(changeType: ChangeType) {
 }
 
 
-export async function saveStatusHistoryToDb(historyRecord: ApplicationStatusHistoryDTO, application: Application) {
+export async function saveStatusHistoryToDb(historyRecord: ApplicationStatusHistoryDTO, application: Application): Promise<void> {
     try {
         const applicationId = application.application_id;
-        console.log('history record', historyRecord);
         const changeTypeId = await getChangeTypeIdFromDb(historyRecord.changeType);
         const query = `INSERT INTO status_history(status, time, change_type_id, application_id) VALUES($1, $2, $3, $4) RETURNING *;`;
         const values = [historyRecord.status, historyRecord.time, changeTypeId, applicationId];
@@ -122,7 +122,7 @@ export async function saveStatusHistoryToDb(historyRecord: ApplicationStatusHist
     }
 }
 
-export async function updateApplicationStatusAndHistory(application: Application, newStatus: Status, changeType: ChangeType) {
+export async function updateApplicationStatusAndHistory(application: Application, newStatus: Status, changeType: ChangeType): Promise<void> {
     try {
         const now = new Date();
         const historyRecord: ApplicationStatusHistoryDTO = {
@@ -145,7 +145,7 @@ export async function updateApplicationStatusAndHistory(application: Application
     }
 }
 
-export async function saveApplication(application: Application) {
+export async function saveApplication(application: Application): Promise<ApplicationDTO> {
     const updateQuery = `UPDATE application SET status = $1, status_history = $2, credit_id = $3 WHERE application_id = $4`;
 
     await db.none(updateQuery, [application.status, JSON.stringify(application.status_history), application.credit_id, application.application_id]);
@@ -156,19 +156,16 @@ export async function saveApplication(application: Application) {
     return savedApplication;
 }
 
-export async function updateClient(clientId: string, gender: Gender, maritalStatus: MaritalStatus, dependentNumber: number, employmentId: string, account: string) {
+export async function updateClient(clientId: string, gender: Gender, maritalStatus: MaritalStatus, dependentNumber: number, employmentId: string, account: string): Promise<ClientDTO> {
     try {
-        console.log('4')
         const genderRow = await db.one("SELECT id FROM gender WHERE gender = $1", [gender]);
         const genderId = genderRow.id;
         const statusRow = await db.one("SELECT id FROM marital_status WHERE marital_status = $1", [maritalStatus]);
         const statusId = statusRow.id;
 
-        console.log('status', statusId)
         const client = await db.one("UPDATE client SET gender_id = $1, marital_status_id = $2, dependent_amount = $3, employment_id = $4, account = $5 WHERE client_id = $6 RETURNING *", [genderId, statusId, dependentNumber, employmentId, account, clientId]); 
-        console.log(client);
 
-        return client; // Возвращает обновленного клиента
+        return client; 
     } catch (error: any) {
         const message = `An error occurred: ${error.message}`;
         let customError;
@@ -183,16 +180,13 @@ export async function updateClient(clientId: string, gender: Gender, maritalStat
     }
 }
 
-
 async function getEmploymentStatusId(status: EmploymentStatus): Promise<number> {
   const result = await db.one('SELECT id FROM employment_status WHERE employment_status = $1', [status]);
-  console.log('1', result)
   return result.id;
 }
 
 async function getPositionId(position: Position): Promise<number> {
   const result = await db.one('SELECT id FROM employment_position WHERE employment_position = $1', [position]);
-  console.log('1', result)
   return result.id;
 }
 
@@ -219,15 +213,12 @@ export async function saveEmploymentToDb(employmentData: any): Promise<string> {
     employmentData.workExperienceTotal,
     employmentData.workExperienceCurrent,
   ];
-  console.log('values', values);
   const result = await db.one(query, values);
-
-  console.log('res', result)
   
   return result.employment_id;
 }
 
-export const updatePassport = async (passportBranch: string, passportIssuedate: string, passportId: string) => {
+export const updatePassport = async (passportBranch: string, passportIssuedate: string, passportId: string): Promise<void> => {
     try {
       await db.none('UPDATE passport SET issue_branch = $1, issue_date = $2 WHERE passport_id = $3', [passportBranch, passportIssuedate, passportId]);
       logger.info('Запись в таблице passport успешно обновлена');

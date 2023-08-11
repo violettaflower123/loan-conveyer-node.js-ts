@@ -87,7 +87,7 @@ export const saveCreditToDb = async (credit) => {
 export async function getChangeTypeIdFromDb(changeType) {
     try {
         const query = `SELECT id FROM change_type WHERE change_type = $1;`;
-        const result = await db.oneOrNone(query, changeType);
+        const result = await db.one(query, changeType);
         return result.id;
     }
     catch (error) {
@@ -98,7 +98,6 @@ export async function getChangeTypeIdFromDb(changeType) {
 export async function saveStatusHistoryToDb(historyRecord, application) {
     try {
         const applicationId = application.application_id;
-        console.log('history record', historyRecord);
         const changeTypeId = await getChangeTypeIdFromDb(historyRecord.changeType);
         const query = `INSERT INTO status_history(status, time, change_type_id, application_id) VALUES($1, $2, $3, $4) RETURNING *;`;
         const values = [historyRecord.status, historyRecord.time, changeTypeId, applicationId];
@@ -139,15 +138,12 @@ export async function saveApplication(application) {
 }
 export async function updateClient(clientId, gender, maritalStatus, dependentNumber, employmentId, account) {
     try {
-        console.log('4');
         const genderRow = await db.one("SELECT id FROM gender WHERE gender = $1", [gender]);
         const genderId = genderRow.id;
         const statusRow = await db.one("SELECT id FROM marital_status WHERE marital_status = $1", [maritalStatus]);
         const statusId = statusRow.id;
-        console.log('status', statusId);
         const client = await db.one("UPDATE client SET gender_id = $1, marital_status_id = $2, dependent_amount = $3, employment_id = $4, account = $5 WHERE client_id = $6 RETURNING *", [genderId, statusId, dependentNumber, employmentId, account, clientId]);
-        console.log(client);
-        return client; // Возвращает обновленного клиента
+        return client;
     }
     catch (error) {
         const message = `An error occurred: ${error.message}`;
@@ -164,12 +160,10 @@ export async function updateClient(clientId, gender, maritalStatus, dependentNum
 }
 async function getEmploymentStatusId(status) {
     const result = await db.one('SELECT id FROM employment_status WHERE employment_status = $1', [status]);
-    console.log('1', result);
     return result.id;
 }
 async function getPositionId(position) {
     const result = await db.one('SELECT id FROM employment_position WHERE employment_position = $1', [position]);
-    console.log('1', result);
     return result.id;
 }
 export async function saveEmploymentToDb(employmentData) {
@@ -193,9 +187,7 @@ export async function saveEmploymentToDb(employmentData) {
         employmentData.workExperienceTotal,
         employmentData.workExperienceCurrent,
     ];
-    console.log('values', values);
     const result = await db.one(query, values);
-    console.log('res', result);
     return result.employment_id;
 }
 export const updatePassport = async (passportBranch, passportIssuedate, passportId) => {

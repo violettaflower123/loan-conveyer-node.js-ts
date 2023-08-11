@@ -1,6 +1,5 @@
 import { Request, Response, NextFunction } from 'express';
 import { LoanOfferDTO } from '../dtos.js';
-import { db } from '../db.js';
 import * as offerService from '../service/offer.service.js';
 import { logger } from '../helpers/logger.js';
 

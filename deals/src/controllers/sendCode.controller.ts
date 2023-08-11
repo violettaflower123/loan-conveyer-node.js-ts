@@ -1,12 +1,12 @@
-import { Request, Response } from "express";
+import { NextFunction, Request, Response } from "express";
 import { producer, getFromDb, sendMessage } from "../service/kafka.service.js";
-import { MessageThemes } from "../types/types.js";
+import { MessageThemes, Status } from "../types/types.js";
 import { EmailMessage } from "../dtos.js";
 import { BadRequestError, ServerError, ConflictError, ValidationError, AuthorizationError, ResourceNotFoundError } from "../errors/errorClasses.js";
 import { getStatusId, updateCreditStatus, updateApplication } from "../service/sendCode.service.js";
 import { logger } from "../helpers/logger.js";
 
-export const sendCode = async (req: Request, res: Response) => {
+export const sendCode = async (req: Request, res: Response, next: NextFunction) => {
     // в req что-то типа {  "code": "755787"   }
     try {
         const applicationId = req.params.applicationId;
@@ -30,7 +30,7 @@ export const sendCode = async (req: Request, res: Response) => {
         } 
         const creditStatusId = await getStatusId('ISSUED');
         await updateCreditStatus(creditId, creditStatusId);
-        await updateApplication(applicationId, 'CREDIT_ISSUED', code);
+        await updateApplication(applicationId, Status.CreditIssued, code);
 
 
         await producer.connect();
@@ -48,22 +48,6 @@ export const sendCode = async (req: Request, res: Response) => {
     } catch (err) {
         const error = err as Error;
         logger.error(`Error sending code: ${error.message}`);
-
-        if (error instanceof BadRequestError || 
-            error instanceof ConflictError || 
-            error instanceof ResourceNotFoundError || 
-            error instanceof AuthorizationError || 
-            error instanceof ValidationError || 
-            error instanceof ServerError) {
-
-            res.status(error.statusCode).send({
-                message: error.message
-            });
-        } else {
-            res.status(500).send({
-                message: 'An unexpected error occurred.',
-                error: error.message
-            });
-        }
+        next(error); 
     }
 }

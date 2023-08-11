@@ -1,7 +1,15 @@
+// export class BadRequestError extends Error {
+//   statusCode: number;
+//   constructor(message: string) {
+//     super(message);
+//     this.statusCode = 400;
+//     this.name = "BadRequestError";
+//   }
+// }
 export class BadRequestError extends Error {
     constructor(message) {
         super(message);
-        this.statusCode = 400;
+        this.statusCode = 400; // это свойство используется в обработчике ошибок
         this.name = "BadRequestError";
     }
 }

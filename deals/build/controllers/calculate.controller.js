@@ -11,12 +11,14 @@ export const calculateCredit = async (req, res, next) => {
         logger.info(`Processing application with ID: ${applicationId}`);
         const finishRegistrationData = req.body;
         logger.info('Received FinisiRegistrationData' + finishRegistrationData);
+        // const application = await getFromDb('application', applicationId);
         const application = await getFromDb('application', applicationId);
-        const clientId = JSON.parse(application.client_id);
         if (!application) {
             logger.warn(`Application not found for ID: ${applicationId}`);
             throw new ResourceNotFoundError('Application not found.');
         }
+        const clientId = JSON.parse(application.client_id);
+        // const client = await getFromDb('client', clientId);
         const client = await getFromDb('client', clientId);
         if (!client) {
             logger.warn(`Client not found for ID: ${clientId}`);
@@ -28,7 +30,14 @@ export const calculateCredit = async (req, res, next) => {
             throw new ResourceNotFoundError('Passport not found.');
         }
         const scoringData = createScoringDataDTO(finishRegistrationData, application, client, passport);
-        const scoringResponse = await axios.post('http://api-conveyer:3001/conveyor/calculation', scoringData);
+        let scoringResponse;
+        try {
+            scoringResponse = await axios.post('http://api-conveyer:3001/conveyor/calculation', scoringData);
+        }
+        catch (error) {
+            logger.error(`Scoring request failed for application ID: ${applicationId}`, error);
+            throw new ServerError('Scoring service unavailable.');
+        }
         const creditDTO = scoringResponse.data;
         creditDTO.status = CreditStatus.Calculated;
         if (scoringResponse.status != 200) {
@@ -62,10 +71,10 @@ export const calculateCredit = async (req, res, next) => {
         };
         sendMessage('create-documents', message);
         logger.info(`Application status updated successfully for ID: ${applicationId}`);
-        return res.json({ message: 'Application status updated successfully.' });
+        res.status(200).json({ message: 'Application status updated successfully.' });
     }
     catch (err) {
-        logger.error('Ошибка: ' + err);
+        logger.error(`Error occurred during request to ${req.path}: ${err.message}`, { error: err, body: req.body, query: req.query });
         next(err);
     }
 };

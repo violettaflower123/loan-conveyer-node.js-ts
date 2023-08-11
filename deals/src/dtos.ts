@@ -42,7 +42,6 @@ export interface EmploymentDTO {
     workExperienceCurrent: number
 }
 
-
 export interface ScoringDataDTO {
     amount: number,
     term: number,
@@ -91,7 +90,7 @@ export interface ApplicationStatusHistoryDTO {
 export interface EmailMessage {
   address: string;
   theme: string;
-  applicationId: string;
+  applicationId?: string;
   name: string,
   lastName: string,
   paymentData?: PaymentScheduleElement[],
@@ -123,10 +122,24 @@ export interface Client {
   employmentId: string,
   account: string
 }
+export interface ClientDTO {
+  client_id: string,
+  last_name: string,
+  first_name: string,
+  middle_name: string,
+  birth_date: string,
+  email: string,
+  gender_id: number,
+  marital_status: number,
+  dependent_amount: number,
+  passport_id: string,
+  employment_id: string,
+  account: string
+}
 
 export interface Application {
   application_id: string;
-  client_id: number;
+  client_id: string;
   credit_id: number;
   status: Status;
   creationDate: Date;
@@ -135,3 +148,22 @@ export interface Application {
   sesCode: string;
   status_history: ApplicationStatusHistoryDTO[];  
 }
+export interface ApplicationDTO {
+  application_id: string;
+  client_id: string;
+  credit_id: number;
+  status: Status;
+  creationDate: Date;
+  appliedOffer: string;
+  signDate: Date;
+  sesCode: string;
+  status_history: ApplicationStatusHistoryDTO[];  
+}
+export interface Passport {
+  series: string;
+  number: string;
+  issue_branch: string;
+  issue_date: Date;
+  passport_id: string; 
+};
+

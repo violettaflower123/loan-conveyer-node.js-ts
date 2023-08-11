@@ -1,6 +1,7 @@
 import Joi from "joi";
 import { differenceInYears, isValid, parse } from "date-fns";
 import { logger } from "../helpers/logger.js";
+import { BadRequestError } from "../errors/errorClasses.js";
 const schema = Joi.object({
     firstName: Joi.string().min(2).max(30).required(),
     lastName: Joi.string().min(2).max(30).required(),
@@ -26,10 +27,7 @@ export const validateLoanApplicationBody = (req, res, next) => {
     const { error } = schema.validate(req.body);
     if (error) {
         logger.warn('Ошибка валидации:', error);
-        res.status(400).json({
-            error: error.details[0].message
-        });
-        return;
+        return next(new BadRequestError(error.details[0].message));
     }
     next();
 };

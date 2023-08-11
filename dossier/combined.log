@@ -91,3 +91,95 @@
 {"level":"info","message":"Email sent: 250 2.0.0 Ok: queued on mail-nwsmtp-smtp-production-main-54.iva.yp-c.yandex.net 1691427808-R3bGinhW0mI0-1RRPamUg","service":"user-service"}
 {"level":"info","message":"Email sent: 250 2.0.0 Ok: queued on mail-nwsmtp-smtp-production-main-33.iva.yp-c.yandex.net 1691427849-74b0JehWmuQ0-mXziV1gY","service":"user-service"}
 {"level":"info","message":"Email sent: 250 2.0.0 Ok: queued on mail-nwsmtp-smtp-production-main-51.vla.yp-c.yandex.net 1691427894-r4b4IHtWxOs0-3OvoAZJl","service":"user-service"}
+{"level":"info","message":"Subscribed to finish-registration.","service":"user-service"}
+{"level":"info","message":"Subscribed to create-documents.","service":"user-service"}
+{"level":"info","message":"Subscribed to send-documents.","service":"user-service"}
+{"level":"info","message":"Subscribed to send-ses.","service":"user-service"}
+{"level":"info","message":"Subscribed to credit-issued.","service":"user-service"}
+{"level":"info","message":"Subscribed to application-denied.","service":"user-service"}
+{"level":"info","message":"Started message processing.","service":"user-service"}
+{"level":"info","message":"Subscribed to finish-registration.","service":"user-service"}
+{"level":"info","message":"Subscribed to create-documents.","service":"user-service"}
+{"level":"info","message":"Subscribed to send-documents.","service":"user-service"}
+{"level":"info","message":"Subscribed to send-ses.","service":"user-service"}
+{"level":"info","message":"Subscribed to credit-issued.","service":"user-service"}
+{"level":"info","message":"Subscribed to application-denied.","service":"user-service"}
+{"level":"info","message":"Started message processing.","service":"user-service"}
+{"level":"info","message":"Subscribed to finish-registration.","service":"user-service"}
+{"level":"info","message":"Subscribed to create-documents.","service":"user-service"}
+{"level":"info","message":"Subscribed to send-documents.","service":"user-service"}
+{"level":"info","message":"Subscribed to send-ses.","service":"user-service"}
+{"level":"info","message":"Subscribed to credit-issued.","service":"user-service"}
+{"level":"info","message":"Subscribed to application-denied.","service":"user-service"}
+{"level":"info","message":"Started message processing.","service":"user-service"}
+{"level":"info","message":"Subscribed to finish-registration.","service":"user-service"}
+{"level":"info","message":"Subscribed to create-documents.","service":"user-service"}
+{"level":"info","message":"Subscribed to send-documents.","service":"user-service"}
+{"level":"info","message":"Subscribed to send-ses.","service":"user-service"}
+{"level":"info","message":"Subscribed to credit-issued.","service":"user-service"}
+{"level":"info","message":"Subscribed to application-denied.","service":"user-service"}
+{"level":"info","message":"Started message processing.","service":"user-service"}
+{"level":"info","message":"Email sent: 250 2.0.0 Ok: queued on mail-nwsmtp-smtp-production-main-74.vla.yp-c.yandex.net 1691486203-gGUek41DT0U0-E463s9Gg","service":"user-service"}
+{"level":"info","message":"Email sent: 250 2.0.0 Ok: queued on mail-nwsmtp-smtp-production-main-39.sas.yp-c.yandex.net 1691487236-tXUe2N1Wo0U0-fzFF6Ozl","service":"user-service"}
+{"level":"info","message":"TXT file has been written.","service":"user-service"}
+{"level":"info","message":"TXT file has been written.","service":"user-service"}
+{"level":"info","message":"TXT file with payment schedule has been written.","service":"user-service"}
+{"level":"info","message":"Email sent: 250 2.0.0 Ok: queued on mail-nwsmtp-smtp-production-main-24.iva.yp-c.yandex.net 1691487297-tYUGQL1WkiE0-nSd00o1G","service":"user-service"}
+{"level":"info","message":"TXT file with payment schedule has been written.","service":"user-service"}
+{"level":"info","message":"TXT file has been written.","service":"user-service"}
+{"level":"info","message":"TXT file has been written.","service":"user-service"}
+{"level":"info","message":"Email sent: 250 2.0.0 Ok: queued on mail-nwsmtp-smtp-production-main-63.sas.yp-c.yandex.net 1691487704-hfUIgO1WkCg0-iaWUmXXH","service":"user-service"}
+{"level":"info","message":"TXT file has been written.","service":"user-service"}
+{"level":"info","message":"TXT file with payment schedule has been written.","service":"user-service"}
+{"level":"info","message":"TXT file has been written.","service":"user-service"}
+{"level":"info","message":"Email sent: 250 2.0.0 Ok: queued on mail-nwsmtp-smtp-production-main-91.iva.yp-c.yandex.net 1691487865-NiUN3N1Wl0U0-oXKRHdSR","service":"user-service"}
+{"level":"info","message":"TXT file has been written.","service":"user-service"}
+{"level":"info","message":"TXT file with payment schedule has been written.","service":"user-service"}
+{"level":"info","message":"TXT file has been written.","service":"user-service"}
+{"level":"info","message":"Email sent: 250 2.0.0 Ok: queued on mail-nwsmtp-smtp-production-main-69.iva.yp-c.yandex.net 1691487899-viUauO1WrKo0-iwVcbh7T","service":"user-service"}
+{"level":"info","message":"Email sent: 250 2.0.0 Ok: queued on mail-nwsmtp-smtp-production-main-29.myt.yp-c.yandex.net 1691490552-BTVThu1WpSw0-GoOFS3zw","service":"user-service"}
+{"level":"info","message":"Email sent: 250 2.0.0 Ok: queued on mail-nwsmtp-smtp-production-main-87.sas.yp-c.yandex.net 1691490659-uUVMCr1DRGk0-xmSB7RGt","service":"user-service"}
+{"level":"info","message":"TXT file has been written.","service":"user-service"}
+{"level":"info","message":"TXT file has been written.","service":"user-service"}
+{"level":"info","message":"TXT file with payment schedule has been written.","service":"user-service"}
+{"level":"info","message":"Email sent: 250 2.0.0 Ok: queued on mail-nwsmtp-smtp-production-main-52.vla.yp-c.yandex.net 1691490680-IVVJ6g1DaiE0-qIRGvw9D","service":"user-service"}
+{"level":"info","message":"Email sent: 250 2.0.0 Ok: queued on mail-nwsmtp-smtp-production-main-44.sas.yp-c.yandex.net 1691490687-PVVOet1WquQ0-4J0xgQoD","service":"user-service"}
+{"level":"info","message":"Email sent: 250 2.0.0 Ok: queued on mail-nwsmtp-smtp-production-main-37.myt.yp-c.yandex.net 1691490763-gWVHbv1WnmI0-3B4Nz6zq","service":"user-service"}
+{"id":0,"level":"error","message":"Consumer crashed:","payload":{"error":{"name":"KafkaJSNumberOfRetriesExceeded","retriable":false,"retryCount":5,"retryTime":12430},"groupId":"dossier-group","restart":true},"service":"user-service","timestamp":1691493515340,"type":"consumer.crash"}
+{"level":"info","message":"Subscribed to finish-registration.","service":"user-service"}
+{"level":"info","message":"Subscribed to create-documents.","service":"user-service"}
+{"level":"info","message":"Subscribed to send-documents.","service":"user-service"}
+{"level":"info","message":"Subscribed to send-ses.","service":"user-service"}
+{"level":"info","message":"Subscribed to credit-issued.","service":"user-service"}
+{"level":"info","message":"Subscribed to application-denied.","service":"user-service"}
+{"level":"info","message":"Started message processing.","service":"user-service"}
+{"level":"info","message":"Email sent: 250 2.0.0 Ok: queued on mail-nwsmtp-smtp-production-main-51.vla.yp-c.yandex.net 1691585021-ehYgw51DfqM0-C4HId8BK","service":"user-service"}
+{"level":"info","message":"Email sent: 250 2.0.0 Ok: queued on mail-nwsmtp-smtp-production-main-59.iva.yp-c.yandex.net 1691585190-SkYQB41DV8c0-p3D880Cl","service":"user-service"}
+{"level":"info","message":"Subscribed to finish-registration.","service":"user-service"}
+{"level":"info","message":"Subscribed to create-documents.","service":"user-service"}
+{"level":"info","message":"Subscribed to send-documents.","service":"user-service"}
+{"level":"info","message":"Subscribed to send-ses.","service":"user-service"}
+{"level":"info","message":"Subscribed to credit-issued.","service":"user-service"}
+{"level":"info","message":"Subscribed to application-denied.","service":"user-service"}
+{"level":"info","message":"Started message processing.","service":"user-service"}
+{"level":"info","message":"Email sent: 250 2.0.0 Ok: queued on mail-nwsmtp-smtp-production-main-49.vla.yp-c.yandex.net 1691657852-UvVaJRADe0U0-4Q726psH","service":"user-service"}
+{"level":"info","message":"Email sent: 250 2.0.0 Ok: queued on mail-nwsmtp-smtp-production-main-38.myt.yp-c.yandex.net 1691658250-94Wd0JAWra60-cYr3d1IE","service":"user-service"}
+{"level":"info","message":"Email sent: 250 2.0.0 Ok: queued on mail-nwsmtp-smtp-production-main-78.myt.yp-c.yandex.net 1691661467-jvWukvAWveA0-LFa6v4Bo","service":"user-service"}
+{"level":"info","message":"Subscribed to finish-registration.","service":"user-service"}
+{"level":"info","message":"Subscribed to create-documents.","service":"user-service"}
+{"level":"info","message":"Subscribed to send-documents.","service":"user-service"}
+{"level":"info","message":"Subscribed to send-ses.","service":"user-service"}
+{"level":"info","message":"Subscribed to credit-issued.","service":"user-service"}
+{"level":"info","message":"Subscribed to application-denied.","service":"user-service"}
+{"level":"info","message":"Started message processing.","service":"user-service"}
+{"level":"info","message":"Email sent: 250 2.0.0 Ok: queued on mail-nwsmtp-smtp-production-main-31.sas.yp-c.yandex.net 1691737541-e5VsjnKWrOs0-dc4NHwyZ","service":"user-service"}
+{"level":"info","message":"Email sent: 250 2.0.0 Ok: queued on mail-nwsmtp-smtp-production-main-54.vla.yp-c.yandex.net 1691739143-LWV14QLDYeA0-57FCD3tl","service":"user-service"}
+{"level":"info","message":"Email sent: 250 2.0.0 Ok: queued on mail-nwsmtp-smtp-production-main-51.vla.yp-c.yandex.net 1691740545-itVNwZLDaeA0-XXnG0Q67","service":"user-service"}
+{"level":"info","message":"Email sent: 250 2.0.0 Ok: queued on mail-nwsmtp-smtp-production-main-59.iva.yp-c.yandex.net 1691741034-r3WYV9JDSCg0-WLGS76bL","service":"user-service"}
+{"level":"info","message":"Email sent: 250 2.0.0 Ok: queued on mail-nwsmtp-smtp-production-main-39.vla.yp-c.yandex.net 1691741049-84WbadLDe0U0-RtXHqtb1","service":"user-service"}
+{"level":"info","message":"TXT file has been written.","service":"user-service"}
+{"level":"info","message":"TXT file has been written.","service":"user-service"}
+{"level":"info","message":"TXT file with payment schedule has been written.","service":"user-service"}
+{"level":"info","message":"Email sent: 250 2.0.0 Ok: queued on mail-nwsmtp-smtp-production-main-91.sas.yp-c.yandex.net 1691741306-P8W0VLLDdW20-1YrQFlhW","service":"user-service"}
+{"level":"info","message":"Email sent: 250 2.0.0 Ok: queued on mail-nwsmtp-smtp-production-main-84.vla.yp-c.yandex.net 1691741333-q8WABZLDeGk0-FLmSNtec","service":"user-service"}
+{"level":"info","message":"Email sent: 250 2.0.0 Ok: queued on mail-nwsmtp-smtp-production-main-37.myt.yp-c.yandex.net 1691741362-K9WvCFLBWeA0-9DhJ5AP7","service":"user-service"}

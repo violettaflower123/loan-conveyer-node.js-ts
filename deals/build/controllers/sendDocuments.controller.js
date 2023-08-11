@@ -1,9 +1,10 @@
-import { ResourceNotFoundError, BadRequestError, ConflictError, ServerError, AuthorizationError, ValidationError } from "../errors/errorClasses.js";
-import { MessageThemes } from "../types/types.js";
+import { ResourceNotFoundError } from "../errors/errorClasses.js";
+import { MessageThemes, Status } from "../types/types.js";
 import { sendMessage, producer } from "../service/kafka.service.js";
 import { getFromDb } from "../service/kafka.service.js";
 import { logger } from "../helpers/logger.js";
-export const sendDocuments = async (req, res) => {
+import { updateApplication } from "../service/sendDocuments.service.js";
+export const sendDocuments = async (req, res, next) => {
     try {
         const applicationId = req.params.applicationId;
         logger.info(`Processing documents for application ID: ${applicationId}`);
@@ -18,6 +19,7 @@ export const sendDocuments = async (req, res) => {
             logger.warn(`Application not found for ID: ${applicationId}`);
             throw new ResourceNotFoundError('Application not found.');
         }
+        updateApplication(applicationId, Status.DocumentCreated);
         await producer.connect();
         const message = {
             address: client.email,
@@ -37,22 +39,7 @@ export const sendDocuments = async (req, res) => {
     catch (err) {
         const error = err;
         logger.error(`An error occurred while processing documents: ${error.message}`);
-        if (error instanceof BadRequestError ||
-            error instanceof ConflictError ||
-            error instanceof ResourceNotFoundError ||
-            error instanceof AuthorizationError ||
-            error instanceof ValidationError ||
-            error instanceof ServerError) {
-            res.status(error.statusCode).send({
-                message: error.message
-            });
-        }
-        else {
-            res.status(500).send({
-                message: 'An unexpected error occurred.',
-                error: error.message
-            });
-        }
+        next(error);
     }
 };
 //# sourceMappingURL=sendDocuments.controller.js.map

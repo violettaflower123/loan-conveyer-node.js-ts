@@ -60,7 +60,7 @@ export const validateLoanApplicationBody = async (req, res, next) => {
             lastName: req.body.lastName
         };
         sendMessage('application-denied', message);
-        next(new BadRequestError(error.details[0].message)); // передаем ошибку обработчику ошибок Express
+        next(new BadRequestError(error.details[0].message));
         return;
     }
     next();

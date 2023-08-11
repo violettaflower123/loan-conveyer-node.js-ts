@@ -34,8 +34,8 @@ const errorHandler = (err, req, res, next) => {
     }
     next();
 };
-app.use(errorHandler);
 app.use('/conveyor', conveyerRouter);
+app.use(errorHandler);
 const port = 3001;
 app.listen((port), () => {
     logger.info(`Server is running on http://localhost:${port}`);

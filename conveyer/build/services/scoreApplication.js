@@ -63,7 +63,7 @@ function calculateCreditParameters(data, rate) {
     // S - сумма кредита, i - ежемесячная процентная ставка (годовая ставка / 12), n - срок кредита в месяцах
     const monthlyRate = rate / 12;
     const termMonths = data.term;
-    const monthlyPayment = Math.ceil(data.amount * monthlyRate * Math.pow((1 + monthlyRate), termMonths)) / (Math.pow((1 + monthlyRate), termMonths) - 1);
+    const monthlyPayment = Math.ceil((data.amount * monthlyRate * Math.pow((1 + monthlyRate), termMonths)) / (Math.pow((1 + monthlyRate), termMonths) - 1));
     const totalAmount = monthlyPayment * termMonths;
     // ПСК (полная стоимость кредита) - это отношение полной суммы кредита к сумме, которую берем в кредит
     const psk = totalAmount / data.amount;
