@@ -1065,3 +1065,4 @@
 {"level":"info","message":"Received PUT request for /deal/document/28aa14c6-d72e-4c4c-b46a-7e93b2a6d46e/code","service":"user-service"}
 {"level":"info","message":"Sending code for application ID: 28aa14c6-d72e-4c4c-b46a-7e93b2a6d46e","service":"user-service"}
 {"level":"info","message":"Сообщение успешно отправлено в топик: credit-issued","service":"user-service"}
+{"level":"info","message":"Server is running on http://localhost:3002","service":"user-service"}
