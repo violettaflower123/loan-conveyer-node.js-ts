@@ -8,7 +8,7 @@ services:
       - 3001:3001
     volumes:
       - ./conveyer:/usr/src/app
-      - /usr/src/app/node_modules
+      - conveyer_node_modules:/usr/src/app/node_modules
     depends_on:
       - db
     networks:    
@@ -22,7 +22,7 @@ services:
       - 3002:3002
     volumes:
       - ./deals:/usr/src/app
-      - /usr/src/app/node_modules
+      - deals_node_modules:/usr/src/app/node_modules
     depends_on:
       - db
       - kafka-broker-1
@@ -37,7 +37,7 @@ services:
       - 3003:3003
     volumes:
       - ./application:/usr/src/app
-      - /usr/src/app/node_modules
+      - application_node_modules:/usr/src/app/node_modules
     depends_on:
       - db
     networks:    
@@ -51,7 +51,7 @@ services:
       - 3004:3004
     volumes:
       - ./dossier:/usr/src/app
-      - /usr/src/app/node_modules
+      - dossier_node_modules:/usr/src/app/node_modules
     depends_on:
       - db
       - kafka-broker-1
@@ -117,6 +117,9 @@ networks:
   my_network:
     driver: bridge
 volumes: 
-  data:
-    driver: local
+  data: {}
+  conveyer_node_modules:
+  application_node_modules:
+  deals_node_modules:
+  dossier_node_modules:
 

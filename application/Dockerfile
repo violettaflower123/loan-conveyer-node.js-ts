@@ -4,11 +4,13 @@ FROM node:16.14.0-alpine3.14
 # Создание директории приложения
 WORKDIR /usr/src/app
 
-# Установка зависимостей
+# Копирование файлов package.json и package-lock.json
 COPY package*.json ./
+
+# Установка зависимостей
 RUN npm install
 
-# Копирование файлов приложения
+# Копирование остальных файлов приложения
 COPY . .
 
 # Сборка TypeScript кода
