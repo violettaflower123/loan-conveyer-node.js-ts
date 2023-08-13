@@ -117,9 +117,10 @@ networks:
   my_network:
     driver: bridge
 volumes: 
-  data: {}
-  conveyer_node_modules:
-  application_node_modules:
-  deals_node_modules:
-  dossier_node_modules:
+  db_data: {}
+  conveyer_node_modules: {}
+  application_node_modules: {}
+  deals_node_modules: {}
+  dossier_node_modules: {}
+
 
