@@ -1,6 +1,6 @@
 import { ResourceNotFoundError } from "../errors/errorClasses.js";
 import { MessageThemes, Status } from "../types/types.js";
-import { sendMessage, producer } from "../service/kafka.service.js";
+import { sendKafkaMessage } from "../service/kafka.service.js";
 import { getFromDb } from "../service/kafka.service.js";
 import { logger } from "../helpers/logger.js";
 import { updateApplication } from "../service/sendDocuments.service.js";
@@ -20,7 +20,7 @@ export const sendDocuments = async (req, res, next) => {
             throw new ResourceNotFoundError('Application not found.');
         }
         updateApplication(applicationId, Status.DocumentCreated);
-        await producer.connect();
+        const topic = 'send-documents';
         const message = {
             address: client.email,
             theme: MessageThemes.SendDocuments,
@@ -33,7 +33,12 @@ export const sendDocuments = async (req, res, next) => {
             amount: credit.amount,
             rate: credit.rate,
         };
-        sendMessage('send-documents', message);
+        try {
+            await sendKafkaMessage(topic, message);
+        }
+        catch (error) {
+            console.error('Failed to send message:', error.message);
+        }
         res.status(200).send('Success! Documents have been sent.');
     }
     catch (err) {

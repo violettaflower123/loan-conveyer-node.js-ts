@@ -1,4 +1,4 @@
-import { producer, getFromDb, sendMessage } from "../service/kafka.service.js";
+import { getFromDb, sendKafkaMessage } from "../service/kafka.service.js";
 import { MessageThemes, Status } from "../types/types.js";
 import { BadRequestError } from "../errors/errorClasses.js";
 import { getStatusId, updateCreditStatus, updateApplication } from "../service/sendCode.service.js";
@@ -24,7 +24,7 @@ export const sendCode = async (req, res, next) => {
         const creditStatusId = await getStatusId('ISSUED');
         await updateCreditStatus(creditId, creditStatusId);
         await updateApplication(applicationId, Status.CreditIssued, code);
-        await producer.connect();
+        const topic = 'credit-issued';
         const message = {
             address: client.email,
             theme: MessageThemes.CreditIssued,
@@ -32,7 +32,12 @@ export const sendCode = async (req, res, next) => {
             name: client.first_name,
             lastName: client.last_name
         };
-        sendMessage('credit-issued', message);
+        try {
+            await sendKafkaMessage(topic, message);
+        }
+        catch (error) {
+            console.error('Failed to send message:', error.message);
+        }
         res.status(200).send('Success! Credit has been issued.');
     }
     catch (err) {

@@ -5,6 +5,7 @@ import { ChangeType,  Gender,  MaritalStatus,  Status, Position, EmploymentStatu
 import { pgp } from "../db.js";
 import { ServerError, ResourceNotFoundError } from "../errors/errorClasses.js";
 import { logger } from "../helpers/logger.js";
+import axios from "axios";
 
 export async function getFromDb<T>(table: string, id: string): Promise<T> {
     try {
@@ -225,4 +226,13 @@ export const updatePassport = async (passportBranch: string, passportIssuedate: 
     } catch (error) {
       logger.error('Произошла ошибка:', error);
     }
-  };
+};
+
+export const getScoringResponse = async (scoringData: ScoringDataDTO) => {
+    try {
+        return await axios.post('http://api-conveyer:3001/conveyor/calculation', scoringData);
+    } catch (error) {
+        logger.error(`Scoring request failed`, error);
+        throw new ServerError('Scoring service unavailable.');
+    }
+};

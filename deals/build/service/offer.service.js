@@ -1,6 +1,6 @@
 import { db } from '../db.js';
 import { BadRequestError } from '../errors/errorClasses.js';
-import { producer, sendMessage } from './kafka.service.js';
+import { sendKafkaMessage } from './kafka.service.js';
 import { MessageThemes } from '../types/types.js';
 export async function updateOffer(loanOffer) {
     const application = await db.one('SELECT * FROM application WHERE application_id = $1', [loanOffer.applicationId]);
@@ -15,7 +15,7 @@ export async function updateOffer(loanOffer) {
         }];
     const updatedApplication = await db.one('UPDATE application SET status = $1, status_history = $2, applied_offer = $3 WHERE application_id = $4 RETURNING *', ["APPROVED", JSON.stringify(updatedStatusHistory), JSON.stringify(loanOffer), loanOffer.applicationId]);
     const getData = await db.any('SELECT * FROM application WHERE application_id = $1', application.application_id);
-    await producer.connect();
+    const topic = 'finish-registration';
     const message = {
         address: client.email,
         theme: MessageThemes.FinishRegistration,
@@ -23,7 +23,12 @@ export async function updateOffer(loanOffer) {
         name: client.first_name,
         lastName: client.last_name
     };
-    sendMessage('finish-registration', message);
+    try {
+        await sendKafkaMessage(topic, message);
+    }
+    catch (error) {
+        console.error('Failed to send message:', error.message);
+    }
     return updatedApplication;
 }
 //# sourceMappingURL=offer.service.js.map

@@ -2,6 +2,7 @@ import { db } from "../db.js";
 import { pgp } from "../db.js";
 import { ServerError, ResourceNotFoundError } from "../errors/errorClasses.js";
 import { logger } from "../helpers/logger.js";
+import axios from "axios";
 export async function getFromDb(table, id) {
     try {
         const query = `SELECT * FROM ${table} WHERE ${table}_id = $1`;
@@ -197,6 +198,15 @@ export const updatePassport = async (passportBranch, passportIssuedate, passport
     }
     catch (error) {
         logger.error('Произошла ошибка:', error);
+    }
+};
+export const getScoringResponse = async (scoringData) => {
+    try {
+        return await axios.post('http://api-conveyer:3001/conveyor/calculation', scoringData);
+    }
+    catch (error) {
+        logger.error(`Scoring request failed`, error);
+        throw new ServerError('Scoring service unavailable.');
     }
 };
 //# sourceMappingURL=calculate.service.js.map

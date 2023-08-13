@@ -2,7 +2,7 @@ import { db } from '../db.js';
 import { ApplicationDTO, LoanOfferDTO } from '../dtos.js';
 import { BadRequestError } from '../errors/errorClasses.js';
 import { EmailMessage } from '../dtos.js';
-import { producer, sendMessage } from './kafka.service.js';
+import { producer, sendKafkaMessage } from './kafka.service.js';
 import { MessageThemes } from '../types/types.js';
 
 
@@ -27,7 +27,8 @@ export async function updateOffer(loanOffer: LoanOfferDTO): Promise<ApplicationD
 
     const getData = await db.any('SELECT * FROM application WHERE application_id = $1', application.application_id);
     
-    await producer.connect();
+    const topic = 'finish-registration'; 
+
     const message: EmailMessage = {
       address: client.email,
       theme: MessageThemes.FinishRegistration, 
@@ -35,7 +36,13 @@ export async function updateOffer(loanOffer: LoanOfferDTO): Promise<ApplicationD
       name: client.first_name,
       lastName: client.last_name
     };
-    sendMessage('finish-registration', message);
+
+    try {
+        await sendKafkaMessage(topic, message);
+    } catch (error: any) {
+        console.error('Failed to send message:', error.message);
+    }
+
 
     return updatedApplication;
 }

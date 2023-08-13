@@ -269,3 +269,16 @@
 {"level":"info","message":"Subscribed to application-denied.","service":"user-service"}
 {"level":"info","message":"Started message processing.","service":"user-service"}
 {"level":"info","message":"Email sent: 250 2.0.0 Ok: queued on mail-nwsmtp-smtp-production-main-45.myt.yp-c.yandex.net 1691922405-hQaE9gMWqOs0-xH1J7Ge1","service":"user-service"}
+{"level":"info","message":"Email sent: 250 2.0.0 Ok: queued on mail-nwsmtp-smtp-production-main-45.sas.yp-c.yandex.net 1691925509-RIb6EOiWoOs0-sdOqkqaO","service":"user-service"}
+{"level":"info","message":"TXT file has been written.","service":"user-service"}
+{"level":"info","message":"TXT file with payment schedule has been written.","service":"user-service"}
+{"level":"info","message":"TXT file has been written.","service":"user-service"}
+{"level":"info","message":"Email sent: 250 2.0.0 Ok: queued on mail-nwsmtp-smtp-production-main-18.vla.yp-c.yandex.net 1691925759-bMb8PVkDeW20-Q9jsY0p3","service":"user-service"}
+{"level":"info","message":"Email sent: 250 2.0.0 Ok: queued on mail-nwsmtp-smtp-production-main-92.myt.yp-c.yandex.net 1691925820-cNbUQPiBeW20-tKUklEi7","service":"user-service"}
+{"level":"info","message":"Email sent: 250 2.0.0 Ok: queued on mail-nwsmtp-smtp-production-main-59.iva.yp-c.yandex.net 1691926164-NTbuaLfDaa60-35MWfypv","service":"user-service"}
+{"level":"info","message":"Email sent: 250 2.0.0 Ok: queued on mail-nwsmtp-smtp-production-main-87.sas.yp-c.yandex.net 1691926278-GVb9jViDXSw0-gvPQFToZ","service":"user-service"}
+{"level":"info","message":"Email sent: 250 2.0.0 Ok: queued on mail-nwsmtp-smtp-production-main-91.myt.yp-c.yandex.net 1691927499-cpbLOpiDXqM0-5CRY7nkM","service":"user-service"}
+{"level":"info","message":"Email sent: 250 2.0.0 Ok: queued on mail-nwsmtp-smtp-production-main-18.vla.yp-c.yandex.net 1691928367-56c2clkDV4Y0-antTH0w6","service":"user-service"}
+{"level":"info","message":"Email sent: 250 2.0.0 Ok: queued on mail-nwsmtp-smtp-production-main-90.myt.yp-c.yandex.net 1691929955-XWclGwiWm4Y0-adyojVEY","service":"user-service"}
+{"level":"info","message":"Email sent: 250 2.0.0 Ok: queued on mail-nwsmtp-smtp-production-main-81.myt.yp-c.yandex.net 1691930053-BYcSwtiWq0U0-E87IVjWE","service":"user-service"}
+{"level":"info","message":"Email sent: 250 2.0.0 Ok: queued on mail-nwsmtp-smtp-production-main-18.iva.yp-c.yandex.net 1691930161-0ac9JufWx0U0-A0n9fQfP","service":"user-service"}

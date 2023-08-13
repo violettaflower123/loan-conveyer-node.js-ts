@@ -2,8 +2,8 @@
 -- PostgreSQL database dump
 --
 
--- Dumped from database version 15.3 (Debian 15.3-1.pgdg120+1)
--- Dumped by pg_dump version 15.3 (Debian 15.3-1.pgdg120+1)
+-- Dumped from database version 15.4 (Debian 15.4-1.pgdg120+1)
+-- Dumped by pg_dump version 15.4 (Debian 15.4-1.pgdg120+1)
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -297,7 +297,7 @@ ALTER TABLE public.employment OWNER TO postgres;
 CREATE TABLE public.employment_position (
     id integer NOT NULL,
     employment_position character varying(255) NOT NULL,
-    CONSTRAINT check_employment_position CHECK (((employment_position)::text = ANY ((ARRAY['MID_MANAGER'::character varying, 'TOP_MANAGER'::character varying, 'WORKER'::character varying, 'OWNER'::character varying])::text[])))
+    CONSTRAINT check_employment_position CHECK (((employment_position)::text = ANY (ARRAY[('MID_MANAGER'::character varying)::text, ('TOP_MANAGER'::character varying)::text, ('WORKER'::character varying)::text, ('OWNER'::character varying)::text])))
 );
 
 
@@ -332,7 +332,7 @@ ALTER SEQUENCE public.employment_position_id_seq OWNED BY public.employment_posi
 CREATE TABLE public.employment_status (
     id integer NOT NULL,
     employment_status character varying(255) NOT NULL,
-    CONSTRAINT check_employment_status CHECK (((employment_status)::text = ANY ((ARRAY['UNEMPLOYED'::character varying, 'SELF_EMPLOYED'::character varying, 'BUSINESS_OWNER'::character varying, 'EMPLOYED'::character varying])::text[])))
+    CONSTRAINT check_employment_status CHECK (((employment_status)::text = ANY (ARRAY[('UNEMPLOYED'::character varying)::text, ('SELF_EMPLOYED'::character varying)::text, ('BUSINESS_OWNER'::character varying)::text, ('EMPLOYED'::character varying)::text])))
 );
 
 
@@ -515,6 +515,9 @@ COPY public.application (client_id, credit_id, status, creation_date, applied_of
 145	\N	PREAPPROVAL	2023-08-07 11:35:51.434	\N	\N	\N	\N	7335358b-33c2-453b-8d81-2e554636d748
 147	\N	PREAPPROVAL	2023-08-07 11:41:35.424	\N	\N	\N	\N	c15418dd-af1e-4f73-b797-b4e0fa3df2eb
 150	159	CREDIT_ISSUED	2023-08-07 11:47:16.449	{"applicationId":"27fe354a-2570-4c3e-8670-e010b6affdb3","requestedAmount":10000,"totalAmount":110000,"term":12,"monthlyPayment":110027,"rate":0.07,"isInsuranceEnabled":true,"isSalaryClient":false}	2023-08-07 17:04:53.419	328940	[{"time": "2023-08-07T11:47:34.330Z", "status": "APPROVED", "changeType": "MANUAL"}, {"time": "2023-08-07T11:48:30.924Z", "status": "APPROVED", "changeType": "MANUAL"}, {"time": "2023-08-07T13:33:42.264Z", "status": "APPROVED", "changeType": "AUTOMATIC"}, {"time": "2023-08-07T13:33:46.076Z", "status": "APPROVED", "changeType": "AUTOMATIC"}, {"time": "2023-08-07T13:35:20.943Z", "status": "APPROVED", "changeType": "AUTOMATIC"}, {"time": "2023-08-07T14:04:39.775Z", "status": "APPROVED", "changeType": "AUTOMATIC"}, {"time": "2023-08-07T14:35:40.935Z", "status": "APPROVED", "changeType": "AUTOMATIC"}, {"time": "2023-08-07T14:35:55.754Z", "status": "APPROVED", "changeType": "AUTOMATIC"}, {"time": "2023-08-07T14:36:20.340Z", "status": "APPROVED", "changeType": "AUTOMATIC"}, {"time": "2023-08-07T14:36:50.514Z", "status": "APPROVED", "changeType": "AUTOMATIC"}, {"time": "2023-08-07T14:37:11.202Z", "status": "APPROVED", "changeType": "AUTOMATIC"}, {"time": "2023-08-07T14:42:46.370Z", "status": "APPROVED", "changeType": "AUTOMATIC"}, {"time": "2023-08-07T14:44:53.037Z", "status": "APPROVED", "changeType": "AUTOMATIC"}, {"time": "2023-08-07T14:45:20.073Z", "status": "APPROVED", "changeType": "AUTOMATIC"}, {"time": "2023-08-07T14:48:04.010Z", "status": "APPROVED", "changeType": "AUTOMATIC"}, {"time": "2023-08-07T17:02:07.523Z", "status": "APPROVED", "changeType": "AUTOMATIC"}, {"time": "2023-08-07T17:04:53.419Z", "status": "CREDIT_ISSUED", "changeType": "AUTOMATIC"}]	27fe354a-2570-4c3e-8670-e010b6affdb3
+151	\N	CC_DENIED	2023-08-13 10:23:09.992	\N	\N	\N	\N	1288e5d6-3ef5-43d8-bc74-d7e3078adeeb
+152	160	DOCUMENT_CREATED	2023-08-13 10:25:41.884	{"applicationId":"96990fcb-eaa0-4e73-9eeb-4179961584a7","requestedAmount":50000,"totalAmount":150000,"term":12,"monthlyPayment":12507,"rate":0.07,"isInsuranceEnabled":true,"isSalaryClient":false}	2023-08-13 11:22:37.609	709402	[{"time": "2023-08-13T10:26:43.371Z", "status": "APPROVED", "changeType": "MANUAL"}, {"time": "2023-08-13T11:18:27.437Z", "status": "APPROVED", "changeType": "AUTOMATIC"}, {"time": "2023-08-13T11:22:37.609Z", "status": "DOCUMENT_CREATED", "changeType": "AUTOMATIC"}]	96990fcb-eaa0-4e73-9eeb-4179961584a7
+153	161	APPROVED	2023-08-13 11:29:05.53	{"applicationId":"4e6c2faf-1345-4396-91e8-478af161f19c","requestedAmount":50000,"totalAmount":150000,"term":12,"monthlyPayment":12507,"rate":0.07,"isInsuranceEnabled":true,"isSalaryClient":false}	\N	\N	[{"time": "2023-08-13T11:29:22.941Z", "status": "APPROVED", "changeType": "MANUAL"}, {"time": "2023-08-13T11:31:16.655Z", "status": "APPROVED", "changeType": "AUTOMATIC"}]	4e6c2faf-1345-4396-91e8-478af161f19c
 \.
 
 
@@ -557,6 +560,9 @@ COPY public.client (client_id, last_name, first_name, middle_name, birth_date, e
 148	Doe	John	Smith	1990-01-01	vitaminka_94@mail.ru	\N	\N	\N	9999123456	\N	\N
 149	Doe	John	Smith	1990-01-01	vitaminka_94@mail.ru	\N	\N	\N	9899123456	\N	\N
 150	Doe	John	Smith	1990-01-01	vitaminka_94@mail.ru	1	1	2	9099123456	313b1373-5726-4efd-bca3-95cf667a7cf3	1234567890123456
+151	Иванов	Иван	Иванович	1990-01-01	kutluhan92@gmail.com	\N	\N	\N	73c06912-d374-455d-9e4a-368ab3f9c642	\N	\N
+152	Иванов	Иван	Иванович	1990-01-01	kutluhan92@gmail.com	1	1	2	85741e2e-00ce-4d6b-a73a-1e3dd17e7690	73f3a5d2-71fb-4225-a604-56e4ab54ac4f	5469798787675453
+153	Иванов	Иван	Иванович	1985-07-15	vitaminka_94@mail.ru	3	3	2	46c3b153-b17b-426a-bd36-5c74cc310d12	04155316-5d3b-4fe7-b0ac-da575dda2603	RU1234567890
 \.
 
 
@@ -583,6 +589,8 @@ COPY public.credit (credit_id, amount, term, monthly_payment, rate, psk, payment
 157	10000	12	875.5174408364895	0.06	1.0506209290037873	[{"number":1,"date":"2023-09-07","totalPayment":875.5174408364895,"interestPayment":50,"debtPayment":826,"remainingDebt":9174},{"number":2,"date":"2023-10-07","totalPayment":875.5174408364895,"interestPayment":46,"debtPayment":830,"remainingDebt":8344},{"number":3,"date":"2023-11-07","totalPayment":875.5174408364895,"interestPayment":42,"debtPayment":834,"remainingDebt":7510},{"number":4,"date":"2023-12-07","totalPayment":875.5174408364895,"interestPayment":38,"debtPayment":838,"remainingDebt":6672},{"number":5,"date":"2024-01-07","totalPayment":875.5174408364895,"interestPayment":34,"debtPayment":842,"remainingDebt":5830},{"number":6,"date":"2024-02-07","totalPayment":875.5174408364895,"interestPayment":30,"debtPayment":846,"remainingDebt":4984},{"number":7,"date":"2024-03-07","totalPayment":875.5174408364895,"interestPayment":25,"debtPayment":851,"remainingDebt":4133},{"number":8,"date":"2024-04-07","totalPayment":875.5174408364895,"interestPayment":21,"debtPayment":855,"remainingDebt":3278},{"number":9,"date":"2024-05-07","totalPayment":875.5174408364895,"interestPayment":17,"debtPayment":859,"remainingDebt":2419},{"number":10,"date":"2024-06-07","totalPayment":875.5174408364895,"interestPayment":13,"debtPayment":863,"remainingDebt":1556},{"number":11,"date":"2024-07-07","totalPayment":875.5174408364895,"interestPayment":8,"debtPayment":868,"remainingDebt":688},{"number":12,"date":"2024-08-07","totalPayment":875.5174408364895,"interestPayment":4,"debtPayment":872,"remainingDebt":-184}]	t	f	1
 158	10000	12	875.5174408364895	0.06	1.0506209290037873	[{"number":1,"date":"2023-09-07","totalPayment":875.5174408364895,"interestPayment":50,"debtPayment":826,"remainingDebt":9174},{"number":2,"date":"2023-10-07","totalPayment":875.5174408364895,"interestPayment":46,"debtPayment":830,"remainingDebt":8344},{"number":3,"date":"2023-11-07","totalPayment":875.5174408364895,"interestPayment":42,"debtPayment":834,"remainingDebt":7510},{"number":4,"date":"2023-12-07","totalPayment":875.5174408364895,"interestPayment":38,"debtPayment":838,"remainingDebt":6672},{"number":5,"date":"2024-01-07","totalPayment":875.5174408364895,"interestPayment":34,"debtPayment":842,"remainingDebt":5830},{"number":6,"date":"2024-02-07","totalPayment":875.5174408364895,"interestPayment":30,"debtPayment":846,"remainingDebt":4984},{"number":7,"date":"2024-03-07","totalPayment":875.5174408364895,"interestPayment":25,"debtPayment":851,"remainingDebt":4133},{"number":8,"date":"2024-04-07","totalPayment":875.5174408364895,"interestPayment":21,"debtPayment":855,"remainingDebt":3278},{"number":9,"date":"2024-05-07","totalPayment":875.5174408364895,"interestPayment":17,"debtPayment":859,"remainingDebt":2419},{"number":10,"date":"2024-06-07","totalPayment":875.5174408364895,"interestPayment":13,"debtPayment":863,"remainingDebt":1556},{"number":11,"date":"2024-07-07","totalPayment":875.5174408364895,"interestPayment":8,"debtPayment":868,"remainingDebt":688},{"number":12,"date":"2024-08-07","totalPayment":875.5174408364895,"interestPayment":4,"debtPayment":872,"remainingDebt":-184}]	t	f	1
 159	10000	12	875.5174408364895	0.06	1.0506209290037873	[{"number":1,"date":"2023-09-07","totalPayment":875.5174408364895,"interestPayment":50,"debtPayment":826,"remainingDebt":9174},{"number":2,"date":"2023-10-07","totalPayment":875.5174408364895,"interestPayment":46,"debtPayment":830,"remainingDebt":8344},{"number":3,"date":"2023-11-07","totalPayment":875.5174408364895,"interestPayment":42,"debtPayment":834,"remainingDebt":7510},{"number":4,"date":"2023-12-07","totalPayment":875.5174408364895,"interestPayment":38,"debtPayment":838,"remainingDebt":6672},{"number":5,"date":"2024-01-07","totalPayment":875.5174408364895,"interestPayment":34,"debtPayment":842,"remainingDebt":5830},{"number":6,"date":"2024-02-07","totalPayment":875.5174408364895,"interestPayment":30,"debtPayment":846,"remainingDebt":4984},{"number":7,"date":"2024-03-07","totalPayment":875.5174408364895,"interestPayment":25,"debtPayment":851,"remainingDebt":4133},{"number":8,"date":"2024-04-07","totalPayment":875.5174408364895,"interestPayment":21,"debtPayment":855,"remainingDebt":3278},{"number":9,"date":"2024-05-07","totalPayment":875.5174408364895,"interestPayment":17,"debtPayment":859,"remainingDebt":2419},{"number":10,"date":"2024-06-07","totalPayment":875.5174408364895,"interestPayment":13,"debtPayment":863,"remainingDebt":1556},{"number":11,"date":"2024-07-07","totalPayment":875.5174408364895,"interestPayment":8,"debtPayment":868,"remainingDebt":688},{"number":12,"date":"2024-08-07","totalPayment":875.5174408364895,"interestPayment":4,"debtPayment":872,"remainingDebt":-184}]	t	f	2
+160	50000	12	4258	0.04000000000000001	1.02192	[{"number":1,"date":"2023-09-13","totalPayment":4258,"interestPayment":167,"debtPayment":4091,"remainingDebt":45909},{"number":2,"date":"2023-10-13","totalPayment":4258,"interestPayment":154,"debtPayment":4104,"remainingDebt":41805},{"number":3,"date":"2023-11-13","totalPayment":4258,"interestPayment":140,"debtPayment":4118,"remainingDebt":37687},{"number":4,"date":"2023-12-13","totalPayment":4258,"interestPayment":126,"debtPayment":4132,"remainingDebt":33555},{"number":5,"date":"2024-01-13","totalPayment":4258,"interestPayment":112,"debtPayment":4146,"remainingDebt":29409},{"number":6,"date":"2024-02-13","totalPayment":4258,"interestPayment":99,"debtPayment":4159,"remainingDebt":25250},{"number":7,"date":"2024-03-13","totalPayment":4258,"interestPayment":85,"debtPayment":4173,"remainingDebt":21077},{"number":8,"date":"2024-04-13","totalPayment":4258,"interestPayment":71,"debtPayment":4187,"remainingDebt":16890},{"number":9,"date":"2024-05-13","totalPayment":4258,"interestPayment":57,"debtPayment":4201,"remainingDebt":12689},{"number":10,"date":"2024-06-13","totalPayment":4258,"interestPayment":43,"debtPayment":4215,"remainingDebt":8474},{"number":11,"date":"2024-07-13","totalPayment":4258,"interestPayment":29,"debtPayment":4229,"remainingDebt":4245},{"number":12,"date":"2024-08-13","totalPayment":4258,"interestPayment":15,"debtPayment":4243,"remainingDebt":2}]	t	f	1
+161	50000	12	4396	0.1	1.05504	[{"number":1,"date":"2023-09-13","totalPayment":4396,"interestPayment":417,"debtPayment":3979,"remainingDebt":46021},{"number":2,"date":"2023-10-13","totalPayment":4396,"interestPayment":384,"debtPayment":4012,"remainingDebt":42009},{"number":3,"date":"2023-11-13","totalPayment":4396,"interestPayment":351,"debtPayment":4045,"remainingDebt":37964},{"number":4,"date":"2023-12-13","totalPayment":4396,"interestPayment":317,"debtPayment":4079,"remainingDebt":33885},{"number":5,"date":"2024-01-13","totalPayment":4396,"interestPayment":283,"debtPayment":4113,"remainingDebt":29772},{"number":6,"date":"2024-02-13","totalPayment":4396,"interestPayment":249,"debtPayment":4147,"remainingDebt":25625},{"number":7,"date":"2024-03-13","totalPayment":4396,"interestPayment":214,"debtPayment":4182,"remainingDebt":21443},{"number":8,"date":"2024-04-13","totalPayment":4396,"interestPayment":179,"debtPayment":4217,"remainingDebt":17226},{"number":9,"date":"2024-05-13","totalPayment":4396,"interestPayment":144,"debtPayment":4252,"remainingDebt":12974},{"number":10,"date":"2024-06-13","totalPayment":4396,"interestPayment":109,"debtPayment":4287,"remainingDebt":8687},{"number":11,"date":"2024-07-13","totalPayment":4396,"interestPayment":73,"debtPayment":4323,"remainingDebt":4364},{"number":12,"date":"2024-08-13","totalPayment":4396,"interestPayment":37,"debtPayment":4359,"remainingDebt":5}]	t	f	1
 \.
 
 
@@ -644,6 +652,10 @@ COPY public.employment (status_id, employer_inn, salary, position_id, work_exper
 1	1234567890	50000	1	15	3	a4f40e84-c31a-400d-bc65-69c98f3c751e
 1	1234567890	50000	1	15	3	e02a6ce3-92ef-4f26-bd44-06c696e980ca
 1	1234567890	50000	1	15	3	313b1373-5726-4efd-bca3-95cf667a7cf3
+1	1234567890	50000	2	50	3	d001d18b-7cbf-4fda-a330-eccfa86c6523
+1	1234567890	50000	2	50	3	4ad8dd7b-50e7-4e87-8fee-c4a9b5643786
+1	1234567890	50000	2	50	3	73f3a5d2-71fb-4225-a604-56e4ab54ac4f
+3	1234567890	50000	3	15	3	04155316-5d3b-4fe7-b0ac-da575dda2603
 \.
 
 
@@ -705,6 +717,9 @@ COPY public.passport (passport_id, series, number, issue_branch, issue_date) FRO
 9999123456	9999	123456	\N	\N
 9899123456	9899	123456	\N	\N
 9099123456	9099	123456	Branch XYZ	2023-08-07
+73c06912-d374-455d-9e4a-368ab3f9c642	4512	123456	\N	\N
+85741e2e-00ce-4d6b-a73a-1e3dd17e7690	4510	123456	Branch Name Here	2023-08-12
+46c3b153-b17b-426a-bd36-5c74cc310d12	0909	123456	Отделение УФМС России по г. Москва	2005-06-15
 \.
 
 
@@ -727,6 +742,8 @@ APPROVED	2023-08-07 14:44:53.037	1	27fe354a-2570-4c3e-8670-e010b6affdb3
 APPROVED	2023-08-07 14:45:20.073	1	27fe354a-2570-4c3e-8670-e010b6affdb3
 APPROVED	2023-08-07 14:48:04.01	1	27fe354a-2570-4c3e-8670-e010b6affdb3
 APPROVED	2023-08-07 17:02:07.523	1	27fe354a-2570-4c3e-8670-e010b6affdb3
+APPROVED	2023-08-13 11:18:27.437	1	96990fcb-eaa0-4e73-9eeb-4179961584a7
+APPROVED	2023-08-13 11:31:16.655	1	4e6c2faf-1345-4396-91e8-478af161f19c
 \.
 
 
@@ -755,14 +772,14 @@ SELECT pg_catalog.setval('public.change_type_id_seq', 2, true);
 -- Name: client_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.client_id_seq', 150, true);
+SELECT pg_catalog.setval('public.client_id_seq', 153, true);
 
 
 --
 -- Name: credit_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.credit_id_seq', 159, true);
+SELECT pg_catalog.setval('public.credit_id_seq', 161, true);
 
 
 --
@@ -958,22 +975,6 @@ ALTER TABLE ONLY public.credit
 
 ALTER TABLE ONLY public.client
     ADD CONSTRAINT unique_employment_id UNIQUE (employment_id);
-
-
---
--- Name: client unique_gender_id; Type: CONSTRAINT; Schema: public; Owner: postgres
---
-
-ALTER TABLE ONLY public.client
-    ADD CONSTRAINT unique_gender_id UNIQUE (gender_id);
-
-
---
--- Name: client unique_marital_status_id; Type: CONSTRAINT; Schema: public; Owner: postgres
---
-
-ALTER TABLE ONLY public.client
-    ADD CONSTRAINT unique_marital_status_id UNIQUE (marital_status_id);
 
 
 --

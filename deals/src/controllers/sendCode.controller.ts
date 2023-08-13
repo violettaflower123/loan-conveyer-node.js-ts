@@ -1,5 +1,5 @@
 import { NextFunction, Request, Response } from "express";
-import { producer, getFromDb, sendMessage } from "../service/kafka.service.js";
+import { producer, getFromDb, sendKafkaMessage } from "../service/kafka.service.js";
 import { MessageThemes, Status } from "../types/types.js";
 import { EmailMessage } from "../dtos.js";
 import { BadRequestError, ServerError, ConflictError, ValidationError, AuthorizationError, ResourceNotFoundError } from "../errors/errorClasses.js";
@@ -32,8 +32,7 @@ export const sendCode = async (req: Request, res: Response, next: NextFunction) 
         await updateCreditStatus(creditId, creditStatusId);
         await updateApplication(applicationId, Status.CreditIssued, code);
 
-
-        await producer.connect();
+        const topic = 'credit-issued'; 
 
         const message: EmailMessage = {
           address: client.email,
@@ -42,7 +41,12 @@ export const sendCode = async (req: Request, res: Response, next: NextFunction) 
           name: client.first_name,
           lastName: client.last_name
         };
-        sendMessage('credit-issued', message);
+
+        try {
+            await sendKafkaMessage(topic, message);
+        } catch (error: any) {
+            console.error('Failed to send message:', error.message);
+        }
 
         res.status(200).send('Success! Credit has been issued.');
     } catch (err) {

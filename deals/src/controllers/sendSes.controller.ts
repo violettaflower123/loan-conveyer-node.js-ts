@@ -1,7 +1,7 @@
 import { NextFunction, Request, Response } from "express";
 import { EmailMessage } from "../dtos.js";
 import { MessageThemes } from "../types/types.js";
-import { sendMessage, producer } from "../service/kafka.service.js";
+import { sendKafkaMessage } from "../service/kafka.service.js";
 import { getFromDb } from "../service/kafka.service.js";
 import { logger } from "../helpers/logger.js";
 import { updateSesCode, generateRandomNumber } from "../service/sendSes.servise.js";
@@ -22,7 +22,7 @@ export const sendSes = async (req: Request, res: Response, next: NextFunction) =
         
         logger.debug('Updated application:', application2);
 
-        await producer.connect();
+        const topic = 'send-ses'; 
 
         const message: EmailMessage = {
           address: client.email,
@@ -32,7 +32,12 @@ export const sendSes = async (req: Request, res: Response, next: NextFunction) =
           lastName: client.last_name, 
           sesCode: sesCode,
         };
-        sendMessage('send-ses', message);
+
+        try {
+            await sendKafkaMessage(topic, message);
+        } catch (error: any) {
+            console.error('Failed to send message:', error.message);
+        }
 
         res.status(200).send('Success! SES code has been sent.');
     } catch (err) {

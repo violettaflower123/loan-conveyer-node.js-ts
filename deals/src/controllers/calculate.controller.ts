@@ -1,67 +1,57 @@
 import { Request, Response, NextFunction } from "express";
-import axios from "axios";
 import { FinishRegistrationRequestDTO, ScoringDataDTO, Credit, Passport, ClientDTO, ApplicationDTO, PassportDTO } from "../dtos.js";
 import { ChangeType, Status, CreditStatus } from "../types/types.js";
 import { getFromDb, createScoringDataDTO, 
-    saveCreditToDb, saveApplication, updateApplicationStatusAndHistory, updateClient, saveEmploymentToDb, updatePassport } from "../service/calculate.service.js";
-import { ServerError, ResourceNotFoundError } from '../errors/errorClasses.js';
+    saveCreditToDb, saveApplication, updateApplicationStatusAndHistory, updateClient, saveEmploymentToDb, updatePassport, getScoringResponse } from "../service/calculate.service.js";
+import { ResourceNotFoundError } from '../errors/errorClasses.js';
 import { MessageThemes } from '../types/types.js';
 import { EmailMessage } from '../dtos.js';
-import { sendMessage, producer } from "../service/kafka.service.js";
+import { sendKafkaMessage } from "../service/kafka.service.js";
 import { logger } from "../helpers/logger.js";
 
 export const calculateCredit = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
       try {
-      const applicationId = req.params.applicationId;
-      logger.info(`Processing application with ID: ${applicationId}`);
+        const applicationId = req.params.applicationId;
+        logger.info(`Processing application with ID: ${applicationId}`);
 
-      const finishRegistrationData: FinishRegistrationRequestDTO = req.body;
-      logger.info('Received FinisiRegistrationData' + finishRegistrationData);
+        const finishRegistrationData: FinishRegistrationRequestDTO = req.body;
+        logger.info('Received FinisiRegistrationData' + finishRegistrationData);
 
+        const application = await getFromDb<ApplicationDTO>('application', applicationId);
+
+        if (!application) {
+          logger.warn(`Application not found for ID: ${applicationId}`);
+          throw new ResourceNotFoundError('Application not found.');
+        }
+        const clientId = JSON.parse(application.client_id);
+
+        const client = await getFromDb<ClientDTO>('client', clientId);
+
+        if (!client) {
+          logger.warn(`Client not found for ID: ${clientId}`);
+          throw new ResourceNotFoundError('Client not found.');
+        }
+
+        const passport = await getFromDb<PassportDTO>('passport', client.passport_id);
+
+        if (!passport) {
+          logger.warn(`Passport not found for client ID: ${clientId}`);
+          throw new ResourceNotFoundError('Passport not found.');
+        }
+
+        const scoringData: ScoringDataDTO = createScoringDataDTO(finishRegistrationData, application, client, passport); 
       
-      // const application = await getFromDb('application', applicationId);
-      const application = await getFromDb<ApplicationDTO>('application', applicationId);
+        const scoringResponse = await getScoringResponse(scoringData);
 
-      if (!application) {
-        logger.warn(`Application not found for ID: ${applicationId}`);
-        throw new ResourceNotFoundError('Application not found.');
-      }
-      const clientId = JSON.parse(application.client_id);
-
-      // const client = await getFromDb('client', clientId);
-      const client = await getFromDb<ClientDTO>('client', clientId);
-
-
-      if (!client) {
-        logger.warn(`Client not found for ID: ${clientId}`);
-        throw new ResourceNotFoundError('Client not found.');
-      }
-
-      const passport = await getFromDb<PassportDTO>('passport', client.passport_id);
-
-      if (!passport) {
-        logger.warn(`Passport not found for client ID: ${clientId}`);
-        throw new ResourceNotFoundError('Passport not found.');
-      }
-
-      const scoringData: ScoringDataDTO = createScoringDataDTO(finishRegistrationData, application, client, passport); 
-
-      let scoringResponse;
-      try {
-          scoringResponse = await axios.post('http://api-conveyer:3001/conveyor/calculation', scoringData);
-      } catch (error) {
-          logger.error(`Scoring request failed for application ID: ${applicationId}`, error);
-          throw new ServerError('Scoring service unavailable.');
-      }
-
-      const creditDTO: Credit = scoringResponse.data;
+        const creditDTO: Credit = scoringResponse.data;
       
-      creditDTO.status = CreditStatus.Calculated;
+        creditDTO.status = CreditStatus.Calculated;
 
-      if (scoringResponse.status != 200) {
+        if (scoringResponse.status != 200) {
           logger.error(`Scoring failed for application ID: ${applicationId}`);
 
-          await producer.connect();
+          const topic = 'application-denied'; 
+
           const message: EmailMessage = {
             address: client.email,
             theme: MessageThemes.ApplicationDenied, 
@@ -69,42 +59,49 @@ export const calculateCredit = async (req: Request, res: Response, next: NextFun
             name: client.first_name,
             lastName: client.last_name
           };
-          sendMessage('application-denied', message);
 
-          throw new ServerError('Scoring failed.');
-      }
+          try {
+              await sendKafkaMessage(topic, message);
+          } catch (error: any) {
+              console.error('Failed to send message:', error.message);
+          }
+        }
 
-      const employmentId = await saveEmploymentToDb(scoringData.employment);
+        const employmentId = await saveEmploymentToDb(scoringData.employment);
 
-      await updateClient(clientId, scoringData.gender, scoringData.maritalStatus, scoringData.dependentNumber, employmentId, scoringData.account);
+        await updateClient(clientId, scoringData.gender, scoringData.maritalStatus, scoringData.dependentNumber, employmentId, scoringData.account);
 
-      const savedCredit = await saveCreditToDb(creditDTO);
+        const savedCredit = await saveCreditToDb(creditDTO);
 
-      application.credit_id = savedCredit;
-      application.application_id = applicationId;
+        application.credit_id = savedCredit;
+        application.application_id = applicationId;
 
-      await updatePassport(scoringData.passportIssueBranch, scoringData.passportIssueDate, client.passport_id);
+        await updatePassport(scoringData.passportIssueBranch, scoringData.passportIssueDate, client.passport_id);
 
-      await updateApplicationStatusAndHistory(application, Status.Approved, ChangeType.Automatic);
+        await updateApplicationStatusAndHistory(application, Status.Approved, ChangeType.Automatic);
 
-      await saveApplication(application);  
+        await saveApplication(application);  
+        
+        const topic = 'create-documents';
 
-      await producer.connect();
+        const message: EmailMessage = {
+            address: client.email,
+            theme: MessageThemes.CreateDocuments, 
+            applicationId: applicationId,
+            name: client.first_name,
+            lastName: client.last_name
+        };
 
-      const message: EmailMessage = {
-        address: client.email,
-        theme: MessageThemes.CreateDocuments, 
-        applicationId: applicationId,
-        name: client.first_name,
-        lastName: client.last_name
-      };
-      sendMessage('create-documents', message);
-      
+        try {
+            await sendKafkaMessage(topic, message);
+        } catch (error: any) {
+            console.error('Failed to send message:', error.message);
+        }
 
-      logger.info(`Application status updated successfully for ID: ${applicationId}`);
-      res.status(200).json({ message: 'Application status updated successfully.' });
+        logger.info(`Application status updated successfully for ID: ${applicationId}`);
+        res.status(200).json({ message: 'Application status updated successfully.' });
     } catch (err: any) {
-      logger.error(`Error occurred during request to ${req.path}: ${err.message}`, { error: err, body: req.body, query: req.query });
-      next(err);
+        logger.error(`Error occurred during request to ${req.path}: ${err.message}`, { error: err, body: req.body, query: req.query });
+        next(err);
     }
 };

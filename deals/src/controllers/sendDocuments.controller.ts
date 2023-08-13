@@ -2,7 +2,7 @@ import { NextFunction, Request, Response } from "express";
 import { ResourceNotFoundError } from "../errors/errorClasses.js";
 import { EmailMessage } from "../dtos.js";
 import { MessageThemes, Status } from "../types/types.js";
-import { sendMessage, producer } from "../service/kafka.service.js";
+import { sendKafkaMessage, producer } from "../service/kafka.service.js";
 import { getFromDb } from "../service/kafka.service.js";
 import { logger } from "../helpers/logger.js";
 import { updateApplication } from "../service/sendDocuments.service.js";
@@ -28,7 +28,7 @@ export const sendDocuments = async (req: Request, res: Response, next: NextFunct
         
         updateApplication(applicationId, Status.DocumentCreated);
 
-        await producer.connect();
+        const topic = 'send-documents'; 
 
         const message: EmailMessage = {
           address: client.email,
@@ -42,7 +42,12 @@ export const sendDocuments = async (req: Request, res: Response, next: NextFunct
           amount: credit.amount,
           rate: credit.rate,
         };
-        sendMessage('send-documents', message);
+
+        try {
+            await sendKafkaMessage(topic, message);
+        } catch (error: any) {
+            console.error('Failed to send message:', error.message);
+        }
 
         res.status(200).send('Success! Documents have been sent.');
     } catch (err) {

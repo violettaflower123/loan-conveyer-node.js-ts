@@ -3,9 +3,6 @@ import { BadRequestError } from "../errors/errorClasses.js";
 import Joi, { CustomHelpers} from "joi";
 import { Gender, MaritalStatus, EmploymentStatus, Position } from "../types/types.js";
 import { isValid } from "date-fns";
-import { producer, sendMessage } from "../service/kafka.service.js";
-import { EmailMessage } from "../dtos.js";
-import { MessageThemes } from "../types/types.js";
 
 const finishRegistrationRequestSchema = Joi.object({
     gender: Joi.string().valid(...Object.values(Gender)).required(),
@@ -42,15 +39,6 @@ export const validateRegistrationData = async (req: Request, res: Response, next
     if (error) {
         const errorMessage = error.details[0].message;
         const customError = new BadRequestError(errorMessage);
-
-        // await producer.connect();
-        // const message: EmailMessage = {
-        // address: req.body.email,
-        // theme: MessageThemes.ApplicationDenied, 
-        // name: req.body.firstName,
-        // lastName: req.body.lastName
-        // };
-        // sendMessage('application-denied', message);
 
         return next(customError);
     }
