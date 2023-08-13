@@ -64,12 +64,12 @@ services:
     ports:
       - '5433:5432' 
     volumes:
-      - data:/var/lib/postgresql/data
+      - ./db/data:/var/lib/postgresql/data
       - ./db:/docker-entrypoint-initdb.d
     environment:
       - POSTGRES_PASSWORD=${DB_PASSWORD}
       - POSTGRES_DB=${DB_NAME}
-      - DB_USER=${DB_USER}
+      - POSTGRES_USER=${DB_USER}
       - DB_NAME=${DB_NAME}
     networks:    
       - my_network 
