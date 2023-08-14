@@ -1,6 +1,6 @@
 Client information
-Client ID: 152
-Name: Иван Иванов
+Client ID: 154
+Name: Виолетта Цветкова
 Birth date: 1990-01-01T00:00:00.000Z
-Email: kutluhan92@gmail.com
-Credit ID: 160
+Email: violetta.vitaandreevna@gmail.com
+Credit ID: 164

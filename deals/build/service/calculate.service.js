@@ -147,7 +147,7 @@ export async function updateClient(clientId, gender, maritalStatus, dependentNum
         return client;
     }
     catch (error) {
-        const message = `An error occurred: ${error.message}`;
+        const message = `An error occurred: ${error.message} in Update Client`;
         let customError;
         if (error instanceof pgp.errors.QueryResultError) {
             customError = new ResourceNotFoundError(message);

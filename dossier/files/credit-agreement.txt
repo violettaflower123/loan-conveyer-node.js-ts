@@ -1,13 +1,13 @@
 CREDIT AGREEMENT
 THIS AGREEMENT is made the 4th day of August, 2023, 
-    by and between Иван Иванов (hereinafter "Borrower") and TU BANK (hereinafter "Lender").
+    by and between Виолетта Цветкова (hereinafter "Borrower") and TU BANK (hereinafter "Lender").
 1. PROMISE TO PAY:
 
     Borrower promises to pay to Lender the sum of 50000, with interest 
-    payable on the unpaid principal at the rate of 0.04000000000000001 per annum.
+    payable on the unpaid principal at the rate of 0.14 per annum.
 2. PAYMENT:
 
-        Borrower will make monthly payments of 4258, beginning one month from the date 
+        Borrower will make monthly payments of 4490, beginning one month from the date 
         this agreement is signed, until the principal and interest have been paid in full.
 3. LATE CHARGE:
 
@@ -24,7 +24,7 @@ THIS AGREEMENT is made the 4th day of August, 2023,
 
     [Sign here]____________
 
-    Иван ИвановLENDER:
+    Виолетта ЦветковаLENDER:
 
     [Sign here]____________
 

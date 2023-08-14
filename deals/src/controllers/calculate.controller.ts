@@ -81,6 +81,9 @@ export const calculateCredit = async (req: Request, res: Response, next: NextFun
         await updateApplicationStatusAndHistory(application, Status.Approved, ChangeType.Automatic);
 
         await saveApplication(application);  
+        console.log(application);
+        console.log(client);
+        console.log(passport);
         
         const topic = 'create-documents';
 
