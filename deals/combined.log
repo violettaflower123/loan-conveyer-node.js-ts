@@ -1300,3 +1300,4 @@
 {"level":"info","message":"Received PUT request for /deal/document/b4fcd448-9535-463b-8893-d7b3a64c170e/code","service":"user-service"}
 {"level":"info","message":"Sending code for application ID: b4fcd448-9535-463b-8893-d7b3a64c170e","service":"user-service"}
 {"level":"info","message":"Сообщение успешно отправлено в топик: credit-issued","service":"user-service"}
+{"level":"info","message":"Server is running on http://localhost:3002","service":"user-service"}
