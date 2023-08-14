@@ -1412,3 +1412,5 @@
 {"level":"info","message":"Calculating credit parameters","service":"user-service"}
 {"level":"info","message":"Calculating payment schedule","service":"user-service"}
 {"level":"info","message":"Server is running on http://localhost:3001","service":"user-service"}
+{"level":"info","message":"Server is running on http://localhost:3001","service":"user-service"}
+{"level":"info","message":"Server is running on http://localhost:3001","service":"user-service"}

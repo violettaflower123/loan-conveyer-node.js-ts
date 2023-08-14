@@ -55,9 +55,6 @@ export const calculateCredit = async (req, res, next) => {
         await updatePassport(scoringData.passportIssueBranch, scoringData.passportIssueDate, client.passport_id);
         await updateApplicationStatusAndHistory(application, Status.Approved, ChangeType.Automatic);
         await saveApplication(application);
-        console.log(application);
-        console.log(client);
-        console.log(passport);
         const topic = 'create-documents';
         const message = {
             address: client.email,

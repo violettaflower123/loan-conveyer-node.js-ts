@@ -1301,3 +1301,63 @@
 {"level":"info","message":"Sending code for application ID: b4fcd448-9535-463b-8893-d7b3a64c170e","service":"user-service"}
 {"level":"info","message":"Сообщение успешно отправлено в топик: credit-issued","service":"user-service"}
 {"level":"info","message":"Server is running on http://localhost:3002","service":"user-service"}
+{"level":"info","message":"Server is running on http://localhost:3002","service":"user-service"}
+{"level":"info","message":"Server is running on http://localhost:3002","service":"user-service"}
+{"level":"info","message":"Server is running on http://localhost:3002","service":"user-service"}
+{"level":"info","message":"Server is running on http://localhost:3002","service":"user-service"}
+{"level":"info","message":"Server is running on http://localhost:3002","service":"user-service"}
+{"level":"info","message":"Server is running on http://localhost:3002","service":"user-service"}
+{"level":"info","message":"Server is running on http://localhost:3002","service":"user-service"}
+{"level":"info","message":"Server is running on http://localhost:3002","service":"user-service"}
+{"level":"info","message":"Server is running on http://localhost:3002","service":"user-service"}
+{"level":"info","message":"Server is running on http://localhost:3002","service":"user-service"}
+{"level":"info","message":"Server is running on http://localhost:3002","service":"user-service"}
+{"level":"info","message":"Server is running on http://localhost:3002","service":"user-service"}
+{"level":"info","message":"Server is running on http://localhost:3002","service":"user-service"}
+{"level":"info","message":"Server is running on http://localhost:3002","service":"user-service"}
+{"level":"info","message":"Server is running on http://localhost:3002","service":"user-service"}
+{"level":"info","message":"Server is running on http://localhost:3002","service":"user-service"}
+{"level":"info","message":"Server is running on http://localhost:3002","service":"user-service"}
+{"level":"info","message":"Received GET request for /deal/admin/application","service":"user-service"}
+{"body":{"code":"584851"},"error":{"code":"42P01","file":"parse_relation.c","length":104,"line":"1392","name":"error","position":"15","query":"SELECT * FROM deals","routine":"parserOpenTable","severity":"ERROR"},"level":"error","message":"Error occurred during request to /admin/application: relation \"deals\" does not exist","query":{},"service":"user-service"}
+{"level":"error","message":"Error occurred: relation \"deals\" does not exist","service":"user-service"}
+{"level":"info","message":"Server is running on http://localhost:3002","service":"user-service"}
+{"level":"info","message":"Server is running on http://localhost:3002","service":"user-service"}
+{"level":"info","message":"Received GET request for /deal/admin/application","service":"user-service"}
+{"level":"info","message":"Server is running on http://localhost:3002","service":"user-service"}
+{"level":"info","message":"Received GET request for /deal/admin/application","service":"user-service"}
+{"level":"info","message":"Server is running on http://localhost:3002","service":"user-service"}
+{"level":"info","message":"Received GET request for /deal/admin/application/96990fcb-eaa0-4e73-9eeb-4179961584a7","service":"user-service"}
+{"level":"info","message":"Server is running on http://localhost:3002","service":"user-service"}
+{"level":"info","message":"Server is running on http://localhost:3002","service":"user-service"}
+{"level":"info","message":"Server is running on http://localhost:3002","service":"user-service"}
+{"level":"info","message":"Server is running on http://localhost:3002","service":"user-service"}
+{"level":"info","message":"Server is running on http://localhost:3002","service":"user-service"}
+{"level":"info","message":"Received GET request for /deal/admin/application","service":"user-service"}
+{"level":"info","message":"Server is running on http://localhost:3002","service":"user-service"}
+{"level":"info","message":"Server is running on http://localhost:3002","service":"user-service"}
+{"level":"info","message":"Server is running on http://localhost:3002","service":"user-service"}
+{"level":"info","message":"Server is running on http://localhost:3002","service":"user-service"}
+{"level":"info","message":"Server is running on http://localhost:3002","service":"user-service"}
+{"level":"info","message":"Server is running on http://localhost:3002","service":"user-service"}
+{"level":"info","message":"Server is running on http://localhost:3002","service":"user-service"}
+{"level":"info","message":"Server is running on http://localhost:3002","service":"user-service"}
+{"level":"info","message":"Server is running on http://localhost:3002","service":"user-service"}
+{"level":"info","message":"Server is running on http://localhost:3002","service":"user-service"}
+{"level":"info","message":"Server is running on http://localhost:3002","service":"user-service"}
+{"level":"info","message":"Server is running on http://localhost:3002","service":"user-service"}
+{"level":"info","message":"Server is running on http://localhost:3002","service":"user-service"}
+{"level":"info","message":"Server is running on http://localhost:3002","service":"user-service"}
+{"level":"info","message":"Received GET request for /deal/admin/application/96990fcb-eaa0-4e73-9eeb-4179961584a7","service":"user-service"}
+{"level":"error","message":"Error occurred in GetApplications: error: relation \"deals\" does not exist","service":"user-service"}
+{"level":"info","message":"Server is running on http://localhost:3002","service":"user-service"}
+{"level":"info","message":"Received GET request for /deal/admin/application/96990fcb-eaa0-4e73-9eeb-4179961584a7","service":"user-service"}
+{"level":"info","message":"Received PUT request for /deal/document/96990fcb-eaa0-4e73-9eeb-4179961584a7/sign","service":"user-service"}
+{"level":"info","message":"Recieved request from application with ID: 96990fcb-eaa0-4e73-9eeb-4179961584a7","service":"user-service"}
+{"level":"info","message":"Сообщение успешно отправлено в топик: send-ses","service":"user-service"}
+{"level":"info","message":"Received GET request for /deal/admin/application/96990fcb-eaa0-4e73-9eeb-4179961584a7","service":"user-service"}
+{"level":"info","message":"Server is running on http://localhost:3002","service":"user-service"}
+{"level":"info","message":"Server is running on http://localhost:3002","service":"user-service"}
+{"level":"info","message":"Server is running on http://localhost:3002","service":"user-service"}
+{"level":"info","message":"Server is running on http://localhost:3002","service":"user-service"}
+{"level":"info","message":"Server is running on http://localhost:3002","service":"user-service"}

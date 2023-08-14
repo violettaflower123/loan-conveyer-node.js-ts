@@ -9,11 +9,15 @@ import { validateRegistrationData } from '../middlewares/vlidateFinishRegistrati
 import { sendDocuments } from '../controllers/sendDocuments.controller.js';
 import { sendSes } from '../controllers/sendSes.controller.js';
 import { sendCode } from '../controllers/sendCode.controller.js';
+import { getApplication } from '../controllers/getApplication.js';
+import { getApplicationById } from '../controllers/getApplicationById.js';
 router.post('/application', validateLoanApplicationBody, postApplication);
 router.put('/offer', validateLoanOffer, handleOfferUpdate);
 router.put('/calculate/:applicationId', validateRegistrationData, calculateCredit);
 router.put('/document/:applicationId/send', sendDocuments);
 router.put('/document/:applicationId/sign', sendSes);
 router.put('/document/:applicationId/code', sendCode);
+router.get('/admin/application/:applicationId', getApplicationById);
+router.get('/admin/application', getApplication);
 export { router as dealRouter };
 //# sourceMappingURL=deal.js.map
