@@ -128,8 +128,7 @@ export async function sendEmail(emailMessage: any) {
           fs.mkdirSync('./files');
       }
   
-      fs.writeFileSync('./files/email.html', `<p">${emailText}</p>
-      <img src="cid:logo" alt="Bank Logo" style="display: block; margin: 0 auto; width: 100px; height: 100px;" />`);
+      fs.writeFileSync('./files/email.html', `<p">${emailText}</p>`);
   
       let attachments = [
         {

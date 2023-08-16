@@ -41,3 +41,36 @@
 {"level":"error","message":"Error calculating loan offer Query not mocked!","service":"user-service","stack":"Error: Query not mocked!\n    at Object.<anonymous> (/usr/src/app/src/__tests__/calculateOffer.test.ts:102:29)\n    at /usr/src/app/node_modules/jest-mock/build/index.js:397:39\n    at Object.<anonymous> (/usr/src/app/node_modules/jest-mock/build/index.js:404:13)\n    at Object.mockConstructor [as one] (/usr/src/app/node_modules/jest-mock/build/index.js:148:19)\n    at calculateLoanOffer (/usr/src/app/src/controllers/calculate.controller.ts:25:36)\n    at processTicksAndRejections (node:internal/process/task_queues:96:5)\n    at Object.<anonymous> (/usr/src/app/src/__tests__/calculateOffer.test.ts:105:5)"}
 {"level":"error","message":"Error calculating loan offer Query not mocked!","service":"user-service","stack":"Error: Query not mocked!\n    at Object.<anonymous> (/usr/src/app/src/__tests__/calculateOffer.test.ts:121:29)\n    at /usr/src/app/node_modules/jest-mock/build/index.js:397:39\n    at Object.<anonymous> (/usr/src/app/node_modules/jest-mock/build/index.js:404:13)\n    at Object.mockConstructor [as one] (/usr/src/app/node_modules/jest-mock/build/index.js:148:19)\n    at calculateLoanOffer (/usr/src/app/src/controllers/calculate.controller.ts:25:36)\n    at processTicksAndRejections (node:internal/process/task_queues:96:5)\n    at Object.<anonymous> (/usr/src/app/src/__tests__/calculateOffer.test.ts:124:5)"}
 {"level":"error","message":"Error calculating loan offer Query not mocked: SELECT email FROM client WHERE client_id = $1 with values [12345]","service":"user-service","stack":"Error: Query not mocked: SELECT email FROM client WHERE client_id = $1 with values [12345]\n    at Object.<anonymous> (/usr/src/app/src/__tests__/calculateOffer.test.ts:121:29)\n    at /usr/src/app/node_modules/jest-mock/build/index.js:397:39\n    at Object.<anonymous> (/usr/src/app/node_modules/jest-mock/build/index.js:404:13)\n    at Object.mockConstructor [as one] (/usr/src/app/node_modules/jest-mock/build/index.js:148:19)\n    at calculateLoanOffer (/usr/src/app/src/controllers/calculate.controller.ts:25:36)\n    at processTicksAndRejections (node:internal/process/task_queues:96:5)\n    at Object.<anonymous> (/usr/src/app/src/__tests__/calculateOffer.test.ts:124:5)"}
+{"level":"error","message":"Error occurred: request aborted","service":"user-service"}
+{"level":"error","message":"Error occurred: request aborted","service":"user-service"}
+{"level":"error","message":"Error occurred: request aborted","service":"user-service"}
+{"level":"error","message":"Error occurred: \"passportSeries\" length must be 4 characters long","service":"user-service"}
+{"level":"error","message":"Error occurred: \"passportSeries\" length must be 4 characters long","service":"user-service"}
+{"level":"error","message":"Error occurred: \"passportSeries\" length must be 4 characters long","service":"user-service"}
+{"level":"error","message":"Error occurred: \"passportSeries\" length must be 4 characters long","service":"user-service"}
+{"level":"error","message":"Error occurred: \"passportSeries\" length must be 4 characters long","service":"user-service"}
+{"level":"error","message":"Error occurred: \"passportSeries\" length must be 4 characters long","service":"user-service"}
+{"level":"error","message":"Error occurred: \"passportSeries\" length must be 4 characters long","service":"user-service"}
+{"level":"error","message":"Error occurred: \"passportSeries\" length must be 4 characters long","service":"user-service"}
+{"level":"error","message":"Error occurred: \"passportSeries\" length must be 4 characters long","service":"user-service"}
+{"level":"error","message":"Error occurred: \"passportSeries\" length must be 4 characters long","service":"user-service"}
+{"level":"error","message":"Error occurred: \"passportSeries\" length must be 4 characters long","service":"user-service"}
+{"level":"error","message":"Error occurred: \"passportSeries\" length must be 4 characters long","service":"user-service"}
+{"level":"error","message":"Error occurred: \"passportSeries\" length must be 4 characters long","service":"user-service"}
+{"level":"error","message":"Error occurred: \"passportSeries\" length must be 4 characters long","service":"user-service"}
+{"level":"error","message":"Error occurred: \"passportSeries\" length must be 4 characters long","service":"user-service"}
+{"level":"error","message":"Error occurred: \"passportSeries\" length must be 4 characters long","service":"user-service"}
+{"level":"error","message":"Error occurred: \"passportSeries\" length must be 4 characters long","service":"user-service"}
+{"level":"error","message":"Error occurred: \"amount\" is required","service":"user-service"}
+{"level":"error","message":"Error occurred: \"amount\" must be greater than or equal to 10000","service":"user-service"}
+{"level":"error","message":"Error occurred: \"passportSeries\" length must be 4 characters long","service":"user-service"}
+{"level":"error","message":"Error occurred: \"gender\" must be one of [MALE, FEMALE, NON_BINARY]","service":"user-service"}
+{"level":"error","message":"Error occurred: \"maritalStatus\" must be one of [MARRIED, DIVORCED, SINGLE, WIDOW_WIDOWER]","service":"user-service"}
+{"level":"error","message":"Error occurred: \"employment.employmentStatus\" must be one of [UNEMPLOYED, SELF_EMPLOYED, BUSINESS_OWNER, EMPLOYED]","service":"user-service"}
+{"level":"error","message":"Error occurred: \"employment.position\" must be one of [MID_MANAGER, TOP_MANAGER, WORKER, OWNER]","service":"user-service"}
+{"level":"error","message":"Error calculating loan offer Rejected: Insufficient work experience.","name":"BadRequestError","service":"user-service","stack":"BadRequestError: Rejected: Insufficient work experience.\n    at calculateLoanOffer (file:///usr/src/app/src/controllers/calculate.controller.ts:47:19)\n    at processTicksAndRejections (node:internal/process/task_queues:96:5)","statusCode":400}
+{"level":"error","message":"Error occurred: Rejected: Insufficient work experience.","service":"user-service"}
+{"level":"error","message":"Error calculating loan offer Rejected: Loan amount exceeds the allowed limit based on salary.","name":"BadRequestError","service":"user-service","stack":"BadRequestError: Rejected: Loan amount exceeds the allowed limit based on salary.\n    at calculateLoanOffer (file:///usr/src/app/src/controllers/calculate.controller.ts:47:19)","statusCode":400}
+{"level":"error","message":"Error occurred: Rejected: Loan amount exceeds the allowed limit based on salary.","service":"user-service"}
+{"level":"error","message":"Error calculating loan offer Rejected: Loan amount exceeds the allowed limit based on salary.","name":"BadRequestError","service":"user-service","stack":"BadRequestError: Rejected: Loan amount exceeds the allowed limit based on salary.\n    at calculateLoanOffer (file:///usr/src/app/src/controllers/calculate.controller.ts:47:19)","statusCode":400}
+{"level":"error","message":"Error occurred: Rejected: Loan amount exceeds the allowed limit based on salary.","service":"user-service"}

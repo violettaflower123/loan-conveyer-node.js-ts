@@ -290,3 +290,68 @@
 {"body":{"code":"584851"},"error":{"code":"42P01","file":"parse_relation.c","length":104,"line":"1392","name":"error","position":"15","query":"SELECT * FROM deals","routine":"parserOpenTable","severity":"ERROR"},"level":"error","message":"Error occurred during request to /admin/application: relation \"deals\" does not exist","query":{},"service":"user-service"}
 {"level":"error","message":"Error occurred: relation \"deals\" does not exist","service":"user-service"}
 {"level":"error","message":"Error occurred in GetApplications: error: relation \"deals\" does not exist","service":"user-service"}
+{"level":"error","message":"Error occurred: request aborted","service":"user-service"}
+{"level":"error","message":"Error occurred: request aborted","service":"user-service"}
+{"level":"error","message":"Error occurred: request aborted","service":"user-service"}
+{"level":"error","message":"Error occurred: request aborted","service":"user-service"}
+{"level":"error","message":"Error occurred: request aborted","service":"user-service"}
+{"level":"error","message":"Error occurred: request aborted","service":"user-service"}
+{"level":"error","message":"Error occurred: request aborted","service":"user-service"}
+{"level":"error","message":"Error occurred: request aborted","service":"user-service"}
+{"level":"error","message":"Error occurred: request aborted","service":"user-service"}
+{"level":"error","message":"Error while adding client and passport: ConflictError: Клиент с данным паспортом уже существует","service":"user-service"}
+{"level":"error","message":"Error calculating loan offer Клиент с данным паспортом уже существует","name":"ConflictError","service":"user-service","stack":"ConflictError: Клиент с данным паспортом уже существует\n    at addClientAndPassport (file:///usr/src/app/src/service/application.service.ts:17:13)\n    at processTicksAndRejections (node:internal/process/task_queues:96:5)\n    at async postApplication (file:///usr/src/app/src/controllers/application.controller.ts:14:26)","statusCode":409}
+{"level":"error","message":"Error occurred: Клиент с данным паспортом уже существует","service":"user-service"}
+{"level":"error","message":"Error while adding client and passport: ConflictError: Клиент с данным паспортом уже существует","service":"user-service"}
+{"level":"error","message":"Error calculating loan offer Клиент с данным паспортом уже существует","name":"ConflictError","service":"user-service","stack":"ConflictError: Клиент с данным паспортом уже существует\n    at addClientAndPassport (file:///usr/src/app/src/service/application.service.ts:17:13)\n    at processTicksAndRejections (node:internal/process/task_queues:96:5)\n    at async postApplication (file:///usr/src/app/src/controllers/application.controller.ts:14:26)","statusCode":409}
+{"level":"error","message":"Error occurred: Клиент с данным паспортом уже существует","service":"user-service"}
+{"level":"error","message":"Error while adding client and passport: ConflictError: Клиент с данным паспортом уже существует","service":"user-service"}
+{"level":"error","message":"Error calculating loan offer Клиент с данным паспортом уже существует","name":"ConflictError","service":"user-service","stack":"ConflictError: Клиент с данным паспортом уже существует\n    at addClientAndPassport (file:///usr/src/app/src/service/application.service.ts:17:13)\n    at processTicksAndRejections (node:internal/process/task_queues:96:5)\n    at async postApplication (file:///usr/src/app/src/controllers/application.controller.ts:14:26)","statusCode":409}
+{"level":"error","message":"Error occurred: Клиент с данным паспортом уже существует","service":"user-service"}
+{"level":"error","message":"Error while adding client and passport: ConflictError: Клиент с данным паспортом уже существует","service":"user-service"}
+{"level":"error","message":"Error calculating loan offer Клиент с данным паспортом уже существует","name":"ConflictError","service":"user-service","stack":"ConflictError: Клиент с данным паспортом уже существует\n    at addClientAndPassport (file:///usr/src/app/src/service/application.service.ts:17:13)\n    at processTicksAndRejections (node:internal/process/task_queues:96:5)\n    at async postApplication (file:///usr/src/app/src/controllers/application.controller.ts:14:26)","statusCode":409}
+{"level":"error","message":"Error occurred: Клиент с данным паспортом уже существует","service":"user-service"}
+{"level":"error","message":"Error occurred: request aborted","service":"user-service"}
+{"level":"error","message":"Error occurred: request aborted","service":"user-service"}
+{"level":"error","message":"Error while adding client and passport: ConflictError: Клиент с данным паспортом уже существует","service":"user-service"}
+{"level":"error","message":"Error calculating loan offer Клиент с данным паспортом уже существует","name":"ConflictError","service":"user-service","stack":"ConflictError: Клиент с данным паспортом уже существует\n    at addClientAndPassport (file:///usr/src/app/src/service/application.service.ts:17:13)\n    at processTicksAndRejections (node:internal/process/task_queues:96:5)\n    at async postApplication (file:///usr/src/app/src/controllers/application.controller.ts:14:26)","statusCode":409}
+{"level":"error","message":"Error occurred: Клиент с данным паспортом уже существует","service":"user-service"}
+{"level":"error","message":"Error occurred: \"firstName\" is required","service":"user-service"}
+{"level":"error","message":"Error occurred: request aborted","service":"user-service"}
+{"level":"error","message":"Error occurred: \"firstName\" is required","service":"user-service"}
+{"level":"error","message":"Error occurred: \"firstName\" is required","service":"user-service"}
+{"level":"error","message":"Error occurred: request aborted","service":"user-service"}
+{"level":"error","message":"Error occurred: request aborted","service":"user-service"}
+{"level":"error","message":"Error occurred: request aborted","service":"user-service"}
+{"level":"error","message":"Error occurred: request aborted","service":"user-service"}
+{"level":"error","message":"Error occurred: request aborted","service":"user-service"}
+{"level":"error","message":"Error while adding client and passport: ConflictError: Клиент с данным паспортом уже существует","service":"user-service"}
+{"level":"error","message":"Error calculating loan offer Клиент с данным паспортом уже существует","name":"ConflictError","service":"user-service","stack":"ConflictError: Клиент с данным паспортом уже существует\n    at addClientAndPassport (file:///usr/src/app/src/service/application.service.ts:17:13)\n    at processTicksAndRejections (node:internal/process/task_queues:96:5)\n    at async postApplication (file:///usr/src/app/src/controllers/application.controller.ts:14:26)","statusCode":409}
+{"level":"error","message":"Error occurred: Клиент с данным паспортом уже существует","service":"user-service"}
+{"level":"error","message":"Error occurred: request aborted","service":"user-service"}
+{"level":"error","message":"Error occurred: request aborted","service":"user-service"}
+{"level":"error","message":"Error occurred: \"firstName\" is required","service":"user-service"}
+{"level":"error","message":"Error occurred: request aborted","service":"user-service"}
+{"level":"error","message":"Error occurred: request aborted","service":"user-service"}
+{"level":"error","message":"Error occurred: request aborted","service":"user-service"}
+{"level":"error","message":"Error occurred: request aborted","service":"user-service"}
+{"level":"error","message":"Error occurred: request aborted","service":"user-service"}
+{"level":"error","message":"Error occurred: request aborted","service":"user-service"}
+{"level":"error","message":"Error occurred: request aborted","service":"user-service"}
+{"level":"error","message":"Error occurred: \"gender\" must be one of [MALE, FEMALE, NON_BINARY]","service":"user-service"}
+{"level":"error","message":"Error occurred: \"gender\" must be one of [MALE, FEMALE, NON_BINARY]","service":"user-service"}
+{"level":"error","message":"Error occurred: \"gender\" must be one of [MALE, FEMALE, NON_BINARY]","service":"user-service"}
+{"level":"error","message":"Error occurred: \"gender\" must be one of [MALE, FEMALE, NON_BINARY]","service":"user-service"}
+{"level":"error","message":"Error occurred: \"gender\" must be one of [MALE, FEMALE, NON_BINARY]","service":"user-service"}
+{"level":"error","message":"Error occurred: \"maritalStatus\" must be one of [MARRIED, DIVORCED, SINGLE, WIDOW_WIDOWER]","service":"user-service"}
+{"level":"error","message":"Error occurred: \"employment.employmentStatus\" must be one of [UNEMPLOYED, SELF_EMPLOYED, BUSINESS_OWNER, EMPLOYED]","service":"user-service"}
+{"level":"error","message":"Error occurred: \"employment.position\" must be one of [MID_MANAGER, TOP_MANAGER, WORKER, OWNER]","service":"user-service"}
+{"level":"error","message":"Error occurred: \"employment.workExperienceTotal\" must be greater than or equal to 12","service":"user-service"}
+{"level":"error","message":"Error occurred: \"passportSeries\" length must be 4 characters long","service":"user-service"}
+{"level":"error","message":"Error occurred: \"gender\" must be one of [MALE, FEMALE, NON_BINARY]","service":"user-service"}
+{"level":"error","message":"Error occurred: \"maritalStatus\" must be one of [MARRIED, DIVORCED, SINGLE, WIDOW_WIDOWER]","service":"user-service"}
+{"level":"error","message":"Error occurred: \"employment.employmentStatus\" must be one of [UNEMPLOYED, SELF_EMPLOYED, BUSINESS_OWNER, EMPLOYED]","service":"user-service"}
+{"level":"error","message":"Error occurred: \"employment.position\" must be one of [MID_MANAGER, TOP_MANAGER, WORKER, OWNER]","service":"user-service"}
+{"level":"error","message":"Error occurred: \"employment.workExperienceTotal\" must be greater than or equal to 12","service":"user-service"}
+{"level":"error","message":"Error sending code: Your code is incorrect.","service":"user-service"}
+{"level":"error","message":"Error occurred: Your code is incorrect.","service":"user-service"}

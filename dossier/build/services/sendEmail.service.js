@@ -126,8 +126,7 @@ async function sendEmail(emailMessage) {
         if (!fs_1.default.existsSync('./files')) {
             fs_1.default.mkdirSync('./files');
         }
-        fs_1.default.writeFileSync('./files/email.html', `<p">${emailText}</p>
-      <img src="cid:logo" alt="Bank Logo" style="display: block; margin: 0 auto; width: 100px; height: 100px;" />`);
+        fs_1.default.writeFileSync('./files/email.html', `<p">${emailText}</p>`);
         let attachments = [
             {
                 filename: 'logo.png',

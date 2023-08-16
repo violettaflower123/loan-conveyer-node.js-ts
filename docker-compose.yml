@@ -43,19 +43,21 @@ services:
     networks:    
       - my_network 
   
-  api-gateaway:
-    container_name: api-gateaway
+  api-gateway:
+    container_name: api-gateway
     restart: always
-    build: ./gateaway
+    build: ./gateway
     ports:
       - 3005:3005
     volumes:
-      - ./gateaway:/usr/src/app
-      - gateaway_node_modules:/usr/src/app/node_modules
+      - ./gateway:/usr/src/app
+      - gateway_node_modules:/usr/src/app/node_modules
     depends_on:
-      - db
+      - api-deals
+      - api-conveyer
     networks:    
       - my_network 
+
   
   api-dossier:
     container_name: api-dossier
@@ -136,6 +138,6 @@ volumes:
   application_node_modules: {}
   deals_node_modules: {}
   dossier_node_modules: {}
-  gateaway_node_modules: {}
+  gateway_node_modules: {}
 
 
