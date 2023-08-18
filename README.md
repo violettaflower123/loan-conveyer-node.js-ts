@@ -17,3 +17,6 @@ docker-compose up
 
 # SonarCloud Badge
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=violettaflower123_loan-conveyer-node.js-ts&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=violettaflower123_loan-conveyer-node.js-ts)
+
+# Codecov Badge
+[![codecov](https://codecov.io/github/violettaflower123/loan-conveyer-node.js-ts/graph/badge.svg?token=U0FLJDRIHI)](https://codecov.io/github/violettaflower123/loan-conveyer-node.js-ts)

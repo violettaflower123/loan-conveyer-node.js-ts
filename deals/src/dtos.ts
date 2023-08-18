@@ -27,7 +27,7 @@ export interface  FinishRegistrationRequestDTO
   gender: Gender,
   maritalStatus: MaritalStatus,
   dependentNumber: number,
-  passportIssueDate: string, // LocalDate
+  passportIssueDate: string, 
   passportIssueBranch: string,
   employment: EmploymentDTO,
   account: string
