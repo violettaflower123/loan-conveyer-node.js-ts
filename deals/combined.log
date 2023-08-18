@@ -1580,3 +1580,6 @@
 {"level":"info","message":"Received PUT request for /deal/document/d3b8ebbc-edab-4e9d-9a97-aa1b3833746a/code","service":"user-service"}
 {"level":"info","message":"Sending code for application ID: d3b8ebbc-edab-4e9d-9a97-aa1b3833746a","service":"user-service"}
 {"level":"info","message":"Сообщение успешно отправлено в топик: credit-issued","service":"user-service"}
+{"level":"info","message":"Server is running on http://localhost:3002","service":"user-service"}
+{"level":"info","message":"Server is running on http://localhost:3002","service":"user-service"}
+{"level":"info","message":"Server is running on http://localhost:3002","service":"user-service"}

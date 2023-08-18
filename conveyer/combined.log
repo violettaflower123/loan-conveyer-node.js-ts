@@ -1684,3 +1684,6 @@
 {"level":"error","message":"Error calculating loan offer Rejected: Loan amount exceeds the allowed limit based on salary.","name":"BadRequestError","service":"user-service","stack":"BadRequestError: Rejected: Loan amount exceeds the allowed limit based on salary.\n    at calculateLoanOffer (file:///usr/src/app/src/controllers/calculate.controller.ts:47:19)","statusCode":400}
 {"level":"error","message":"Error occurred: Rejected: Loan amount exceeds the allowed limit based on salary.","service":"user-service"}
 {"level":"info","message":"Сообщение успешно отправлено в топик: ","service":"user-service"}
+{"level":"info","message":"Server is running on http://localhost:3001","service":"user-service"}
+{"level":"info","message":"Server is running on http://localhost:3001","service":"user-service"}
+{"level":"info","message":"Server is running on http://localhost:3001","service":"user-service"}
