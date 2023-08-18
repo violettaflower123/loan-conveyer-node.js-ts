@@ -1,0 +1,35 @@
+name: Docker CI
+
+on: [push]
+
+jobs:
+  build_and_test:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Build and start services using Docker Compose
+      run: |
+        docker-compose -f docker-compose.yml build
+        docker-compose -f docker-compose.yml up -d
+
+    - name: Wait for services to be ready 
+      run: sleep 60 
+
+    - name: Run tests for api-conveyer
+      run: docker exec api-conveyer npm test
+
+    - name: Stop services
+      run: docker-compose -f docker-compose.yml down
+
+    - name: Publish to CodeCov
+      uses: codecov/codecov-action@v2
+      with:
+        token: ${{ secrets.CODECOV_TOKEN }}
+
+    - name: Analyze with SonarCloud
+      uses: sonarsource/sonarcloud-github-action@master
+      with:
+        sonarCloudAuthToken: ${{ secrets.SONAR_TOKEN }}
