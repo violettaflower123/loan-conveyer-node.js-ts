@@ -14,3 +14,7 @@ Kafka: Sending emails to clients.
 You will need to build the Docker image: 
 docker volume create data
 docker-compose up
+
+
+# SonarCloud Badge
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=violettaflower123_loan-conveyer-node.js-ts&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=violettaflower123_loan-conveyer-node.js-ts)
