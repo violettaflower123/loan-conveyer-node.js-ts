@@ -1687,3 +1687,6 @@
 {"level":"info","message":"Server is running on http://localhost:3001","service":"user-service"}
 {"level":"info","message":"Server is running on http://localhost:3001","service":"user-service"}
 {"level":"info","message":"Server is running on http://localhost:3001","service":"user-service"}
+{"level":"info","message":"Server is running on http://localhost:3001","service":"user-service"}
+{"level":"info","message":"Calculating loan offer","service":"user-service"}
+{"level":"info","message":"Received a scoring result: Scoring passed successfully","passed":true,"rate":0.1,"service":"user-service"}

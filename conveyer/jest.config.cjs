@@ -15,5 +15,7 @@ module.exports = {
     '^.+\\.tsx?$': 'ts-jest'
   },
   testRegex: "(/__tests__/.*|(\\.|/)(test|spec))\\.tsx?$",
-  testPathIgnorePatterns: ["/node_modules/", "/build/"]
+  testPathIgnorePatterns: ["/node_modules/", "/build/"],
+  collectCoverage: true,
+  coverageReporters: ["json", "lcov", "text", "clover"]
 };
