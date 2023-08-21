@@ -32,7 +32,7 @@ async function sendEmail(emailMessage) {
                     Best regards,<br><br>
                     Customer Service Team,<br><br>
                     TU Bank<br>
-                    <img src="${logoPath} alt="logo" style="width: 100px; height: 100px; magrin: 10px auto">`;
+                    <img src="${logoPath}" alt="logo" style="width: 100px; height: 100px; margin: 10px auto">`;
                 break;
             case 'create-documents':
                 emailText = `Dear Mr./Ms. ${emailMessage.name} ${emailMessage.lastName},
@@ -57,7 +57,7 @@ async function sendEmail(emailMessage) {
                     Best regards,<br><br>
                     Customer Service Team,<br><br>
                     TU Bank<br>
-                    <img src="${logoPath} alt="logo" style="width: 100px; height: 100px; magrin: 10px auto">`;
+                    <img src="${logoPath}" alt="logo" style="width: 100px; height: 100px; margin: 10px auto">`;
                 break;
             case 'send-documents':
                 emailText = `Dear Mr./Ms. ${emailMessage.name} ${emailMessage.lastName},<br><br>
@@ -86,7 +86,7 @@ async function sendEmail(emailMessage) {
                       Best regards,<br><br>
                       Customer Service Team,<br><br>
                       TU Bank<br>
-                      <img src="${logoPath} alt="logo" style="width: 100px; height: 100px; magrin: 10px auto">`;
+                      <img src="${logoPath}" alt="logo" style="width: 100px; height: 100px; margin: 10px auto">`;
                 break;
             case 'send-ses':
                 // const sesCode = generateRandomNumber();
@@ -101,7 +101,7 @@ async function sendEmail(emailMessage) {
                         Best regards,<br><br>
                         Customer Service Team,<br><br>
                         TU Bank<br><br>
-                        <img src="${logoPath} alt="logo" style="width: 100px; height: 100px; magrin: 10px auto">`;
+                        <img src="${logoPath}" alt="logo" style="width: 100px; height: 100px; margin: 10px auto">`;
                 break;
             case 'credit-issued':
                 emailText = `Dear ${emailMessage.name} ${emailMessage.lastName},<br><br>
@@ -110,7 +110,7 @@ async function sendEmail(emailMessage) {
                     Best regards,<br><br>
                     Customer Service Team,<br><br>
                     TU Bank<br>
-                    <img src="${logoPath} alt="logo" style="width: 100px; height: 100px; magrin: 10px auto">`;
+                    <img src="${logoPath}" alt="logo" style="width: 100px; height: 100px; margin: 10px auto">`;
                 break;
             case 'application-denied':
                 emailText = `Dear Mr./Ms. ${emailMessage.name} ${emailMessage.lastName},<br><br>
@@ -120,7 +120,7 @@ async function sendEmail(emailMessage) {
                     Best regards,<br><br>
                     Customer Service Team,<br><br>
                     TU Bank<br>
-                    <img src="${logoPath} alt="logo" style="width: 100px; height: 100px; magrin: 10px auto">`;
+                    <img src="${logoPath}" alt="logo" style="width: 100px; height: 100px; margin: 10px auto">`;
                 break;
         }
         if (!fs_1.default.existsSync('./files')) {
