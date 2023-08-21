@@ -1,4 +1,4 @@
-import { Gender, MaritalStatus, EmploymentStatus, Position, CreditStatus, ChangeType, Status, MessageThemes } from "./types/types.js"
+import { Gender, MaritalStatus, EmploymentStatus, Position, CreditStatus, ChangeType, Status } from "./types/types.js"
 
 export interface LoanApplicationRequestDTO {
     amount: number,
