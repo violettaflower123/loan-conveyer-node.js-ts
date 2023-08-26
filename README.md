@@ -12,6 +12,7 @@ Kafka: Sending emails to clients.
 
 # Installation
 You will need to build the Docker image: 
+add .env file to the root directory and to api-auth
 docker-compose up
 
 

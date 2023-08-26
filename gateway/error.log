@@ -36,3 +36,7 @@
 {"level":"error","message":"Authentication failed","service":"user-service"}
 {"level":"error","message":"Authentication failed","service":"user-service"}
 {"level":"error","message":"Error during authentication","service":"user-service"}
+{"level":"error","message":"Error during authentication","service":"user-service"}
+{"level":"error","message":"Error creating user","service":"user-service"}
+{"level":"error","message":"Error during authentication","service":"user-service"}
+{"level":"error","message":"Error during authentication","service":"user-service"}

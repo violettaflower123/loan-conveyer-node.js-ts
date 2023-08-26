@@ -3,6 +3,8 @@ import { logger } from './helpers/logger.js';
 import { errorHandler } from './helpers/utils.js';
 import jwt from 'jsonwebtoken';
 import { db } from './db.js';
+import dotenv from 'dotenv';
+dotenv.config();
 const app = express();
 const JWT_SECRET = process.env.JWT_SECRET;
 app.use((req, res, next) => {
@@ -19,7 +21,13 @@ app.post('/register', async (req, res) => {
         res.status(201).send('User created');
     }
     catch (err) {
-        res.status(500).send('Error creating user');
+        if (err.code === '23505') {
+            res.status(409).send('User with this login already exists');
+        }
+        else {
+            logger.error(err);
+            res.status(500).send('Error creating user');
+        }
     }
 });
 app.post('/login', async (req, res) => {
@@ -32,9 +40,12 @@ app.post('/login', async (req, res) => {
         if (!JWT_SECRET) {
             throw new Error("JWT_SECRET environment variable not set.");
         }
-        return res.json({ login: user.login, token: jwt.sign({ id: user.id, login: user.login }, JWT_SECRET, { expiresIn: '10m' }) });
+        const tokenPayload = { id: user.id, login: user.login };
+        const token = jwt.sign(tokenPayload, JWT_SECRET, { expiresIn: '10m' });
+        return res.json({ login: user.login, token });
     }
     catch (err) {
+        logger.error("Error during authentication:", err.message, err.stack);
         return res.status(403).send('Error during authentication');
     }
 });
@@ -57,4 +68,13 @@ const port = 3006;
 app.listen((port), () => {
     logger.info(`Server is running on http://localhost:${port}`);
 });
+// пример
+// {
+//     "login": "violetta1234",
+//     "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwibG9naW4iOiJ2aW9sZXR0YTEyMzQiLCJpYXQiOjE2OTMwNjA3MjcsImV4cCI6MTY5MzA2MTMyN30.pxT9dFeNSpJU9dqV43zfAM0rpqaNaueZjJZ5WxGhjv8"
+// }
+// {
+//     "login": "violetta1234",
+//     "password": "istanbul111"
+// }
 //# sourceMappingURL=server.js.map

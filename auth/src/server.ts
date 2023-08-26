@@ -1,14 +1,18 @@
-import express, { Request, Response } from 'express';
+import express, { NextFunction, Request, Response } from 'express';
 import { logger } from './helpers/logger.js';
 import { errorHandler } from './helpers/utils.js';
 import jwt from 'jsonwebtoken';
 import { db } from './db.js';
+import { User, TokenPayload } from './types.js';
+import bcrypt from 'bcrypt'; 
+
+import dotenv from 'dotenv';
+dotenv.config();
 
 const app = express();
-const JWT_SECRET = process.env.JWT_SECRET;
+const JWT_SECRET: string | undefined = process.env.JWT_SECRET;
 
-
-app.use((req, res, next) => {
+app.use((req: Request, res: Response, next: NextFunction) => {
     logger.info(`Received ${req.method} request for ${req.url}`);
     next();
 });
@@ -16,32 +20,41 @@ app.use((req, res, next) => {
 app.use(express.json());
 app.use(errorHandler);
 
-app.post('/register', async (req, res) => {
+
+app.post('/register', async (req: Request, res: Response) => {
     const { login, password } = req.body;
     const encodedPassword = Buffer.from(password).toString('base64');
 
     try {
         await db.none('INSERT INTO users(login, password) VALUES($1, $2)', [login, encodedPassword]);
         res.status(201).send('User created');
-    } catch (err) {
-        res.status(500).send('Error creating user');
+    } catch (err: any) {
+        if (err.code === '23505') {
+            res.status(409).send('User with this login already exists'); 
+        } else {
+            logger.error(err);
+            res.status(500).send('Error creating user');
+        }
     }
 });
 
 app.post('/login', async (req, res) => {
     const { login, password } = req.body;
+    
     const encodedPassword = Buffer.from(password).toString('base64');
-
     try {
-        const user = await db.oneOrNone('SELECT * FROM users WHERE login = $1 AND password = $2', [login, encodedPassword]);
+        const user: User | null = await db.oneOrNone('SELECT * FROM users WHERE login = $1 AND password = $2', [login, encodedPassword]);
         if (!user) return res.status(401).send('Authentication failed');
 
         if (!JWT_SECRET) {
             throw new Error("JWT_SECRET environment variable not set.");
         }
 
-        return res.json({ login: user.login, token: jwt.sign({ id: user.id, login: user.login }, JWT_SECRET, { expiresIn: '10m' }) });
-    } catch (err) {
+        const tokenPayload: TokenPayload = { id: user.id, login: user.login };
+        const token = jwt.sign(tokenPayload, JWT_SECRET, { expiresIn: '10m' });
+        return res.json({ login: user.login, token });
+    } catch (err: any) {
+        logger.error("Error during authentication:", err.message, err.stack);
         return res.status(403).send('Error during authentication');
     }
 });
@@ -66,3 +79,13 @@ const port: number = 3006;
 app.listen((port), () => {
     logger.info(`Server is running on http://localhost:${port}`);
 });
+
+// пример
+// {
+//     "login": "violetta1234",
+//     "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwibG9naW4iOiJ2aW9sZXR0YTEyMzQiLCJpYXQiOjE2OTMwNjA3MjcsImV4cCI6MTY5MzA2MTMyN30.pxT9dFeNSpJU9dqV43zfAM0rpqaNaueZjJZ5WxGhjv8"
+// }
+// {
+//     "login": "violetta1234",
+//     "password": "istanbul111"
+// }

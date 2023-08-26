@@ -4,6 +4,8 @@ FROM node:16.14.0-alpine3.14
 # Создание директории приложения
 WORKDIR /usr/src/app
 
+COPY .env .env
+
 # Копирование файлов package.json и package-lock.json
 COPY package*.json ./
 

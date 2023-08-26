@@ -17,6 +17,7 @@
     "winston": "^3.10.0"
   },
   "devDependencies": {
+    "@types/bcrypt": "^5.0.0",
     "@types/cors": "^2.8.13",
     "@types/jest": "^29.5.3",
     "@types/jsonwebtoken": "^9.0.2",
