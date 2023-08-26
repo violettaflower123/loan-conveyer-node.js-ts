@@ -42,6 +42,20 @@ services:
       - db
     networks:    
       - my_network 
+
+  api-auth:
+    container_name: api-auth
+    restart: always
+    build: ./auth
+    ports:
+      - 3006:3006
+    volumes:
+      - ./auth:/usr/src/app
+      - auth_node_modules:/usr/src/app/node_modules
+    depends_on:
+      - db
+    networks:    
+      - my_network 
   
   api-gateway:
     container_name: api-gateway
@@ -139,5 +153,6 @@ volumes:
   deals_node_modules: {}
   dossier_node_modules: {}
   gateway_node_modules: {}
+  auth_node_modules: {}
 
 

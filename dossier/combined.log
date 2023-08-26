@@ -427,3 +427,11 @@
 {"level":"info","message":"Email sent: 250 2.0.0 Ok: queued on mail-nwsmtp-smtp-production-main-46.sas.yp-c.yandex.net 1692187352-U2f86qLDc0U0-svUkpsOt","service":"user-service"}
 {"level":"info","message":"Email sent: 250 2.0.0 Ok: queued on mail-nwsmtp-smtp-production-main-36.iva.yp-c.yandex.net 1692187357-Z2fY6UHDe8c0-ZDLWjsip","service":"user-service"}
 {"level":"info","message":"Email sent: 250 2.0.0 Ok: queued on mail-nwsmtp-smtp-production-main-81.myt.yp-c.yandex.net 1692187735-r8fvU0aWk0U0-WAvaAVDW","service":"user-service"}
+{"level":"info","message":"Subscribed to finish-registration.","service":"user-service"}
+{"level":"info","message":"Subscribed to create-documents.","service":"user-service"}
+{"level":"info","message":"Subscribed to send-documents.","service":"user-service"}
+{"level":"info","message":"Subscribed to send-ses.","service":"user-service"}
+{"level":"info","message":"Subscribed to credit-issued.","service":"user-service"}
+{"level":"info","message":"Subscribed to application-denied.","service":"user-service"}
+{"level":"info","message":"Started message processing.","service":"user-service"}
+{"level":"info","message":"Email sent: 250 2.0.0 Ok: queued on mail-nwsmtp-smtp-production-main-39.sas.yp-c.yandex.net 1693054998-G3NJsrXWpSw0-BLcBSLdq","service":"user-service"}

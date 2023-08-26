@@ -355,3 +355,10 @@
 {"level":"error","message":"Error occurred: \"employment.workExperienceTotal\" must be greater than or equal to 12","service":"user-service"}
 {"level":"error","message":"Error sending code: Your code is incorrect.","service":"user-service"}
 {"level":"error","message":"Error occurred: Your code is incorrect.","service":"user-service"}
+{"level":"error","message":"Error occurred: \"passportSeries\" length must be 4 characters long","service":"user-service"}
+{"level":"error","message":"Ошибка при отправке сообщения: KafkaJSNumberOfRetriesExceeded: Connection error: connect ECONNREFUSED 192.168.1.1:19092","service":"user-service"}
+{"level":"error","message":"Error occurred: \"gender\" must be one of [MALE, FEMALE, NON_BINARY]","service":"user-service"}
+{"level":"error","message":"Error occurred: \"maritalStatus\" must be one of [MARRIED, DIVORCED, SINGLE, WIDOW_WIDOWER]","service":"user-service"}
+{"level":"error","message":"Error occurred: \"employment.employmentStatus\" must be one of [UNEMPLOYED, SELF_EMPLOYED, BUSINESS_OWNER, EMPLOYED]","service":"user-service"}
+{"level":"error","message":"Error occurred: \"employment.position\" must be one of [MID_MANAGER, TOP_MANAGER, WORKER, OWNER]","service":"user-service"}
+{"level":"error","message":"Error occurred: \"employment.workExperienceTotal\" must be greater than or equal to 12","service":"user-service"}

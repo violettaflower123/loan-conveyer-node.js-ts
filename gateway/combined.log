@@ -88,3 +88,15 @@
 {"level":"error","message":{"error":"Rejected: Insufficient work experience."},"service":"user-service"}
 {"level":"error","message":{"error":"Rejected: Loan amount exceeds the allowed limit based on salary."},"service":"user-service"}
 {"level":"error","message":{"error":"Rejected: Loan amount exceeds the allowed limit based on salary."},"service":"user-service"}
+{"level":"error","message":{"error":"Rejected: Loan amount exceeds the allowed limit based on salary."},"service":"user-service"}
+{"level":"error","message":{"error":"\"passportSeries\" length must be 4 characters long"},"service":"user-service"}
+{"level":"error","message":{"error":"\"gender\" must be one of [MALE, FEMALE, NON_BINARY]"},"service":"user-service"}
+{"level":"error","message":{"error":"\"maritalStatus\" must be one of [MARRIED, DIVORCED, SINGLE, WIDOW_WIDOWER]"},"service":"user-service"}
+{"level":"error","message":{"error":"\"employment.employmentStatus\" must be one of [UNEMPLOYED, SELF_EMPLOYED, BUSINESS_OWNER, EMPLOYED]"},"service":"user-service"}
+{"level":"error","message":{"error":"\"employment.position\" must be one of [MID_MANAGER, TOP_MANAGER, WORKER, OWNER]"},"service":"user-service"}
+{"level":"error","message":{"error":"\"employment.workExperienceTotal\" must be greater than or equal to 12"},"service":"user-service"}
+{"level":"error","message":"<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n<meta charset=\"utf-8\">\n<title>Error</title>\n</head>\n<body>\n<pre>Cannot POST /register/</pre>\n</body>\n</html>\n","service":"user-service"}
+{"level":"error","message":"Authentication failed","service":"user-service"}
+{"level":"error","message":"Authentication failed","service":"user-service"}
+{"level":"error","message":"Authentication failed","service":"user-service"}
+{"level":"error","message":"Error during authentication","service":"user-service"}
