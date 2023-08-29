@@ -1618,3 +1618,25 @@
 {"level":"info","message":"Server is running on http://localhost:3002","service":"user-service"}
 {"level":"info","message":"Received POST request for /deal/application","service":"user-service"}
 {"level":"info","message":"Successfully processed application for client ID: 154.","service":"user-service"}
+{"level":"info","message":"Server is running on http://localhost:3002","service":"user-service"}
+{"level":"info","message":"Server is running on http://localhost:3002","service":"user-service"}
+{"level":"info","message":"Received POST request for /deal/application","service":"user-service"}
+{"level":"info","message":"Successfully processed application for client ID: 155.","service":"user-service"}
+{"level":"info","message":"Received POST request for /deal/application","service":"user-service"}
+{"level":"error","message":"Error while adding client and passport: ConflictError: Клиент с данным паспортом уже существует","service":"user-service"}
+{"level":"error","message":"Error calculating loan offer Клиент с данным паспортом уже существует","name":"ConflictError","service":"user-service","stack":"ConflictError: Клиент с данным паспортом уже существует\n    at addClientAndPassport (file:///usr/src/app/src/service/application.service.ts:17:13)\n    at processTicksAndRejections (node:internal/process/task_queues:96:5)\n    at async postApplication (file:///usr/src/app/src/controllers/application.controller.ts:14:26)","statusCode":409}
+{"level":"error","message":"Error occurred: Клиент с данным паспортом уже существует","service":"user-service"}
+{"level":"info","message":"Received POST request for /deal/application","service":"user-service"}
+{"level":"info","message":"Successfully processed application for client ID: 156.","service":"user-service"}
+{"level":"info","message":"Received PUT request for /deal/offer","service":"user-service"}
+{"level":"info","message":"Received LoanOffer: [object Object]","service":"user-service"}
+{"level":"info","message":"Сообщение успешно отправлено в топик: finish-registration","service":"user-service"}
+{"level":"info","message":"Received PUT request for /deal/offer","service":"user-service"}
+{"level":"info","message":"Received LoanOffer: [object Object]","service":"user-service"}
+{"level":"info","message":"Сообщение успешно отправлено в топик: finish-registration","service":"user-service"}
+{"level":"info","message":"Server is running on http://localhost:3002","service":"user-service"}
+{"level":"info","message":"Received PUT request for /deal/offer","service":"user-service"}
+{"level":"info","message":"Received LoanOffer: [object Object]","service":"user-service"}
+{"level":"info","message":"Сообщение успешно отправлено в топик: finish-registration","service":"user-service"}
+{"level":"info","message":"Server is running on http://localhost:3002","service":"user-service"}
+{"level":"info","message":"Server is running on http://localhost:3002","service":"user-service"}

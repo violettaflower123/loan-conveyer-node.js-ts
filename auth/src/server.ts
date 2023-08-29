@@ -5,7 +5,6 @@ import jwt from 'jsonwebtoken';
 import { db } from './db.js';
 import { User, TokenPayload } from './types.js';
 import bcrypt from 'bcrypt'; 
-
 import dotenv from 'dotenv';
 dotenv.config();
 

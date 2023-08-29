@@ -3,14 +3,16 @@ import { LoanApplicationRequestDTO, LoanOfferDTO } from "../dtos.js";
 import express, { NextFunction, Request, Response } from 'express';
 import { ResourceNotFoundError } from "../errors/errorClasses.js";
 import { logger } from "../helpers/logger.js";
+import { postApplicationToApiDeals } from "../api/apiDeals.js";
 
 export const postApplication = async (req: Request, res: Response, next: NextFunction) => {
     try {
         const loanApplicationRequest: LoanApplicationRequestDTO = req.body;
 
         logger.info('Received a loan application request:', loanApplicationRequest);
+        const response = await postApplicationToApiDeals(loanApplicationRequest);
 
-        const response = await axios.post('http://api-deals:3002/deal/application', loanApplicationRequest);
+        // const response = await axios.post('http://api-deals:3002/deal/application', loanApplicationRequest);
 
         if (!response.data) {
             logger.warn('Application not found.');

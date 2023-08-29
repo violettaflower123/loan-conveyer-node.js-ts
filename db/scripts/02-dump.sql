@@ -367,7 +367,7 @@ ALTER SEQUENCE public.employment_status_id_seq OWNED BY public.employment_status
 CREATE TABLE public.gender (
     id integer NOT NULL,
     gender character varying(255) NOT NULL,
-    CONSTRAINT check_gender CHECK (((gender)::text = ANY ((ARRAY['MALE'::character varying, 'FEMALE'::character varying, 'NON_BINARY'::character varying])::text[])))
+    CONSTRAINT check_gender CHECK (((gender)::text = ANY (ARRAY[('MALE'::character varying)::text, ('FEMALE'::character varying)::text, ('NON_BINARY'::character varying)::text])))
 );
 
 
@@ -459,6 +459,41 @@ CREATE TABLE public.status_history (
 ALTER TABLE public.status_history OWNER TO postgres;
 
 --
+-- Name: users; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.users (
+    id integer NOT NULL,
+    login character varying(128) NOT NULL,
+    password character varying(256) NOT NULL
+);
+
+
+ALTER TABLE public.users OWNER TO postgres;
+
+--
+-- Name: users_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public.users_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.users_id_seq OWNER TO postgres;
+
+--
+-- Name: users_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public.users_id_seq OWNED BY public.users.id;
+
+
+--
 -- Name: application_status id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
@@ -508,6 +543,13 @@ ALTER TABLE ONLY public.marital_status ALTER COLUMN id SET DEFAULT nextval('publ
 
 
 --
+-- Name: users id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.users ALTER COLUMN id SET DEFAULT nextval('public.users_id_seq'::regclass);
+
+
+--
 -- Data for Name: application; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
@@ -518,6 +560,7 @@ COPY public.application (client_id, credit_id, status, creation_date, applied_of
 151	\N	CC_DENIED	2023-08-13 10:23:09.992	\N	\N	\N	\N	1288e5d6-3ef5-43d8-bc74-d7e3078adeeb
 152	160	DOCUMENT_CREATED	2023-08-13 10:25:41.884	{"applicationId":"96990fcb-eaa0-4e73-9eeb-4179961584a7","requestedAmount":50000,"totalAmount":150000,"term":12,"monthlyPayment":12507,"rate":0.07,"isInsuranceEnabled":true,"isSalaryClient":false}	2023-08-13 11:22:37.609	709402	[{"time": "2023-08-13T10:26:43.371Z", "status": "APPROVED", "changeType": "MANUAL"}, {"time": "2023-08-13T11:18:27.437Z", "status": "APPROVED", "changeType": "AUTOMATIC"}, {"time": "2023-08-13T11:22:37.609Z", "status": "DOCUMENT_CREATED", "changeType": "AUTOMATIC"}]	96990fcb-eaa0-4e73-9eeb-4179961584a7
 153	161	APPROVED	2023-08-13 11:29:05.53	{"applicationId":"4e6c2faf-1345-4396-91e8-478af161f19c","requestedAmount":50000,"totalAmount":150000,"term":12,"monthlyPayment":12507,"rate":0.07,"isInsuranceEnabled":true,"isSalaryClient":false}	\N	\N	[{"time": "2023-08-13T11:29:22.941Z", "status": "APPROVED", "changeType": "MANUAL"}, {"time": "2023-08-13T11:31:16.655Z", "status": "APPROVED", "changeType": "AUTOMATIC"}]	4e6c2faf-1345-4396-91e8-478af161f19c
+154	\N	CC_DENIED	2023-08-26 14:44:08.094	\N	\N	\N	\N	f9863745-02f0-495f-8726-0ab140e335ae
 \.
 
 
@@ -563,6 +606,7 @@ COPY public.client (client_id, last_name, first_name, middle_name, birth_date, e
 151	Иванов	Иван	Иванович	1990-01-01	kutluhan92@gmail.com	\N	\N	\N	73c06912-d374-455d-9e4a-368ab3f9c642	\N	\N
 152	Иванов	Иван	Иванович	1990-01-01	kutluhan92@gmail.com	1	1	2	85741e2e-00ce-4d6b-a73a-1e3dd17e7690	73f3a5d2-71fb-4225-a604-56e4ab54ac4f	5469798787675453
 153	Иванов	Иван	Иванович	1985-07-15	vitaminka_94@mail.ru	3	3	2	46c3b153-b17b-426a-bd36-5c74cc310d12	04155316-5d3b-4fe7-b0ac-da575dda2603	RU1234567890
+154	Иванов	Иван	Иванович	1990-01-01	ivan.ivanov@example.com	\N	\N	\N	185ae0bd-776c-472f-b014-42766ced1919	\N	\N
 \.
 
 
@@ -720,6 +764,7 @@ COPY public.passport (passport_id, series, number, issue_branch, issue_date) FRO
 73c06912-d374-455d-9e4a-368ab3f9c642	4512	123456	\N	\N
 85741e2e-00ce-4d6b-a73a-1e3dd17e7690	4510	123456	Branch Name Here	2023-08-12
 46c3b153-b17b-426a-bd36-5c74cc310d12	0909	123456	Отделение УФМС России по г. Москва	2005-06-15
+185ae0bd-776c-472f-b014-42766ced1919	1234	567890	\N	\N
 \.
 
 
@@ -748,6 +793,15 @@ APPROVED	2023-08-13 11:31:16.655	1	4e6c2faf-1345-4396-91e8-478af161f19c
 
 
 --
+-- Data for Name: users; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.users (id, login, password) FROM stdin;
+1	violetta1234	aXN0YW5idWwxMTE=
+\.
+
+
+--
 -- Name: application_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
@@ -772,7 +826,7 @@ SELECT pg_catalog.setval('public.change_type_id_seq', 2, true);
 -- Name: client_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.client_id_seq', 153, true);
+SELECT pg_catalog.setval('public.client_id_seq', 154, true);
 
 
 --
@@ -815,6 +869,13 @@ SELECT pg_catalog.setval('public.gender_id_seq', 3, true);
 --
 
 SELECT pg_catalog.setval('public.marital_status_id_seq', 4, true);
+
+
+--
+-- Name: users_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.users_id_seq', 1, true);
 
 
 --
@@ -975,6 +1036,22 @@ ALTER TABLE ONLY public.credit
 
 ALTER TABLE ONLY public.client
     ADD CONSTRAINT unique_employment_id UNIQUE (employment_id);
+
+
+--
+-- Name: users users_login_key; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.users
+    ADD CONSTRAINT users_login_key UNIQUE (login);
+
+
+--
+-- Name: users users_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.users
+    ADD CONSTRAINT users_pkey PRIMARY KEY (id);
 
 
 --

@@ -2,6 +2,7 @@ import { Request, Response } from "express";
 import { LoanOfferDTO } from "../dtos.js";
 import axios, { AxiosError} from "axios";
 import { logger } from "../helpers/logger.js";
+import { updateOfferToApiDeals } from "../api/apiDeals.js";
 
 export const updateOffer = async (req: Request, res: Response) => {
     try {
@@ -9,7 +10,8 @@ export const updateOffer = async (req: Request, res: Response) => {
 
         logger.info('Received a loan offer update request:', loanOffer);
         
-        const response = await axios.put('http://api-deals:3002/deal/offer ', loanOffer);
+        const response = await updateOfferToApiDeals(loanOffer);
+        // const response = await axios.put('http://api-deals:3002/deal/offer ', loanOffer);
         if (!response.data) {
             logger.warn('Something went wrong when reaching /deal/offer');
             throw new Error('Something went wrong when reaching /deal/offer');
