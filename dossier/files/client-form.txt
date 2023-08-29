@@ -1,6 +1,6 @@
 Client information
-Client ID: 155
-Name: Ivan Ivanov
-Birth date: 1995-10-15T00:00:00.000Z
-Email: violetta.vitaandreevna@gmail.com
-Credit ID: 163
+Client ID: 158
+Name: John Doe
+Birth date: 1992-03-15T00:00:00.000Z
+Email: vitaminka_94@mail.ru
+Credit ID: 162

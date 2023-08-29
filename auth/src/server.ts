@@ -50,7 +50,7 @@ app.post('/login', async (req, res) => {
         }
 
         const tokenPayload: TokenPayload = { id: user.id, login: user.login };
-        const token = jwt.sign(tokenPayload, JWT_SECRET, { expiresIn: '10m' });
+        const token = jwt.sign(tokenPayload, JWT_SECRET, { expiresIn: '50m' });
         return res.json({ login: user.login, token });
     } catch (err: any) {
         logger.error("Error during authentication:", err.message, err.stack);
@@ -58,20 +58,20 @@ app.post('/login', async (req, res) => {
     }
 });
 
-app.post('/validate-token', (req, res) => {
-    const token = req.headers.authorization?.split(' ')[1];
-    if (!token) return res.status(401).send('Token required');
+// app.post('/validate-token', (req, res) => {
+//     const token = req.headers.authorization?.split(' ')[1];
+//     if (!token) return res.status(401).send('Token required');
 
-    if (!JWT_SECRET) {
-        throw new Error("JWT_SECRET environment variable not set.");
-    }
-    jwt.verify(token, JWT_SECRET, (err) => {
-        if (err) return res.status(403).send('Invalid token');
-        return res.send('Token is valid');
-    });
+//     if (!JWT_SECRET) {
+//         throw new Error("JWT_SECRET environment variable not set.");
+//     }
+//     jwt.verify(token, JWT_SECRET, (err) => {
+//         if (err) return res.status(403).send('Invalid token');
+//         return res.send('Token is valid');
+//     });
 
-    return res.status(500).send('Unknown error');
-});
+//     return res.status(500).send('Unknown error');
+// });
 
 
 const port: number = 3006;

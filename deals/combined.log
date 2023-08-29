@@ -1640,3 +1640,104 @@
 {"level":"info","message":"Сообщение успешно отправлено в топик: finish-registration","service":"user-service"}
 {"level":"info","message":"Server is running on http://localhost:3002","service":"user-service"}
 {"level":"info","message":"Server is running on http://localhost:3002","service":"user-service"}
+{"level":"info","message":"Server is running on http://localhost:3002","service":"user-service"}
+{"level":"info","message":"Server is running on http://localhost:3002","service":"user-service"}
+{"level":"info","message":"Server is running on http://localhost:3002","service":"user-service"}
+{"level":"info","message":"Server is running on http://localhost:3002","service":"user-service"}
+{"level":"info","message":"Server is running on http://localhost:3002","service":"user-service"}
+{"level":"info","message":"Received POST request for /deal/application","service":"user-service"}
+{"level":"error","message":"Error occurred: \"middleName\" length must be at least 2 characters long","service":"user-service"}
+{"level":"info","message":"Received POST request for /deal/application","service":"user-service"}
+{"level":"error","message":"Error while adding client and passport: ConflictError: Клиент с данным паспортом уже существует","service":"user-service"}
+{"level":"error","message":"Error calculating loan offer Клиент с данным паспортом уже существует","name":"ConflictError","service":"user-service","stack":"ConflictError: Клиент с данным паспортом уже существует\n    at addClientAndPassport (file:///usr/src/app/src/service/application.service.ts:17:13)\n    at processTicksAndRejections (node:internal/process/task_queues:96:5)\n    at async postApplication (file:///usr/src/app/src/controllers/application.controller.ts:14:26)","statusCode":409}
+{"level":"error","message":"Error occurred: Клиент с данным паспортом уже существует","service":"user-service"}
+{"level":"info","message":"Received POST request for /deal/application","service":"user-service"}
+{"level":"error","message":"Error occurred: \"term\" must be a number","service":"user-service"}
+{"level":"info","message":"Received POST request for /deal/application","service":"user-service"}
+{"level":"error","message":"Error while adding client and passport: ConflictError: Клиент с данным паспортом уже существует","service":"user-service"}
+{"level":"error","message":"Error calculating loan offer Клиент с данным паспортом уже существует","name":"ConflictError","service":"user-service","stack":"ConflictError: Клиент с данным паспортом уже существует\n    at addClientAndPassport (file:///usr/src/app/src/service/application.service.ts:17:13)\n    at processTicksAndRejections (node:internal/process/task_queues:96:5)\n    at async postApplication (file:///usr/src/app/src/controllers/application.controller.ts:14:26)","statusCode":409}
+{"level":"error","message":"Error occurred: Клиент с данным паспортом уже существует","service":"user-service"}
+{"level":"info","message":"Received POST request for /deal/application","service":"user-service"}
+{"level":"info","message":"Successfully processed application for client ID: 157.","service":"user-service"}
+{"level":"info","message":"Received POST request for /deal/application","service":"user-service"}
+{"level":"info","message":"Successfully processed application for client ID: 158.","service":"user-service"}
+{"level":"info","message":"Received PUT request for /deal/offer","service":"user-service"}
+{"level":"info","message":"Received LoanOffer: [object Object]","service":"user-service"}
+{"level":"info","message":"Сообщение успешно отправлено в топик: finish-registration","service":"user-service"}
+{"level":"info","message":"Received PUT request for /deal/calculate/0990b63c-27b0-4bb7-903b-816c885a993e","service":"user-service"}
+{"level":"error","message":"Error occurred: \"gender\" must be one of [MALE, FEMALE, NON_BINARY]","service":"user-service"}
+{"level":"info","message":"Received PUT request for /deal/calculate/0990b63c-27b0-4bb7-903b-816c885a993e","service":"user-service"}
+{"level":"error","message":"Error occurred: \"maritalStatus\" must be one of [MARRIED, DIVORCED, SINGLE, WIDOW_WIDOWER]","service":"user-service"}
+{"level":"info","message":"Received PUT request for /deal/calculate/0990b63c-27b0-4bb7-903b-816c885a993e","service":"user-service"}
+{"level":"error","message":"Error occurred: \"employment.employmentStatus\" must be one of [UNEMPLOYED, SELF_EMPLOYED, BUSINESS_OWNER, EMPLOYED]","service":"user-service"}
+{"level":"info","message":"Received PUT request for /deal/calculate/0990b63c-27b0-4bb7-903b-816c885a993e","service":"user-service"}
+{"level":"error","message":"Error occurred: \"employment.position\" must be one of [MID_MANAGER, TOP_MANAGER, WORKER, OWNER]","service":"user-service"}
+{"level":"info","message":"Received PUT request for /deal/calculate/0990b63c-27b0-4bb7-903b-816c885a993e","service":"user-service"}
+{"level":"error","message":"Error occurred: \"employment.workExperienceTotal\" must be greater than or equal to 12","service":"user-service"}
+{"level":"info","message":"Received PUT request for /deal/calculate/0990b63c-27b0-4bb7-903b-816c885a993e","service":"user-service"}
+{"level":"error","message":"Error occurred: \"employment.workExperienceCurrent\" must be greater than or equal to 3","service":"user-service"}
+{"level":"info","message":"Received PUT request for /deal/calculate/0990b63c-27b0-4bb7-903b-816c885a993e","service":"user-service"}
+{"level":"info","message":"Processing application with ID: 0990b63c-27b0-4bb7-903b-816c885a993e","service":"user-service"}
+{"level":"info","message":"Received FinisiRegistrationData[object Object]","service":"user-service"}
+{"level":"info","message":"Запись в таблице passport успешно обновлена","service":"user-service"}
+{"level":"info","message":"Сообщение успешно отправлено в топик: create-documents","service":"user-service"}
+{"level":"info","message":"Application status updated successfully for ID: 0990b63c-27b0-4bb7-903b-816c885a993e","service":"user-service"}
+{"level":"info","message":"Server is running on http://localhost:3002","service":"user-service"}
+{"level":"info","message":"Received PUT request for /deal/document/0990b63c-27b0-4bb7-903b-816c885a993e/send","service":"user-service"}
+{"level":"info","message":"Processing documents for application ID: 0990b63c-27b0-4bb7-903b-816c885a993e","service":"user-service"}
+{"level":"info","message":"Сообщение успешно отправлено в топик: send-documents","service":"user-service"}
+{"level":"info","message":"Received PUT request for /deal/document/0990b63c-27b0-4bb7-903b-816c885a993e/send","service":"user-service"}
+{"level":"info","message":"Processing documents for application ID: 0990b63c-27b0-4bb7-903b-816c885a993e","service":"user-service"}
+{"level":"info","message":"Сообщение успешно отправлено в топик: send-documents","service":"user-service"}
+{"level":"info","message":"Received PUT request for /deal/document/0990b63c-27b0-4bb7-903b-816c885a993e/sign","service":"user-service"}
+{"level":"info","message":"Recieved request from application with ID: 0990b63c-27b0-4bb7-903b-816c885a993e","service":"user-service"}
+{"level":"info","message":"Сообщение успешно отправлено в топик: send-ses","service":"user-service"}
+{"level":"info","message":"Received PUT request for /deal/document/0990b63c-27b0-4bb7-903b-816c885a993e/code","service":"user-service"}
+{"level":"info","message":"Sending code for application ID: 0990b63c-27b0-4bb7-903b-816c885a993e","service":"user-service"}
+{"level":"warn","message":"Received incorrect code: 132260 for application ID: 0990b63c-27b0-4bb7-903b-816c885a993e","service":"user-service"}
+{"level":"error","message":"Error sending code: Your code is incorrect.","service":"user-service"}
+{"level":"error","message":"Error occurred: Your code is incorrect.","service":"user-service"}
+{"level":"info","message":"Received PUT request for /deal/document/0990b63c-27b0-4bb7-903b-816c885a993e/code","service":"user-service"}
+{"level":"info","message":"Sending code for application ID: 0990b63c-27b0-4bb7-903b-816c885a993e","service":"user-service"}
+{"level":"info","message":"Сообщение успешно отправлено в топик: credit-issued","service":"user-service"}
+{"level":"info","message":"Received POST request for /deal/application","service":"user-service"}
+{"level":"info","message":"Successfully processed application for client ID: 159.","service":"user-service"}
+{"level":"info","message":"Received POST request for /deal/application","service":"user-service"}
+{"level":"error","message":"Error while adding client and passport: ConflictError: Клиент с данным паспортом уже существует","service":"user-service"}
+{"level":"error","message":"Error calculating loan offer Клиент с данным паспортом уже существует","name":"ConflictError","service":"user-service","stack":"ConflictError: Клиент с данным паспортом уже существует\n    at addClientAndPassport (file:///usr/src/app/src/service/application.service.ts:17:13)\n    at processTicksAndRejections (node:internal/process/task_queues:96:5)\n    at async postApplication (file:///usr/src/app/src/controllers/application.controller.ts:14:26)","statusCode":409}
+{"level":"error","message":"Error occurred: Клиент с данным паспортом уже существует","service":"user-service"}
+{"level":"info","message":"Received POST request for /deal/application","service":"user-service"}
+{"level":"info","message":"Successfully processed application for client ID: 160.","service":"user-service"}
+{"level":"info","message":"Received PUT request for /deal/offer","service":"user-service"}
+{"level":"info","message":"Received LoanOffer: [object Object]","service":"user-service"}
+{"level":"info","message":"Сообщение успешно отправлено в топик: finish-registration","service":"user-service"}
+{"level":"info","message":"Received PUT request for /deal/calculate/7f23d2fb-f366-4612-a6af-d257aeb97d92","service":"user-service"}
+{"level":"error","message":"Error occurred: \"gender\" must be one of [MALE, FEMALE, NON_BINARY]","service":"user-service"}
+{"level":"info","message":"Received PUT request for /deal/calculate/7f23d2fb-f366-4612-a6af-d257aeb97d92","service":"user-service"}
+{"level":"error","message":"Error occurred: \"maritalStatus\" must be one of [MARRIED, DIVORCED, SINGLE, WIDOW_WIDOWER]","service":"user-service"}
+{"level":"info","message":"Received POST request for /deal/application","service":"user-service"}
+{"level":"error","message":"Error while adding client and passport: ConflictError: Клиент с данным паспортом уже существует","service":"user-service"}
+{"level":"error","message":"Error calculating loan offer Клиент с данным паспортом уже существует","name":"ConflictError","service":"user-service","stack":"ConflictError: Клиент с данным паспортом уже существует\n    at addClientAndPassport (file:///usr/src/app/src/service/application.service.ts:17:13)\n    at processTicksAndRejections (node:internal/process/task_queues:96:5)\n    at async postApplication (file:///usr/src/app/src/controllers/application.controller.ts:14:26)","statusCode":409}
+{"level":"error","message":"Error occurred: Клиент с данным паспортом уже существует","service":"user-service"}
+{"level":"info","message":"Received POST request for /deal/application","service":"user-service"}
+{"level":"info","message":"Successfully processed application for client ID: 161.","service":"user-service"}
+{"level":"info","message":"Received POST request for /deal/application","service":"user-service"}
+{"level":"error","message":"Error while adding client and passport: ConflictError: Клиент с данным паспортом уже существует","service":"user-service"}
+{"level":"error","message":"Error calculating loan offer Клиент с данным паспортом уже существует","name":"ConflictError","service":"user-service","stack":"ConflictError: Клиент с данным паспортом уже существует\n    at addClientAndPassport (file:///usr/src/app/src/service/application.service.ts:17:13)\n    at processTicksAndRejections (node:internal/process/task_queues:96:5)\n    at async postApplication (file:///usr/src/app/src/controllers/application.controller.ts:14:26)","statusCode":409}
+{"level":"error","message":"Error occurred: Клиент с данным паспортом уже существует","service":"user-service"}
+{"level":"info","message":"Received POST request for /deal/application","service":"user-service"}
+{"level":"info","message":"Successfully processed application for client ID: 162.","service":"user-service"}
+{"level":"info","message":"Received POST request for /deal/application","service":"user-service"}
+{"level":"error","message":"Error while adding client and passport: ConflictError: Клиент с данным паспортом уже существует","service":"user-service"}
+{"level":"error","message":"Error calculating loan offer Клиент с данным паспортом уже существует","name":"ConflictError","service":"user-service","stack":"ConflictError: Клиент с данным паспортом уже существует\n    at addClientAndPassport (file:///usr/src/app/src/service/application.service.ts:17:13)\n    at processTicksAndRejections (node:internal/process/task_queues:96:5)\n    at async postApplication (file:///usr/src/app/src/controllers/application.controller.ts:14:26)","statusCode":409}
+{"level":"error","message":"Error occurred: Клиент с данным паспортом уже существует","service":"user-service"}
+{"level":"info","message":"Received POST request for /deal/application","service":"user-service"}
+{"level":"info","message":"Successfully processed application for client ID: 163.","service":"user-service"}
+{"level":"info","message":"Server is running on http://localhost:3002","service":"user-service"}
+{"level":"info","message":"Server is running on http://localhost:3002","service":"user-service"}
+{"level":"info","message":"Received POST request for /deal/application","service":"user-service"}
+{"level":"error","message":"Error while adding client and passport: ConflictError: Клиент с данным паспортом уже существует","service":"user-service"}
+{"level":"error","message":"Error calculating loan offer Клиент с данным паспортом уже существует","name":"ConflictError","service":"user-service","stack":"ConflictError: Клиент с данным паспортом уже существует\n    at addClientAndPassport (file:///usr/src/app/src/service/application.service.ts:17:13)\n    at processTicksAndRejections (node:internal/process/task_queues:96:5)\n    at async postApplication (file:///usr/src/app/src/controllers/application.controller.ts:15:26)","statusCode":409}
+{"level":"error","message":"Error occurred: Клиент с данным паспортом уже существует","service":"user-service"}
+{"level":"info","message":"Received POST request for /deal/application","service":"user-service"}
+{"level":"info","message":"Successfully processed application for client ID: 164.","service":"user-service"}

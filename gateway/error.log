@@ -40,3 +40,13 @@
 {"level":"error","message":"Error creating user","service":"user-service"}
 {"level":"error","message":"Error during authentication","service":"user-service"}
 {"level":"error","message":"Error during authentication","service":"user-service"}
+{"level":"error","message":{"error":"Клиент с данным паспортом уже существует"},"service":"user-service"}
+{"level":"error","message":"<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n<meta charset=\"utf-8\">\n<title>Error</title>\n</head>\n<body>\n<pre>Cannot PUT /application/apply</pre>\n</body>\n</html>\n","service":"user-service"}
+{"level":"error","message":"<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n<meta charset=\"utf-8\">\n<title>Error</title>\n</head>\n<body>\n<pre>Cannot PUT /application/apply</pre>\n</body>\n</html>\n","service":"user-service"}
+{"level":"error","message":{"error":"\"gender\" must be one of [MALE, FEMALE, NON_BINARY]"},"service":"user-service"}
+{"level":"error","message":{"error":"\"maritalStatus\" must be one of [MARRIED, DIVORCED, SINGLE, WIDOW_WIDOWER]"},"service":"user-service"}
+{"level":"error","message":{"error":"Клиент с данным паспортом уже существует"},"service":"user-service"}
+{"level":"error","message":"<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n<meta charset=\"utf-8\">\n<title>Error</title>\n</head>\n<body>\n<pre>Cannot POST /application/apply</pre>\n</body>\n</html>\n","service":"user-service"}
+{"level":"error","message":{"error":{"error":"Клиент с данным паспортом уже существует"}},"service":"user-service"}
+{"level":"error","message":{"error":{"error":"Клиент с данным паспортом уже существует"}},"service":"user-service"}
+{"level":"error","message":{"error":{"error":"Клиент с данным паспортом уже существует"}},"service":"user-service"}

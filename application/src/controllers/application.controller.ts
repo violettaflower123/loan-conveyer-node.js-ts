@@ -13,6 +13,7 @@ export const postApplication = async (req: Request, res: Response, next: NextFun
         const response = await postApplicationToApiDeals(loanApplicationRequest);
 
         // const response = await axios.post('http://api-deals:3002/deal/application', loanApplicationRequest);
+        console.log(response)
 
         if (!response.data) {
             logger.warn('Application not found.');

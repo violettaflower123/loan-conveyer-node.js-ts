@@ -6,6 +6,7 @@ import { db } from '../db.js';
 import pgPromise from 'pg-promise';
 import { BadRequestError, ServerError, ConflictError, AuthorizationError, ValidationError, ResourceNotFoundError } from '../errors/errorClasses.js';
 import { logger } from '../helpers/logger.js';
+import { Status } from '../types/types.js';
 
 export const postApplication = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
     try {
@@ -14,7 +15,7 @@ export const postApplication = async (req: Request, res: Response, next: NextFun
         const clientId = await addClientAndPassport(loanApplication); 
 
         const applicationResult = await db.one('INSERT INTO application(client_id, creation_date, status) VALUES($1, $2, $3) RETURNING application_id',
-            [clientId, new Date(), 'CC_DENIED']);
+            [clientId, new Date(), Status.Preapproval]);
 
         const applicationId = applicationResult.application_id; 
 

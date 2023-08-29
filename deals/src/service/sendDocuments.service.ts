@@ -18,9 +18,9 @@ export const updateApplication = async (applicationId: string, newStatus: string
 
         await db.none(`
         UPDATE application 
-        SET status = $1, sign_date = $2, status_history = $3::jsonb 
-        WHERE application_id = $4;
-        `, [newStatus, now, JSON.stringify(statusHistory), applicationId]);
+        SET status = $1, status_history = $2::jsonb 
+        WHERE application_id = $3;
+        `, [newStatus, JSON.stringify(statusHistory), applicationId]);
     } catch (error) {
         logger.error('Error updating application:', error);
         throw error;
