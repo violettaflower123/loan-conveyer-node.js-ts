@@ -199,3 +199,5 @@
 {"amount":50000,"birthdate":"1985-07-20","email":"johndoe@example.com","firstName":"John","lastName":"Doe","level":"info","message":"Получен запрос на валидацию заявки на кредит:","middleName":"Michael","passportNumber":"567890","passportSeries":"1724","service":"user-service","term":12}
 {"amount":50000,"birthdate":"1985-07-20","email":"johndoe@example.com","firstName":"John","lastName":"Doe","level":"info","message":"Received a loan application request:","middleName":"Michael","passportNumber":"567890","passportSeries":"1724","service":"user-service","term":12}
 {"level":"info","message":"Successfully processed the loan application request.","service":"user-service"}
+{"level":"info","message":"Server is running on http://localhost:3003","service":"user-service"}
+{"level":"info","message":"Server is running on http://localhost:3003","service":"user-service"}

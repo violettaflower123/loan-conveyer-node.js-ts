@@ -1,9 +1,9 @@
 export interface User {
     id: number;
-    login: string;
+    email: string;
 }
 
 export interface TokenPayload {
     id: number;
-    login: string;
+    email: string;
 }

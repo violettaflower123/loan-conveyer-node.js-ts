@@ -5,7 +5,6 @@ import { logger } from '../helpers/logger.js';
 import { v4 as uuidv4 } from 'uuid';
 import { Client } from '../dtos.js';
 
-
 export async function addClientAndPassport(loanApplication: LoanApplicationRequestDTO): Promise<string>  {
   try {
     const existingClient: Client | null = await db.oneOrNone(
@@ -15,6 +14,16 @@ export async function addClientAndPassport(loanApplication: LoanApplicationReque
 
     if (existingClient) {
       throw new ConflictError('Клиент с данным паспортом уже существует');
+    }
+
+    // Проверка существования клиента с таким email
+    const existingEmail: Client | null = await db.oneOrNone(
+      'SELECT * FROM client WHERE email = $1',
+      [loanApplication.email]
+    );
+
+    if (existingEmail) {
+      throw new ConflictError('Клиент с данным email уже существует');
     }
 
     const passportId = uuidv4();
@@ -37,7 +46,7 @@ export async function addClientAndPassport(loanApplication: LoanApplicationReque
     );
 
     return result.client_id; 
-  } catch (error) {
+  } catch (error: any) {
     logger.error(`Error while adding client and passport: ${error}`);
     throw error;
   }

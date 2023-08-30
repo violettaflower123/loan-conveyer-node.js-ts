@@ -5,9 +5,18 @@ import bodyParser from 'body-parser';
 import helmet from 'helmet';
 import { errorHandler } from './helpers/utils';
 import { services } from './helpers/services';
+import { db } from './db';
+import dotenv from 'dotenv';
+import jwt from 'jsonwebtoken';
+dotenv.config();
 
 const app = express();
 const PORT: number = 3005;
+
+const JWT_SECRET: string | undefined = process.env.JWT_SECRET;
+if (!JWT_SECRET) {
+    throw new Error('JWT_SECRET is not set');
+  }
 
 app.use(cors());
 app.use(helmet());
@@ -72,33 +81,49 @@ app.put('/document/:applicationId/sign/code', async (req, res, next) => {
     }
 });
 
-// async function validateJWT(req: Request, res: Response, next: NextFunction) {
-//     const token = req.headers.authorization?.split(' ')[1];
+async function validateJWT(req: Request, res: Response, next: NextFunction) {
+    const token = req.headers.authorization?.split(' ')[1];
 
-//     if (!token) {
-//         return res.status(401).send('Token required');
-//     }
+    if (!token) {
+        return res.status(401).send('Token required');
+    }
 
-//     try {
-//         const response = await axios.post('http://api-auth:3006/validate-token', {}, {
-//             headers: {
-//                 Authorization: `Bearer ${token}`
-//             }
-//         });
+    try {
+        const response = await axios.post('http://api-auth:3006/validate-token', {}, {
+            headers: {
+                Authorization: `Bearer ${token}`
+            }
+        });
 
-//         if (response.data === 'Token is valid') {
-//             next();
-//         } else {
-//             return res.status(403).send('Invalid token');
-//         }
-//     } catch (error) {
-//         return res.status(500).send('Error validating token');
-//     }
-// }
+        if (response.data === 'Token is valid') {
+            if (!JWT_SECRET) {
+                throw new Error('JWT_SECRET is not set');
+            }
+            const decoded = jwt.verify(token, JWT_SECRET);
+            
+            if (typeof decoded === 'object' && decoded !== null && 'email' in decoded) {
+                const email = (decoded as any).email;
 
-// app.use('/deal', validateJWT);
-// app.use('/conveyor', validateJWT);
-// app.use('/application', validateJWT);
+                const client: any = await db.oneOrNone('SELECT * FROM client WHERE email = $1', [email]);
+                if (!client) return res.status(403).send('Access denied');
+
+                (req as any).clientId = client.client_id;
+                next();
+            } else {
+                return res.status(403).send('Invalid token payload');
+            }
+        } else {
+            return res.status(403).send('Invalid token');
+        }
+    } catch (error) {
+        return res.status(500).send('Error validating token');
+    }
+}
+
+
+app.use('/deal', validateJWT);
+app.use('/conveyor', validateJWT);
+app.use('/application', validateJWT);
 
 services.forEach(service => {
     app.use(service.route, async (req: Request, res: Response, next: NextFunction) => {
@@ -107,9 +132,9 @@ services.forEach(service => {
                 method: req.method,
                 url: `${service.baseUrl}${req.url}`,
                 data: req.body,
-                // headers: {
-                //     Authorization: req.headers.authorization || ''
-                // }
+                headers: {
+                    Authorization: req.headers.authorization || ''
+                }
             });
             res.json(response.data);
         } catch (error: any) {
@@ -124,3 +149,7 @@ app.listen(PORT, () => {
     console.log(`API Gateway running on port ${PORT}`);
 });
 
+// {
+//     "email": "vitaminka_94@mail.ru",
+//     "password": "12345"
+// }

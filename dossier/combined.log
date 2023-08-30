@@ -475,3 +475,11 @@
 {"level":"info","message":"Email sent: 250 2.0.0 Ok: queued on mail-nwsmtp-smtp-production-main-55.vla.yp-c.yandex.net 1693307596-FDOSQJDDeOs0-arC2xZYl","service":"user-service"}
 {"level":"info","message":"Email sent: 250 2.0.0 Ok: queued on mail-nwsmtp-smtp-production-main-25.sas.yp-c.yandex.net 1693307624-hDOgMjBDV8c0-HwaWovTn","service":"user-service"}
 {"level":"info","message":"Email sent: 250 2.0.0 Ok: queued on mail-nwsmtp-smtp-production-main-73.iva.yp-c.yandex.net 1693314503-M8QoVC0BW0U0-BxD2SpYx","service":"user-service"}
+{"id":0,"level":"error","message":"Consumer crashed:","payload":{"error":{"name":"KafkaJSNumberOfRetriesExceeded","retriable":false,"retryCount":5,"retryTime":11690},"groupId":"dossier-group","restart":true},"service":"user-service","timestamp":1693324348965,"type":"consumer.crash"}
+{"level":"info","message":"Subscribed to finish-registration.","service":"user-service"}
+{"level":"info","message":"Subscribed to create-documents.","service":"user-service"}
+{"level":"info","message":"Subscribed to send-documents.","service":"user-service"}
+{"level":"info","message":"Subscribed to send-ses.","service":"user-service"}
+{"level":"info","message":"Subscribed to credit-issued.","service":"user-service"}
+{"level":"info","message":"Subscribed to application-denied.","service":"user-service"}
+{"level":"info","message":"Started message processing.","service":"user-service"}

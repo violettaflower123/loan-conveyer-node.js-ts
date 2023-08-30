@@ -91,3 +91,28 @@
 {"level":"info","message":"Server is running on http://localhost:3006","service":"user-service"}
 {"level":"info","message":"Received POST request for /deal/application","service":"user-service"}
 {"level":"info","message":"Server is running on http://localhost:3006","service":"user-service"}
+{"level":"info","message":"Server is running on http://localhost:3006","service":"user-service"}
+{"level":"info","message":"Server is running on http://localhost:3006","service":"user-service"}
+{"level":"info","message":"Received POST request for /register","service":"user-service"}
+{"level":"info","message":"Server is running on http://localhost:3006","service":"user-service"}
+{"level":"info","message":"Received POST request for /register/","service":"user-service"}
+{"level":"info","message":"Server is running on http://localhost:3006","service":"user-service"}
+{"level":"info","message":"Received POST request for /register/","service":"user-service"}
+{"code":"42703","file":"parse_target.c","length":123,"level":"error","line":"1061","name":"error","position":"29","query":"INSERT INTO users(password, email) VALUES('MTIzNDU=', null)","routine":"checkInsertTargets","service":"user-service","severity":"ERROR"}
+{"level":"info","message":"Received POST request for /register/","service":"user-service"}
+{"code":"23502","column":"login","detail":"Failing row contains (2, null, MTIzNDU=, null).","file":"execMain.c","length":211,"level":"error","line":"1968","name":"error","query":"INSERT INTO users(password, email) VALUES('MTIzNDU=', null)","routine":"ExecConstraints","schema":"public","service":"user-service","severity":"ERROR","table":"users"}
+{"level":"info","message":"Received POST request for /register/","service":"user-service"}
+{"code":"23502","column":"login","detail":"Failing row contains (3, null, MTIzNDU=, null).","file":"execMain.c","length":211,"level":"error","line":"1968","name":"error","query":"INSERT INTO users(password, email) VALUES('MTIzNDU=', null)","routine":"ExecConstraints","schema":"public","service":"user-service","severity":"ERROR","table":"users"}
+{"level":"info","message":"Server is running on http://localhost:3006","service":"user-service"}
+{"level":"info","message":"Received POST request for /register/","service":"user-service"}
+{"code":"23502","column":"login","detail":"Failing row contains (4, null, MTIzNDU=, null).","file":"execMain.c","length":211,"level":"error","line":"1968","name":"error","query":"INSERT INTO users(password, email) VALUES('MTIzNDU=', null)","routine":"ExecConstraints","schema":"public","service":"user-service","severity":"ERROR","table":"users"}
+{"level":"info","message":"Received POST request for /register/","service":"user-service"}
+{"code":"23502","column":"email","detail":"Failing row contains (5, MTIzNDU=, null).","file":"execMain.c","length":205,"level":"error","line":"1968","name":"error","query":"INSERT INTO users(password, email) VALUES('MTIzNDU=', null)","routine":"ExecConstraints","schema":"public","service":"user-service","severity":"ERROR","table":"users"}
+{"level":"info","message":"Received POST request for /register/","service":"user-service"}
+{"level":"info","message":"Received POST request for /login/","service":"user-service"}
+{"level":"info","message":"Received POST request for /validate-token","service":"user-service"}
+{"level":"info","message":"Received POST request for /validate-token","service":"user-service"}
+{"level":"info","message":"Received POST request for /validate-token","service":"user-service"}
+{"level":"info","message":"Received POST request for /validate-token","service":"user-service"}
+{"level":"info","message":"Received POST request for /validate-token","service":"user-service"}
+{"level":"info","message":"Server is running on http://localhost:3006","service":"user-service"}

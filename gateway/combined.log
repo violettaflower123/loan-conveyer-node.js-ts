@@ -114,3 +114,16 @@
 {"level":"error","message":{"error":{"error":"Клиент с данным паспортом уже существует"}},"service":"user-service"}
 {"level":"error","message":{"error":{"error":"Клиент с данным паспортом уже существует"}},"service":"user-service"}
 {"level":"error","message":{"error":{"error":"Клиент с данным паспортом уже существует"}},"service":"user-service"}
+{"level":"error","message":"connect ECONNREFUSED 172.22.0.5:3006","service":"user-service"}
+{"level":"error","message":"socket hang up","service":"user-service"}
+{"level":"error","message":"connect ECONNREFUSED 172.22.0.5:3006","service":"user-service"}
+{"level":"error","message":"connect ECONNREFUSED 172.22.0.5:3006","service":"user-service"}
+{"level":"error","message":"Error creating user","service":"user-service"}
+{"level":"error","message":"Error creating user","service":"user-service"}
+{"level":"error","message":"Error creating user","service":"user-service"}
+{"level":"error","message":"Error creating user","service":"user-service"}
+{"level":"error","message":"Error creating user","service":"user-service"}
+{"level":"error","message":{"error":"Клиент с данным паспортом уже существует"},"service":"user-service"}
+{"level":"error","message":{"error":"Внутренняя ошибка сервера."},"service":"user-service"}
+{"level":"error","message":{"error":"Внутренняя ошибка сервера."},"service":"user-service"}
+{"level":"error","message":{"error":"Клиент с данным email уже существует"},"service":"user-service"}
