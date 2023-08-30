@@ -464,8 +464,8 @@ ALTER TABLE public.status_history OWNER TO postgres;
 
 CREATE TABLE public.users (
     id integer NOT NULL,
-    login character varying(128) NOT NULL,
-    password character varying(256) NOT NULL
+    password character varying(256) NOT NULL,
+    email character varying(128) NOT NULL
 );
 
 
@@ -554,13 +554,30 @@ ALTER TABLE ONLY public.users ALTER COLUMN id SET DEFAULT nextval('public.users_
 --
 
 COPY public.application (client_id, credit_id, status, creation_date, applied_offer, sign_date, ses_code, status_history, application_id) FROM stdin;
-145	\N	PREAPPROVAL	2023-08-07 11:35:51.434	\N	\N	\N	\N	7335358b-33c2-453b-8d81-2e554636d748
-147	\N	PREAPPROVAL	2023-08-07 11:41:35.424	\N	\N	\N	\N	c15418dd-af1e-4f73-b797-b4e0fa3df2eb
-150	159	CREDIT_ISSUED	2023-08-07 11:47:16.449	{"applicationId":"27fe354a-2570-4c3e-8670-e010b6affdb3","requestedAmount":10000,"totalAmount":110000,"term":12,"monthlyPayment":110027,"rate":0.07,"isInsuranceEnabled":true,"isSalaryClient":false}	2023-08-07 17:04:53.419	328940	[{"time": "2023-08-07T11:47:34.330Z", "status": "APPROVED", "changeType": "MANUAL"}, {"time": "2023-08-07T11:48:30.924Z", "status": "APPROVED", "changeType": "MANUAL"}, {"time": "2023-08-07T13:33:42.264Z", "status": "APPROVED", "changeType": "AUTOMATIC"}, {"time": "2023-08-07T13:33:46.076Z", "status": "APPROVED", "changeType": "AUTOMATIC"}, {"time": "2023-08-07T13:35:20.943Z", "status": "APPROVED", "changeType": "AUTOMATIC"}, {"time": "2023-08-07T14:04:39.775Z", "status": "APPROVED", "changeType": "AUTOMATIC"}, {"time": "2023-08-07T14:35:40.935Z", "status": "APPROVED", "changeType": "AUTOMATIC"}, {"time": "2023-08-07T14:35:55.754Z", "status": "APPROVED", "changeType": "AUTOMATIC"}, {"time": "2023-08-07T14:36:20.340Z", "status": "APPROVED", "changeType": "AUTOMATIC"}, {"time": "2023-08-07T14:36:50.514Z", "status": "APPROVED", "changeType": "AUTOMATIC"}, {"time": "2023-08-07T14:37:11.202Z", "status": "APPROVED", "changeType": "AUTOMATIC"}, {"time": "2023-08-07T14:42:46.370Z", "status": "APPROVED", "changeType": "AUTOMATIC"}, {"time": "2023-08-07T14:44:53.037Z", "status": "APPROVED", "changeType": "AUTOMATIC"}, {"time": "2023-08-07T14:45:20.073Z", "status": "APPROVED", "changeType": "AUTOMATIC"}, {"time": "2023-08-07T14:48:04.010Z", "status": "APPROVED", "changeType": "AUTOMATIC"}, {"time": "2023-08-07T17:02:07.523Z", "status": "APPROVED", "changeType": "AUTOMATIC"}, {"time": "2023-08-07T17:04:53.419Z", "status": "CREDIT_ISSUED", "changeType": "AUTOMATIC"}]	27fe354a-2570-4c3e-8670-e010b6affdb3
-151	\N	CC_DENIED	2023-08-13 10:23:09.992	\N	\N	\N	\N	1288e5d6-3ef5-43d8-bc74-d7e3078adeeb
-152	160	DOCUMENT_CREATED	2023-08-13 10:25:41.884	{"applicationId":"96990fcb-eaa0-4e73-9eeb-4179961584a7","requestedAmount":50000,"totalAmount":150000,"term":12,"monthlyPayment":12507,"rate":0.07,"isInsuranceEnabled":true,"isSalaryClient":false}	2023-08-13 11:22:37.609	709402	[{"time": "2023-08-13T10:26:43.371Z", "status": "APPROVED", "changeType": "MANUAL"}, {"time": "2023-08-13T11:18:27.437Z", "status": "APPROVED", "changeType": "AUTOMATIC"}, {"time": "2023-08-13T11:22:37.609Z", "status": "DOCUMENT_CREATED", "changeType": "AUTOMATIC"}]	96990fcb-eaa0-4e73-9eeb-4179961584a7
-153	161	APPROVED	2023-08-13 11:29:05.53	{"applicationId":"4e6c2faf-1345-4396-91e8-478af161f19c","requestedAmount":50000,"totalAmount":150000,"term":12,"monthlyPayment":12507,"rate":0.07,"isInsuranceEnabled":true,"isSalaryClient":false}	\N	\N	[{"time": "2023-08-13T11:29:22.941Z", "status": "APPROVED", "changeType": "MANUAL"}, {"time": "2023-08-13T11:31:16.655Z", "status": "APPROVED", "changeType": "AUTOMATIC"}]	4e6c2faf-1345-4396-91e8-478af161f19c
 154	\N	CC_DENIED	2023-08-26 14:44:08.094	\N	\N	\N	\N	f9863745-02f0-495f-8726-0ab140e335ae
+\N	\N	CC_DENIED	2023-08-29 11:00:18.426	\N	\N	\N	\N	3208e9ce-3d71-4b45-acf9-5d251e69af7d
+\N	\N	CC_DENIED	2023-08-29 13:11:20.309	\N	\N	\N	\N	957b720c-3f6e-41f4-88e9-2d6ea4b3b3db
+\N	\N	CC_DENIED	2023-08-29 13:12:01.071	\N	\N	\N	\N	4576e5e8-0d5d-4294-a10f-754295bdf69b
+\N	\N	PREAPPROVAL	2023-08-07 11:35:51.434	\N	\N	\N	\N	7335358b-33c2-453b-8d81-2e554636d748
+\N	\N	PREAPPROVAL	2023-08-07 11:41:35.424	\N	\N	\N	\N	c15418dd-af1e-4f73-b797-b4e0fa3df2eb
+\N	161	APPROVED	2023-08-13 11:29:05.53	{"applicationId":"4e6c2faf-1345-4396-91e8-478af161f19c","requestedAmount":50000,"totalAmount":150000,"term":12,"monthlyPayment":12507,"rate":0.07,"isInsuranceEnabled":true,"isSalaryClient":false}	\N	\N	[{"time": "2023-08-13T11:29:22.941Z", "status": "APPROVED", "changeType": "MANUAL"}, {"time": "2023-08-13T11:31:16.655Z", "status": "APPROVED", "changeType": "AUTOMATIC"}]	4e6c2faf-1345-4396-91e8-478af161f19c
+\N	162	CREDIT_ISSUED	2023-08-29 11:01:16.657	{"applicationId":"0990b63c-27b0-4bb7-903b-816c885a993e","requestedAmount":50000,"totalAmount":150000,"term":12,"monthlyPayment":12507,"rate":0.07,"isInsuranceEnabled":true,"isSalaryClient":false}	2023-08-29 11:13:43.218	132261	[{"time": "2023-08-29T11:01:34.038Z", "status": "APPROVED", "changeType": "MANUAL"}, {"time": "2023-08-29T11:08:23.335Z", "status": "APPROVED", "changeType": "AUTOMATIC"}, {"time": "2023-08-29T11:11:16.831Z", "status": "DOCUMENT_CREATED", "changeType": "AUTOMATIC"}, {"time": "2023-08-29T11:12:36.723Z", "status": "DOCUMENT_CREATED", "changeType": "AUTOMATIC"}, {"time": "2023-08-29T11:13:43.218Z", "status": "CREDIT_ISSUED", "changeType": "AUTOMATIC"}]	0990b63c-27b0-4bb7-903b-816c885a993e
+\N	\N	CC_DENIED	2023-08-29 12:48:37.24	\N	\N	\N	\N	847cb469-f3cf-42c1-b83b-0d42c6f47ff7
+\N	\N	CC_DENIED	2023-08-29 13:17:03.763	\N	\N	\N	\N	8d316e69-a436-4bad-8c04-eecc2cf2e636
+\N	\N	PREAPPROVAL	2023-08-29 13:21:24.229	\N	\N	\N	\N	210ca9d2-ed56-49a2-95b2-a761cee338e8
+\N	\N	CC_DENIED	2023-08-29 09:46:11.535	\N	\N	\N	\N	ea7ef373-60b9-4ae8-86df-e07d91d723ff
+\N	\N	APPROVED	2023-08-29 09:58:03.449	{"applicationId":"942b375f-7df5-4617-be66-fd2cef7246ef","requestedAmount":10000,"totalAmount":110000,"term":12,"monthlyPayment":9172,"rate":0.07,"isInsuranceEnabled":"true","isSalaryClient":false}	\N	\N	[{"time": "2023-08-29T09:59:16.730Z", "status": "APPROVED", "changeType": "MANUAL"}, {"time": "2023-08-29T10:08:59.957Z", "status": "APPROVED", "changeType": "MANUAL"}, {"time": "2023-08-29T10:11:35.854Z", "status": "APPROVED", "changeType": "MANUAL"}]	942b375f-7df5-4617-be66-fd2cef7246ef
+\N	\N	CC_DENIED	2023-08-13 10:23:09.992	\N	\N	\N	\N	1288e5d6-3ef5-43d8-bc74-d7e3078adeeb
+\N	160	DOCUMENT_CREATED	2023-08-13 10:25:41.884	{"applicationId":"96990fcb-eaa0-4e73-9eeb-4179961584a7","requestedAmount":50000,"totalAmount":150000,"term":12,"monthlyPayment":12507,"rate":0.07,"isInsuranceEnabled":true,"isSalaryClient":false}	2023-08-13 11:22:37.609	709402	[{"time": "2023-08-13T10:26:43.371Z", "status": "APPROVED", "changeType": "MANUAL"}, {"time": "2023-08-13T11:18:27.437Z", "status": "APPROVED", "changeType": "AUTOMATIC"}, {"time": "2023-08-13T11:22:37.609Z", "status": "DOCUMENT_CREATED", "changeType": "AUTOMATIC"}]	96990fcb-eaa0-4e73-9eeb-4179961584a7
+174	\N	APPROVED	2023-08-30 13:06:21.358	{"applicationId":"39c48449-fba8-4e07-bd90-1cf40a3fbd6b","requestedAmount":50000,"totalAmount":150000,"term":12,"monthlyPayment":12507,"rate":0.07,"isInsuranceEnabled":true,"isSalaryClient":false}	\N	\N	[{"time": "2023-08-30T13:08:19.643Z", "status": "APPROVED", "changeType": "MANUAL"}, {"time": "2023-08-30T13:08:39.769Z", "status": "APPROVED", "changeType": "MANUAL"}, {"time": "2023-08-30T13:09:25.327Z", "status": "APPROVED", "changeType": "MANUAL"}, {"time": "2023-08-30T13:10:46.450Z", "status": "APPROVED", "changeType": "MANUAL"}, {"time": "2023-08-30T13:11:12.422Z", "status": "APPROVED", "changeType": "MANUAL"}, {"time": "2023-08-30T13:25:21.549Z", "status": "APPROVED", "changeType": "MANUAL"}, {"time": "2023-08-30T13:33:02.051Z", "status": "APPROVED", "changeType": "MANUAL"}, {"time": "2023-08-30T13:34:42.904Z", "status": "APPROVED", "changeType": "MANUAL"}, {"time": "2023-08-30T13:38:18.057Z", "status": "APPROVED", "changeType": "MANUAL"}]	39c48449-fba8-4e07-bd90-1cf40a3fbd6b
+\N	159	CREDIT_ISSUED	2023-08-07 11:47:16.449	{"applicationId":"27fe354a-2570-4c3e-8670-e010b6affdb3","requestedAmount":10000,"totalAmount":110000,"term":12,"monthlyPayment":110027,"rate":0.07,"isInsuranceEnabled":true,"isSalaryClient":false}	2023-08-07 17:04:53.419	328940	[{"time": "2023-08-07T11:47:34.330Z", "status": "APPROVED", "changeType": "MANUAL"}, {"time": "2023-08-07T11:48:30.924Z", "status": "APPROVED", "changeType": "MANUAL"}, {"time": "2023-08-07T13:33:42.264Z", "status": "APPROVED", "changeType": "AUTOMATIC"}, {"time": "2023-08-07T13:33:46.076Z", "status": "APPROVED", "changeType": "AUTOMATIC"}, {"time": "2023-08-07T13:35:20.943Z", "status": "APPROVED", "changeType": "AUTOMATIC"}, {"time": "2023-08-07T14:04:39.775Z", "status": "APPROVED", "changeType": "AUTOMATIC"}, {"time": "2023-08-07T14:35:40.935Z", "status": "APPROVED", "changeType": "AUTOMATIC"}, {"time": "2023-08-07T14:35:55.754Z", "status": "APPROVED", "changeType": "AUTOMATIC"}, {"time": "2023-08-07T14:36:20.340Z", "status": "APPROVED", "changeType": "AUTOMATIC"}, {"time": "2023-08-07T14:36:50.514Z", "status": "APPROVED", "changeType": "AUTOMATIC"}, {"time": "2023-08-07T14:37:11.202Z", "status": "APPROVED", "changeType": "AUTOMATIC"}, {"time": "2023-08-07T14:42:46.370Z", "status": "APPROVED", "changeType": "AUTOMATIC"}, {"time": "2023-08-07T14:44:53.037Z", "status": "APPROVED", "changeType": "AUTOMATIC"}, {"time": "2023-08-07T14:45:20.073Z", "status": "APPROVED", "changeType": "AUTOMATIC"}, {"time": "2023-08-07T14:48:04.010Z", "status": "APPROVED", "changeType": "AUTOMATIC"}, {"time": "2023-08-07T17:02:07.523Z", "status": "APPROVED", "changeType": "AUTOMATIC"}, {"time": "2023-08-07T17:04:53.419Z", "status": "CREDIT_ISSUED", "changeType": "AUTOMATIC"}]	27fe354a-2570-4c3e-8670-e010b6affdb3
+\N	\N	APPROVED	2023-08-29 13:06:34.177	{"applicationId":"7f23d2fb-f366-4612-a6af-d257aeb97d92","requestedAmount":50000,"totalAmount":150000,"term":12,"monthlyPayment":12507,"rate":0.07,"isInsuranceEnabled":true,"isSalaryClient":false}	\N	\N	[{"time": "2023-08-29T13:08:21.838Z", "status": "APPROVED", "changeType": "MANUAL"}]	7f23d2fb-f366-4612-a6af-d257aeb97d92
+167	\N	PREAPPROVAL	2023-08-30 06:03:34.614	\N	\N	\N	\N	ba33f30a-efb5-4179-b5ac-dbf3d52e5414
+168	\N	PREAPPROVAL	2023-08-30 09:12:41.298	\N	\N	\N	\N	0e22db2e-4d37-4e8d-be9a-aaad1ca0f3fb
+170	\N	PREAPPROVAL	2023-08-30 09:33:59.598	\N	\N	\N	\N	e65d782a-430f-403d-bfc3-22a8dde111f7
+172	\N	PREAPPROVAL	2023-08-30 09:58:29.853	\N	\N	\N	\N	77974e92-fa79-4605-b922-597c87f4d4a5
+173	\N	PREAPPROVAL	2023-08-30 10:56:40.634	\N	\N	\N	\N	5c8f7ee0-5d2d-459e-b16d-f1fbc77c2739
+175	\N	APPROVED	2023-08-30 14:10:15.145	{"applicationId":"bea5b885-0d4d-4ae2-81ab-3de461d4fd86","requestedAmount":10000,"totalAmount":110000,"term":12,"monthlyPayment":9172,"rate":0.07,"isInsuranceEnabled":true,"isSalaryClient":false}	\N	\N	[{"time": "2023-08-30T14:10:31.145Z", "status": "APPROVED", "changeType": "MANUAL"}, {"time": "2023-08-30T14:12:28.313Z", "status": "APPROVED", "changeType": "MANUAL"}, {"time": "2023-08-30T14:12:34.805Z", "status": "APPROVED", "changeType": "MANUAL"}, {"time": "2023-08-30T14:31:00.614Z", "status": "APPROVED", "changeType": "MANUAL"}, {"time": "2023-08-30T14:31:15.325Z", "status": "APPROVED", "changeType": "MANUAL"}, {"time": "2023-08-30T14:31:51.287Z", "status": "APPROVED", "changeType": "MANUAL"}, {"time": "2023-08-30T14:36:58.961Z", "status": "APPROVED", "changeType": "MANUAL"}, {"time": "2023-08-30T14:38:34.441Z", "status": "APPROVED", "changeType": "MANUAL"}, {"time": "2023-08-30T14:40:13.907Z", "status": "APPROVED", "changeType": "MANUAL"}, {"time": "2023-08-30T14:40:28.123Z", "status": "APPROVED", "changeType": "MANUAL"}, {"time": "2023-08-30T14:44:05.865Z", "status": "APPROVED", "changeType": "MANUAL"}, {"time": "2023-08-30T14:45:06.346Z", "status": "APPROVED", "changeType": "MANUAL"}, {"time": "2023-08-30T14:45:39.511Z", "status": "APPROVED", "changeType": "MANUAL"}, {"time": "2023-08-30T14:47:40.309Z", "status": "APPROVED", "changeType": "MANUAL"}, {"time": "2023-08-30T14:47:51.720Z", "status": "APPROVED", "changeType": "MANUAL"}, {"time": "2023-08-30T14:48:00.677Z", "status": "APPROVED", "changeType": "MANUAL"}, {"time": "2023-08-30T14:49:01.654Z", "status": "APPROVED", "changeType": "MANUAL"}, {"time": "2023-08-30T14:49:06.155Z", "status": "APPROVED", "changeType": "MANUAL"}, {"time": "2023-08-30T14:49:21.479Z", "status": "APPROVED", "changeType": "MANUAL"}, {"time": "2023-08-30T14:49:41.533Z", "status": "APPROVED", "changeType": "MANUAL"}, {"time": "2023-08-30T14:51:04.951Z", "status": "APPROVED", "changeType": "MANUAL"}, {"time": "2023-08-30T14:54:56.706Z", "status": "APPROVED", "changeType": "MANUAL"}, {"time": "2023-08-30T14:56:31.171Z", "status": "APPROVED", "changeType": "MANUAL"}, {"time": "2023-08-30T14:58:22.527Z", "status": "APPROVED", "changeType": "MANUAL"}]	bea5b885-0d4d-4ae2-81ab-3de461d4fd86
 \.
 
 
@@ -597,16 +614,14 @@ COPY public.change_type (id, change_type) FROM stdin;
 
 COPY public.client (client_id, last_name, first_name, middle_name, birth_date, email, gender_id, marital_status_id, dependent_amount, passport_id, employment_id, account) FROM stdin;
 144	Doe	John	Smith	1990-01-01	vitaminka_94@mail.ru	\N	\N	\N	0000123456	\N	\N
-145	Doe	John	Smith	1990-01-01	vitaminka_94@mail.ru	\N	\N	\N	0090123456	\N	\N
-146	Doe	John	Smith	1990-01-01	vitaminka_94@mail.ru	\N	\N	\N	0099123456	\N	\N
-147	Doe	John	Smith	1990-01-01	vitaminka_94@mail.ru	\N	\N	\N	0999123456	\N	\N
-148	Doe	John	Smith	1990-01-01	vitaminka_94@mail.ru	\N	\N	\N	9999123456	\N	\N
-149	Doe	John	Smith	1990-01-01	vitaminka_94@mail.ru	\N	\N	\N	9899123456	\N	\N
-150	Doe	John	Smith	1990-01-01	vitaminka_94@mail.ru	1	1	2	9099123456	313b1373-5726-4efd-bca3-95cf667a7cf3	1234567890123456
-151	Иванов	Иван	Иванович	1990-01-01	kutluhan92@gmail.com	\N	\N	\N	73c06912-d374-455d-9e4a-368ab3f9c642	\N	\N
-152	Иванов	Иван	Иванович	1990-01-01	kutluhan92@gmail.com	1	1	2	85741e2e-00ce-4d6b-a73a-1e3dd17e7690	73f3a5d2-71fb-4225-a604-56e4ab54ac4f	5469798787675453
-153	Иванов	Иван	Иванович	1985-07-15	vitaminka_94@mail.ru	3	3	2	46c3b153-b17b-426a-bd36-5c74cc310d12	04155316-5d3b-4fe7-b0ac-da575dda2603	RU1234567890
 154	Иванов	Иван	Иванович	1990-01-01	ivan.ivanov@example.com	\N	\N	\N	185ae0bd-776c-472f-b014-42766ced1919	\N	\N
+167	Иванов	Иван	Иванович	1990-01-15	violetta.vitaandreevna@gmail.com	\N	\N	\N	e5108ed2-50f6-4a6d-bff2-baca4d257edd	\N	\N
+168	Иванов	Иван	Иванович	1990-01-15	violetta.frontend@yandex.ru	\N	\N	\N	b81e2c02-3d68-443c-9021-efbd2e43b35d	\N	\N
+170	Иванов	Иван	Иванович	1990-01-15	violetta.fron@yandex.ru	\N	\N	\N	cda6dbe8-9f7f-4e10-a029-5183505060d8	\N	\N
+172	Иванов	Иван	Иванович	1990-01-15	john.doe@mail.ru	\N	\N	\N	7f0ab1aa-bf2e-4268-b61a-bb2e748232da	\N	\N
+173	Doe	John	Michael	1985-07-20	kuka@mail.ru	\N	\N	\N	2fd55ce0-be38-4f93-a9a5-6cfec6205f5e	\N	\N
+174	Doe	John	Michael	1985-07-20	vit@mail.ru	\N	\N	\N	53bdd91a-c5cb-4672-a549-d71b0deb5dec	\N	\N
+175	Doe	John	Michael	1985-11-15	bolt@gmail.com	\N	\N	\N	fba8a734-fb25-4a8f-9fc6-b7f02ecf5c4d	\N	\N
 \.
 
 
@@ -635,6 +650,7 @@ COPY public.credit (credit_id, amount, term, monthly_payment, rate, psk, payment
 159	10000	12	875.5174408364895	0.06	1.0506209290037873	[{"number":1,"date":"2023-09-07","totalPayment":875.5174408364895,"interestPayment":50,"debtPayment":826,"remainingDebt":9174},{"number":2,"date":"2023-10-07","totalPayment":875.5174408364895,"interestPayment":46,"debtPayment":830,"remainingDebt":8344},{"number":3,"date":"2023-11-07","totalPayment":875.5174408364895,"interestPayment":42,"debtPayment":834,"remainingDebt":7510},{"number":4,"date":"2023-12-07","totalPayment":875.5174408364895,"interestPayment":38,"debtPayment":838,"remainingDebt":6672},{"number":5,"date":"2024-01-07","totalPayment":875.5174408364895,"interestPayment":34,"debtPayment":842,"remainingDebt":5830},{"number":6,"date":"2024-02-07","totalPayment":875.5174408364895,"interestPayment":30,"debtPayment":846,"remainingDebt":4984},{"number":7,"date":"2024-03-07","totalPayment":875.5174408364895,"interestPayment":25,"debtPayment":851,"remainingDebt":4133},{"number":8,"date":"2024-04-07","totalPayment":875.5174408364895,"interestPayment":21,"debtPayment":855,"remainingDebt":3278},{"number":9,"date":"2024-05-07","totalPayment":875.5174408364895,"interestPayment":17,"debtPayment":859,"remainingDebt":2419},{"number":10,"date":"2024-06-07","totalPayment":875.5174408364895,"interestPayment":13,"debtPayment":863,"remainingDebt":1556},{"number":11,"date":"2024-07-07","totalPayment":875.5174408364895,"interestPayment":8,"debtPayment":868,"remainingDebt":688},{"number":12,"date":"2024-08-07","totalPayment":875.5174408364895,"interestPayment":4,"debtPayment":872,"remainingDebt":-184}]	t	f	2
 160	50000	12	4258	0.04000000000000001	1.02192	[{"number":1,"date":"2023-09-13","totalPayment":4258,"interestPayment":167,"debtPayment":4091,"remainingDebt":45909},{"number":2,"date":"2023-10-13","totalPayment":4258,"interestPayment":154,"debtPayment":4104,"remainingDebt":41805},{"number":3,"date":"2023-11-13","totalPayment":4258,"interestPayment":140,"debtPayment":4118,"remainingDebt":37687},{"number":4,"date":"2023-12-13","totalPayment":4258,"interestPayment":126,"debtPayment":4132,"remainingDebt":33555},{"number":5,"date":"2024-01-13","totalPayment":4258,"interestPayment":112,"debtPayment":4146,"remainingDebt":29409},{"number":6,"date":"2024-02-13","totalPayment":4258,"interestPayment":99,"debtPayment":4159,"remainingDebt":25250},{"number":7,"date":"2024-03-13","totalPayment":4258,"interestPayment":85,"debtPayment":4173,"remainingDebt":21077},{"number":8,"date":"2024-04-13","totalPayment":4258,"interestPayment":71,"debtPayment":4187,"remainingDebt":16890},{"number":9,"date":"2024-05-13","totalPayment":4258,"interestPayment":57,"debtPayment":4201,"remainingDebt":12689},{"number":10,"date":"2024-06-13","totalPayment":4258,"interestPayment":43,"debtPayment":4215,"remainingDebt":8474},{"number":11,"date":"2024-07-13","totalPayment":4258,"interestPayment":29,"debtPayment":4229,"remainingDebt":4245},{"number":12,"date":"2024-08-13","totalPayment":4258,"interestPayment":15,"debtPayment":4243,"remainingDebt":2}]	t	f	1
 161	50000	12	4396	0.1	1.05504	[{"number":1,"date":"2023-09-13","totalPayment":4396,"interestPayment":417,"debtPayment":3979,"remainingDebt":46021},{"number":2,"date":"2023-10-13","totalPayment":4396,"interestPayment":384,"debtPayment":4012,"remainingDebt":42009},{"number":3,"date":"2023-11-13","totalPayment":4396,"interestPayment":351,"debtPayment":4045,"remainingDebt":37964},{"number":4,"date":"2023-12-13","totalPayment":4396,"interestPayment":317,"debtPayment":4079,"remainingDebt":33885},{"number":5,"date":"2024-01-13","totalPayment":4396,"interestPayment":283,"debtPayment":4113,"remainingDebt":29772},{"number":6,"date":"2024-02-13","totalPayment":4396,"interestPayment":249,"debtPayment":4147,"remainingDebt":25625},{"number":7,"date":"2024-03-13","totalPayment":4396,"interestPayment":214,"debtPayment":4182,"remainingDebt":21443},{"number":8,"date":"2024-04-13","totalPayment":4396,"interestPayment":179,"debtPayment":4217,"remainingDebt":17226},{"number":9,"date":"2024-05-13","totalPayment":4396,"interestPayment":144,"debtPayment":4252,"remainingDebt":12974},{"number":10,"date":"2024-06-13","totalPayment":4396,"interestPayment":109,"debtPayment":4287,"remainingDebt":8687},{"number":11,"date":"2024-07-13","totalPayment":4396,"interestPayment":73,"debtPayment":4323,"remainingDebt":4364},{"number":12,"date":"2024-08-13","totalPayment":4396,"interestPayment":37,"debtPayment":4359,"remainingDebt":5}]	t	f	1
+162	50000	12	4396	0.09999999999999999	1.05504	[{"number":1,"date":"2023-09-29","totalPayment":4396,"interestPayment":417,"debtPayment":3979,"remainingDebt":46021},{"number":2,"date":"2023-10-29","totalPayment":4396,"interestPayment":384,"debtPayment":4012,"remainingDebt":42009},{"number":3,"date":"2023-11-29","totalPayment":4396,"interestPayment":351,"debtPayment":4045,"remainingDebt":37964},{"number":4,"date":"2023-12-29","totalPayment":4396,"interestPayment":317,"debtPayment":4079,"remainingDebt":33885},{"number":5,"date":"2024-01-29","totalPayment":4396,"interestPayment":283,"debtPayment":4113,"remainingDebt":29772},{"number":6,"date":"2024-02-29","totalPayment":4396,"interestPayment":249,"debtPayment":4147,"remainingDebt":25625},{"number":7,"date":"2024-03-29","totalPayment":4396,"interestPayment":214,"debtPayment":4182,"remainingDebt":21443},{"number":8,"date":"2024-04-29","totalPayment":4396,"interestPayment":179,"debtPayment":4217,"remainingDebt":17226},{"number":9,"date":"2024-05-29","totalPayment":4396,"interestPayment":144,"debtPayment":4252,"remainingDebt":12974},{"number":10,"date":"2024-06-29","totalPayment":4396,"interestPayment":109,"debtPayment":4287,"remainingDebt":8687},{"number":11,"date":"2024-07-29","totalPayment":4396,"interestPayment":73,"debtPayment":4323,"remainingDebt":4364},{"number":12,"date":"2024-08-29","totalPayment":4396,"interestPayment":37,"debtPayment":4359,"remainingDebt":5}]	t	f	2
 \.
 
 
@@ -700,6 +716,7 @@ COPY public.employment (status_id, employer_inn, salary, position_id, work_exper
 1	1234567890	50000	2	50	3	4ad8dd7b-50e7-4e87-8fee-c4a9b5643786
 1	1234567890	50000	2	50	3	73f3a5d2-71fb-4225-a604-56e4ab54ac4f
 3	1234567890	50000	3	15	3	04155316-5d3b-4fe7-b0ac-da575dda2603
+3	1234567890	50000	1	12	4	0c9107b4-4e2a-4f1d-984b-bde8ae4440ce
 \.
 
 
@@ -765,6 +782,27 @@ COPY public.passport (passport_id, series, number, issue_branch, issue_date) FRO
 85741e2e-00ce-4d6b-a73a-1e3dd17e7690	4510	123456	Branch Name Here	2023-08-12
 46c3b153-b17b-426a-bd36-5c74cc310d12	0909	123456	Отделение УФМС России по г. Москва	2005-06-15
 185ae0bd-776c-472f-b014-42766ced1919	1234	567890	\N	\N
+1e772376-8c1d-4f8b-854b-6a0cdfbf8146	1111	123456	\N	\N
+35fb1d78-0663-432f-ac09-b87a795367aa	1112	123456	\N	\N
+070f79e5-5aaa-4c29-9193-6dd91bff811d	1000	567890	\N	\N
+c18b3c69-1c20-404a-a1b1-c1cfc9677e79	1008	567890	Branch 123	2010-05-22
+364c84ce-8625-4882-9904-eeac263bdd85	1010	567890	\N	\N
+da121aef-d551-416d-bfeb-0ba46a594e6f	1016	567890	\N	\N
+804177ce-729a-4845-bcc2-39a84e1b8420	1284	567890	\N	\N
+16a7ad96-20c5-4ade-ae7a-938d07ee115b	1784	567890	\N	\N
+f67ec2fc-5174-4f71-9a8a-9a172a0f2b27	1744	567890	\N	\N
+a609a384-b620-4bd8-88e7-c1d14f92dca8	1724	567890	\N	\N
+ebb04d9d-67af-43c4-8404-814d95920599	1231	567890	\N	\N
+f9e08cd7-759e-4514-bd16-cb0002a5010f	1231	567890	\N	\N
+e5108ed2-50f6-4a6d-bff2-baca4d257edd	1231	567890	\N	\N
+b81e2c02-3d68-443c-9021-efbd2e43b35d	1238	567830	\N	\N
+9b3e4440-92bd-43b0-8ba9-360a8f471c56	0239	567830	\N	\N
+cda6dbe8-9f7f-4e10-a029-5183505060d8	0239	567830	\N	\N
+0e358056-644a-410d-8f66-0ab09cf83688	0232	567830	\N	\N
+7f0ab1aa-bf2e-4268-b61a-bb2e748232da	0232	567830	\N	\N
+2fd55ce0-be38-4f93-a9a5-6cfec6205f5e	1724	567890	\N	\N
+53bdd91a-c5cb-4672-a549-d71b0deb5dec	1999	567890	\N	\N
+fba8a734-fb25-4a8f-9fc6-b7f02ecf5c4d	1115	123456	\N	\N
 \.
 
 
@@ -789,6 +827,7 @@ APPROVED	2023-08-07 14:48:04.01	1	27fe354a-2570-4c3e-8670-e010b6affdb3
 APPROVED	2023-08-07 17:02:07.523	1	27fe354a-2570-4c3e-8670-e010b6affdb3
 APPROVED	2023-08-13 11:18:27.437	1	96990fcb-eaa0-4e73-9eeb-4179961584a7
 APPROVED	2023-08-13 11:31:16.655	1	4e6c2faf-1345-4396-91e8-478af161f19c
+APPROVED	2023-08-29 11:08:23.335	1	0990b63c-27b0-4bb7-903b-816c885a993e
 \.
 
 
@@ -796,8 +835,19 @@ APPROVED	2023-08-13 11:31:16.655	1	4e6c2faf-1345-4396-91e8-478af161f19c
 -- Data for Name: users; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-COPY public.users (id, login, password) FROM stdin;
-1	violetta1234	aXN0YW5idWwxMTE=
+COPY public.users (id, password, email) FROM stdin;
+1	aXN0YW5idWwxMTE=	some_value@example.com
+6	MTIzNDU=	vitaminka_94@mail.ru
+7	MTIzNDU=	violetta.front@yandex.ru
+8	MTIzNDU=	violetta.vitaandreevna@gmail.com
+10	MTIzNDU=	violetta.frontend@yandex.ru
+11	MTIzNDU=	john.doe@mail.ru
+13	MTIzNDU=	vitaminka94@mail.ru
+14	MTIzNDU=	vitaminka@mail.ru
+15	MTIzNDU=	hahaha@mail.ru
+16	MTIzNDU=	kuka@mail.ru
+17	MTIzNDU=	vit@mail.ru
+18	MTIzNA==	bolt@gmail.com
 \.
 
 
@@ -826,14 +876,14 @@ SELECT pg_catalog.setval('public.change_type_id_seq', 2, true);
 -- Name: client_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.client_id_seq', 154, true);
+SELECT pg_catalog.setval('public.client_id_seq', 175, true);
 
 
 --
 -- Name: credit_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.credit_id_seq', 161, true);
+SELECT pg_catalog.setval('public.credit_id_seq', 162, true);
 
 
 --
@@ -875,7 +925,7 @@ SELECT pg_catalog.setval('public.marital_status_id_seq', 4, true);
 -- Name: users_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.users_id_seq', 1, true);
+SELECT pg_catalog.setval('public.users_id_seq', 18, true);
 
 
 --
@@ -924,6 +974,22 @@ ALTER TABLE ONLY public.credit
 
 ALTER TABLE ONLY public.credit_status
     ADD CONSTRAINT credit_status_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: client email_unique; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.client
+    ADD CONSTRAINT email_unique UNIQUE (email);
+
+
+--
+-- Name: users email_unique_new; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.users
+    ADD CONSTRAINT email_unique_new UNIQUE (email);
 
 
 --
@@ -1036,14 +1102,6 @@ ALTER TABLE ONLY public.credit
 
 ALTER TABLE ONLY public.client
     ADD CONSTRAINT unique_employment_id UNIQUE (employment_id);
-
-
---
--- Name: users users_login_key; Type: CONSTRAINT; Schema: public; Owner: postgres
---
-
-ALTER TABLE ONLY public.users
-    ADD CONSTRAINT users_login_key UNIQUE (login);
 
 
 --
