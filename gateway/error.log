@@ -63,3 +63,213 @@
 {"level":"error","message":{"error":"Внутренняя ошибка сервера."},"service":"user-service"}
 {"level":"error","message":{"error":"Внутренняя ошибка сервера."},"service":"user-service"}
 {"level":"error","message":{"error":"Клиент с данным email уже существует"},"service":"user-service"}
+{"level":"error","message":"Unexpected token { in JSON at position 1","service":"user-service"}
+{"level":"error","message":"Authentication failed","service":"user-service"}
+{"level":"error","message":"User with this login already exists","service":"user-service"}
+{"level":"error","message":{"error":"Клиент с данным паспортом уже существует"},"service":"user-service"}
+{"level":"error","message":{"error":"Клиент с данным email уже существует"},"service":"user-service"}
+{"level":"error","message":{"error":"Клиент с данным email уже существует"},"service":"user-service"}
+{"level":"error","message":{"error":"Клиент с данным email уже существует"},"service":"user-service"}
+{"level":"error","message":"socket hang up","service":"user-service"}
+{"level":"error","message":{"error":"Внутренняя ошибка сервера."},"service":"user-service"}
+{"level":"error","message":"connect ECONNREFUSED 172.22.0.9:3002","service":"user-service"}
+{"level":"error","message":{"error":"Внутренняя ошибка сервера."},"service":"user-service"}
+{"level":"error","message":{"error":"Внутренняя ошибка сервера."},"service":"user-service"}
+{"level":"error","message":{"error":"Внутренняя ошибка сервера."},"service":"user-service"}
+{"level":"error","message":{"error":"Внутренняя ошибка сервера."},"service":"user-service"}
+{"level":"error","message":{"error":"Клиент с данным паспортом уже существует"},"service":"user-service"}
+{"level":"error","message":{"error":"Внутренняя ошибка сервера."},"service":"user-service"}
+{"level":"error","message":{"error":"Клиент с данным email уже существует"},"service":"user-service"}
+{"level":"error","message":{"error":"Укажите тот же email, что и при регистрации."},"service":"user-service"}
+{"level":"error","message":{"error":"Укажите тот же email, что и при регистрации."},"service":"user-service"}
+{"level":"error","message":{"error":"Укажите тот же email, что и при регистрации."},"service":"user-service"}
+{"level":"error","message":{"error":"Укажите тот же email, что и при регистрации."},"service":"user-service"}
+{"level":"error","message":{"error":"Укажите тот же email, что и при регистрации."},"service":"user-service"}
+{"level":"error","message":{"error":"Укажите тот же email, что и при регистрации."},"service":"user-service"}
+{"level":"error","message":{"error":"Укажите тот же email, что и при регистрации."},"service":"user-service"}
+{"level":"error","message":{"error":"Укажите тот же email, что и при регистрации."},"service":"user-service"}
+{"level":"error","message":"socket hang up","service":"user-service"}
+{"level":"error","message":"connect ECONNREFUSED 172.22.0.6:3006","service":"user-service"}
+{"level":"error","message":"connect ECONNREFUSED 172.22.0.6:3006","service":"user-service"}
+{"level":"error","message":"connect ECONNREFUSED 172.22.0.6:3006","service":"user-service"}
+{"level":"error","message":"connect ECONNREFUSED 172.22.0.6:3006","service":"user-service"}
+{"level":"error","message":"connect ECONNREFUSED 172.22.0.6:3006","service":"user-service"}
+{"level":"error","message":"connect ECONNREFUSED 172.22.0.6:3006","service":"user-service"}
+{"level":"error","message":"Email and password are required.","service":"user-service"}
+{"level":"error","message":"User with this login already exists","service":"user-service"}
+{"level":"error","message":{"error":"Укажите тот же email, что и при регистрации."},"service":"user-service"}
+{"level":"error","message":{"error":"Укажите тот же email, что и при регистрации."},"service":"user-service"}
+{"level":"error","message":{"error":"Укажите тот же email, что и при регистрации."},"service":"user-service"}
+{"level":"error","message":{"error":"Укажите тот же email, что и при регистрации."},"service":"user-service"}
+{"level":"error","message":"<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n<meta charset=\"utf-8\">\n<title>Error</title>\n</head>\n<body>\n<pre>Cannot POST /deal/register</pre>\n</body>\n</html>\n","service":"user-service"}
+{"level":"error","message":"<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n<meta charset=\"utf-8\">\n<title>Error</title>\n</head>\n<body>\n<pre>Cannot POST /deal/register</pre>\n</body>\n</html>\n","service":"user-service"}
+{"level":"error","message":{"error":"Укажите тот же email, что и при регистрации."},"service":"user-service"}
+{"level":"error","message":{"error":"Укажите тот же email, что и при регистрации."},"service":"user-service"}
+{"level":"error","message":{"error":"Укажите тот же email, что и при регистрации."},"service":"user-service"}
+{"level":"error","message":{"error":"Укажите тот же email, что и при регистрации."},"service":"user-service"}
+{"level":"error","message":{"error":"Укажите тот же email, что и при регистрации."},"service":"user-service"}
+{"level":"error","message":"connect ECONNREFUSED 172.22.0.9:3002","service":"user-service"}
+{"level":"error","message":{"error":"Укажите тот же email, что и при регистрации."},"service":"user-service"}
+{"level":"error","message":{"error":"Внутренняя ошибка сервера."},"service":"user-service"}
+{"level":"error","message":{"error":"Внутренняя ошибка сервера."},"service":"user-service"}
+{"level":"error","message":"connect ECONNREFUSED 172.22.0.9:3002","service":"user-service"}
+{"level":"error","message":"connect ECONNREFUSED 172.22.0.9:3002","service":"user-service"}
+{"level":"error","message":"connect ECONNREFUSED 172.22.0.9:3002","service":"user-service"}
+{"level":"error","message":"connect ECONNREFUSED 172.22.0.8:3002","service":"user-service"}
+{"level":"error","message":"connect ECONNREFUSED 172.22.0.8:3002","service":"user-service"}
+{"level":"error","message":"connect ECONNREFUSED 172.22.0.8:3002","service":"user-service"}
+{"level":"error","message":{"error":"Внутренняя ошибка сервера."},"service":"user-service"}
+{"level":"error","message":{"error":"Внутренняя ошибка сервера."},"service":"user-service"}
+{"level":"error","message":"Email and password are required.","service":"user-service"}
+{"level":"error","message":"Email and password are required.","service":"user-service"}
+{"level":"error","message":{"error":"Внутренняя ошибка сервера."},"service":"user-service"}
+{"level":"error","message":"Email and password are required.","service":"user-service"}
+{"level":"error","message":{"error":"Token required"},"service":"user-service"}
+{"level":"error","message":"connect ECONNREFUSED 172.22.0.6:3003","service":"user-service"}
+{"level":"error","message":"connect ECONNREFUSED 172.22.0.6:3003","service":"user-service"}
+{"level":"error","message":"connect ECONNREFUSED 172.22.0.6:3003","service":"user-service"}
+{"level":"error","message":"connect ECONNREFUSED 172.22.0.6:3003","service":"user-service"}
+{"level":"error","message":"connect ECONNREFUSED 172.22.0.6:3003","service":"user-service"}
+{"level":"error","message":"connect ECONNREFUSED 172.22.0.6:3003","service":"user-service"}
+{"level":"error","message":"connect ECONNREFUSED 172.22.0.6:3003","service":"user-service"}
+{"level":"error","message":"connect ECONNREFUSED 172.22.0.6:3003","service":"user-service"}
+{"level":"error","message":"connect ECONNREFUSED 172.22.0.6:3003","service":"user-service"}
+{"level":"error","message":"connect ECONNREFUSED 172.22.0.6:3003","service":"user-service"}
+{"level":"error","message":"connect ECONNREFUSED 172.22.0.6:3003","service":"user-service"}
+{"level":"error","message":"connect ECONNREFUSED 172.22.0.6:3003","service":"user-service"}
+{"level":"error","message":"connect ECONNREFUSED 172.22.0.6:3003","service":"user-service"}
+{"level":"error","message":{"error":"Token required"},"service":"user-service"}
+{"level":"error","message":{"error":"Token required"},"service":"user-service"}
+{"level":"error","message":{"error":"Token required"},"service":"user-service"}
+{"level":"error","message":{"error":"Token required"},"service":"user-service"}
+{"level":"error","message":{"error":"Token required"},"service":"user-service"}
+{"level":"error","message":{"error":"Token required"},"service":"user-service"}
+{"level":"error","message":{"error":"Token required"},"service":"user-service"}
+{"level":"error","message":{"error":"Token required"},"service":"user-service"}
+{"level":"error","message":{"error":"Token required"},"service":"user-service"}
+{"level":"error","message":{"error":"Клиент с данным email уже существует"},"service":"user-service"}
+{"level":"error","message":{"error":"Укажите тот же email, что и при регистрации."},"service":"user-service"}
+{"level":"error","message":"Token required","service":"user-service"}
+{"level":"error","message":"Token required","service":"user-service"}
+{"level":"error","message":{"error":"Token required"},"service":"user-service"}
+{"level":"error","message":{"error":"Token required"},"service":"user-service"}
+{"level":"error","message":{"error":"Token required"},"service":"user-service"}
+{"level":"error","message":{"error":"Token required"},"service":"user-service"}
+{"level":"error","message":{"error":"Token required"},"service":"user-service"}
+{"level":"error","message":"connect ECONNREFUSED 172.22.0.7:3003","service":"user-service"}
+{"level":"error","message":"connect ECONNREFUSED 172.22.0.7:3003","service":"user-service"}
+{"level":"error","message":"connect ECONNREFUSED 172.22.0.5:3003","service":"user-service"}
+{"level":"error","message":"connect ECONNREFUSED 172.22.0.5:3003","service":"user-service"}
+{"level":"error","message":{"error":"Token required"},"service":"user-service"}
+{"level":"error","message":{"error":"Token required"},"service":"user-service"}
+{"level":"error","message":"connect ECONNREFUSED 172.22.0.5:3003","service":"user-service"}
+{"level":"error","message":{"error":"Token required"},"service":"user-service"}
+{"level":"error","message":{"error":"Token required"},"service":"user-service"}
+{"level":"error","message":"connect ECONNREFUSED 172.22.0.5:3003","service":"user-service"}
+{"level":"error","message":{"error":"Token required"},"service":"user-service"}
+{"level":"error","message":{"error":"Token required"},"service":"user-service"}
+{"level":"error","message":{"error":"Token required"},"service":"user-service"}
+{"level":"error","message":"123Token required","service":"user-service"}
+{"level":"error","message":{"error":"Token required"},"service":"user-service"}
+{"level":"error","message":{"error":"Token required"},"service":"user-service"}
+{"level":"error","message":{"error":"Token required"},"service":"user-service"}
+{"level":"error","message":"123Token required","service":"user-service"}
+{"level":"error","message":{"error":"Token required"},"service":"user-service"}
+{"level":"error","message":{"error":"Token required"},"service":"user-service"}
+{"level":"error","message":{"error":"Token required"},"service":"user-service"}
+{"level":"error","message":{"error":{"error":"Клиент с данным email уже существует"}},"service":"user-service"}
+{"level":"error","message":{"error":{"error":"Клиент с данным email уже существует"}},"service":"user-service"}
+{"level":"error","message":"<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n<meta charset=\"utf-8\">\n<title>Error</title>\n</head>\n<body>\n<pre>Cannot POST /application/</pre>\n</body>\n</html>\n","service":"user-service"}
+{"level":"error","message":"<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n<meta charset=\"utf-8\">\n<title>Error</title>\n</head>\n<body>\n<pre>Cannot POST /application/</pre>\n</body>\n</html>\n","service":"user-service"}
+{"level":"error","message":"<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n<meta charset=\"utf-8\">\n<title>Error</title>\n</head>\n<body>\n<pre>Cannot POST /application/</pre>\n</body>\n</html>\n","service":"user-service"}
+{"level":"error","message":"<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n<meta charset=\"utf-8\">\n<title>Error</title>\n</head>\n<body>\n<pre>Cannot POST /application/</pre>\n</body>\n</html>\n","service":"user-service"}
+{"level":"error","message":"<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n<meta charset=\"utf-8\">\n<title>Error</title>\n</head>\n<body>\n<pre>Cannot POST /application/</pre>\n</body>\n</html>\n","service":"user-service"}
+{"level":"error","message":{"error":{"error":"Клиент с данным email уже существует"}},"service":"user-service"}
+{"level":"error","message":{"error":"connect ECONNREFUSED 172.22.0.9:3002"},"service":"user-service"}
+{"level":"error","message":{"error":{"error":"Клиент с данным email уже существует"}},"service":"user-service"}
+{"level":"error","message":"<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n<meta charset=\"utf-8\">\n<title>Error</title>\n</head>\n<body>\n<pre>Cannot POST /application/</pre>\n</body>\n</html>\n","service":"user-service"}
+{"level":"error","message":"<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n<meta charset=\"utf-8\">\n<title>Error</title>\n</head>\n<body>\n<pre>Cannot POST /application/</pre>\n</body>\n</html>\n","service":"user-service"}
+{"level":"error","message":"<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n<meta charset=\"utf-8\">\n<title>Error</title>\n</head>\n<body>\n<pre>Cannot POST /application/</pre>\n</body>\n</html>\n","service":"user-service"}
+{"level":"error","message":{"error":"Укажите тот же email, что и при регистрации."},"service":"user-service"}
+{"level":"error","message":{"error":{"error":"Клиент с данным email уже существует"}},"service":"user-service"}
+{"level":"error","message":"Email and password are required.","service":"user-service"}
+{"level":"error","message":{"error":"Клиент с данным паспортом уже существует"},"service":"user-service"}
+{"level":"error","message":"<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n<meta charset=\"utf-8\">\n<title>Error</title>\n</head>\n<body>\n<pre>Cannot PUT /deal/application</pre>\n</body>\n</html>\n","service":"user-service"}
+{"level":"error","message":"<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n<meta charset=\"utf-8\">\n<title>Error</title>\n</head>\n<body>\n<pre>Cannot PUT /deal/application/offers</pre>\n</body>\n</html>\n","service":"user-service"}
+{"level":"error","message":"<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n<meta charset=\"utf-8\">\n<title>Error</title>\n</head>\n<body>\n<pre>Cannot PUT /deal/offers</pre>\n</body>\n</html>\n","service":"user-service"}
+{"level":"error","message":"connect ECONNREFUSED 172.22.0.8:3002","service":"user-service"}
+{"level":"error","message":"connect ECONNREFUSED 172.22.0.8:3002","service":"user-service"}
+{"level":"error","message":"connect ECONNREFUSED 172.22.0.8:3002","service":"user-service"}
+{"level":"error","message":"You can only update your own application","service":"user-service"}
+{"level":"error","message":"You can only update your own application","service":"user-service"}
+{"level":"error","message":"You can only update your own application","service":"user-service"}
+{"level":"error","message":"You can only update your own application","service":"user-service"}
+{"level":"error","message":"You can only update your own application","service":"user-service"}
+{"level":"error","message":"connect ECONNREFUSED 172.22.0.8:3002","service":"user-service"}
+{"level":"error","message":"You can only update your own application","service":"user-service"}
+{"level":"error","message":"You can only update your own application","service":"user-service"}
+{"level":"error","message":"You can only update your own application","service":"user-service"}
+{"level":"error","message":"You can only update your own application","service":"user-service"}
+{"level":"error","message":{"error":"Token required"},"service":"user-service"}
+{"level":"error","message":{"error":"Token required"},"service":"user-service"}
+{"level":"error","message":"connect ECONNREFUSED 172.22.0.4:3003","service":"user-service"}
+{"level":"error","message":{"error":"Token required"},"service":"user-service"}
+{"level":"error","message":{"error":"Token required"},"service":"user-service"}
+{"level":"error","message":{"error":"Token required"},"service":"user-service"}
+{"level":"error","message":{"error":"Token required"},"service":"user-service"}
+{"level":"error","message":"connect ECONNREFUSED 172.22.0.4:3003","service":"user-service"}
+{"level":"error","message":{"error":"Token required"},"service":"user-service"}
+{"level":"error","message":"Token required","service":"user-service"}
+{"level":"error","message":"Token required","service":"user-service"}
+{"level":"error","message":"Token required","service":"user-service"}
+{"level":"error","message":"Token required","service":"user-service"}
+{"level":"error","message":"Token required","service":"user-service"}
+{"level":"error","message":"Token required","service":"user-service"}
+{"level":"error","message":"Token required","service":"user-service"}
+{"level":"error","message":"Token required","service":"user-service"}
+{"level":"error","message":"Token required","service":"user-service"}
+{"level":"error","message":"Token required","service":"user-service"}
+{"level":"error","message":{"error":"\"firstName\" is required"},"service":"user-service"}
+{"level":"error","message":{"error":{"error":"Клиент с данным email уже существует"}},"service":"user-service"}
+{"level":"error","message":"Token required","service":"user-service"}
+{"level":"error","message":"Token required","service":"user-service"}
+{"level":"error","message":"Token required","service":"user-service"}
+{"level":"error","message":"Token required","service":"user-service"}
+{"level":"error","message":"Token required","service":"user-service"}
+{"level":"error","message":"Token required","service":"user-service"}
+{"level":"error","message":"Token required","service":"user-service"}
+{"level":"error","message":"Token required","service":"user-service"}
+{"level":"error","message":"Token required","service":"user-service"}
+{"level":"error","message":"Token required","service":"user-service"}
+{"level":"error","message":"Token required","service":"user-service"}
+{"level":"error","message":"Token required","service":"user-service"}
+{"level":"error","message":"Token required","service":"user-service"}
+{"level":"error","message":"Token required","service":"user-service"}
+{"level":"error","message":"Token required","service":"user-service"}
+{"level":"error","message":"Token required","service":"user-service"}
+{"level":"error","message":"Token required","service":"user-service"}
+{"level":"error","message":"connect ECONNREFUSED 172.22.0.4:3003","service":"user-service"}
+{"level":"error","message":"111Token required","service":"user-service"}
+{"level":"error","message":"Token required","service":"user-service"}
+{"level":"error","message":"Invalid token","service":"user-service"}
+{"level":"error","message":"connect ECONNREFUSED 172.22.0.4:3003","service":"user-service"}
+{"level":"error","message":"Invalid token","service":"user-service"}
+{"level":"error","message":"connect ECONNREFUSED 172.22.0.4:3003","service":"user-service"}
+{"level":"error","message":"Invalid token","service":"user-service"}
+{"level":"error","message":"Invalid token","service":"user-service"}
+{"level":"error","message":"Invalid token","service":"user-service"}
+{"level":"error","message":"Invalid token","service":"user-service"}
+{"level":"error","message":"Invalid token","service":"user-service"}
+{"level":"error","message":"Invalid token","service":"user-service"}
+{"level":"error","message":"<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n<meta charset=\"utf-8\">\n<title>Error</title>\n</head>\n<body>\n<pre>Cannot PUT /register/</pre>\n</body>\n</html>\n","service":"user-service"}
+{"level":"error","message":{"error":"\"passportSeries\" length must be 4 characters long"},"service":"user-service"}
+{"level":"error","message":"<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n<meta charset=\"utf-8\">\n<title>Error</title>\n</head>\n<body>\n<pre>Cannot POST /application/apply</pre>\n</body>\n</html>\n","service":"user-service"}
+{"level":"error","message":"connect ECONNREFUSED 172.22.0.4:3003","service":"user-service"}
+{"level":"error","message":"connect ECONNREFUSED 172.22.0.4:3003","service":"user-service"}
+{"level":"error","message":"connect ECONNREFUSED 172.22.0.4:3003","service":"user-service"}
+{"level":"error","message":{"error":"connect ECONNREFUSED 172.22.0.8:3002"},"service":"user-service"}
+{"level":"error","message":"Application is updated successfully","service":"user-service"}
+{"level":"error","message":"connect ECONNREFUSED 172.22.0.4:3003","service":"user-service"}
+{"level":"error","message":"Application is updated successfully","service":"user-service"}
+{"level":"error","message":"Application is updated successfully","service":"user-service"}
+{"level":"error","message":"Application is updated successfully","service":"user-service"}

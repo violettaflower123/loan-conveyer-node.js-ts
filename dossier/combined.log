@@ -483,3 +483,57 @@
 {"level":"info","message":"Subscribed to credit-issued.","service":"user-service"}
 {"level":"info","message":"Subscribed to application-denied.","service":"user-service"}
 {"level":"info","message":"Started message processing.","service":"user-service"}
+{"level":"info","message":"Subscribed to finish-registration.","service":"user-service"}
+{"level":"info","message":"Subscribed to create-documents.","service":"user-service"}
+{"level":"info","message":"Subscribed to send-documents.","service":"user-service"}
+{"level":"info","message":"Subscribed to send-ses.","service":"user-service"}
+{"level":"info","message":"Subscribed to credit-issued.","service":"user-service"}
+{"level":"info","message":"Subscribed to application-denied.","service":"user-service"}
+{"level":"info","message":"Started message processing.","service":"user-service"}
+{"level":"info","message":"Subscribed to finish-registration.","service":"user-service"}
+{"level":"info","message":"Subscribed to create-documents.","service":"user-service"}
+{"level":"info","message":"Subscribed to send-documents.","service":"user-service"}
+{"level":"info","message":"Subscribed to send-ses.","service":"user-service"}
+{"level":"info","message":"Subscribed to credit-issued.","service":"user-service"}
+{"level":"info","message":"Subscribed to application-denied.","service":"user-service"}
+{"level":"info","message":"Started message processing.","service":"user-service"}
+{"level":"info","message":"Subscribed to finish-registration.","service":"user-service"}
+{"level":"info","message":"Subscribed to create-documents.","service":"user-service"}
+{"level":"info","message":"Subscribed to send-documents.","service":"user-service"}
+{"level":"info","message":"Subscribed to send-ses.","service":"user-service"}
+{"level":"info","message":"Subscribed to credit-issued.","service":"user-service"}
+{"level":"info","message":"Subscribed to application-denied.","service":"user-service"}
+{"level":"info","message":"Started message processing.","service":"user-service"}
+{"level":"info","message":"Email sent: 250 2.0.0 Ok: queued on mail-nwsmtp-smtp-production-main-78.myt.yp-c.yandex.net 1693400991-n9R89cMDVqM0-T5JpwCtF","service":"user-service"}
+{"level":"info","message":"Email sent: 250 2.0.0 Ok: queued on mail-nwsmtp-smtp-production-main-44.sas.yp-c.yandex.net 1693401048-kAR2XxMDSiE0-ij1vUJme","service":"user-service"}
+{"level":"info","message":"Email sent: 250 2.0.0 Ok: queued on mail-nwsmtp-smtp-production-main-67.vla.yp-c.yandex.net 1693401074-CBRZO1QDYiE0-TXP7asHz","service":"user-service"}
+{"level":"info","message":"Email sent: 250 2.0.0 Ok: queued on mail-nwsmtp-smtp-production-canary-88.sas.yp-c.yandex.net 1693401923-LPRUoONDca60-ZnO7PieX","service":"user-service"}
+{"level":"info","message":"Email sent: 250 2.0.0 Ok: queued on mail-nwsmtp-smtp-production-main-46.myt.yp-c.yandex.net 1693402383-2XR5CqMWwOs0-OT9ng1fV","service":"user-service"}
+{"code":"EENVELOPE","command":"API","level":"error","message":"Error in sendEmail:  No recipients defined","service":"user-service","stack":"Error: No recipients defined\n    at SMTPConnection._formatError (/usr/src/app/node_modules/nodemailer/lib/smtp-connection/index.js:790:19)\n    at SMTPConnection._setEnvelope (/usr/src/app/node_modules/nodemailer/lib/smtp-connection/index.js:1023:34)\n    at SMTPConnection.send (/usr/src/app/node_modules/nodemailer/lib/smtp-connection/index.js:621:14)\n    at sendMessage (/usr/src/app/node_modules/nodemailer/lib/smtp-transport/index.js:228:28)\n    at /usr/src/app/node_modules/nodemailer/lib/smtp-transport/index.js:286:25\n    at SMTPConnection._actionAUTHComplete (/usr/src/app/node_modules/nodemailer/lib/smtp-connection/index.js:1578:9)\n    at SMTPConnection.<anonymous> (/usr/src/app/node_modules/nodemailer/lib/smtp-connection/index.js:546:26)\n    at SMTPConnection._processResponse (/usr/src/app/node_modules/nodemailer/lib/smtp-connection/index.js:969:20)\n    at SMTPConnection._onData (/usr/src/app/node_modules/nodemailer/lib/smtp-connection/index.js:755:14)\n    at TLSSocket.SMTPConnection._onSocketData (/usr/src/app/node_modules/nodemailer/lib/smtp-connection/index.js:193:44)"}
+{"level":"info","message":"Email sent: 250 2.0.0 Ok: queued on mail-nwsmtp-smtp-production-main-57.myt.yp-c.yandex.net 1693402484-hYRdlgMDfSw0-eKRxi3p8","service":"user-service"}
+{"level":"info","message":"Email sent: 250 2.0.0 Ok: queued on mail-nwsmtp-smtp-production-main-63.sas.yp-c.yandex.net 1693402699-IcRQOANDc8c0-NIzodB3V","service":"user-service"}
+{"level":"info","message":"Email sent: 250 2.0.0 Ok: queued on mail-nwsmtp-smtp-production-main-22.iva.yp-c.yandex.net 1693404609-8ASxWNLsJeA0-X1tRzz6c","service":"user-service"}
+{"level":"info","message":"Email sent: 250 2.0.0 Ok: queued on mail-nwsmtp-smtp-production-main-81.myt.yp-c.yandex.net 1693404633-VAS3b8NDVeA0-BcakNNHK","service":"user-service"}
+{"level":"info","message":"Email sent: 250 2.0.0 Ok: queued on mail-nwsmtp-smtp-production-main-57.myt.yp-c.yandex.net 1693404749-SCStxwMDUCg0-Yppp8IfK","service":"user-service"}
+{"level":"info","message":"Email sent: 250 2.0.0 Ok: queued on mail-nwsmtp-smtp-production-canary-88.sas.yp-c.yandex.net 1693404756-ZCSOXjNDdeA0-sCMRK5cz","service":"user-service"}
+{"level":"info","message":"Email sent: 250 2.0.0 Ok: queued on mail-nwsmtp-smtp-production-main-29.myt.yp-c.yandex.net 1693405862-0VSmM8NDSOs0-Tf237nYx","service":"user-service"}
+{"level":"info","message":"Email sent: 250 2.0.0 Ok: queued on mail-nwsmtp-smtp-production-main-29.myt.yp-c.yandex.net 1693405877-FVSfT8NDbmI0-r4LaSFRD","service":"user-service"}
+{"level":"info","message":"Email sent: 250 2.0.0 Ok: queued on mail-nwsmtp-smtp-production-main-87.sas.yp-c.yandex.net 1693405913-pVSM2VNDeW20-dTszw320","service":"user-service"}
+{"level":"info","message":"Email sent: 250 2.0.0 Ok: queued on mail-nwsmtp-smtp-production-main-24.iva.yp-c.yandex.net 1693406220-xaSE6XBDgKo0-iFYWKy4a","service":"user-service"}
+{"level":"info","message":"Email sent: 250 2.0.0 Ok: queued on mail-nwsmtp-smtp-production-main-92.myt.yp-c.yandex.net 1693406316-YcS0YENWx0U0-wrQppGff","service":"user-service"}
+{"level":"info","message":"Email sent: 250 2.0.0 Ok: queued on mail-nwsmtp-smtp-production-main-78.myt.yp-c.yandex.net 1693406415-EeSV2HNDfqM0-dYShAYY0","service":"user-service"}
+{"level":"info","message":"Email sent: 250 2.0.0 Ok: queued on mail-nwsmtp-smtp-production-main-68.vla.yp-c.yandex.net 1693406429-SeSW2mQDbKo0-FEtM3hX6","service":"user-service"}
+{"level":"info","message":"Email sent: 250 2.0.0 Ok: queued on mail-nwsmtp-smtp-production-main-55.vla.yp-c.yandex.net 1693406647-6iSTQeQDc0U0-pMyUvCaL","service":"user-service"}
+{"level":"info","message":"Email sent: 250 2.0.0 Ok: queued on mail-nwsmtp-smtp-production-main-68.vla.yp-c.yandex.net 1693406708-6jSVXoQDbmI0-53catLlR","service":"user-service"}
+{"level":"info","message":"Email sent: 250 2.0.0 Ok: queued on mail-nwsmtp-smtp-production-main-60.sas.yp-c.yandex.net 1693406741-djS7VdNWviE0-j27isxrd","service":"user-service"}
+{"level":"info","message":"Email sent: 250 2.0.0 Ok: queued on mail-nwsmtp-smtp-production-main-44.sas.yp-c.yandex.net 1693406862-elSlhfNDX0U0-1zGgilMt","service":"user-service"}
+{"level":"info","message":"Email sent: 250 2.0.0 Ok: queued on mail-nwsmtp-smtp-production-main-87.sas.yp-c.yandex.net 1693406873-plSrsbNDRSw0-PYJhmnld","service":"user-service"}
+{"level":"info","message":"Email sent: 250 2.0.0 Ok: queued on mail-nwsmtp-smtp-production-main-38.myt.yp-c.yandex.net 1693406882-0mSKiLNDfmI0-B9V57Xsr","service":"user-service"}
+{"level":"info","message":"Email sent: 250 2.0.0 Ok: queued on mail-nwsmtp-smtp-production-main-42.myt.yp-c.yandex.net 1693406943-1nSZeENWna60-8rzSNPD9","service":"user-service"}
+{"level":"info","message":"Email sent: 250 2.0.0 Ok: queued on mail-nwsmtp-smtp-production-main-68.vla.yp-c.yandex.net 1693406947-6nSahqQDWuQ0-UZgCLYg7","service":"user-service"}
+{"level":"info","message":"Email sent: 250 2.0.0 Ok: queued on mail-nwsmtp-smtp-production-main-92.myt.yp-c.yandex.net 1693406963-LnSO6JNWw4Y0-4GT3VT7G","service":"user-service"}
+{"level":"info","message":"Email sent: 250 2.0.0 Ok: queued on mail-nwsmtp-smtp-production-main-84.vla.yp-c.yandex.net 1693406983-fnSdXjQDZOs0-yPxiFBZg","service":"user-service"}
+{"level":"info","message":"Email sent: 250 2.0.0 Ok: queued on mail-nwsmtp-smtp-production-main-17.iva.yp-c.yandex.net 1693407066-5pSP3eBDb8c0-6V7EvSxW","service":"user-service"}
+{"level":"info","message":"Email sent: 250 2.0.0 Ok: queued on mail-nwsmtp-smtp-production-main-92.myt.yp-c.yandex.net 1693407298-usSROLNWnKo0-mNaoP8gH","service":"user-service"}
+{"level":"info","message":"Email sent: 250 2.0.0 Ok: queued on mail-nwsmtp-smtp-production-main-85.iva.yp-c.yandex.net 1693407392-VuSG2WBDRKo0-i5bOQXn4","service":"user-service"}
+{"level":"info","message":"Email sent: 250 2.0.0 Ok: queued on mail-nwsmtp-smtp-production-main-90.myt.yp-c.yandex.net 1693407504-MwS6QTNWoOs0-ruTEc6Zd","service":"user-service"}

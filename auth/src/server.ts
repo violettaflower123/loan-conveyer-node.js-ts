@@ -11,6 +11,10 @@ dotenv.config();
 const app = express();
 const JWT_SECRET: string | undefined = process.env.JWT_SECRET;
 
+if (typeof JWT_SECRET === 'undefined') {
+    throw new Error("JWT_SECRET must be defined");
+  }
+
 app.use((req: Request, res: Response, next: NextFunction) => {
     logger.info(`Received ${req.method} request for ${req.url}`);
     next();
@@ -22,6 +26,11 @@ app.use(errorHandler);
 
 app.post('/register', async (req: Request, res: Response) => {
     const { password, email } = req.body;
+
+    if(!password || !email) {
+        res.status(400).send("Email and password are required.");
+        return;
+    }
     const encodedPassword = Buffer.from(password).toString('base64');
 
     try {
@@ -39,6 +48,11 @@ app.post('/register', async (req: Request, res: Response) => {
 
 app.post('/login', async (req, res) => {
     const { email, password } = req.body;
+
+    if (!email || !password) {
+        res.status(400).send("Email and password are required.");
+        return;
+    }
     
     const encodedPassword = Buffer.from(password).toString('base64');
     try {
@@ -50,7 +64,7 @@ app.post('/login', async (req, res) => {
         }
 
         const tokenPayload: TokenPayload = { id: user.id, email: user.email };
-        const token = jwt.sign(tokenPayload, JWT_SECRET, { expiresIn: '50m' });
+        const token = jwt.sign(tokenPayload, JWT_SECRET, { expiresIn: '24h' });
         return res.json({ login: user.email, token });
     } catch (err: any) {
         logger.error("Error during authentication:", err.message, err.stack);
@@ -58,20 +72,24 @@ app.post('/login', async (req, res) => {
     }
 });
 
-app.post('/validate-token', (req, res) => {
-    const token = req.headers.authorization?.split(' ')[1];
-    if (!token) return res.status(401).send('Token required');
+// app.post('/validate-token', (req, res) => {
+//     const token = req.header('Authorization')?.split(' ')[1];
+//     console.log("Received token in API Auth:", token);
+//     if (!token) {
+//         res.status(401).send('Access Denied');
+//         return;
+//     }
+  
+//     jwt.verify(token, JWT_SECRET, (err, user) => {
+//         if (err) {
+//             res.status(403).send('Invalid token');
+//         } else {
+//             res.send('Token is valid');
+//         }
+//     });
+//     return; 
+// });
 
-    if (!JWT_SECRET) {
-        throw new Error("JWT_SECRET environment variable not set.");
-    }
-    jwt.verify(token, JWT_SECRET, (err) => {
-        if (err) return res.status(403).send('Invalid token');
-        return res.send('Token is valid');
-    });
-
-    return res.status(500).send('Unknown error');
-});
 
 
 const port: number = 3006;

@@ -7,7 +7,11 @@ import { errorHandler } from './helpers/utils';
 import { services } from './helpers/services';
 import { db } from './db';
 import dotenv from 'dotenv';
+import { logger } from './helpers/logger';
 import jwt from 'jsonwebtoken';
+interface RequestWithJWT extends Request {
+    email?: string;
+}
 dotenv.config();
 
 const app = express();
@@ -22,6 +26,37 @@ app.use(cors());
 app.use(helmet());
 app.use(bodyParser.json());
 
+export const validateJWT = async (req: RequestWithJWT, res: Response, next: NextFunction) => {
+    const token = req.headers.authorization?.split(' ')[1];
+    console.log("Received token:", token);
+
+    if (!token) {
+        return res.status(401).send('Token required');
+    }
+
+    if (!JWT_SECRET) {
+        console.error('JWT_SECRET is not set');
+        return res.status(500).send('Server error');
+    }
+
+    try {
+        const decoded = jwt.verify(token, JWT_SECRET);
+        
+        if (typeof decoded === 'object' && decoded !== null && 'email' in decoded) {
+            req.email = decoded.email;
+            console.log("Email set in request object:", (decoded as any).email);
+            next();
+        } else {
+            return res.status(403).send('Invalid token payload');
+        }
+
+    } catch (error: any) {
+        console.error("Error in validateJWT:", error.message);
+        logger.error('Error calculating loan offer', JSON.stringify(error));
+        return res.status(403).send('Invalid token');
+    }
+};
+
 app.post('/document/:applicationId/send', async (req, res, next) => {
     try {
         const { applicationId } = req.params;
@@ -34,10 +69,18 @@ app.post('/document/:applicationId/send', async (req, res, next) => {
 
 app.put('/application/apply', async (req, res, next) => {
     try {
-        const response = await axios.put('http://api-application:3003/application/offer', req.body);
+        const config = {
+            headers: {
+                'Authorization': req.headers.authorization || ''
+            }
+        };
+        const response = await axios.put('http://api-application:3003/application/offer', req.body, config);
+        // const response = await axios.put('http://api-application:3003/application/offer', req.body);
         res.json(response.data);
+        // res.json(response.data);
     } catch (error: any) {
         next(error);
+        console.log(error);
     }
 });
 
@@ -81,49 +124,7 @@ app.put('/document/:applicationId/sign/code', async (req, res, next) => {
     }
 });
 
-async function validateJWT(req: Request, res: Response, next: NextFunction) {
-    const token = req.headers.authorization?.split(' ')[1];
 
-    if (!token) {
-        return res.status(401).send('Token required');
-    }
-
-    try {
-        const response = await axios.post('http://api-auth:3006/validate-token', {}, {
-            headers: {
-                Authorization: `Bearer ${token}`
-            }
-        });
-
-        if (response.data === 'Token is valid') {
-            if (!JWT_SECRET) {
-                throw new Error('JWT_SECRET is not set');
-            }
-            const decoded = jwt.verify(token, JWT_SECRET);
-            
-            if (typeof decoded === 'object' && decoded !== null && 'email' in decoded) {
-                const email = (decoded as any).email;
-
-                const client: any = await db.oneOrNone('SELECT * FROM client WHERE email = $1', [email]);
-                if (!client) return res.status(403).send('Access denied');
-
-                (req as any).clientId = client.client_id;
-                next();
-            } else {
-                return res.status(403).send('Invalid token payload');
-            }
-        } else {
-            return res.status(403).send('Invalid token');
-        }
-    } catch (error) {
-        return res.status(500).send('Error validating token');
-    }
-}
-
-
-app.use('/deal', validateJWT);
-app.use('/conveyor', validateJWT);
-app.use('/application', validateJWT);
 
 services.forEach(service => {
     app.use(service.route, async (req: Request, res: Response, next: NextFunction) => {

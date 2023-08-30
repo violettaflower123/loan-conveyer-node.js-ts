@@ -4,10 +4,11 @@ import { postApplication } from '../controllers/application.controller.js';
 import { updateOffer } from '../controllers/offer.controller.js';
 import { validateLoanApplicationBody } from '../middlewares/validateLoanApplicationBody.js';
 import { validateLoanOffer } from '../middlewares/validateLoanOffer.js';
+import { validateJWT } from '../middlewares/validateJWT.js';
 
 
-router.post('/', validateLoanApplicationBody, postApplication);
-router.put('/offer', validateLoanOffer, updateOffer);
+router.post('/', validateJWT, validateLoanApplicationBody, postApplication);
+router.put('/offer', validateJWT, validateLoanOffer, updateOffer);
 
 
 export { router as applicationRouter };

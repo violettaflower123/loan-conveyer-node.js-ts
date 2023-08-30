@@ -7,10 +7,28 @@ import pgPromise from 'pg-promise';
 import { BadRequestError, ServerError, ConflictError, AuthorizationError, ValidationError, ResourceNotFoundError } from '../errors/errorClasses.js';
 import { logger } from '../helpers/logger.js';
 import { Status } from '../types/types.js';
+interface RequestWithJWT extends Request {
+    email?: string;
+}
 
-export const postApplication = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
+export const postApplication = async (req: RequestWithJWT, res: Response, next: NextFunction): Promise<void> => {
     try {
         const loanApplication: LoanApplicationRequestDTO = req.body;
+        console.log("Loan application:", loanApplication);
+
+        // const emailFromToken = (req as any).email;
+        const emailFromToken = req.email;
+        console.log("Email from request object:", emailFromToken);
+        console.log("Inside postApplication. req.email:", req.email);
+
+        if(emailFromToken !== loanApplication.email) {
+            throw new AuthorizationError('Укажите тот же email, что и при регистрации.');
+        }
+        // const emailFromCookie = req.cookies.email;
+        // console.log('from cookie', emailFromCookie)
+        // if(emailFromCookie !== loanApplication.email) {
+        //     throw new AuthorizationError('Укажите тот же email, что и при регистрации.');
+        // }
         
         const clientId = await addClientAndPassport(loanApplication); 
 
@@ -50,4 +68,3 @@ export const postApplication = async (req: Request, res: Response, next: NextFun
         return next(new ServerError('Внутренняя ошибка сервера.'));
     }
 }
-

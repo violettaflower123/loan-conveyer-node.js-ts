@@ -3,14 +3,33 @@ import { LoanOfferDTO } from "../dtos.js";
 import axios, { AxiosError} from "axios";
 import { logger } from "../helpers/logger.js";
 import { updateOfferToApiDeals } from "../api/apiDeals.js";
+import { AuthorizationError } from "../errors/errorClasses.js";
+interface RequestWithJWT extends Request {
+    email?: string;
+}
 
-export const updateOffer = async (req: Request, res: Response) => {
+export const updateOffer = async (req: RequestWithJWT, res: Response) => {
     try {
+        const emailFromToken = req.email;
+        if (!emailFromToken) {
+            return res.status(401).send("Unauthorized");
+        }
+
         const loanOffer: LoanOfferDTO = req.body;
 
         logger.info('Received a loan offer update request:', loanOffer);
+
+        const token = req.headers.authorization?.split(' ')[1];
+        // const token = req.email;
+
+        console.log('token',token)
+
+        if (!token) {
+            throw new AuthorizationError('Token required');
+        }
         
-        const response = await updateOfferToApiDeals(loanOffer);
+        const response = await updateOfferToApiDeals(loanOffer, token);
+        logger.info('Response from updateOfferToApiDeals', response.data);
         // const response = await axios.put('http://api-deals:3002/deal/offer ', loanOffer);
         if (!response.data) {
             logger.warn('Something went wrong when reaching /deal/offer');

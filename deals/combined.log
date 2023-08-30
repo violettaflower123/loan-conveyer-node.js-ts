@@ -1764,3 +1764,385 @@
 {"level":"info","message":"Successfully processed application for client ID: 167.","service":"user-service"}
 {"level":"info","message":"Server is running on http://localhost:3002","service":"user-service"}
 {"level":"info","message":"Server is running on http://localhost:3002","service":"user-service"}
+{"level":"info","message":"Received POST request for /deal/application","service":"user-service"}
+{"level":"info","message":"Successfully processed application for client ID: 168.","service":"user-service"}
+{"level":"info","message":"Received POST request for /deal/application","service":"user-service"}
+{"level":"error","message":"Error while adding client and passport: ConflictError: Клиент с данным паспортом уже существует","service":"user-service"}
+{"level":"error","message":"Error calculating loan offer Клиент с данным паспортом уже существует","name":"ConflictError","service":"user-service","stack":"ConflictError: Клиент с данным паспортом уже существует\n    at addClientAndPassport (file:///usr/src/app/src/service/application.service.ts:16:13)\n    at processTicksAndRejections (node:internal/process/task_queues:96:5)\n    at async postApplication (file:///usr/src/app/src/controllers/application.controller.ts:15:26)","statusCode":409}
+{"level":"error","message":"Error occurred: Клиент с данным паспортом уже существует","service":"user-service"}
+{"level":"info","message":"Received POST request for /deal/application","service":"user-service"}
+{"level":"error","message":"Error while adding client and passport: ConflictError: Клиент с данным email уже существует","service":"user-service"}
+{"level":"error","message":"Error calculating loan offer Клиент с данным email уже существует","name":"ConflictError","service":"user-service","stack":"ConflictError: Клиент с данным email уже существует\n    at addClientAndPassport (file:///usr/src/app/src/service/application.service.ts:25:13)\n    at processTicksAndRejections (node:internal/process/task_queues:96:5)\n    at async postApplication (file:///usr/src/app/src/controllers/application.controller.ts:15:26)","statusCode":409}
+{"level":"error","message":"Error occurred: Клиент с данным email уже существует","service":"user-service"}
+{"level":"info","message":"Received POST request for /deal/application","service":"user-service"}
+{"level":"error","message":"Error while adding client and passport: ConflictError: Клиент с данным email уже существует","service":"user-service"}
+{"level":"error","message":"Error calculating loan offer Клиент с данным email уже существует","name":"ConflictError","service":"user-service","stack":"ConflictError: Клиент с данным email уже существует\n    at addClientAndPassport (file:///usr/src/app/src/service/application.service.ts:25:13)\n    at processTicksAndRejections (node:internal/process/task_queues:96:5)\n    at async postApplication (file:///usr/src/app/src/controllers/application.controller.ts:15:26)","statusCode":409}
+{"level":"error","message":"Error occurred: Клиент с данным email уже существует","service":"user-service"}
+{"level":"info","message":"Received POST request for /deal/application","service":"user-service"}
+{"level":"error","message":"Error while adding client and passport: ConflictError: Клиент с данным email уже существует","service":"user-service"}
+{"level":"error","message":"Error calculating loan offer Клиент с данным email уже существует","name":"ConflictError","service":"user-service","stack":"ConflictError: Клиент с данным email уже существует\n    at addClientAndPassport (file:///usr/src/app/src/service/application.service.ts:25:13)\n    at processTicksAndRejections (node:internal/process/task_queues:96:5)\n    at async postApplication (file:///usr/src/app/src/controllers/application.controller.ts:15:26)","statusCode":409}
+{"level":"error","message":"Error occurred: Клиент с данным email уже существует","service":"user-service"}
+{"level":"info","message":"Server is running on http://localhost:3002","service":"user-service"}
+{"level":"info","message":"Server is running on http://localhost:3002","service":"user-service"}
+{"level":"info","message":"Server is running on http://localhost:3002","service":"user-service"}
+{"level":"info","message":"Received POST request for /deal/application","service":"user-service"}
+{"level":"error","message":"Error calculating loan offer Cannot read properties of undefined (reading 'email')","service":"user-service","stack":"TypeError: Cannot read properties of undefined (reading 'email')\n    at postApplication (file:///usr/src/app/src/controllers/application.controller.ts:57:50)\n    at Layer.handle [as handle_request] (/usr/src/app/node_modules/express/lib/router/layer.js:95:5)\n    at next (/usr/src/app/node_modules/express/lib/router/route.js:144:13)\n    at validateLoanApplicationBody (file:///usr/src/app/src/middlewares/validateLoanApplicationBody.ts:35:5)\n    at Layer.handle [as handle_request] (/usr/src/app/node_modules/express/lib/router/layer.js:95:5)\n    at next (/usr/src/app/node_modules/express/lib/router/route.js:144:13)\n    at Route.dispatch (/usr/src/app/node_modules/express/lib/router/route.js:114:3)\n    at Layer.handle [as handle_request] (/usr/src/app/node_modules/express/lib/router/layer.js:95:5)\n    at /usr/src/app/node_modules/express/lib/router/index.js:284:15\n    at Function.process_params (/usr/src/app/node_modules/express/lib/router/index.js:346:12)"}
+{"level":"info","message":"Server is running on http://localhost:3002","service":"user-service"}
+{"level":"info","message":"Received POST request for /deal/application","service":"user-service"}
+{"level":"error","message":"Error calculating loan offer Cannot read properties of undefined (reading 'email')","service":"user-service","stack":"TypeError: Cannot read properties of undefined (reading 'email')\n    at postApplication (file:///usr/src/app/src/controllers/application.controller.ts:57:50)\n    at Layer.handle [as handle_request] (/usr/src/app/node_modules/express/lib/router/layer.js:95:5)\n    at next (/usr/src/app/node_modules/express/lib/router/route.js:144:13)\n    at validateLoanApplicationBody (file:///usr/src/app/src/middlewares/validateLoanApplicationBody.ts:35:5)\n    at Layer.handle [as handle_request] (/usr/src/app/node_modules/express/lib/router/layer.js:95:5)\n    at next (/usr/src/app/node_modules/express/lib/router/route.js:144:13)\n    at Route.dispatch (/usr/src/app/node_modules/express/lib/router/route.js:114:3)\n    at Layer.handle [as handle_request] (/usr/src/app/node_modules/express/lib/router/layer.js:95:5)\n    at /usr/src/app/node_modules/express/lib/router/index.js:284:15\n    at Function.process_params (/usr/src/app/node_modules/express/lib/router/index.js:346:12)"}
+{"level":"error","message":"Error occurred: Внутренняя ошибка сервера.","service":"user-service"}
+{"level":"info","message":"Server is running on http://localhost:3002","service":"user-service"}
+{"level":"info","message":"Received POST request for /deal/application","service":"user-service"}
+{"level":"error","message":"Error calculating loan offer","service":"user-service"}
+{"level":"error","message":"Error occurred: Внутренняя ошибка сервера.","service":"user-service"}
+{"level":"info","message":"Server is running on http://localhost:3002","service":"user-service"}
+{"level":"info","message":"Received POST request for /deal/application","service":"user-service"}
+{"level":"error","message":"Error calculating loan offer","service":"user-service"}
+{"level":"error","message":"Error occurred: Внутренняя ошибка сервера.","service":"user-service"}
+{"level":"info","message":"Received POST request for /deal/application","service":"user-service"}
+{"level":"error","message":"Error calculating loan offer","service":"user-service"}
+{"level":"error","message":"Error occurred: Внутренняя ошибка сервера.","service":"user-service"}
+{"level":"info","message":"Server is running on http://localhost:3002","service":"user-service"}
+{"level":"info","message":"Server is running on http://localhost:3002","service":"user-service"}
+{"level":"info","message":"Received POST request for /deal/application","service":"user-service"}
+{"level":"error","message":"Error while adding client and passport: error: duplicate key value violates unique constraint \"email_unique\"","service":"user-service"}
+{"code":"23505","constraint":"email_unique","detail":"Key (email)=(violetta.frontend@yandex.ru) already exists.","file":"nbtinsert.c","length":214,"level":"error","line":"664","message":"Error calculating loan offer duplicate key value violates unique constraint \"email_unique\"","name":"error","query":"INSERT INTO client(last_name, first_name, middle_name, birth_date, email, passport_id) VALUES('Иванов', 'Иван', 'Иванович', '1990-01-15', 'violetta.frontend@yandex.ru', '9b3e4440-92bd-43b0-8ba9-360a8f471c56') RETURNING client_id","routine":"_bt_check_unique","schema":"public","service":"user-service","severity":"ERROR","stack":"error: duplicate key value violates unique constraint \"email_unique\"\n    at Parser.parseErrorMessage (/usr/src/app/node_modules/pg-protocol/src/parser.ts:369:69)\n    at Parser.handlePacket (/usr/src/app/node_modules/pg-protocol/src/parser.ts:188:21)\n    at Parser.parse (/usr/src/app/node_modules/pg-protocol/src/parser.ts:103:30)\n    at Socket.<anonymous> (/usr/src/app/node_modules/pg-protocol/src/index.ts:7:48)\n    at Socket.emit (node:events:520:28)\n    at Socket.emit (node:domain:475:12)\n    at addChunk (node:internal/streams/readable:315:12)\n    at readableAddChunk (node:internal/streams/readable:289:9)\n    at Socket.Readable.push (node:internal/streams/readable:228:10)\n    at TCP.onStreamRead (node:internal/stream_base_commons:190:23)","table":"client"}
+{"level":"error","message":"Error occurred: Внутренняя ошибка сервера.","service":"user-service"}
+{"level":"info","message":"Received POST request for /deal/application","service":"user-service"}
+{"level":"info","message":"Successfully processed application for client ID: 170.","service":"user-service"}
+{"level":"info","message":"Received POST request for /deal/application","service":"user-service"}
+{"level":"error","message":"Error while adding client and passport: ConflictError: Клиент с данным паспортом уже существует","service":"user-service"}
+{"level":"error","message":"Error calculating loan offer Клиент с данным паспортом уже существует","name":"ConflictError","service":"user-service","stack":"ConflictError: Клиент с данным паспортом уже существует\n    at addClientAndPassport (file:///usr/src/app/src/service/application.service.ts:57:19)\n    at processTicksAndRejections (node:internal/process/task_queues:96:5)\n    at async postApplication (file:///usr/src/app/src/controllers/application.controller.ts:15:26)","statusCode":409}
+{"level":"error","message":"Error occurred: Клиент с данным паспортом уже существует","service":"user-service"}
+{"level":"info","message":"Received POST request for /deal/application","service":"user-service"}
+{"level":"error","message":"Error while adding client and passport: error: duplicate key value violates unique constraint \"email_unique\"","service":"user-service"}
+{"code":"23505","constraint":"email_unique","detail":"Key (email)=(violetta.fron@yandex.ru) already exists.","file":"nbtinsert.c","length":210,"level":"error","line":"664","message":"Error calculating loan offer duplicate key value violates unique constraint \"email_unique\"","name":"error","query":"INSERT INTO client(last_name, first_name, middle_name, birth_date, email, passport_id) VALUES('Иванов', 'Иван', 'Иванович', '1990-01-15', 'violetta.fron@yandex.ru', '0e358056-644a-410d-8f66-0ab09cf83688') RETURNING client_id","routine":"_bt_check_unique","schema":"public","service":"user-service","severity":"ERROR","stack":"error: duplicate key value violates unique constraint \"email_unique\"\n    at Parser.parseErrorMessage (/usr/src/app/node_modules/pg-protocol/src/parser.ts:369:69)\n    at Parser.handlePacket (/usr/src/app/node_modules/pg-protocol/src/parser.ts:188:21)\n    at Parser.parse (/usr/src/app/node_modules/pg-protocol/src/parser.ts:103:30)\n    at Socket.<anonymous> (/usr/src/app/node_modules/pg-protocol/src/index.ts:7:48)\n    at Socket.emit (node:events:520:28)\n    at Socket.emit (node:domain:475:12)\n    at addChunk (node:internal/streams/readable:315:12)\n    at readableAddChunk (node:internal/streams/readable:289:9)\n    at Socket.Readable.push (node:internal/streams/readable:228:10)\n    at TCP.onStreamRead (node:internal/stream_base_commons:190:23)","table":"client"}
+{"level":"error","message":"Error occurred: Внутренняя ошибка сервера.","service":"user-service"}
+{"level":"info","message":"Server is running on http://localhost:3002","service":"user-service"}
+{"level":"info","message":"Server is running on http://localhost:3002","service":"user-service"}
+{"level":"info","message":"Server is running on http://localhost:3002","service":"user-service"}
+{"level":"info","message":"Received POST request for /deal/application","service":"user-service"}
+{"level":"error","message":"Error while adding client and passport: ConflictError: Клиент с данным email уже существует","service":"user-service"}
+{"level":"error","message":"Error calculating loan offer Клиент с данным email уже существует","name":"ConflictError","service":"user-service","stack":"ConflictError: Клиент с данным email уже существует\n    at addClientAndPassport (file:///usr/src/app/src/service/application.service.ts:57:17)\n    at processTicksAndRejections (node:internal/process/task_queues:96:5)\n    at async postApplication (file:///usr/src/app/src/controllers/application.controller.ts:15:26)","statusCode":409}
+{"level":"error","message":"Error occurred: Клиент с данным email уже существует","service":"user-service"}
+{"level":"info","message":"Received POST request for /deal/application","service":"user-service"}
+{"level":"info","message":"Successfully processed application for client ID: 172.","service":"user-service"}
+{"level":"info","message":"Server is running on http://localhost:3002","service":"user-service"}
+{"level":"info","message":"Received POST request for /deal/application","service":"user-service"}
+{"level":"error","message":"Error calculating loan offer Укажите тот же email, что и при регистрации.","name":"AuthorizationError","service":"user-service","stack":"AuthorizationError: Укажите тот же email, что и при регистрации.\n    at postApplication (file:///usr/src/app/src/controllers/application.controller.ts:18:19)\n    at Layer.handle [as handle_request] (/usr/src/app/node_modules/express/lib/router/layer.js:95:5)\n    at next (/usr/src/app/node_modules/express/lib/router/route.js:144:13)\n    at validateLoanApplicationBody (file:///usr/src/app/src/middlewares/validateLoanApplicationBody.ts:35:5)\n    at Layer.handle [as handle_request] (/usr/src/app/node_modules/express/lib/router/layer.js:95:5)\n    at next (/usr/src/app/node_modules/express/lib/router/route.js:144:13)\n    at Route.dispatch (/usr/src/app/node_modules/express/lib/router/route.js:114:3)\n    at Layer.handle [as handle_request] (/usr/src/app/node_modules/express/lib/router/layer.js:95:5)\n    at /usr/src/app/node_modules/express/lib/router/index.js:284:15\n    at Function.process_params (/usr/src/app/node_modules/express/lib/router/index.js:346:12)","statusCode":401}
+{"level":"error","message":"Error occurred: Укажите тот же email, что и при регистрации.","service":"user-service"}
+{"level":"info","message":"Received POST request for /deal/application","service":"user-service"}
+{"level":"error","message":"Error calculating loan offer Укажите тот же email, что и при регистрации.","name":"AuthorizationError","service":"user-service","stack":"AuthorizationError: Укажите тот же email, что и при регистрации.\n    at postApplication (file:///usr/src/app/src/controllers/application.controller.ts:18:19)\n    at Layer.handle [as handle_request] (/usr/src/app/node_modules/express/lib/router/layer.js:95:5)\n    at next (/usr/src/app/node_modules/express/lib/router/route.js:144:13)\n    at validateLoanApplicationBody (file:///usr/src/app/src/middlewares/validateLoanApplicationBody.ts:35:5)\n    at Layer.handle [as handle_request] (/usr/src/app/node_modules/express/lib/router/layer.js:95:5)\n    at next (/usr/src/app/node_modules/express/lib/router/route.js:144:13)\n    at Route.dispatch (/usr/src/app/node_modules/express/lib/router/route.js:114:3)\n    at Layer.handle [as handle_request] (/usr/src/app/node_modules/express/lib/router/layer.js:95:5)\n    at /usr/src/app/node_modules/express/lib/router/index.js:284:15\n    at Function.process_params (/usr/src/app/node_modules/express/lib/router/index.js:346:12)","statusCode":401}
+{"level":"error","message":"Error occurred: Укажите тот же email, что и при регистрации.","service":"user-service"}
+{"level":"info","message":"Received POST request for /deal/application","service":"user-service"}
+{"level":"error","message":"Error calculating loan offer Укажите тот же email, что и при регистрации.","name":"AuthorizationError","service":"user-service","stack":"AuthorizationError: Укажите тот же email, что и при регистрации.\n    at postApplication (file:///usr/src/app/src/controllers/application.controller.ts:18:19)\n    at Layer.handle [as handle_request] (/usr/src/app/node_modules/express/lib/router/layer.js:95:5)\n    at next (/usr/src/app/node_modules/express/lib/router/route.js:144:13)\n    at validateLoanApplicationBody (file:///usr/src/app/src/middlewares/validateLoanApplicationBody.ts:35:5)\n    at Layer.handle [as handle_request] (/usr/src/app/node_modules/express/lib/router/layer.js:95:5)\n    at next (/usr/src/app/node_modules/express/lib/router/route.js:144:13)\n    at Route.dispatch (/usr/src/app/node_modules/express/lib/router/route.js:114:3)\n    at Layer.handle [as handle_request] (/usr/src/app/node_modules/express/lib/router/layer.js:95:5)\n    at /usr/src/app/node_modules/express/lib/router/index.js:284:15\n    at Function.process_params (/usr/src/app/node_modules/express/lib/router/index.js:346:12)","statusCode":401}
+{"level":"error","message":"Error occurred: Укажите тот же email, что и при регистрации.","service":"user-service"}
+{"level":"info","message":"Received POST request for /deal/application","service":"user-service"}
+{"level":"error","message":"Error calculating loan offer Укажите тот же email, что и при регистрации.","name":"AuthorizationError","service":"user-service","stack":"AuthorizationError: Укажите тот же email, что и при регистрации.\n    at postApplication (file:///usr/src/app/src/controllers/application.controller.ts:18:19)\n    at Layer.handle [as handle_request] (/usr/src/app/node_modules/express/lib/router/layer.js:95:5)\n    at next (/usr/src/app/node_modules/express/lib/router/route.js:144:13)\n    at validateLoanApplicationBody (file:///usr/src/app/src/middlewares/validateLoanApplicationBody.ts:35:5)\n    at Layer.handle [as handle_request] (/usr/src/app/node_modules/express/lib/router/layer.js:95:5)\n    at next (/usr/src/app/node_modules/express/lib/router/route.js:144:13)\n    at Route.dispatch (/usr/src/app/node_modules/express/lib/router/route.js:114:3)\n    at Layer.handle [as handle_request] (/usr/src/app/node_modules/express/lib/router/layer.js:95:5)\n    at /usr/src/app/node_modules/express/lib/router/index.js:284:15\n    at Function.process_params (/usr/src/app/node_modules/express/lib/router/index.js:346:12)","statusCode":401}
+{"level":"error","message":"Error occurred: Укажите тот же email, что и при регистрации.","service":"user-service"}
+{"level":"info","message":"Received POST request for /deal/application","service":"user-service"}
+{"level":"error","message":"Error calculating loan offer Укажите тот же email, что и при регистрации.","name":"AuthorizationError","service":"user-service","stack":"AuthorizationError: Укажите тот же email, что и при регистрации.\n    at postApplication (file:///usr/src/app/src/controllers/application.controller.ts:18:19)\n    at Layer.handle [as handle_request] (/usr/src/app/node_modules/express/lib/router/layer.js:95:5)\n    at next (/usr/src/app/node_modules/express/lib/router/route.js:144:13)\n    at validateLoanApplicationBody (file:///usr/src/app/src/middlewares/validateLoanApplicationBody.ts:35:5)\n    at Layer.handle [as handle_request] (/usr/src/app/node_modules/express/lib/router/layer.js:95:5)\n    at next (/usr/src/app/node_modules/express/lib/router/route.js:144:13)\n    at Route.dispatch (/usr/src/app/node_modules/express/lib/router/route.js:114:3)\n    at Layer.handle [as handle_request] (/usr/src/app/node_modules/express/lib/router/layer.js:95:5)\n    at /usr/src/app/node_modules/express/lib/router/index.js:284:15\n    at Function.process_params (/usr/src/app/node_modules/express/lib/router/index.js:346:12)","statusCode":401}
+{"level":"error","message":"Error occurred: Укажите тот же email, что и при регистрации.","service":"user-service"}
+{"level":"info","message":"Received POST request for /deal/application","service":"user-service"}
+{"level":"error","message":"Error calculating loan offer Укажите тот же email, что и при регистрации.","name":"AuthorizationError","service":"user-service","stack":"AuthorizationError: Укажите тот же email, что и при регистрации.\n    at postApplication (file:///usr/src/app/src/controllers/application.controller.ts:18:19)\n    at Layer.handle [as handle_request] (/usr/src/app/node_modules/express/lib/router/layer.js:95:5)\n    at next (/usr/src/app/node_modules/express/lib/router/route.js:144:13)\n    at validateLoanApplicationBody (file:///usr/src/app/src/middlewares/validateLoanApplicationBody.ts:35:5)\n    at Layer.handle [as handle_request] (/usr/src/app/node_modules/express/lib/router/layer.js:95:5)\n    at next (/usr/src/app/node_modules/express/lib/router/route.js:144:13)\n    at Route.dispatch (/usr/src/app/node_modules/express/lib/router/route.js:114:3)\n    at Layer.handle [as handle_request] (/usr/src/app/node_modules/express/lib/router/layer.js:95:5)\n    at /usr/src/app/node_modules/express/lib/router/index.js:284:15\n    at Function.process_params (/usr/src/app/node_modules/express/lib/router/index.js:346:12)","statusCode":401}
+{"level":"error","message":"Error occurred: Укажите тот же email, что и при регистрации.","service":"user-service"}
+{"level":"info","message":"Received POST request for /deal/application","service":"user-service"}
+{"level":"error","message":"Error calculating loan offer Укажите тот же email, что и при регистрации.","name":"AuthorizationError","service":"user-service","stack":"AuthorizationError: Укажите тот же email, что и при регистрации.\n    at postApplication (file:///usr/src/app/src/controllers/application.controller.ts:18:19)\n    at Layer.handle [as handle_request] (/usr/src/app/node_modules/express/lib/router/layer.js:95:5)\n    at next (/usr/src/app/node_modules/express/lib/router/route.js:144:13)\n    at validateLoanApplicationBody (file:///usr/src/app/src/middlewares/validateLoanApplicationBody.ts:35:5)\n    at Layer.handle [as handle_request] (/usr/src/app/node_modules/express/lib/router/layer.js:95:5)\n    at next (/usr/src/app/node_modules/express/lib/router/route.js:144:13)\n    at Route.dispatch (/usr/src/app/node_modules/express/lib/router/route.js:114:3)\n    at Layer.handle [as handle_request] (/usr/src/app/node_modules/express/lib/router/layer.js:95:5)\n    at /usr/src/app/node_modules/express/lib/router/index.js:284:15\n    at Function.process_params (/usr/src/app/node_modules/express/lib/router/index.js:346:12)","statusCode":401}
+{"level":"error","message":"Error occurred: Укажите тот же email, что и при регистрации.","service":"user-service"}
+{"level":"info","message":"Server is running on http://localhost:3002","service":"user-service"}
+{"level":"info","message":"Server is running on http://localhost:3002","service":"user-service"}
+{"level":"info","message":"Received POST request for /deal/application","service":"user-service"}
+{"level":"error","message":"Error calculating loan offer Укажите тот же email, что и при регистрации.","name":"AuthorizationError","service":"user-service","stack":"AuthorizationError: Укажите тот же email, что и при регистрации.\n    at postApplication (file:///usr/src/app/src/controllers/application.controller.ts:20:19)\n    at Layer.handle [as handle_request] (/usr/src/app/node_modules/express/lib/router/layer.js:95:5)\n    at next (/usr/src/app/node_modules/express/lib/router/route.js:144:13)\n    at validateLoanApplicationBody (file:///usr/src/app/src/middlewares/validateLoanApplicationBody.ts:35:5)\n    at Layer.handle [as handle_request] (/usr/src/app/node_modules/express/lib/router/layer.js:95:5)\n    at next (/usr/src/app/node_modules/express/lib/router/route.js:144:13)\n    at Route.dispatch (/usr/src/app/node_modules/express/lib/router/route.js:114:3)\n    at Layer.handle [as handle_request] (/usr/src/app/node_modules/express/lib/router/layer.js:95:5)\n    at /usr/src/app/node_modules/express/lib/router/index.js:284:15\n    at Function.process_params (/usr/src/app/node_modules/express/lib/router/index.js:346:12)","statusCode":401}
+{"level":"error","message":"Error occurred: Укажите тот же email, что и при регистрации.","service":"user-service"}
+{"level":"info","message":"Received POST request for /deal/application","service":"user-service"}
+{"level":"error","message":"Error calculating loan offer Укажите тот же email, что и при регистрации.","name":"AuthorizationError","service":"user-service","stack":"AuthorizationError: Укажите тот же email, что и при регистрации.\n    at postApplication (file:///usr/src/app/src/controllers/application.controller.ts:20:19)\n    at Layer.handle [as handle_request] (/usr/src/app/node_modules/express/lib/router/layer.js:95:5)\n    at next (/usr/src/app/node_modules/express/lib/router/route.js:144:13)\n    at validateLoanApplicationBody (file:///usr/src/app/src/middlewares/validateLoanApplicationBody.ts:35:5)\n    at Layer.handle [as handle_request] (/usr/src/app/node_modules/express/lib/router/layer.js:95:5)\n    at next (/usr/src/app/node_modules/express/lib/router/route.js:144:13)\n    at Route.dispatch (/usr/src/app/node_modules/express/lib/router/route.js:114:3)\n    at Layer.handle [as handle_request] (/usr/src/app/node_modules/express/lib/router/layer.js:95:5)\n    at /usr/src/app/node_modules/express/lib/router/index.js:284:15\n    at Function.process_params (/usr/src/app/node_modules/express/lib/router/index.js:346:12)","statusCode":401}
+{"level":"error","message":"Error occurred: Укажите тот же email, что и при регистрации.","service":"user-service"}
+{"level":"info","message":"Server is running on http://localhost:3002","service":"user-service"}
+{"level":"info","message":"Received POST request for /deal/application","service":"user-service"}
+{"level":"error","message":"Error calculating loan offer Укажите тот же email, что и при регистрации.","name":"AuthorizationError","service":"user-service","stack":"AuthorizationError: Укажите тот же email, что и при регистрации.\n    at postApplication (file:///usr/src/app/src/controllers/application.controller.ts:24:19)\n    at Layer.handle [as handle_request] (/usr/src/app/node_modules/express/lib/router/layer.js:95:5)\n    at next (/usr/src/app/node_modules/express/lib/router/route.js:144:13)\n    at validateLoanApplicationBody (file:///usr/src/app/src/middlewares/validateLoanApplicationBody.ts:35:5)\n    at Layer.handle [as handle_request] (/usr/src/app/node_modules/express/lib/router/layer.js:95:5)\n    at next (/usr/src/app/node_modules/express/lib/router/route.js:144:13)\n    at Route.dispatch (/usr/src/app/node_modules/express/lib/router/route.js:114:3)\n    at Layer.handle [as handle_request] (/usr/src/app/node_modules/express/lib/router/layer.js:95:5)\n    at /usr/src/app/node_modules/express/lib/router/index.js:284:15\n    at Function.process_params (/usr/src/app/node_modules/express/lib/router/index.js:346:12)","statusCode":401}
+{"level":"error","message":"Error occurred: Укажите тот же email, что и при регистрации.","service":"user-service"}
+{"level":"info","message":"Received POST request for /deal/application","service":"user-service"}
+{"level":"error","message":"Error calculating loan offer Укажите тот же email, что и при регистрации.","name":"AuthorizationError","service":"user-service","stack":"AuthorizationError: Укажите тот же email, что и при регистрации.\n    at postApplication (file:///usr/src/app/src/controllers/application.controller.ts:24:19)\n    at Layer.handle [as handle_request] (/usr/src/app/node_modules/express/lib/router/layer.js:95:5)\n    at next (/usr/src/app/node_modules/express/lib/router/route.js:144:13)\n    at validateLoanApplicationBody (file:///usr/src/app/src/middlewares/validateLoanApplicationBody.ts:35:5)\n    at Layer.handle [as handle_request] (/usr/src/app/node_modules/express/lib/router/layer.js:95:5)\n    at next (/usr/src/app/node_modules/express/lib/router/route.js:144:13)\n    at Route.dispatch (/usr/src/app/node_modules/express/lib/router/route.js:114:3)\n    at Layer.handle [as handle_request] (/usr/src/app/node_modules/express/lib/router/layer.js:95:5)\n    at /usr/src/app/node_modules/express/lib/router/index.js:284:15\n    at Function.process_params (/usr/src/app/node_modules/express/lib/router/index.js:346:12)","statusCode":401}
+{"level":"error","message":"Error occurred: Укажите тот же email, что и при регистрации.","service":"user-service"}
+{"level":"info","message":"Server is running on http://localhost:3002","service":"user-service"}
+{"level":"info","message":"Received POST request for /deal/application","service":"user-service"}
+{"level":"error","message":"Error calculating loan offer Укажите тот же email, что и при регистрации.","name":"AuthorizationError","service":"user-service","stack":"AuthorizationError: Укажите тот же email, что и при регистрации.\n    at postApplication (file:///usr/src/app/src/controllers/application.controller.ts:24:19)\n    at Layer.handle [as handle_request] (/usr/src/app/node_modules/express/lib/router/layer.js:95:5)\n    at next (/usr/src/app/node_modules/express/lib/router/route.js:144:13)\n    at validateLoanApplicationBody (file:///usr/src/app/src/middlewares/validateLoanApplicationBody.ts:35:5)\n    at Layer.handle [as handle_request] (/usr/src/app/node_modules/express/lib/router/layer.js:95:5)\n    at next (/usr/src/app/node_modules/express/lib/router/route.js:144:13)\n    at Route.dispatch (/usr/src/app/node_modules/express/lib/router/route.js:114:3)\n    at Layer.handle [as handle_request] (/usr/src/app/node_modules/express/lib/router/layer.js:95:5)\n    at /usr/src/app/node_modules/express/lib/router/index.js:284:15\n    at Function.process_params (/usr/src/app/node_modules/express/lib/router/index.js:346:12)","statusCode":401}
+{"level":"error","message":"Error occurred: Укажите тот же email, что и при регистрации.","service":"user-service"}
+{"level":"info","message":"Received POST request for /deal/register","service":"user-service"}
+{"level":"info","message":"Received POST request for /deal/register","service":"user-service"}
+{"level":"info","message":"Received POST request for /deal/application","service":"user-service"}
+{"level":"error","message":"Error calculating loan offer Укажите тот же email, что и при регистрации.","name":"AuthorizationError","service":"user-service","stack":"AuthorizationError: Укажите тот же email, что и при регистрации.\n    at postApplication (file:///usr/src/app/src/controllers/application.controller.ts:24:19)\n    at Layer.handle [as handle_request] (/usr/src/app/node_modules/express/lib/router/layer.js:95:5)\n    at next (/usr/src/app/node_modules/express/lib/router/route.js:144:13)\n    at validateLoanApplicationBody (file:///usr/src/app/src/middlewares/validateLoanApplicationBody.ts:35:5)\n    at Layer.handle [as handle_request] (/usr/src/app/node_modules/express/lib/router/layer.js:95:5)\n    at next (/usr/src/app/node_modules/express/lib/router/route.js:144:13)\n    at Route.dispatch (/usr/src/app/node_modules/express/lib/router/route.js:114:3)\n    at Layer.handle [as handle_request] (/usr/src/app/node_modules/express/lib/router/layer.js:95:5)\n    at /usr/src/app/node_modules/express/lib/router/index.js:284:15\n    at Function.process_params (/usr/src/app/node_modules/express/lib/router/index.js:346:12)","statusCode":401}
+{"level":"error","message":"Error occurred: Укажите тот же email, что и при регистрации.","service":"user-service"}
+{"level":"info","message":"Server is running on http://localhost:3002","service":"user-service"}
+{"level":"info","message":"Received POST request for /deal/application","service":"user-service"}
+{"level":"error","message":"Error calculating loan offer Укажите тот же email, что и при регистрации.","name":"AuthorizationError","service":"user-service","stack":"AuthorizationError: Укажите тот же email, что и при регистрации.\n    at postApplication (file:///usr/src/app/src/controllers/application.controller.ts:24:19)\n    at Layer.handle [as handle_request] (/usr/src/app/node_modules/express/lib/router/layer.js:95:5)\n    at next (/usr/src/app/node_modules/express/lib/router/route.js:144:13)\n    at validateLoanApplicationBody (file:///usr/src/app/src/middlewares/validateLoanApplicationBody.ts:35:5)\n    at Layer.handle [as handle_request] (/usr/src/app/node_modules/express/lib/router/layer.js:95:5)\n    at next (/usr/src/app/node_modules/express/lib/router/route.js:144:13)\n    at Route.dispatch (/usr/src/app/node_modules/express/lib/router/route.js:114:3)\n    at Layer.handle [as handle_request] (/usr/src/app/node_modules/express/lib/router/layer.js:95:5)\n    at /usr/src/app/node_modules/express/lib/router/index.js:284:15\n    at Function.process_params (/usr/src/app/node_modules/express/lib/router/index.js:346:12)","statusCode":401}
+{"level":"error","message":"Error occurred: Укажите тот же email, что и при регистрации.","service":"user-service"}
+{"level":"info","message":"Server is running on http://localhost:3002","service":"user-service"}
+{"level":"info","message":"Server is running on http://localhost:3002","service":"user-service"}
+{"level":"info","message":"Received POST request for /deal/application","service":"user-service"}
+{"level":"error","message":"Error calculating loan offer Укажите тот же email, что и при регистрации.","name":"AuthorizationError","service":"user-service","stack":"AuthorizationError: Укажите тот же email, что и при регистрации.\n    at postApplication (file:///usr/src/app/src/controllers/application.controller.ts:25:19)\n    at Layer.handle [as handle_request] (/usr/src/app/node_modules/express/lib/router/layer.js:95:5)\n    at next (/usr/src/app/node_modules/express/lib/router/route.js:144:13)\n    at validateLoanApplicationBody (file:///usr/src/app/src/middlewares/validateLoanApplicationBody.ts:35:5)\n    at Layer.handle [as handle_request] (/usr/src/app/node_modules/express/lib/router/layer.js:95:5)\n    at next (/usr/src/app/node_modules/express/lib/router/route.js:144:13)\n    at Route.dispatch (/usr/src/app/node_modules/express/lib/router/route.js:114:3)\n    at Layer.handle [as handle_request] (/usr/src/app/node_modules/express/lib/router/layer.js:95:5)\n    at /usr/src/app/node_modules/express/lib/router/index.js:284:15\n    at Function.process_params (/usr/src/app/node_modules/express/lib/router/index.js:346:12)","statusCode":401}
+{"level":"error","message":"Error occurred: Укажите тот же email, что и при регистрации.","service":"user-service"}
+{"level":"info","message":"Received POST request for /deal/application","service":"user-service"}
+{"level":"error","message":"Error calculating loan offer Укажите тот же email, что и при регистрации.","name":"AuthorizationError","service":"user-service","stack":"AuthorizationError: Укажите тот же email, что и при регистрации.\n    at postApplication (file:///usr/src/app/src/controllers/application.controller.ts:25:19)\n    at Layer.handle [as handle_request] (/usr/src/app/node_modules/express/lib/router/layer.js:95:5)\n    at next (/usr/src/app/node_modules/express/lib/router/route.js:144:13)\n    at validateLoanApplicationBody (file:///usr/src/app/src/middlewares/validateLoanApplicationBody.ts:35:5)\n    at Layer.handle [as handle_request] (/usr/src/app/node_modules/express/lib/router/layer.js:95:5)\n    at next (/usr/src/app/node_modules/express/lib/router/route.js:144:13)\n    at Route.dispatch (/usr/src/app/node_modules/express/lib/router/route.js:114:3)\n    at Layer.handle [as handle_request] (/usr/src/app/node_modules/express/lib/router/layer.js:95:5)\n    at /usr/src/app/node_modules/express/lib/router/index.js:284:15\n    at Function.process_params (/usr/src/app/node_modules/express/lib/router/index.js:346:12)","statusCode":401}
+{"level":"error","message":"Error occurred: Укажите тот же email, что и при регистрации.","service":"user-service"}
+{"level":"info","message":"Received POST request for /deal/application","service":"user-service"}
+{"level":"error","message":"Error calculating loan offer Укажите тот же email, что и при регистрации.","name":"AuthorizationError","service":"user-service","stack":"AuthorizationError: Укажите тот же email, что и при регистрации.\n    at postApplication (file:///usr/src/app/src/controllers/application.controller.ts:25:19)\n    at Layer.handle [as handle_request] (/usr/src/app/node_modules/express/lib/router/layer.js:95:5)\n    at next (/usr/src/app/node_modules/express/lib/router/route.js:144:13)\n    at validateLoanApplicationBody (file:///usr/src/app/src/middlewares/validateLoanApplicationBody.ts:35:5)\n    at Layer.handle [as handle_request] (/usr/src/app/node_modules/express/lib/router/layer.js:95:5)\n    at next (/usr/src/app/node_modules/express/lib/router/route.js:144:13)\n    at Route.dispatch (/usr/src/app/node_modules/express/lib/router/route.js:114:3)\n    at Layer.handle [as handle_request] (/usr/src/app/node_modules/express/lib/router/layer.js:95:5)\n    at /usr/src/app/node_modules/express/lib/router/index.js:284:15\n    at Function.process_params (/usr/src/app/node_modules/express/lib/router/index.js:346:12)","statusCode":401}
+{"level":"error","message":"Error occurred: Укажите тот же email, что и при регистрации.","service":"user-service"}
+{"level":"info","message":"Server is running on http://localhost:3002","service":"user-service"}
+{"level":"info","message":"Received POST request for /deal/application","service":"user-service"}
+{"level":"error","message":"Error calculating loan offer Укажите тот же email, что и при регистрации.","name":"AuthorizationError","service":"user-service","stack":"AuthorizationError: Укажите тот же email, что и при регистрации.\n    at postApplication (file:///usr/src/app/src/controllers/application.controller.ts:26:19)\n    at Layer.handle [as handle_request] (/usr/src/app/node_modules/express/lib/router/layer.js:95:5)\n    at next (/usr/src/app/node_modules/express/lib/router/route.js:144:13)\n    at validateLoanApplicationBody (file:///usr/src/app/src/middlewares/validateLoanApplicationBody.ts:35:5)\n    at Layer.handle [as handle_request] (/usr/src/app/node_modules/express/lib/router/layer.js:95:5)\n    at next (/usr/src/app/node_modules/express/lib/router/route.js:144:13)\n    at Route.dispatch (/usr/src/app/node_modules/express/lib/router/route.js:114:3)\n    at Layer.handle [as handle_request] (/usr/src/app/node_modules/express/lib/router/layer.js:95:5)\n    at /usr/src/app/node_modules/express/lib/router/index.js:284:15\n    at Function.process_params (/usr/src/app/node_modules/express/lib/router/index.js:346:12)","statusCode":401}
+{"level":"error","message":"Error occurred: Укажите тот же email, что и при регистрации.","service":"user-service"}
+{"level":"info","message":"Server is running on http://localhost:3002","service":"user-service"}
+{"level":"info","message":"Server is running on http://localhost:3002","service":"user-service"}
+{"level":"info","message":"Received POST request for /deal/application","service":"user-service"}
+{"level":"error","message":"Error calculating loan offer Cannot read properties of undefined (reading 'email')","service":"user-service","stack":"TypeError: Cannot read properties of undefined (reading 'email')\n    at postApplication (file:///usr/src/app/src/controllers/application.controller.ts:28:45)\n    at Layer.handle [as handle_request] (/usr/src/app/node_modules/express/lib/router/layer.js:95:5)\n    at next (/usr/src/app/node_modules/express/lib/router/route.js:144:13)\n    at validateLoanApplicationBody (file:///usr/src/app/src/middlewares/validateLoanApplicationBody.ts:35:5)\n    at Layer.handle [as handle_request] (/usr/src/app/node_modules/express/lib/router/layer.js:95:5)\n    at next (/usr/src/app/node_modules/express/lib/router/route.js:144:13)\n    at Route.dispatch (/usr/src/app/node_modules/express/lib/router/route.js:114:3)\n    at Layer.handle [as handle_request] (/usr/src/app/node_modules/express/lib/router/layer.js:95:5)\n    at /usr/src/app/node_modules/express/lib/router/index.js:284:15\n    at Function.process_params (/usr/src/app/node_modules/express/lib/router/index.js:346:12)"}
+{"level":"error","message":"Error occurred: Внутренняя ошибка сервера.","service":"user-service"}
+{"level":"info","message":"Server is running on http://localhost:3002","service":"user-service"}
+{"level":"info","message":"Received POST request for /deal/application","service":"user-service"}
+{"level":"error","message":"Error calculating loan offer Cannot read properties of undefined (reading 'email')","service":"user-service","stack":"TypeError: Cannot read properties of undefined (reading 'email')\n    at postApplication (file:///usr/src/app/src/controllers/application.controller.ts:27:45)\n    at Layer.handle [as handle_request] (/usr/src/app/node_modules/express/lib/router/layer.js:95:5)\n    at next (/usr/src/app/node_modules/express/lib/router/route.js:144:13)\n    at validateLoanApplicationBody (file:///usr/src/app/src/middlewares/validateLoanApplicationBody.ts:35:5)\n    at Layer.handle [as handle_request] (/usr/src/app/node_modules/express/lib/router/layer.js:95:5)\n    at next (/usr/src/app/node_modules/express/lib/router/route.js:144:13)\n    at Route.dispatch (/usr/src/app/node_modules/express/lib/router/route.js:114:3)\n    at Layer.handle [as handle_request] (/usr/src/app/node_modules/express/lib/router/layer.js:95:5)\n    at /usr/src/app/node_modules/express/lib/router/index.js:284:15\n    at Function.process_params (/usr/src/app/node_modules/express/lib/router/index.js:346:12)"}
+{"level":"error","message":"Error occurred: Внутренняя ошибка сервера.","service":"user-service"}
+{"level":"info","message":"Server is running on http://localhost:3002","service":"user-service"}
+{"level":"info","message":"Server is running on http://localhost:3002","service":"user-service"}
+{"level":"info","message":"Server is running on http://localhost:3002","service":"user-service"}
+{"level":"info","message":"Server is running on http://localhost:3002","service":"user-service"}
+{"level":"info","message":"Server is running on http://localhost:3002","service":"user-service"}
+{"level":"info","message":"Server is running on http://localhost:3002","service":"user-service"}
+{"level":"info","message":"Server is running on http://localhost:3002","service":"user-service"}
+{"level":"info","message":"Server is running on http://localhost:3002","service":"user-service"}
+{"level":"info","message":"Received POST request for /deal/application","service":"user-service"}
+{"level":"error","message":"Error calculating loan offer Cannot read properties of undefined (reading 'email')","service":"user-service","stack":"TypeError: Cannot read properties of undefined (reading 'email')\n    at postApplication (file:///usr/src/app/src/controllers/application.controller.ts:27:45)\n    at Layer.handle [as handle_request] (/usr/src/app/node_modules/express/lib/router/layer.js:95:5)\n    at next (/usr/src/app/node_modules/express/lib/router/route.js:144:13)\n    at validateLoanApplicationBody (file:///usr/src/app/src/middlewares/validateLoanApplicationBody.ts:35:5)\n    at Layer.handle [as handle_request] (/usr/src/app/node_modules/express/lib/router/layer.js:95:5)\n    at next (/usr/src/app/node_modules/express/lib/router/route.js:144:13)\n    at validateJWT (file:///usr/src/app/src/middlewares/validateJWT.ts:46:13)\n    at Layer.handle [as handle_request] (/usr/src/app/node_modules/express/lib/router/layer.js:95:5)\n    at next (/usr/src/app/node_modules/express/lib/router/route.js:144:13)\n    at Route.dispatch (/usr/src/app/node_modules/express/lib/router/route.js:114:3)"}
+{"level":"error","message":"Error occurred: Внутренняя ошибка сервера.","service":"user-service"}
+{"level":"info","message":"Server is running on http://localhost:3002","service":"user-service"}
+{"level":"info","message":"Received POST request for /deal/application","service":"user-service"}
+{"level":"error","message":"Error calculating loan offer Cannot read properties of undefined (reading 'email')","service":"user-service","stack":"TypeError: Cannot read properties of undefined (reading 'email')\n    at postApplication (file:///usr/src/app/src/controllers/application.controller.ts:27:45)\n    at Layer.handle [as handle_request] (/usr/src/app/node_modules/express/lib/router/layer.js:95:5)\n    at next (/usr/src/app/node_modules/express/lib/router/route.js:144:13)\n    at validateLoanApplicationBody (file:///usr/src/app/src/middlewares/validateLoanApplicationBody.ts:35:5)\n    at Layer.handle [as handle_request] (/usr/src/app/node_modules/express/lib/router/layer.js:95:5)\n    at next (/usr/src/app/node_modules/express/lib/router/route.js:144:13)\n    at validateJWT (file:///usr/src/app/src/middlewares/validateJWT.ts:46:13)\n    at Layer.handle [as handle_request] (/usr/src/app/node_modules/express/lib/router/layer.js:95:5)\n    at next (/usr/src/app/node_modules/express/lib/router/route.js:144:13)\n    at Route.dispatch (/usr/src/app/node_modules/express/lib/router/route.js:114:3)"}
+{"level":"error","message":"Error occurred: Внутренняя ошибка сервера.","service":"user-service"}
+{"level":"info","message":"Received POST request for /deal/application","service":"user-service"}
+{"level":"error","message":"Error calculating loan offer Cannot read properties of undefined (reading 'email')","service":"user-service","stack":"TypeError: Cannot read properties of undefined (reading 'email')\n    at postApplication (file:///usr/src/app/src/controllers/application.controller.ts:27:45)\n    at Layer.handle [as handle_request] (/usr/src/app/node_modules/express/lib/router/layer.js:95:5)\n    at next (/usr/src/app/node_modules/express/lib/router/route.js:144:13)\n    at validateLoanApplicationBody (file:///usr/src/app/src/middlewares/validateLoanApplicationBody.ts:35:5)\n    at Layer.handle [as handle_request] (/usr/src/app/node_modules/express/lib/router/layer.js:95:5)\n    at next (/usr/src/app/node_modules/express/lib/router/route.js:144:13)\n    at validateJWT (file:///usr/src/app/src/middlewares/validateJWT.ts:46:13)\n    at Layer.handle [as handle_request] (/usr/src/app/node_modules/express/lib/router/layer.js:95:5)\n    at next (/usr/src/app/node_modules/express/lib/router/route.js:144:13)\n    at Route.dispatch (/usr/src/app/node_modules/express/lib/router/route.js:114:3)"}
+{"level":"error","message":"Error occurred: Внутренняя ошибка сервера.","service":"user-service"}
+{"level":"info","message":"Server is running on http://localhost:3002","service":"user-service"}
+{"level":"info","message":"Server is running on http://localhost:3002","service":"user-service"}
+{"level":"info","message":"Received POST request for /deal/application","service":"user-service"}
+{"level":"info","message":"Received POST request for /deal/application","service":"user-service"}
+{"level":"info","message":"Successfully processed application for client ID: 173.","service":"user-service"}
+{"level":"info","message":"Server is running on http://localhost:3002","service":"user-service"}
+{"level":"info","message":"Received POST request for /deal/application","service":"user-service"}
+{"level":"info","message":"Received POST request for /deal/application","service":"user-service"}
+{"level":"info","message":"Received POST request for /deal/application","service":"user-service"}
+{"level":"info","message":"Received POST request for /deal/application","service":"user-service"}
+{"level":"info","message":"Received POST request for /deal/application","service":"user-service"}
+{"level":"info","message":"Received POST request for /deal/application","service":"user-service"}
+{"level":"info","message":"Received POST request for /deal/application","service":"user-service"}
+{"level":"info","message":"Received POST request for /deal/application","service":"user-service"}
+{"level":"info","message":"Received POST request for /deal/application","service":"user-service"}
+{"level":"info","message":"Received POST request for /deal/application","service":"user-service"}
+{"level":"error","message":"Error while adding client and passport: ConflictError: Клиент с данным email уже существует","service":"user-service"}
+{"level":"error","message":"Error calculating loan offer Клиент с данным email уже существует","name":"ConflictError","service":"user-service","stack":"ConflictError: Клиент с данным email уже существует\n    at addClientAndPassport (file:///usr/src/app/src/service/application.service.ts:57:17)\n    at processTicksAndRejections (node:internal/process/task_queues:96:5)\n    at async postApplication (file:///usr/src/app/src/controllers/application.controller.ts:33:26)","statusCode":409}
+{"level":"error","message":"Error occurred: Клиент с данным email уже существует","service":"user-service"}
+{"level":"info","message":"Received POST request for /deal/application","service":"user-service"}
+{"level":"error","message":"Error calculating loan offer Укажите тот же email, что и при регистрации.","name":"AuthorizationError","service":"user-service","stack":"AuthorizationError: Укажите тот же email, что и при регистрации.\n    at postApplication (file:///usr/src/app/src/controllers/application.controller.ts:25:19)\n    at Layer.handle [as handle_request] (/usr/src/app/node_modules/express/lib/router/layer.js:95:5)\n    at next (/usr/src/app/node_modules/express/lib/router/route.js:144:13)\n    at validateLoanApplicationBody (file:///usr/src/app/src/middlewares/validateLoanApplicationBody.ts:35:5)\n    at Layer.handle [as handle_request] (/usr/src/app/node_modules/express/lib/router/layer.js:95:5)\n    at next (/usr/src/app/node_modules/express/lib/router/route.js:144:13)\n    at validateJWT (file:///usr/src/app/src/middlewares/validateJWT.ts:34:13)\n    at Layer.handle [as handle_request] (/usr/src/app/node_modules/express/lib/router/layer.js:95:5)\n    at next (/usr/src/app/node_modules/express/lib/router/route.js:144:13)\n    at Route.dispatch (/usr/src/app/node_modules/express/lib/router/route.js:114:3)","statusCode":401}
+{"level":"error","message":"Error occurred: Укажите тот же email, что и при регистрации.","service":"user-service"}
+{"level":"info","message":"Received POST request for /deal/application","service":"user-service"}
+{"level":"info","message":"Received POST request for /deal/application","service":"user-service"}
+{"level":"info","message":"Received POST request for /deal/application","service":"user-service"}
+{"level":"info","message":"Received POST request for /deal/application","service":"user-service"}
+{"level":"info","message":"Received POST request for /deal/application","service":"user-service"}
+{"level":"info","message":"Received POST request for /deal/application","service":"user-service"}
+{"level":"info","message":"Server is running on http://localhost:3002","service":"user-service"}
+{"level":"info","message":"Server is running on http://localhost:3002","service":"user-service"}
+{"level":"info","message":"Received POST request for /deal/application","service":"user-service"}
+{"level":"info","message":"Received POST request for /deal/application","service":"user-service"}
+{"level":"info","message":"Received POST request for /deal/application","service":"user-service"}
+{"level":"info","message":"Received POST request for /deal/application","service":"user-service"}
+{"level":"info","message":"Received POST request for /deal/application","service":"user-service"}
+{"level":"info","message":"Received POST request for /deal/application","service":"user-service"}
+{"level":"info","message":"Received POST request for /deal/application","service":"user-service"}
+{"level":"info","message":"Received POST request for /deal/application","service":"user-service"}
+{"level":"info","message":"Received POST request for /deal/application","service":"user-service"}
+{"level":"info","message":"Received POST request for /deal/application","service":"user-service"}
+{"level":"info","message":"Received POST request for /deal/application","service":"user-service"}
+{"level":"info","message":"Received POST request for /deal/application","service":"user-service"}
+{"level":"info","message":"Received POST request for /deal/application","service":"user-service"}
+{"level":"info","message":"Received POST request for /deal/application","service":"user-service"}
+{"level":"info","message":"Received POST request for /deal/application","service":"user-service"}
+{"level":"info","message":"Received POST request for /deal/application","service":"user-service"}
+{"level":"error","message":"Error while adding client and passport: ConflictError: Клиент с данным email уже существует","service":"user-service"}
+{"level":"error","message":"Error calculating loan offer Клиент с данным email уже существует","name":"ConflictError","service":"user-service","stack":"ConflictError: Клиент с данным email уже существует\n    at addClientAndPassport (file:///usr/src/app/src/service/application.service.ts:57:17)\n    at processTicksAndRejections (node:internal/process/task_queues:96:5)\n    at async postApplication (file:///usr/src/app/src/controllers/application.controller.ts:33:26)","statusCode":409}
+{"level":"error","message":"Error occurred: Клиент с данным email уже существует","service":"user-service"}
+{"level":"info","message":"Received POST request for /deal/application","service":"user-service"}
+{"level":"error","message":"Error while adding client and passport: ConflictError: Клиент с данным email уже существует","service":"user-service"}
+{"level":"error","message":"Error calculating loan offer Клиент с данным email уже существует","name":"ConflictError","service":"user-service","stack":"ConflictError: Клиент с данным email уже существует\n    at addClientAndPassport (file:///usr/src/app/src/service/application.service.ts:57:17)\n    at processTicksAndRejections (node:internal/process/task_queues:96:5)\n    at async postApplication (file:///usr/src/app/src/controllers/application.controller.ts:33:26)","statusCode":409}
+{"level":"error","message":"Error occurred: Клиент с данным email уже существует","service":"user-service"}
+{"level":"info","message":"Received POST request for /deal/application","service":"user-service"}
+{"level":"error","message":"Error while adding client and passport: ConflictError: Клиент с данным email уже существует","service":"user-service"}
+{"level":"error","message":"Error calculating loan offer Клиент с данным email уже существует","name":"ConflictError","service":"user-service","stack":"ConflictError: Клиент с данным email уже существует\n    at addClientAndPassport (file:///usr/src/app/src/service/application.service.ts:57:17)\n    at processTicksAndRejections (node:internal/process/task_queues:96:5)\n    at async postApplication (file:///usr/src/app/src/controllers/application.controller.ts:33:26)","statusCode":409}
+{"level":"error","message":"Error occurred: Клиент с данным email уже существует","service":"user-service"}
+{"level":"info","message":"Server is running on http://localhost:3002","service":"user-service"}
+{"level":"info","message":"Received POST request for /deal/application","service":"user-service"}
+{"level":"error","message":"Error while adding client and passport: ConflictError: Клиент с данным email уже существует","service":"user-service"}
+{"level":"error","message":"Error calculating loan offer Клиент с данным email уже существует","name":"ConflictError","service":"user-service","stack":"ConflictError: Клиент с данным email уже существует\n    at addClientAndPassport (file:///usr/src/app/src/service/application.service.ts:57:17)\n    at processTicksAndRejections (node:internal/process/task_queues:96:5)\n    at async postApplication (file:///usr/src/app/src/controllers/application.controller.ts:33:26)","statusCode":409}
+{"level":"error","message":"Error occurred: Клиент с данным email уже существует","service":"user-service"}
+{"level":"info","message":"Server is running on http://localhost:3002","service":"user-service"}
+{"level":"info","message":"Received POST request for /deal/application","service":"user-service"}
+{"level":"error","message":"Error while adding client and passport: ConflictError: Клиент с данным email уже существует","service":"user-service"}
+{"level":"error","message":"Error calculating loan offer Клиент с данным email уже существует","name":"ConflictError","service":"user-service","stack":"ConflictError: Клиент с данным email уже существует\n    at addClientAndPassport (file:///usr/src/app/src/service/application.service.ts:57:17)\n    at processTicksAndRejections (node:internal/process/task_queues:96:5)\n    at async postApplication (file:///usr/src/app/src/controllers/application.controller.ts:33:26)","statusCode":409}
+{"level":"error","message":"Error occurred: Клиент с данным email уже существует","service":"user-service"}
+{"level":"info","message":"Received POST request for /deal/application","service":"user-service"}
+{"level":"error","message":"Error while adding client and passport: ConflictError: Клиент с данным паспортом уже существует","service":"user-service"}
+{"level":"error","message":"Error calculating loan offer Клиент с данным паспортом уже существует","name":"ConflictError","service":"user-service","stack":"ConflictError: Клиент с данным паспортом уже существует\n    at addClientAndPassport (file:///usr/src/app/src/service/application.service.ts:62:17)\n    at processTicksAndRejections (node:internal/process/task_queues:96:5)\n    at async postApplication (file:///usr/src/app/src/controllers/application.controller.ts:33:26)","statusCode":409}
+{"level":"error","message":"Error occurred: Клиент с данным паспортом уже существует","service":"user-service"}
+{"level":"info","message":"Received POST request for /deal/application","service":"user-service"}
+{"level":"info","message":"Successfully processed application for client ID: 174.","service":"user-service"}
+{"level":"info","message":"Received PUT request for /deal/application","service":"user-service"}
+{"level":"info","message":"Received PUT request for /deal/application/offers","service":"user-service"}
+{"level":"info","message":"Received PUT request for /deal/offer","service":"user-service"}
+{"level":"info","message":"Received LoanOffer: [object Object]","service":"user-service"}
+{"level":"info","message":"Received PUT request for /deal/offers","service":"user-service"}
+{"level":"error","message":"Ошибка при отправке сообщения: KafkaJSNumberOfRetriesExceeded: Connection error: connect ECONNREFUSED 192.168.1.1:19092","service":"user-service"}
+{"level":"info","message":"Received PUT request for /deal/offer","service":"user-service"}
+{"level":"info","message":"Received LoanOffer: [object Object]","service":"user-service"}
+{"level":"error","message":"Ошибка при отправке сообщения: KafkaJSNumberOfRetriesExceeded: Connection error: connect ECONNREFUSED 192.168.1.1:19092","service":"user-service"}
+{"level":"info","message":"Server is running on http://localhost:3002","service":"user-service"}
+{"level":"info","message":"Received PUT request for /deal/offer","service":"user-service"}
+{"level":"info","message":"Received LoanOffer: [object Object]","service":"user-service"}
+{"level":"info","message":"Сообщение успешно отправлено в топик: finish-registration","service":"user-service"}
+{"level":"info","message":"Server is running on http://localhost:3002","service":"user-service"}
+{"level":"info","message":"Received PUT request for /deal/offer","service":"user-service"}
+{"level":"info","message":"Received LoanOffer: [object Object]","service":"user-service"}
+{"level":"info","message":"Сообщение успешно отправлено в топик: finish-registration","service":"user-service"}
+{"level":"info","message":"Received PUT request for /deal/offer","service":"user-service"}
+{"level":"info","message":"Received LoanOffer: [object Object]","service":"user-service"}
+{"level":"info","message":"Сообщение успешно отправлено в топик: finish-registration","service":"user-service"}
+{"level":"info","message":"Server is running on http://localhost:3002","service":"user-service"}
+{"level":"info","message":"Server is running on http://localhost:3002","service":"user-service"}
+{"level":"info","message":"Server is running on http://localhost:3002","service":"user-service"}
+{"level":"info","message":"Server is running on http://localhost:3002","service":"user-service"}
+{"level":"info","message":"Server is running on http://localhost:3002","service":"user-service"}
+{"level":"info","message":"Server is running on http://localhost:3002","service":"user-service"}
+{"level":"info","message":"Server is running on http://localhost:3002","service":"user-service"}
+{"level":"info","message":"Server is running on http://localhost:3002","service":"user-service"}
+{"level":"info","message":"Received PUT request for /deal/offer","service":"user-service"}
+{"level":"info","message":"Received LoanOffer: [object Object]","service":"user-service"}
+{"level":"info","message":"Received PUT request for /deal/offer","service":"user-service"}
+{"level":"info","message":"Received LoanOffer: [object Object]","service":"user-service"}
+{"level":"info","message":"Server is running on http://localhost:3002","service":"user-service"}
+{"level":"info","message":"Server is running on http://localhost:3002","service":"user-service"}
+{"level":"info","message":"Received PUT request for /deal/offer","service":"user-service"}
+{"level":"info","message":"Received LoanOffer: [object Object]","service":"user-service"}
+{"level":"info","message":"Received PUT request for /deal/offer","service":"user-service"}
+{"level":"info","message":"Received LoanOffer: [object Object]","service":"user-service"}
+{"level":"info","message":"Server is running on http://localhost:3002","service":"user-service"}
+{"level":"info","message":"Received PUT request for /deal/offer","service":"user-service"}
+{"level":"info","message":"Received LoanOffer: [object Object]","service":"user-service"}
+{"level":"info","message":"Server is running on http://localhost:3002","service":"user-service"}
+{"level":"info","message":"Received PUT request for /deal/offer","service":"user-service"}
+{"level":"info","message":"Received LoanOffer: [object Object]","service":"user-service"}
+{"level":"info","message":"Received PUT request for /deal/offer","service":"user-service"}
+{"level":"info","message":"Received LoanOffer: [object Object]","service":"user-service"}
+{"level":"info","message":"Server is running on http://localhost:3002","service":"user-service"}
+{"level":"info","message":"Received PUT request for /deal/offer","service":"user-service"}
+{"level":"info","message":"Received LoanOffer: [object Object]","service":"user-service"}
+{"level":"info","message":"Received PUT request for /deal/offer","service":"user-service"}
+{"level":"info","message":"Received LoanOffer: [object Object]","service":"user-service"}
+{"level":"info","message":"Server is running on http://localhost:3002","service":"user-service"}
+{"level":"info","message":"Received PUT request for /deal/offer","service":"user-service"}
+{"level":"info","message":"Received LoanOffer: [object Object]","service":"user-service"}
+{"level":"info","message":"Сообщение успешно отправлено в топик: finish-registration","service":"user-service"}
+{"level":"info","message":"Server is running on http://localhost:3002","service":"user-service"}
+{"level":"info","message":"Received PUT request for /deal/offer","service":"user-service"}
+{"level":"info","message":"Received LoanOffer: [object Object]","service":"user-service"}
+{"level":"info","message":"Сообщение успешно отправлено в топик: finish-registration","service":"user-service"}
+{"level":"info","message":"Received POST request for /deal/application","service":"user-service"}
+{"level":"error","message":"Error while adding client and passport: ConflictError: Клиент с данным email уже существует","service":"user-service"}
+{"level":"error","message":"Error calculating loan offer Клиент с данным email уже существует","name":"ConflictError","service":"user-service","stack":"ConflictError: Клиент с данным email уже существует\n    at addClientAndPassport (file:///usr/src/app/src/service/application.service.ts:57:17)\n    at processTicksAndRejections (node:internal/process/task_queues:96:5)\n    at async postApplication (file:///usr/src/app/src/controllers/application.controller.ts:33:26)","statusCode":409}
+{"level":"error","message":"Error occurred: Клиент с данным email уже существует","service":"user-service"}
+{"level":"info","message":"Received PUT request for /deal/offer","service":"user-service"}
+{"level":"info","message":"Received LoanOffer: [object Object]","service":"user-service"}
+{"level":"info","message":"Сообщение успешно отправлено в топик: finish-registration","service":"user-service"}
+{"level":"info","message":"Server is running on http://localhost:3002","service":"user-service"}
+{"level":"info","message":"Received PUT request for /deal/offer","service":"user-service"}
+{"level":"info","message":"Received LoanOffer: [object Object]","service":"user-service"}
+{"level":"info","message":"Сообщение успешно отправлено в топик: finish-registration","service":"user-service"}
+{"level":"info","message":"Server is running on http://localhost:3002","service":"user-service"}
+{"level":"info","message":"Server is running on http://localhost:3002","service":"user-service"}
+{"level":"info","message":"Server is running on http://localhost:3002","service":"user-service"}
+{"level":"info","message":"Server is running on http://localhost:3002","service":"user-service"}
+{"level":"info","message":"Server is running on http://localhost:3002","service":"user-service"}
+{"level":"info","message":"Server is running on http://localhost:3002","service":"user-service"}
+{"level":"info","message":"Server is running on http://localhost:3002","service":"user-service"}
+{"level":"info","message":"Received POST request for /deal/application","service":"user-service"}
+{"level":"info","message":"Successfully processed application for client ID: 175.","service":"user-service"}
+{"level":"info","message":"Received PUT request for /deal/offer","service":"user-service"}
+{"level":"info","message":"Received LoanOffer: [object Object]","service":"user-service"}
+{"level":"info","message":"Сообщение успешно отправлено в топик: finish-registration","service":"user-service"}
+{"level":"info","message":"Received PUT request for /deal/offer","service":"user-service"}
+{"level":"info","message":"Received LoanOffer: [object Object]","service":"user-service"}
+{"level":"info","message":"Сообщение успешно отправлено в топик: finish-registration","service":"user-service"}
+{"level":"info","message":"Received PUT request for /deal/offer","service":"user-service"}
+{"level":"info","message":"Received LoanOffer: [object Object]","service":"user-service"}
+{"level":"info","message":"Сообщение успешно отправлено в топик: finish-registration","service":"user-service"}
+{"level":"info","message":"Received PUT request for /deal/offer","service":"user-service"}
+{"level":"info","message":"Received LoanOffer: [object Object]","service":"user-service"}
+{"level":"info","message":"Сообщение успешно отправлено в топик: finish-registration","service":"user-service"}
+{"level":"info","message":"Received PUT request for /deal/offer","service":"user-service"}
+{"level":"info","message":"Received LoanOffer: [object Object]","service":"user-service"}
+{"level":"info","message":"Сообщение успешно отправлено в топик: finish-registration","service":"user-service"}
+{"level":"info","message":"Received PUT request for /deal/offer","service":"user-service"}
+{"level":"info","message":"Received LoanOffer: [object Object]","service":"user-service"}
+{"level":"info","message":"Сообщение успешно отправлено в топик: finish-registration","service":"user-service"}
+{"level":"info","message":"Received PUT request for /deal/offer","service":"user-service"}
+{"level":"info","message":"Received LoanOffer: [object Object]","service":"user-service"}
+{"level":"info","message":"Сообщение успешно отправлено в топик: finish-registration","service":"user-service"}
+{"level":"info","message":"Received PUT request for /deal/offer","service":"user-service"}
+{"level":"info","message":"Received LoanOffer: [object Object]","service":"user-service"}
+{"level":"info","message":"Сообщение успешно отправлено в топик: finish-registration","service":"user-service"}
+{"level":"info","message":"Received PUT request for /deal/offer","service":"user-service"}
+{"level":"info","message":"Received LoanOffer: [object Object]","service":"user-service"}
+{"level":"info","message":"Сообщение успешно отправлено в топик: finish-registration","service":"user-service"}
+{"level":"info","message":"Server is running on http://localhost:3002","service":"user-service"}
+{"level":"info","message":"Received PUT request for /deal/offer","service":"user-service"}
+{"level":"info","message":"Received LoanOffer: [object Object]","service":"user-service"}
+{"level":"info","message":"Сообщение успешно отправлено в топик: finish-registration","service":"user-service"}
+{"level":"info","message":"Received PUT request for /deal/offer","service":"user-service"}
+{"level":"info","message":"Received LoanOffer: [object Object]","service":"user-service"}
+{"level":"info","message":"Сообщение успешно отправлено в топик: finish-registration","service":"user-service"}
+{"level":"info","message":"Received PUT request for /deal/offer","service":"user-service"}
+{"level":"info","message":"Received LoanOffer: [object Object]","service":"user-service"}
+{"level":"info","message":"Сообщение успешно отправлено в топик: finish-registration","service":"user-service"}
+{"level":"info","message":"Server is running on http://localhost:3002","service":"user-service"}
+{"level":"info","message":"Received PUT request for /deal/offer","service":"user-service"}
+{"level":"info","message":"Received LoanOffer: [object Object]","service":"user-service"}
+{"level":"info","message":"Сообщение успешно отправлено в топик: finish-registration","service":"user-service"}
+{"level":"info","message":"Received PUT request for /deal/offer","service":"user-service"}
+{"level":"info","message":"Received LoanOffer: [object Object]","service":"user-service"}
+{"level":"info","message":"Сообщение успешно отправлено в топик: finish-registration","service":"user-service"}
+{"level":"info","message":"Received PUT request for /deal/offer","service":"user-service"}
+{"level":"info","message":"Received LoanOffer: [object Object]","service":"user-service"}
+{"level":"info","message":"Сообщение успешно отправлено в топик: finish-registration","service":"user-service"}
+{"level":"info","message":"Received PUT request for /deal/offer","service":"user-service"}
+{"level":"info","message":"Received LoanOffer: [object Object]","service":"user-service"}
+{"level":"info","message":"Сообщение успешно отправлено в топик: finish-registration","service":"user-service"}
+{"level":"info","message":"Received PUT request for /deal/offer","service":"user-service"}
+{"level":"info","message":"Received LoanOffer: [object Object]","service":"user-service"}
+{"level":"info","message":"Сообщение успешно отправлено в топик: finish-registration","service":"user-service"}
+{"level":"info","message":"Received PUT request for /deal/offer","service":"user-service"}
+{"level":"info","message":"Received LoanOffer: [object Object]","service":"user-service"}
+{"level":"info","message":"Сообщение успешно отправлено в топик: finish-registration","service":"user-service"}
+{"level":"info","message":"Received PUT request for /deal/offer","service":"user-service"}
+{"level":"info","message":"Received LoanOffer: [object Object]","service":"user-service"}
+{"level":"info","message":"Сообщение успешно отправлено в топик: finish-registration","service":"user-service"}
+{"level":"info","message":"Received PUT request for /deal/offer","service":"user-service"}
+{"level":"info","message":"Received LoanOffer: [object Object]","service":"user-service"}
+{"level":"info","message":"Сообщение успешно отправлено в топик: finish-registration","service":"user-service"}
+{"level":"info","message":"Server is running on http://localhost:3002","service":"user-service"}
+{"level":"info","message":"Received PUT request for /deal/offer","service":"user-service"}
+{"level":"info","message":"Received LoanOffer: [object Object]","service":"user-service"}
+{"level":"info","message":"Сообщение успешно отправлено в топик: finish-registration","service":"user-service"}
+{"level":"info","message":"Received PUT request for /deal/offer","service":"user-service"}
+{"level":"info","message":"Received LoanOffer: [object Object]","service":"user-service"}
+{"level":"info","message":"Сообщение успешно отправлено в топик: finish-registration","service":"user-service"}
+{"level":"info","message":"Received PUT request for /deal/offer","service":"user-service"}
+{"level":"info","message":"Received LoanOffer: [object Object]","service":"user-service"}
+{"level":"info","message":"Сообщение успешно отправлено в топик: finish-registration","service":"user-service"}
+{"level":"info","message":"Received PUT request for /deal/offer","service":"user-service"}
+{"level":"info","message":"Received LoanOffer: [object Object]","service":"user-service"}
+{"level":"info","message":"Сообщение успешно отправлено в топик: finish-registration","service":"user-service"}

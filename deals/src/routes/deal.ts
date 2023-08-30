@@ -11,11 +11,13 @@ import { sendSes } from '../controllers/sendSes.controller.js';
 import { sendCode } from '../controllers/sendCode.controller.js';
 import { getApplication } from '../controllers/getApplication.js';
 import { getApplicationById } from '../controllers/getApplicationById.js';
+import { validateJWT } from '../middlewares/validateJWT.js';
 
 
-router.post('/application', validateLoanApplicationBody, postApplication);
+// router.post('/application', validateLoanApplicationBody, postApplication);
+router.post('/application', validateJWT, validateLoanApplicationBody, postApplication);
 
-router.put('/offer', validateLoanOffer, handleOfferUpdate);
+router.put('/offer', validateJWT, validateLoanOffer, handleOfferUpdate);
 
 router.put('/calculate/:applicationId', validateRegistrationData, calculateCredit);
 
