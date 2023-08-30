@@ -16,7 +16,6 @@ export async function addClientAndPassport(loanApplication: LoanApplicationReque
       throw new ConflictError('Клиент с данным паспортом уже существует');
     }
 
-    // Проверка существования клиента с таким email
     const existingEmail: Client | null = await db.oneOrNone(
       'SELECT * FROM client WHERE email = $1',
       [loanApplication.email]

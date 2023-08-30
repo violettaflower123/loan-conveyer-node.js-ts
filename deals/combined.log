@@ -1763,3 +1763,4 @@
 {"level":"info","message":"Received POST request for /deal/application","service":"user-service"}
 {"level":"info","message":"Successfully processed application for client ID: 167.","service":"user-service"}
 {"level":"info","message":"Server is running on http://localhost:3002","service":"user-service"}
+{"level":"info","message":"Server is running on http://localhost:3002","service":"user-service"}
