@@ -26,41 +26,15 @@ app.use(cors());
 app.use(helmet());
 app.use(bodyParser.json());
 
-export const validateJWT = async (req: RequestWithJWT, res: Response, next: NextFunction) => {
-    const token = req.headers.authorization?.split(' ')[1];
-    console.log("Received token:", token);
-
-    if (!token) {
-        return res.status(401).send('Token required');
-    }
-
-    if (!JWT_SECRET) {
-        console.error('JWT_SECRET is not set');
-        return res.status(500).send('Server error');
-    }
-
-    try {
-        const decoded = jwt.verify(token, JWT_SECRET);
-        
-        if (typeof decoded === 'object' && decoded !== null && 'email' in decoded) {
-            req.email = decoded.email;
-            console.log("Email set in request object:", (decoded as any).email);
-            next();
-        } else {
-            return res.status(403).send('Invalid token payload');
-        }
-
-    } catch (error: any) {
-        console.error("Error in validateJWT:", error.message);
-        logger.error('Error calculating loan offer', JSON.stringify(error));
-        return res.status(403).send('Invalid token');
-    }
-};
-
 app.post('/document/:applicationId/send', async (req, res, next) => {
     try {
+        const config = {
+            headers: {
+                'Authorization': req.headers.authorization || ''
+            }
+        };
         const { applicationId } = req.params;
-        const response = await axios.post(`http://api-deals:3002/deal/document/${applicationId}/send`, req.body);
+        const response = await axios.post(`http://api-deals:3002/deal/document/${applicationId}/send`, req.body, config);
         res.json(response.data);
     } catch (error: any) {
         next(error);
@@ -86,8 +60,13 @@ app.put('/application/apply', async (req, res, next) => {
 
 app.put('/application/registration/:applicationId', async (req, res, next) => {
     try {
+        const config = {
+            headers: {
+                'Authorization': req.headers.authorization || ''
+            }
+        };
         const { applicationId } = req.params;
-        const response = await axios.put(`http://api-deals:3002/deal/calculate/${applicationId}`, req.body);
+        const response = await axios.put(`http://api-deals:3002/deal/calculate/${applicationId}`, req.body, config);
         res.json(response.data);
     } catch (error: any) {
         next(error);
@@ -96,8 +75,13 @@ app.put('/application/registration/:applicationId', async (req, res, next) => {
 
 app.put('/document/:applicationId', async (req, res, next) => {
     try {
+        const config = {
+            headers: {
+                'Authorization': req.headers.authorization || ''
+            }
+        };
         const { applicationId } = req.params;
-        const response = await axios.put(`http://api-deals:3002/deal/document/${applicationId}/send`, req.body);
+        const response = await axios.put(`http://api-deals:3002/deal/document/${applicationId}/send`, req.body, config);
         res.json(response.data);
     } catch (error: any) {
         next(error);
@@ -106,8 +90,13 @@ app.put('/document/:applicationId', async (req, res, next) => {
 
 app.put('/document/:applicationId/sign', async (req, res, next) => {
     try {
+        const config = {
+            headers: {
+                'Authorization': req.headers.authorization || ''
+            }
+        };
         const { applicationId } = req.params;
-        const response = await axios.put(`http://api-deals:3002/deal/document/${applicationId}/sign`, req.body);
+        const response = await axios.put(`http://api-deals:3002/deal/document/${applicationId}/sign`, req.body, config);
         res.json(response.data);
     } catch (error: any) {
         next(error);
@@ -116,8 +105,13 @@ app.put('/document/:applicationId/sign', async (req, res, next) => {
 
 app.put('/document/:applicationId/sign/code', async (req, res, next) => {
     try {
+        const config = {
+            headers: {
+                'Authorization': req.headers.authorization || ''
+            }
+        };
         const { applicationId } = req.params;
-        const response = await axios.put(`http://api-deals:3002/deal/document/${applicationId}/code`, req.body);
+        const response = await axios.put(`http://api-deals:3002/deal/document/${applicationId}/code`, req.body, config);
         res.json(response.data);
     } catch (error: any) {
         next(error);
